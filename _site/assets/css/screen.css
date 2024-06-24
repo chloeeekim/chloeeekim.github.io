@@ -12,12 +12,12 @@ License: https://www.wowthemes.net/freebies-license/
 }
 
 a {
-    color: #00ab6b;
+    color: #cb435a;
     transition: all 0.2s;
 }
 
 a:hover {
-    color: #038252;
+    color: #b73c51;
     text-decoration: none;
 }
 
@@ -179,7 +179,8 @@ section.recent-posts {
 .author-thumb {
     width: 40px;
     height: 40px;
-    margin-right: 13px;
+    margin: auto;
+    display: block;
     border-radius: 100%;
 }
 
@@ -218,6 +219,7 @@ section.recent-posts {
     white-space: nowrap !important;
     text-overflow: ellipsis !important;
     overflow: hidden !important;
+    margin-left: 10px;
 }
 
 span.post-name,
@@ -314,13 +316,11 @@ span.post-read-more a:hover {
 }
 
 .footer {
-    border-top: 1px solid rgba(0, 0, 0, .05) !important;
     padding-top: 15px;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
     font-size: 0.8rem;
     color: rgba(0, 0, 0, .44);
     margin-top: 50px;
-    margin-bottom: 62px;
     position: relative;
     background: #fff;
 }
@@ -762,29 +762,31 @@ iframe {
     max-width: 100%;
 }
 
-.transpdark {
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-}
-
 @media (min-width:768px) {
     .jumbotron.fortags {
         margin-bottom: -50px;
         margin-top: 3rem;
         padding: 0;
-        height: 350px;
+        height: 400px;
         border-radius: 0;
         background-image: url(../images/jumbotron.jpg);
         background-size: cover;
+        background-position: 50%;
     }
 
     .jumbotron.fortags .col-md-4 {
-        background: rgba(0, 0, 0, 0.75);
+        background-image: linear-gradient(to right, rgba(203, 67, 90, 1), rgba(203, 67, 90, 0));
         color: #fff;
     }
 
     .jumbotron.fortags .row {
         margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .jumbotron .col-md-4 {
+        display: none;
     }
 }
 
@@ -794,6 +796,7 @@ iframe {
     border-radius: 0;
     background-image: url(../images/jumbotron.jpg);
     background-size: cover;
+    background-position: 50%;
 }
 
 .jumbotron.fortags a {
@@ -844,8 +847,14 @@ iframe {
     }
 }
 
-.card .img-fluid {
+.card {
     width: 100%;
+}
+
+.img-fluid {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .sticky-top-80 {
@@ -898,4 +907,65 @@ iframe {
 .lazyimg[data-srcset] {
     opacity: 0;
     transition: opacity .25s;
+}
+
+.centered-container {
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .centered-element {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.prev-next-card {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.arrow {
+    font-size: 1.5rem;
+    padding: 10px;
+    vertical-align: middle;
+    margin: auto;
+}
+
+.prev-arrow {
+    margin-left: 0px;
+}
+
+.next-arrow {
+    margin-right: 0px;
+}
+
+.prev {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.next {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.prev-next {
+    font-weight: 100;
+    color: rgba(0, 0, 0, .44);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .prev-next-card {
+        margin-bottom: 20px;
+    }
 }

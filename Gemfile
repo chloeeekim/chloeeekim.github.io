@@ -17,7 +17,10 @@ group :jekyll_plugins do
     gem 'jekyll-archives'
     gem 'kramdown'
     gem 'rouge'
-    gem 'jekyll-admin'
 end
+
+gem 'jekyll-admin', group: :jekyll_plugins
+
+gem "sinatra", ">= 3", "< 4"
 
 gem "webrick", "~> 1.8"
