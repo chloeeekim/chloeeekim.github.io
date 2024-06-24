@@ -809,7 +809,7 @@ iframe {
 
 .jumbotron.fortags a {
     padding: 5px 10px 7px;
-    background: #222;
+    background: rgba(203, 67, 90, .7);
     border-radius: 30px;
     color: #fff;
     font-weight: 500;
