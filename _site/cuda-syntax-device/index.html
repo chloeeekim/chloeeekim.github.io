@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/assets/images/favicon.png">
+
+<title>[CUDA 5.0] CUDA syntax를 이용하여 device 정보 불러오기 | Chloeeekim</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>[CUDA 5.0] CUDA syntax를 이용하여 device 정보 불러오기 | Chloeeekim</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="[CUDA 5.0] CUDA syntax를 이용하여 device 정보 불러오기" />
+<meta name="author" content="chloeeekim" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="※ 이 글은 2013년도에 작성된 글입니다. 사진이나 세부적인 내용은 지금과 다를 수 있습니다." />
+<meta property="og:description" content="※ 이 글은 2013년도에 작성된 글입니다. 사진이나 세부적인 내용은 지금과 다를 수 있습니다." />
+<link rel="canonical" href="http://localhost:4000/cuda-syntax-device/" />
+<meta property="og:url" content="http://localhost:4000/cuda-syntax-device/" />
+<meta property="og:site_name" content="Chloeeekim" />
+<meta property="og:image" content="http://localhost:4000/assets/images/cuda-syntax-device/title.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-04-02T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/cuda-syntax-device/title.png" />
+<meta property="twitter:title" content="[CUDA 5.0] CUDA syntax를 이용하여 device 정보 불러오기" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2015-04-02T00:00:00+09:00","datePublished":"2015-04-02T00:00:00+09:00","description":"※ 이 글은 2013년도에 작성된 글입니다. 사진이나 세부적인 내용은 지금과 다를 수 있습니다.","headline":"[CUDA 5.0] CUDA syntax를 이용하여 device 정보 불러오기","image":"http://localhost:4000/assets/images/cuda-syntax-device/title.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/cuda-syntax-device/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"chloeeekim"},"url":"http://localhost:4000/cuda-syntax-device/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/assets/css/screen.css" rel="stylesheet">
+
+<link href="/assets/css/main.css" rel="stylesheet">
+
+<script src="/assets/js/jquery.min.js"></script>
+
+
+
+</head>
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+    <img src="/assets/images/home.png" alt="Chloeeekim">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/categories">Categories</a>
+                </li>
+
+                <script src="/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle font-weight-bold">Chloeeekim</h1>
+    <p class="lead site-description">
+        Chloeeekim's Blog - All about everything
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[CUDA 5.0] CUDA syntax를 이용하여 device 정보 불러오기&url=http://localhost:4000/cuda-syntax-device/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/cuda-syntax-device/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/cuda-syntax-device/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-10 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        <img class="author-thumb" src="/assets/images/avatar.jpg" alt="Chloe Jungah Kim">
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left centered-container">
+                        <div class="centered-element">
+                            <a target="_blank" class="font-weight-bold" href="https://chloeeekim.github.io">Chloe Jungah Kim</a>
+                            <div>
+                                <span class="author-description">A blogger who writes about everything.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">[CUDA 5.0] CUDA syntax를 이용하여 device 정보 불러오기</h1>
+
+                <!-- Post Date -->
+                <p>
+                    <small>
+                        <span class="post-date"><time class="post-date" datetime="2015-04-02">02 Apr 2015</time></span>           
+                        
+                    </small>
+                </p>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+
+            
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/cuda-syntax-device/title.png" alt="[CUDA 5.0] CUDA syntax를 이용하여 device 정보 불러오기">
+            
+
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                <!-- End Toc -->
+                <div style="text-align: center; color: red;">
+※ 이 글은 2013년도에 작성된 글입니다. <br />사진이나 세부적인 내용은 지금과 다를 수 있습니다.<br /><br />
+</div>
+
+<p>본격적인 CUDA 코딩에 앞서 CUDA syntax를 이용하여 device의 정보를 불러오는 방법에 대해 소개하려고 합니다. 여기서 말하는 device란 CUDA acceleration(CUDA 가속)을 지원하는 GPU를 뜻합니다. 아래의 코드는 CUDA syntax를 이용하여 device의 정보를 불러와 출력하는 내용입니다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"cuda_runtime.h"</span><span class="cp">
+#include</span> <span class="cpf">"device_launch_parameters.h"</span><span class="cp">
+</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="n">cudaDeviceProp</span> <span class="n">prop</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
+
+    <span class="n">cudaGetDeviceCount</span><span class="p">(</span><span class="o">&amp;</span><span class="n">count</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cudaGetDeviceProperties</span><span class="p">(</span><span class="o">&amp;</span><span class="n">prop</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"-- %d번째 디바이스 --</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">" (1) 장치 이름 : %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">prop</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">" (2) Clock Rate : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">prop</span><span class="p">.</span><span class="n">clockRate</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">" (3) 전역 메모리 용량 : %ld</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">prop</span><span class="p">.</span><span class="n">totalGlobalMem</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">" (4) 상수 메모리 용량 : %ld</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">prop</span><span class="p">.</span><span class="n">totalConstMem</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">" (5) Register per block : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">prop</span><span class="p">.</span><span class="n">regsPerBlock</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">" (6) Max Grid Size : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">prop</span><span class="p">.</span><span class="n">maxGridSize</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">" (7) Max Thread Dimension : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">prop</span><span class="p">.</span><span class="n">maxThreadsDim</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">" (8) Max Thread per block : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">prop</span><span class="p">.</span><span class="n">maxThreadsPerBlock</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>CUDA는 <code class="language-plaintext highlighter-rouge">cudaDeviceProp</code>이라는 구조체 형식에 device들의 정보를 저장하게 됩니다. 이를 이용하면 device의 다양한 정보를 불러올 수 있습니다. 아래는 위 코드를 실행시킨 결과입니다.</p>
+
+<p><img src="/assets/images/cuda-syntax-device/1.jpg" alt="CUDA device information" class="post-img" /></p>
+
+<p>출력된 결과를 살펴보면, GeForce GT 750M이라는 하나의 device를 사용 중이며, clock rate나 메모리 용량이 얼마인지 알 수 있습니다. <code class="language-plaintext highlighter-rouge">cudaDeviceProp</code>은 이외에도 다양한 정보를 제공합니다. 이러한 데이터를 잘 활용하면 효과적인 CUDA 코딩을 할 수 있을 것입니다.</p>
+
+<p>그러면 위 코드를 자세히 살펴봅시다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>    <span class="n">cudaDeviceProp</span> <span class="n">prop</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Device property의 출력을 위해 구조체를 생성한 것입니다. 위에서 잠깐 언급했듯이 CUDA는 device의 정보를 구조체 형식에 저장합니다. <code class="language-plaintext highlighter-rouge">cudaDeviceProp</code> 구조체는 <code class="language-plaintext highlighter-rouge">driver_types.h</code> 파일에 선언되어 있으며, 이러한 header file들은 CUDA project를 생성하면 외부 종속성 폴더에 추가되도록 되어 있습니다.</p>
+
+<p>아래는 <code class="language-plaintext highlighter-rouge">cudaDeviceProp</code> 구조체의 선언 부분입니다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * CUDA device properties
+ */</span>
+<span class="k">struct</span> <span class="nc">__device_builtin__</span> <span class="n">cudaDeviceProp</span>
+<span class="p">{</span>
+    <span class="kt">char</span>   <span class="n">name</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>                  <span class="cm">/**&lt; ASCII string identifying device */</span>
+    <span class="kt">size_t</span> <span class="n">totalGlobalMem</span><span class="p">;</span>             <span class="cm">/**&lt; Global memory available on device in bytes */</span>
+    <span class="kt">size_t</span> <span class="n">sharedMemPerBlock</span><span class="p">;</span>          <span class="cm">/**&lt; Shared memory available per block in bytes */</span>
+    <span class="kt">int</span>    <span class="n">regsPerBlock</span><span class="p">;</span>               <span class="cm">/**&lt; 32-bit registers available per block */</span>
+    <span class="kt">int</span>    <span class="n">warpSize</span><span class="p">;</span>                   <span class="cm">/**&lt; Warp size in threads */</span>
+    <span class="kt">size_t</span> <span class="n">memPitch</span><span class="p">;</span>                   <span class="cm">/**&lt; Maximum pitch in bytes allowed by memory copies */</span>
+    <span class="kt">int</span>    <span class="n">maxThreadsPerBlock</span><span class="p">;</span>         <span class="cm">/**&lt; Maximum number of threads per block */</span>
+    <span class="kt">int</span>    <span class="n">maxThreadsDim</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>           <span class="cm">/**&lt; Maximum size of each dimension of a block */</span>
+    <span class="kt">int</span>    <span class="n">maxGridSize</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>             <span class="cm">/**&lt; Maximum size of each dimension of a grid */</span>
+    <span class="kt">int</span>    <span class="n">clockRate</span><span class="p">;</span>                  <span class="cm">/**&lt; Clock frequency in kilohertz */</span>
+    <span class="kt">size_t</span> <span class="n">totalConstMem</span><span class="p">;</span>              <span class="cm">/**&lt; Constant memory available on device in bytes */</span>
+    <span class="kt">int</span>    <span class="n">major</span><span class="p">;</span>                      <span class="cm">/**&lt; Major compute capability */</span>
+    <span class="kt">int</span>    <span class="n">minor</span><span class="p">;</span>                      <span class="cm">/**&lt; Minor compute capability */</span>
+    <span class="kt">size_t</span> <span class="n">textureAlignment</span><span class="p">;</span>           <span class="cm">/**&lt; Alignment requirement for textures */</span>
+    <span class="kt">size_t</span> <span class="n">texturePitchAlignment</span><span class="p">;</span>      <span class="cm">/**&lt; Pitch alignment requirement for texture references bound to pitched memory */</span>
+    <span class="kt">int</span>    <span class="n">deviceOverlap</span><span class="p">;</span>              <span class="cm">/**&lt; Device can concurrently copy memory and execute a kernel. Deprecated. Use instead asyncEngineCount. */</span>
+    <span class="kt">int</span>    <span class="n">multiProcessorCount</span><span class="p">;</span>        <span class="cm">/**&lt; Number of multiprocessors on device */</span>
+    <span class="kt">int</span>    <span class="n">kernelExecTimeoutEnabled</span><span class="p">;</span>   <span class="cm">/**&lt; Specified whether there is a run time limit on kernels */</span>
+    <span class="kt">int</span>    <span class="n">integrated</span><span class="p">;</span>                 <span class="cm">/**&lt; Device is integrated as opposed to discrete */</span>
+    <span class="kt">int</span>    <span class="n">canMapHostMemory</span><span class="p">;</span>           <span class="cm">/**&lt; Device can map host memory with cudaHostAlloc/cudaHostGetDevicePointer */</span>
+    <span class="kt">int</span>    <span class="n">computeMode</span><span class="p">;</span>                <span class="cm">/**&lt; Compute mode (See ::cudaComputeMode) */</span>
+    <span class="kt">int</span>    <span class="n">maxTexture1D</span><span class="p">;</span>               <span class="cm">/**&lt; Maximum 1D texture size */</span>
+    <span class="kt">int</span>    <span class="n">maxTexture1DMipmap</span><span class="p">;</span>         <span class="cm">/**&lt; Maximum 1D mipmapped texture size */</span>
+    <span class="kt">int</span>    <span class="n">maxTexture1DLinear</span><span class="p">;</span>         <span class="cm">/**&lt; Maximum size for 1D textures bound to linear memory */</span>
+    <span class="kt">int</span>    <span class="n">maxTexture2D</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>            <span class="cm">/**&lt; Maximum 2D texture dimensions */</span>
+    <span class="kt">int</span>    <span class="n">maxTexture2DMipmap</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>      <span class="cm">/**&lt; Maximum 2D mipmapped texture dimensions */</span>
+    <span class="kt">int</span>    <span class="n">maxTexture2DLinear</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>      <span class="cm">/**&lt; Maximum dimensions (width, height, pitch) for 2D textures bound to pitched memory */</span>
+    <span class="kt">int</span>    <span class="n">maxTexture2DGather</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>      <span class="cm">/**&lt; Maximum 2D texture dimensions if texture gather operations have to be performed */</span>
+    <span class="kt">int</span>    <span class="n">maxTexture3D</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>            <span class="cm">/**&lt; Maximum 3D texture dimensions */</span>
+    <span class="kt">int</span>    <span class="n">maxTextureCubemap</span><span class="p">;</span>          <span class="cm">/**&lt; Maximum Cubemap texture dimensions */</span>
+    <span class="kt">int</span>    <span class="n">maxTexture1DLayered</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>     <span class="cm">/**&lt; Maximum 1D layered texture dimensions */</span>
+    <span class="kt">int</span>    <span class="n">maxTexture2DLayered</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>     <span class="cm">/**&lt; Maximum 2D layered texture dimensions */</span>
+    <span class="kt">int</span>    <span class="n">maxTextureCubemapLayered</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="cm">/**&lt; Maximum Cubemap layered texture dimensions */</span>
+    <span class="kt">int</span>    <span class="n">maxSurface1D</span><span class="p">;</span>               <span class="cm">/**&lt; Maximum 1D surface size */</span>
+    <span class="kt">int</span>    <span class="n">maxSurface2D</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>            <span class="cm">/**&lt; Maximum 2D surface dimensions */</span>
+    <span class="kt">int</span>    <span class="n">maxSurface3D</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>            <span class="cm">/**&lt; Maximum 3D surface dimensions */</span>
+    <span class="kt">int</span>    <span class="n">maxSurface1DLayered</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>     <span class="cm">/**&lt; Maximum 1D layered surface dimensions */</span>
+    <span class="kt">int</span>    <span class="n">maxSurface2DLayered</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>     <span class="cm">/**&lt; Maximum 2D layered surface dimensions */</span>
+    <span class="kt">int</span>    <span class="n">maxSurfaceCubemap</span><span class="p">;</span>          <span class="cm">/**&lt; Maximum Cubemap surface dimensions */</span>
+    <span class="kt">int</span>    <span class="n">maxSurfaceCubemapLayered</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="cm">/**&lt; Maximum Cubemap layered surface dimensions */</span>
+    <span class="kt">size_t</span> <span class="n">surfaceAlignment</span><span class="p">;</span>           <span class="cm">/**&lt; Alignment requirements for surfaces */</span>
+    <span class="kt">int</span>    <span class="n">concurrentKernels</span><span class="p">;</span>          <span class="cm">/**&lt; Device can possibly execute multiple kernels concurrently */</span>
+    <span class="kt">int</span>    <span class="n">ECCEnabled</span><span class="p">;</span>                 <span class="cm">/**&lt; Device has ECC support enabled */</span>
+    <span class="kt">int</span>    <span class="n">pciBusID</span><span class="p">;</span>                   <span class="cm">/**&lt; PCI bus ID of the device */</span>
+    <span class="kt">int</span>    <span class="n">pciDeviceID</span><span class="p">;</span>                <span class="cm">/**&lt; PCI device ID of the device */</span>
+    <span class="kt">int</span>    <span class="n">pciDomainID</span><span class="p">;</span>                <span class="cm">/**&lt; PCI domain ID of the device */</span>
+    <span class="kt">int</span>    <span class="n">tccDriver</span><span class="p">;</span>                  <span class="cm">/**&lt; 1 if device is a Tesla device using TCC driver, 0 otherwise */</span>
+    <span class="kt">int</span>    <span class="n">asyncEngineCount</span><span class="p">;</span>           <span class="cm">/**&lt; Number of asynchronous engines */</span>
+    <span class="kt">int</span>    <span class="n">unifiedAddressing</span><span class="p">;</span>          <span class="cm">/**&lt; Device shares a unified address space with the host */</span>
+    <span class="kt">int</span>    <span class="n">memoryClockRate</span><span class="p">;</span>            <span class="cm">/**&lt; Peak memory clock frequency in kilohertz */</span>
+    <span class="kt">int</span>    <span class="n">memoryBusWidth</span><span class="p">;</span>             <span class="cm">/**&lt; Global memory bus width in bits */</span>
+    <span class="kt">int</span>    <span class="n">l2CacheSize</span><span class="p">;</span>                <span class="cm">/**&lt; Size of L2 cache in bytes */</span>
+    <span class="kt">int</span>    <span class="n">maxThreadsPerMultiProcessor</span><span class="p">;</span><span class="cm">/**&lt; Maximum resident threads per multiprocessor */</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위와 같이 선언되어 있는데, 각각 어떤 것을 의미하는지는 각 항목마다 설명이 주석처리 되어 있으므로 자세한 설명은 하지 않겠습니다. 앞서 출력해 보았던 내용 이외에도 엄청나게 많은 정보들을 저장하고 있지만, 가장 많이 쓰이게 될 몇 가지 정보들만 출력해 보았습니다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>    <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
+    <span class="n">cudaGetDeviceCount</span><span class="p">(</span><span class="o">&amp;</span><span class="n">count</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>device 장치의 개수를 획득하는 함수입니다. int 형 변수인 count를 만들고, 그것의 주소값을 argument로 넘겨주게 됩니다. <code class="language-plaintext highlighter-rouge">cudaGetDeviceCount</code> 함수는 <code class="language-plaintext highlighter-rouge">cuda_runtime_api.h</code>에 다음과 같이 정의되어 있습니다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">extern</span> <span class="n">__host__</span> <span class="n">__cudart_builtin__</span> <span class="n">cudaError_t</span> <span class="n">CUDARTAPI</span> <span class="nf">cudaGetDeviceCount</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">count</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>parameter로 count의 포인터를 넘겨 받기 때문에 호출 시 argument의 사용에 주의해 주셔야 합니다. 함수의 이름에서 알 수 있다시피 count 변수에는 device의 개수 값이 들어갑니다.</p>
+
+<p>CUDA 뿐만이 아니라 다른 언어나 tool을 공부할 때에도 마찬가지로, 어떤 함수를 사용할 때 그것이 어떻게 정의되어 있는지 내부를 공부하는 것은 무척이나 많은 도움이 됩니다. 특히나 CUDA는 C 기반으로 짜여져 있는데다 주석도 잘 달려 있어 공부하기 편리합니다.</p>
+
+<p>이렇게 CUDA syntax를 이용하여 device의 정보를 출력하는 방법에 대해 알아보았습니다. 이후 포스팅에서 CUDA 병렬 프로그래밍에 대해 더 자세히 알아보도록 하겠습니다.</p>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2015-04-02">02 Apr 2015</time></span>           
+                
+                </small>
+            </p>
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/categories#CUDA">CUDA</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/categories#Programming">Programming</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            
+            
+            
+                
+                    
+                    
+                    
+                    
+                    
+
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                <div class="col-md-6">
+                    
+                    <a class="prev-next-card" href="/cuda-syntax-highlighting/">
+                        <div class="arrow prev-arrow">&laquo;</div>
+                        <div class="prev">
+                            <div class="prev-next">Previous</div>
+                            <div class="page-title">[CUDA 5.0] CUDA Syntax Highlighting 설정하기</div>
+                        </div>
+                    </a>
+                    
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-12">
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://chloeeekim.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1">Categories</h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/categories#CUDA">CUDA (4)</a>
+                
+                    <a class="mt-1 mb-1" href="/categories#Programming">Programming (4)</a>
+                
+            
+            
+		</div>
+	</div>
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Chloeeekim 
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/assets/js/mediumish.js"></script>
+
+
+<script src="/assets/js/lazyload.js"></script>
+
+
+<script src="/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+
+<script id="dsq-count-scr" src="//demowebsite.disqus.com/count.js"></script>
+
+
+</body>
+</html>
