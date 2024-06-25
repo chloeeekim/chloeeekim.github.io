@@ -5,8 +5,8 @@
     <description>Chloeeekim&apos;s Blog - All about everything</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 26 Jun 2024 08:14:58 +0900</pubDate>
-    <lastBuildDate>Wed, 26 Jun 2024 08:14:58 +0900</lastBuildDate>
+    <pubDate>Wed, 26 Jun 2024 08:16:16 +0900</pubDate>
+    <lastBuildDate>Wed, 26 Jun 2024 08:16:16 +0900</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
     
       <item>
@@ -61,7 +61,7 @@
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;위 코드는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cu&lt;/code&gt; 파일에 작성되는 코드입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;extern &quot;C&quot;를 붙인 &lt;/code&gt;&lt;strong&gt;host&lt;/strong&gt;` 함수는 결국 cpp와 CUDA 함수들을 연결해주는 연결다리 역할을 한다고 볼 수 있습니다.&lt;/p&gt;
+&lt;p&gt;위 코드는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cu&lt;/code&gt; 파일에 작성되는 코드입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;extern &quot;C&quot;&lt;/code&gt;를 붙인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__host__&lt;/code&gt; 함수는 결국 cpp와 CUDA 함수들을 연결해주는 연결다리 역할을 한다고 볼 수 있습니다.&lt;/p&gt;
 
 &lt;p&gt;실제로 사용하는 예는 다음과 같습니다. 제 프로젝트에서 작성한 코드 일부입니다.&lt;/p&gt;
 
