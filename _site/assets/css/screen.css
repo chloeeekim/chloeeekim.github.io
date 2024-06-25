@@ -993,7 +993,7 @@ iframe {
 }
 
 .post-img {
-  width: 80%;
+  max-width: 80%;
   margin: auto;
   display: block;
 }
