@@ -131,24 +131,40 @@ post_class: post-template
             <!-- End Tags -->
 
             <!-- Prev/Next -->
+            {% assign cat = page.categories[0] %}
+            {% assign cat_list = site.categories[cat] %}
+            {% for post in cat_list %}
+                {% if post.url == page.url %}
+                    {% assign pOffset = forloop.index0 | minus: 1 %}
+                    {% assign nOffset = pOffset | plus : 2 %}
+                    {% if forloop.first == false %}
+                        {% assign next_post = cat_list[pOffset] %}
+                    {% endif %}
+                    {% if forloop.last == false %}
+                        {% assign previous_post = cat_list[nOffset] %}
+                    {% endif %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                 <div class="col-md-6">
-                    {% if page.previous.url %}
-                    <a class="prev-next-card" href="{{ site.baseurl }}/{{page.previous.url}}">
+                    {% if previous_post %}
+                    <a class="prev-next-card" href="{{ previous_post.url }}">
                         <div class="arrow prev-arrow">&laquo;</div>
                         <div class="prev">
                             <div class="prev-next">Previous</div>
-                            <div class="page-title">{{page.previous.title}}</div>
+                            <div class="page-title">{{ previous_post.title }}</div>
                         </div>
                     </a>
                     {% endif %}
                 </div>
                 <div class="col-md-6">
-                    {% if page.next.url %}
-                    <a class="prev-next-card" href="{{ site.baseurl }}/{{page.next.url}}">
+                    {% if next_post %}
+                    <a class="prev-next-card" href="{{ next_post.url }}">
                         <div class="next">
                             <div class="prev-next">Next</div>
-                            <div class="page-title">{{page.next.title}}</div>
+                            <div class="page-title">{{ next_post.title }}</div>
                         </div>
                         <div class="arrow next-arrow">&raquo;</div>
                     </a>
