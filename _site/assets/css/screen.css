@@ -240,7 +240,14 @@ span.author-meta {
     display: inline-block;
 }
 
-span.post-date,
+span.post-date {
+    color: rgba(0, 0, 0, .44);
+    text-align: right;
+    margin-right: 10px;
+    display: block;
+    font-size: 0.9rem;
+}
+
 span.post-read {
     color: rgba(0, 0, 0, .44);
 }
