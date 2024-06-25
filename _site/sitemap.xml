@@ -25,6 +25,10 @@
 <lastmod>2015-04-03T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/cuda-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94/</loc>
+<lastmod>2015-04-04T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/categories</loc>
 </url>
 <url>
@@ -38,5 +42,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/category/programming/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page2/</loc>
 </url>
 </urlset>
