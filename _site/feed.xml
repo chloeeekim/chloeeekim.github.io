@@ -5,24 +5,9 @@
     <description>Chloeeekim&apos;s Blog - All about everything</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 25 Jun 2024 12:59:51 +0900</pubDate>
-    <lastBuildDate>Tue, 25 Jun 2024 12:59:51 +0900</lastBuildDate>
+    <pubDate>Tue, 25 Jun 2024 13:00:55 +0900</pubDate>
+    <lastBuildDate>Tue, 25 Jun 2024 13:00:55 +0900</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
-    
-      <item>
-        <title>Test Post</title>
-        <description>&lt;h3 id=&quot;test-1&quot;&gt;test 1&lt;/h3&gt;
-
-&lt;p&gt;This is test post!&lt;/p&gt;
-</description>
-        <pubDate>Tue, 25 Jun 2024 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/test/</link>
-        <guid isPermaLink="true">http://localhost:4000/test/</guid>
-        
-        
-        <category>test</category>
-        
-      </item>
     
       <item>
         <title>[CUDA 5.0] CUDA 예제 실행하기</title>
