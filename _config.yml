@@ -29,6 +29,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-archives
+  - jekyll-admin
     
 # Archives
 jekyll-archives:
@@ -61,3 +62,10 @@ adsense-data-ad-slot: "1363087678"
 lazyimages: "enabled"
 
 exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock]
+
+jekyll_admin:
+  hidden_links:
+  homepage: "posts"
+
+whitelist:
+  - jekyll-admin

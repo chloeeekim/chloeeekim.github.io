@@ -742,13 +742,8 @@ img {
 }
 
 .pointerup {
-    margin-bottom: -17px;
     margin-left: 49%;
     font-size: 30px;
-}
-
-.pointerup i.fa {
-    color: #eaeaea;
 }
 
 .bottompagination span.navigation i {
@@ -955,6 +950,7 @@ iframe {
 
 .prev {
     display: flex;
+    flex-direction: column;
     text-align: right;
 }
 
