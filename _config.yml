@@ -2,8 +2,8 @@
 name: "Chloeeekim"
 title: "Chloeeekim"
 description: "Chloeeekim's Blog - All about everything"
-logo: 'assets/images/logo.png'
-favicon: 'assets/images/logo.png'
+logo: 'assets/images/home.png'
+favicon: 'assets/images/favicon.png'
 baseurl: ""
 url: "http://chloeeekim.github.io"
 google_analytics: 'G-5DB4C9PFP7'
