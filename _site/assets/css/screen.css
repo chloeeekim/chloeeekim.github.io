@@ -339,7 +339,7 @@ span.post-read-more a:hover {
 
 .article-post {
     font-family: "Noto Sans KR", sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.84;
     color: rgba(0, 0, 0, .8);
 }
@@ -975,4 +975,10 @@ iframe {
 .site-description {
     color: rgba(0, 0, 0, .44);
     font-weight: 400;
+}
+
+.post-img {
+    width: 80%;
+    margin: auto;
+    display: block;
 }
