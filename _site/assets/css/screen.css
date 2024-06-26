@@ -2,6 +2,10 @@
 * Author: Chloe Jungah Kim (@chloeeekim)
 */
 
+html {
+    scroll-behavior: smooth;
+}
+
 @media screen and (min-width:1500px) {
     html { font-size:18px; } /* Increase the font size on higher resolutions */
     .container {max-width:80%;}
@@ -712,6 +716,21 @@ h6 {
     margin-bottom: 1.5rem;
 }
 
+.article-post .h1,
+.article-post h1 {
+    font-size: 1.5rem;
+}
+
+.article-post .h2,
+.article-post h2 {
+    font-size: 1.3rem;
+}
+
+.article-post .h3,
+.article-post h3 {
+    font-size: 1.1rem;
+}
+
 .article-post img.shadow {
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.30);
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.30);
@@ -981,4 +1000,17 @@ iframe {
     width: 80%;
     margin: auto;
     display: block;
+}
+
+li {
+    list-style: decimal;
+    font-weight: bold;
+}
+
+li li {
+    list-style: lower-alpha;
+}
+
+li li li {
+    list-style: lower-roman;
 }
