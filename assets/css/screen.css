@@ -126,7 +126,8 @@ section.recent-posts {
 
 .listfeaturedtag {
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 5px;
+  overflow: hidden;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -1059,4 +1060,8 @@ table:not(.rouge-table) td {
 
 table:not(.rouge-table) tr:nth-of-type(even) {
   background-color: rgba(0, 0, 0, .03);
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
