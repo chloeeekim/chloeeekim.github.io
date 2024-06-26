@@ -230,8 +230,7 @@ section.recent-posts {
 }
 
 .toc ul {
-  list-style: decimal;
-  font-weight: 400;
+  font-weight: bold;
 }
 
 .author-meta {
@@ -1015,4 +1014,22 @@ iframe {
   max-width: 80%;
   margin: auto;
   display: block;
+}
+
+.toc li {
+  list-style: decimal;
+}
+
+.toc li li {
+  list-style: lower-alpha;
+}
+
+.toc li li li {
+  list-style: lower-roman;
+}
+
+p code {
+  background: rgba(0, 0, 0, .03);
+  padding: 2px;
+  border-radius: 3px;
 }
