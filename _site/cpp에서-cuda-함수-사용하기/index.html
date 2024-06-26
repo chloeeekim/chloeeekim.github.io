@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/assets/images/favicon.png">
+
+<title>[CUDA 5.5] cpp에서 CUDA 함수 사용하기 | Chloeeekim</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>[CUDA 5.5] cpp에서 CUDA 함수 사용하기 | Chloeeekim</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="[CUDA 5.5] cpp에서 CUDA 함수 사용하기" />
+<meta name="author" content="chloeeekim" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="이번 포스팅에서는 cpp에서 CUDA 함수를 사용하는 방법에 대하여 이야기해보겠습니다." />
+<meta property="og:description" content="이번 포스팅에서는 cpp에서 CUDA 함수를 사용하는 방법에 대하여 이야기해보겠습니다." />
+<link rel="canonical" href="http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" />
+<meta property="og:url" content="http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" />
+<meta property="og:site_name" content="Chloeeekim" />
+<meta property="og:image" content="http://localhost:4000/assets/images/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/title.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-04-07T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/title.png" />
+<meta property="twitter:title" content="[CUDA 5.5] cpp에서 CUDA 함수 사용하기" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2015-04-07T00:00:00+09:00","datePublished":"2015-04-07T00:00:00+09:00","description":"이번 포스팅에서는 cpp에서 CUDA 함수를 사용하는 방법에 대하여 이야기해보겠습니다.","headline":"[CUDA 5.5] cpp에서 CUDA 함수 사용하기","image":"http://localhost:4000/assets/images/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/title.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/assets/css/screen.css" rel="stylesheet">
+
+<link href="/assets/css/main.css" rel="stylesheet">
+
+<script src="/assets/js/jquery.min.js"></script>
+
+
+
+</head>
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+    <img src="/assets/images/home.png" alt="Chloeeekim">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/categories">Categories</a>
+                </li>
+
+                <script src="/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle font-weight-bold">Chloeeekim</h1>
+    <p class="lead site-description">
+        Chloeeekim's Blog - All about everything
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[CUDA 5.5] cpp에서 CUDA 함수 사용하기&url=http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-10 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        <img class="author-thumb" src="/assets/images/avatar.jpg" alt="Chloe Jungah Kim">
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left centered-container">
+                        <div class="centered-element">
+                            <a target="_blank" class="font-weight-bold" href="https://chloeeekim.github.io">Chloe Jungah Kim</a>
+                            <div>
+                                <span class="author-description">A blogger who writes about everything.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">[CUDA 5.5] cpp에서 CUDA 함수 사용하기</h1>
+
+                <!-- Post Date -->
+                <p>
+                    <small>
+                        <span class="post-date"><time class="post-date align-right" datetime="2015-04-07">07 Apr 2015</time></span>           
+                        
+                    </small>
+                </p>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+
+            
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/cpp에서-cuda-함수-사용하기/title.png" alt="[CUDA 5.5] cpp에서 CUDA 함수 사용하기">
+            
+
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                <!-- End Toc -->
+                <p>이번 포스팅에서는 cpp에서 CUDA 함수를 사용하는 방법에 대하여 이야기해보겠습니다.</p>
+
+<p>지금껏 <code class="language-plaintext highlighter-rouge">.cu</code> 파일만으로 프로젝트를 구성하게 되면 다음과 같은 구조로 나타납니다.</p>
+
+<p><img src="/assets/images/cpp에서-cuda-함수-사용하기/1.png" alt=".cu file project example" class="post-img" /></p>
+
+<p>main 함수에서는 kernel 함수로 <code class="language-plaintext highlighter-rouge">__global__</code> 함수를 호출하고, <code class="language-plaintext highlighter-rouge">__global__</code> 함수는 sub 함수로 <code class="language-plaintext highlighter-rouge">__device__</code> 함수를 호출하면서 프로그램이 진행됩니다. 즉, <code class="language-plaintext highlighter-rouge">.cu</code> 파일 내에서 main 함수가 있고, <code class="language-plaintext highlighter-rouge">__global__</code> 함수와 <code class="language-plaintext highlighter-rouge">__device__</code> 함수가 존재해 서로를 호출하는 데에 문제가 없었을 것입니다.</p>
+
+<p>하지만 일반적인 프로그램의 경우 cpp(혹은 c)와 CUDA를 혼재해서 사용하게 되고, 그렇게 되면 <code class="language-plaintext highlighter-rouge">.cu</code> 파일에 있는 CUDA 함수들을 호출하는 데에 문제가 생깁니다. main 함수는 <code class="language-plaintext highlighter-rouge">.cpp</code> 파일에 있고, CUDA 함수는 <code class="language-plaintext highlighter-rouge">.cu</code> 파일에 있는 구조가 되기 때문에 그것을 정의해주지 않으면 인식하지 못하기 때문입니다.</p>
+
+<p>cpp에서 CUDA 함수를 사용하게 되는 과정을 간단히 구조화하면 다음과 같습니다.</p>
+
+<p><img src="/assets/images/cpp에서-cuda-함수-사용하기/2.png" alt=".cpp and .cu file project example" class="post-img" /></p>
+
+<p>main 함수는 <code class="language-plaintext highlighter-rouge">.cpp</code> 파일에 있고, 다른 cpp 함수들도 호출하면서 프로그램이 진행됩니다. 그러다 CUDA 함수를 사용할 경우가 생기면 <code class="language-plaintext highlighter-rouge">.cu</code> 파일 내에 정의된 <code class="language-plaintext highlighter-rouge">__host__</code> function을 호출하는 방식으로 CUDA 함수를 사용합니다. <code class="language-plaintext highlighter-rouge">__host__</code> 함수는 필요한 CUDA 함수를 진행하여 결과를 얻어 main 함수, 혹은 cpp 함수로 전달해주는 역할을 합니다.</p>
+
+<p>여기서 중요한 점은 <code class="language-plaintext highlighter-rouge">__host__</code> function과 main 함수는 다르다는 점입니다. main 함수는 <code class="language-plaintext highlighter-rouge">__host__</code> 함수라고 할 수 있지만, 모든 <code class="language-plaintext highlighter-rouge">__host__</code> 함수가 main 함수는 아닙니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">__host__</code> 함수에 <code class="language-plaintext highlighter-rouge">extern "C"</code>라고 표시가 되어 있는데, 이것이 바로 cpp에서 CUDA 함수를 호출할 수 있게 해 주는 문법입니다. 사용하는 방법은 다음과 같습니다.</p>
+
+<p>우선 cpp 파일에 이러이러한 CUDA 함수를 사용할 것이라고 정의하여 줍니다. 일반적으로 header file에 정의하게 되지만, 프로젝트의 사이즈가 크지 않다면 CUDA 함수를 호출하는 부분이 있는 파일에 정의해주면 됩니다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">extern</span> <span class="s">"C"</span> <span class="kt">void</span> <span class="nf">cuda_function</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="p">...);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>일반적으로 함수를 정의할 때처럼 정의해주면 되지만, 중요한 점은 앞에 <code class="language-plaintext highlighter-rouge">extern "C"</code> 를 붙여야 한다는 것입니다. 이렇게 정의한 함수를 <code class="language-plaintext highlighter-rouge">.cu</code> 파일에서 <code class="language-plaintext highlighter-rouge">__host__</code> 함수로 작성하면 됩니다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="n">__global__</span> <span class="kt">void</span> <span class="nf">global_function</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="p">...)</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">void</span> <span class="nf">cuda_function</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="p">...)</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="n">global_function</span><span class="o">&lt;&lt;&lt;</span><span class="n">blockDim</span><span class="p">,</span> <span class="n">threadDim</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="p">...);</span>
+    <span class="n">checkCudaErrors</span><span class="p">(</span><span class="n">cudaThreadSynchronize</span><span class="p">());</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위 코드는 <code class="language-plaintext highlighter-rouge">.cu</code> 파일에 작성되는 코드입니다. <code class="language-plaintext highlighter-rouge">extern "C"</code>를 붙인 <code class="language-plaintext highlighter-rouge">__host__</code> 함수는 결국 cpp와 CUDA 함수들을 연결해주는 연결다리 역할을 한다고 볼 수 있습니다.</p>
+
+<p>실제로 사용하는 예는 다음과 같습니다. 제 프로젝트에서 작성한 코드 일부입니다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="c1">//kernel Functions</span>
+<span class="c1">//glInputOutput_kernel.cu</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">void</span> <span class="nf">setupTexture</span><span class="p">(</span><span class="kt">int</span> <span class="n">iv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ih</span><span class="p">,</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">int</span> <span class="n">bpp</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num</span><span class="p">);</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">void</span> <span class="nf">deleteTexture</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">);</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">void</span> <span class="nf">deleteAllTextures</span><span class="p">();</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">void</span> <span class="nf">displayMod</span><span class="p">(</span><span class="n">Pixel</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">bgData</span><span class="p">,</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">curData</span><span class="p">,</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">diffData</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">h</span><span class="p">,</span> <span class="k">enum</span> <span class="n">showBoxMode</span> <span class="n">mode</span><span class="p">);</span>
+
+<span class="c1">// diffImage.cu</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">double</span> <span class="nf">diffImage</span><span class="p">(</span><span class="n">Pixel</span> <span class="o">*</span><span class="n">bgData</span><span class="p">,</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">curData</span><span class="p">,</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">diffData</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">height</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+
+<span class="c1">// bilateralFilter.cu</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">void</span> <span class="nf">initTexture</span><span class="p">(</span><span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">,</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">image</span><span class="p">);</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">void</span> <span class="nf">freeTexture</span><span class="p">();</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">void</span> <span class="nf">updateGaussian</span><span class="p">(</span><span class="kt">float</span> <span class="n">delta</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">);</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">double</span> <span class="nf">initBilateralFilterCUDA</span><span class="p">(</span><span class="kt">float</span> <span class="n">delta</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">,</span> <span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">,</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">pixels</span><span class="p">);</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">double</span> <span class="nf">bilateralFilter</span><span class="p">(</span><span class="n">Pixel</span> <span class="o">*</span><span class="n">pixels</span><span class="p">,</span> <span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">,</span> <span class="kt">float</span> <span class="n">e_d</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">,</span> <span class="kt">int</span> <span class="n">iterations</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="n">__global__</span> <span class="kt">void</span> <span class="nf">imageSubtractionGlobal</span><span class="p">(</span><span class="n">Pixel</span> <span class="o">*</span><span class="n">bgData</span><span class="p">,</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">curData</span><span class="p">,</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">diffData</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">blockDim</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="n">diffData</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">MIN</span><span class="p">(</span><span class="n">MAX</span><span class="p">((</span><span class="n">bgData</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">curData</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="mf">0.</span><span class="n">f</span><span class="p">),</span> <span class="mf">255.</span><span class="n">f</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">void</span> <span class="nf">diffImage</span><span class="p">(</span><span class="n">Pixel</span> <span class="o">*</span><span class="n">bgData</span><span class="p">,</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">curData</span><span class="p">,</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">diffData</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">height</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">imageSubtractionGlobal</span><span class="o">&lt;&lt;&lt;</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">bgData</span><span class="p">,</span> <span class="n">curData</span><span class="p">,</span> <span class="n">diffData</span><span class="p">,</span> <span class="n">width</span><span class="p">);</span>
+    <span class="n">checkCudaErrors</span><span class="p">(</span><span class="n">cudaThreadSynchronize</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/categories#CUDA">CUDA</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/categories#Programming">Programming</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            
+            
+            
+                
+            
+                
+                    
+                    
+                    
+                    
+                    
+
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                <div class="col-md-6">
+                    
+                    <a class="prev-next-card" href="/cuda-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94/">
+                        <div class="arrow prev-arrow">&laquo;</div>
+                        <div class="prev">
+                            <div class="prev-next">Previous</div>
+                            <div class="page-title">[CUDA 5.5] CUDA 메모리 성능 최적화</div>
+                        </div>
+                    </a>
+                    
+                </div>
+                <div class="col-md-6">
+                    
+                    <a class="prev-next-card" href="/gpu-%EC%8B%A4%ED%96%89%EC%8B%9C%EA%B0%84-%EC%B8%A1%EC%A0%95/">
+                        <div class="next">
+                            <div class="prev-next">Next</div>
+                            <div class="page-title">[CUDA 7] GPU 실행시간 측정 - cudaEvent</div>
+                        </div>
+                        <div class="arrow next-arrow">&raquo;</div>
+                    </a>
+                    
+                </div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-12">
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://chloeeekim.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1">Categories</h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/categories#CUDA">CUDA (9)</a>
+                
+                    <a class="mt-1 mb-1" href="/categories#Programming">Programming (9)</a>
+                
+            
+            
+		</div>
+	</div>
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Chloeeekim 
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/assets/js/mediumish.js"></script>
+
+
+<script src="/assets/js/lazyload.js"></script>
+
+
+<script src="/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+
+
+</body>
+</html>
