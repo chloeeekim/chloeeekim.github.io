@@ -1029,7 +1029,7 @@ iframe {
   list-style: lower-roman;
 }
 
-p code {
+p code, table:not(.rouge-table) code {
   background: rgba(0, 0, 0, .03);
   padding: 2px;
   border-radius: 3px;
