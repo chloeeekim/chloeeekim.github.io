@@ -1065,3 +1065,32 @@ table:not(.rouge-table) tr:nth-of-type(even) {
 .overflow-hidden {
   overflow: hidden;
 }
+
+.fit-cover {
+  height: 300px;
+  object-fit: cover;
+}
+
+.featured-fit-cover {
+  object-fit: cover;
+}
+
+.postbox-text-ellipsis {
+  width: fit-content;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.featuredbox-text-ellipsis {
+  width: fit-content;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}

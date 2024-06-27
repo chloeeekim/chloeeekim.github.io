@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/assets/images/favicon.png">
+
+<title>Github pages와 Jekyll 설치하기 - Windows ver. | Chloeeekim</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Github pages와 Jekyll 설치하기 - Windows ver. | Chloeeekim</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="Github pages와 Jekyll 설치하기 - Windows ver." />
+<meta name="author" content="chloeeekim" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="jekyll은 github pages를 지원하는 정적 웹사이트 생성기입니다. 저장되어 있는 html, markdown 파일을 그대로 가져와서 선택한 레이아웃에 따라 html 코드로 변환해 정적 웹사이트를 생성해줍니다. jekyll은 매우 가벼우며, liquid 언어를 지원하여 동적 컨텐츠 로드가 가능하다는 장점이 있습니다. 또한 markdown 언어를 사용하기 때문에 문법이 쉽고, 작성이 간편하다는 것도 장점입니다." />
+<meta property="og:description" content="jekyll은 github pages를 지원하는 정적 웹사이트 생성기입니다. 저장되어 있는 html, markdown 파일을 그대로 가져와서 선택한 레이아웃에 따라 html 코드로 변환해 정적 웹사이트를 생성해줍니다. jekyll은 매우 가벼우며, liquid 언어를 지원하여 동적 컨텐츠 로드가 가능하다는 장점이 있습니다. 또한 markdown 언어를 사용하기 때문에 문법이 쉽고, 작성이 간편하다는 것도 장점입니다." />
+<link rel="canonical" href="http://localhost:4000/jekyll-setup-windows/" />
+<meta property="og:url" content="http://localhost:4000/jekyll-setup-windows/" />
+<meta property="og:site_name" content="Chloeeekim" />
+<meta property="og:image" content="http://localhost:4000/assets/images/jekyll-setup-windows/title.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-06-26T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/jekyll-setup-windows/title.png" />
+<meta property="twitter:title" content="Github pages와 Jekyll 설치하기 - Windows ver." />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2024-06-26T00:00:00+09:00","datePublished":"2024-06-26T00:00:00+09:00","description":"jekyll은 github pages를 지원하는 정적 웹사이트 생성기입니다. 저장되어 있는 html, markdown 파일을 그대로 가져와서 선택한 레이아웃에 따라 html 코드로 변환해 정적 웹사이트를 생성해줍니다. jekyll은 매우 가벼우며, liquid 언어를 지원하여 동적 컨텐츠 로드가 가능하다는 장점이 있습니다. 또한 markdown 언어를 사용하기 때문에 문법이 쉽고, 작성이 간편하다는 것도 장점입니다.","headline":"Github pages와 Jekyll 설치하기 - Windows ver.","image":"http://localhost:4000/assets/images/jekyll-setup-windows/title.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll-setup-windows/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/jekyll-setup-windows/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/assets/css/screen.css" rel="stylesheet">
+
+<link href="/assets/css/main.css" rel="stylesheet">
+
+<script src="/assets/js/jquery.min.js"></script>
+
+
+
+</head>
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+    <img src="/assets/images/home.png" alt="Chloeeekim">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/categories">Categories</a>
+                </li>
+
+                <script src="/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle font-weight-bold">Chloeeekim</h1>
+    <p class="lead site-description">
+        Chloeeekim's Blog - All about everything
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Github pages와 Jekyll 설치하기 - Windows ver.&url=http://localhost:4000/jekyll-setup-windows/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/jekyll-setup-windows/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/jekyll-setup-windows/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-10 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        <img class="author-thumb" src="/assets/images/avatar.jpg" alt="Chloe Jungah Kim">
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left centered-container">
+                        <div class="centered-element">
+                            <a target="_blank" class="font-weight-bold" href="https://chloeeekim.github.io">Chloe Jungah Kim</a>
+                            <div>
+                                <span class="author-description">A blogger who writes about everything.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">Github pages와 Jekyll 설치하기 - Windows ver.</h1>
+
+                <!-- Post Date -->
+                <p>
+                    <small>
+                        <span class="post-date"><time class="post-date align-right" datetime="2024-06-26">26 Jun 2024</time></span>           
+                        
+                    </small>
+                </p>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+
+            
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/jekyll-setup-windows/title.png" alt="Github pages와 Jekyll 설치하기 - Windows ver.">
+            
+
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                    
+                    <div class="toc mt-4 mb-4 lead">
+                        <h1 class="font-weight-bold">Summary</h1>
+                        <ul>
+  <li><a href="#github-pages-생성하기">Github Pages 생성하기</a></li>
+  <li><a href="#ruby-및-jekyll-설치하기">Ruby 및 Jekyll 설치하기</a></li>
+  <li><a href="#jekyll-theme-적용">Jekyll Theme 적용</a></li>
+  <li><a href="#로컬-서버-실행">로컬 서버 실행</a></li>
+  <li><a href="#각종-에러에-대처하기">각종 에러에 대처하기</a>
+    <ul>
+      <li><a href="#liquid-exception-incompatible-character-encoding"><code class="language-plaintext highlighter-rouge">Liquid Exception: Incompatible character encoding</code></a></li>
+      <li><a href="#cannot-load-such-file----webrick-loaderror"><code class="language-plaintext highlighter-rouge">cannot load such file -- webrick (LoadError)</code></a></li>
+      <li><a href="#an-error-occurred-while-installing-wdm-011-and-bundler-cannot-continue"><code class="language-plaintext highlighter-rouge">An error occurred while installing wdm (0.1.1), and Bundler cannot continue.</code></a></li>
+    </ul>
+  </li>
+</ul>
+                    </div>
+                
+                <!-- End Toc -->
+                <p>jekyll은 github pages를 지원하는 정적 웹사이트 생성기입니다. 저장되어 있는 html, markdown 파일을 그대로 가져와서 선택한 레이아웃에 따라 html 코드로 변환해 정적 웹사이트를 생성해줍니다. jekyll은 매우 가벼우며, liquid 언어를 지원하여 동적 컨텐츠 로드가 가능하다는 장점이 있습니다. 또한 markdown 언어를 사용하기 때문에 문법이 쉽고, 작성이 간편하다는 것도 장점입니다.</p>
+
+<p>사실 windows는 jekyll이 공식적으로 지원되는 플랫폼은 아닙니다. 하지만 실행이 불가능한 것은 아니기 때문에 약간의 수정을 통해 실행시킬 수 있습니다.</p>
+
+<h1 id="github-pages-생성하기">Github Pages 생성하기</h1>
+
+<p>github 계정이 있다는 전제하에, 새 repository를 생성하는 것으로 시작합니다. github pages를 사용하기 위해서는 특정한 repository의 이름을 설정해야 하는데, <code class="language-plaintext highlighter-rouge">githubId.github.io</code>와 같은 형식으로 설정해줘야 합니다. github id가 아닌 다른 repository 이름을 설정하는 경우, 추가적인 세팅이 필요해지기 때문에 되도록이면 id를 사용합니다.</p>
+
+<p><img src="/assets/images/jekyll-setup-windows/1.jpg" alt="create github pages" class="post-img" /></p>
+
+<p>저의 경우에는 이미 <code class="language-plaintext highlighter-rouge">chloeeekim.github.io</code> repository가 있다고 표시됩니다. repository의 세팅은 변경할 내용 없이 생성해도 괜찮습니다. repository가 만들어지면 github pages도 생성이 완료된 것입니다.</p>
+
+<p>github pages가 잘 동작하는지 알고 싶다면, repository에 <code class="language-plaintext highlighter-rouge">index.html</code>이라는 이름으로 원하는 내용을 입력하고 commit 해줍니다. 약간의 시간이 지나고 나서 <code class="language-plaintext highlighter-rouge">githubId.github.io</code>에 접속하면, 입력한 내용이 표시되는 것을 확인할 수 있습니다.</p>
+
+<p>이제 github pages를 사용할 준비는 끝났습니다.</p>
+
+<h1 id="ruby-및-jekyll-설치하기">Ruby 및 Jekyll 설치하기</h1>
+
+<p>jekyll을 사용하기 위해서는 먼저 ruby를 설치해야 합니다. ruby를 설치하는 방법은 다양하지만, windows에서는 ruby installer를 이용하면 간단하게 설치할 수 있습니다. <a href="https://rubyinstaller.org/downloads/" target="_blank">ruby installer download</a> 페이지에 가서 ruby installer를 다운받아 주면 됩니다.</p>
+
+<p><img src="/assets/images/jekyll-setup-windows/2.jpg" alt="ruby installer download" class="post-img" /></p>
+
+<p>사이트 좌측 상단을 보면 <code class="language-plaintext highlighter-rouge">WITH DEVKIT</code> 항목이 있는데, 꼭 Ruby+Devkit 버전을 다운받아야 합니다. 설치는 간단하게 진행되며, optional한 부분은 건드릴 필요 없이 기본 옵션으로 설치하면 됩니다. ruby installer는 windows를 기반으로 ruby 언어와 실행 환경 등을 포함하고 있습니다. 참고로 ruby installer 2.4 버전 이전의 경우에는 devkit을 따로 설치해야 합니다.</p>
+
+<p>ruby installer 설치가 완료되었다면, ruby command prompt를 실행해줍니다.</p>
+
+<p><img src="/assets/images/jekyll-setup-windows/3.jpg" alt="ruby command prompt" class="post-img" /></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="sx">% ruby </span><span class="o">--</span><span class="n">version</span>
+<span class="n">ruby</span> <span class="mf">3.1</span><span class="o">.</span><span class="mi">2</span><span class="n">p20</span> <span class="p">(</span><span class="mi">2022</span><span class="o">-</span><span class="mo">04</span><span class="o">-</span><span class="mi">12</span> <span class="n">revision</span> <span class="mi">4491</span><span class="n">bb740a</span><span class="p">)</span> <span class="p">[</span><span class="n">x64</span><span class="o">-</span><span class="n">mingw</span><span class="o">-</span><span class="n">ucrt</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">ruby --version</code> 명령어로 루비 정보가 표시된다면 정상적으로 설치가 완료된 것입니다. 그런 다음, jekyll과 bundler를 설치해 줍니다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">gem</span> <span class="n">install</span> <span class="n">jekyll</span> <span class="n">bundler</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>설치가 완료되면, 다음 명령어로 jekyll이 잘 설치되었는지도 확인할 수 있습니다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="sx">% jekyll </span><span class="o">-</span><span class="n">v</span>
+<span class="n">jekyll</span> <span class="mf">4.3</span><span class="o">.</span><span class="mi">3</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="jekyll-theme-적용">Jekyll Theme 적용</h1>
+
+<p>기존에 존재하는 테마를 사용하지 않을 수도 있지만, jekyll의 또 다른 장점 중 하나가 무료로 제공되는 다양한 테마가 굉장히 많다는 것입니다. 다음 사이트들에서 어마어마한 테마들을 구경하고 선택할 수 있습니다.</p>
+
+<ul>
+  <li><a href="http://jekyllthemes.org" target="_blank">https://jekyllthemes.org</a></li>
+  <li><a href="https://jekyllthemes.io/free" target="_blank">https://jekyllthemes.io/free</a></li>
+  <li><a href="http://themes.jekyllrc.org" target="_blank">http://themes.jekyllrc.org</a></li>
+</ul>
+
+<p>위 사이트에서 마음에 드는 테마를 찾아 사용하거나 혹은 github에서 <code class="language-plaintext highlighter-rouge">jekyll-theme</code> 등으로 검색하여 찾을 수도 있습니다. 우선 테마를 사용하여 설정을 마친 다음에는 원하는 대로 커스터마이징을 할 수 있기도 하고, 언제든 테마를 바꿀 수도 있으니 마음 편하게 테마를 고르시면 됩니다.</p>
+
+<p>저는 <a href="https://jekyllthemes.io/theme/mediumish" target="_blank">mediumish</a>라는 테마를 선택하였습니다. 꼭 같은 테마가 아니어도 상관 없으니, 원하시는 테마를 선택합니다. 테마를 골랐다면, 해당 테마의 github 페이지로 이동하여 code를 다운받아 줍니다. clone을 해도 상관없고, <code class="language-plaintext highlighter-rouge">.zip</code> 파일로 받아도 됩니다. 다운받은 파일들을 위에서 생성한 github pages repository에 옮겨줍니다.</p>
+
+<p>ruby command prompt에서 내 repository가 가져와진 경로로 이동하여 아래 명령어들을 순서대로 실행해줍니다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">bundle</span> <span class="n">install</span>
+<span class="n">bundle</span> <span class="n">update</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>문제 없이 설치가 끝났다면, 로컬 서버를 실행할 시간입니다.</p>
+
+<h1 id="로컬-서버-실행">로컬 서버 실행</h1>
+
+<p>아래 명령어 중 하나로 jekyll server를 로컬에서 실행할 수 있습니다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">bundler</span> <span class="nb">exec</span> <span class="n">jekyll</span> <span class="n">serve</span>
+<span class="n">jekyll</span> <span class="n">serve</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>실행시키면 <code class="language-plaintext highlighter-rouge">Server address: http://127.0.0.1:4000/</code>와 같이 로컬 서버 주소가 표시됩니다. 참고로 <code class="language-plaintext highlighter-rouge">--serve</code> 옵션을 통해 변경사항을 자동으로 감지하도록 할 수도 있습니다. 이후에는 <a href="http://127.0.0.1:4000" target="_blank">로컬 서버</a>에 접속하여 실제로 실행시켜 볼 수 있습니다.</p>
+
+<h1 id="각종-에러에-대처하기">각종 에러에 대처하기</h1>
+
+<p>jekyll을 설치하고 실행할 수 있다고는 하지만, windows는 공식적으로 지원되는 플랫폼이 아니기 때문에 에러가 발생하는 경우가 있습니다. 아래에서 몇 가지 에러에 대처하는 방법을 설명하겠습니다.</p>
+
+<h2 id="liquid-exception-incompatible-character-encoding"><code class="language-plaintext highlighter-rouge">Liquid Exception: Incompatible character encoding</code></h2>
+
+<p>UTF-8 인코딩을 사용하는 경우 발생할 수 있는 에러입니다. 예를 들어, windows 게정명이 한글인 경우가 있을 수 있습니다. <code class="language-plaintext highlighter-rouge">C:\User\계정명</code>처럼 한글이 포함된 경로 때문에 에러가 발생할 수 있습니다. 이 경우 다음 명령어를 통해 UTF-8 인코딩 옵션을 켜주면 해결이 가능합니다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">chcp</span> <span class="mi">65001</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="cannot-load-such-file----webrick-loaderror"><code class="language-plaintext highlighter-rouge">cannot load such file -- webrick (LoadError)</code></h2>
+
+<p>webrick을 찾을 수 없어서 발생하는 에러입니다. 따라서 webrick을 추가해주면 해결이 가능합니다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">bundle</span> <span class="n">add</span> <span class="n">webrick</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="an-error-occurred-while-installing-wdm-011-and-bundler-cannot-continue"><code class="language-plaintext highlighter-rouge">An error occurred while installing wdm (0.1.1), and Bundler cannot continue.</code></h2>
+
+<p>wdm 설치에 실패하여 발생하는 에러입니다. windows에서 <code class="language-plaintext highlighter-rouge">--watch</code> 옵션을 사용하기 위해서는 wdm을 설치해야 하는데, 만약 <code class="language-plaintext highlighter-rouge">--watch</code> 옵션을 사용하지 않을 것이라면 Gemfile에서 아래 코드를 주석 처리하여 줍니다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">gem</span> <span class="s2">"wdm"</span><span class="p">,</span> <span class="s2">"~&gt; 0.1.1"</span><span class="p">,</span> <span class="ss">:platforms</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="ss">:mingw</span><span class="p">,</span> <span class="ss">:x64_mingw</span><span class="p">,</span> <span class="ss">:mswin</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">--watch</code> 옵션을 사용하고 싶은 경우에는 현재 ruby의 버전을 특정 버전으로 낮추는 방법 밖에는 없습니다. 우선 설치되어 있는 ruby를 완전히 삭제하고, <code class="language-plaintext highlighter-rouge">C:\</code> 드라이브에 있는 Ruby 관련 폴더도 삭제헤줍니다. 이후 <a href="/assets/files/rubyinstaller-devkit-3.1.2-1-x64.exe" target="_blank">ruby 3.1.2-1 버전</a>을 다운받아 설치한 후, <code class="language-plaintext highlighter-rouge">bundle install</code>부터 다시 실행시켜 주면 해결이 가능합니다.
+https://rubyinstaller.org/downloads/archives/</p>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/categories#Jekyll">Jekyll</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            
+            
+            
+                
+                    
+                    
+                    
+                    
+                    
+
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                <div class="col-md-6">
+                    
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-12">
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://chloeeekim.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1">Categories</h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/categories#CUDA">CUDA (9)</a>
+                
+                    <a class="mt-1 mb-1" href="/categories#Programming">Programming (9)</a>
+                
+                    <a class="mt-1 mb-1" href="/categories#Jekyll">Jekyll (1)</a>
+                
+            
+            
+		</div>
+	</div>
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Chloeeekim 
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/assets/js/mediumish.js"></script>
+
+
+<script src="/assets/js/lazyload.js"></script>
+
+
+<script src="/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+
+
+</body>
+</html>

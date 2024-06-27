@@ -2,12 +2,11 @@
 name: "Chloeeekim"
 title: "Chloeeekim"
 description: "Chloeeekim's Blog - All about everything"
-logo: 'assets/images/home.png'
-favicon: 'assets/images/favicon.png'
+logo: "assets/images/home.png"
+favicon: "assets/images/favicon.png"
 baseurl: ""
-url: "http://chloeeekim.github.io"
-google_analytics: 'G-5DB4C9PFP7'
-mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+url: "https://chloeeekim.github.io"
+google_analytics: "G-5DB4C9PFP7"
 include: ["_pages"]
 permalink: /:title/
 
@@ -16,7 +15,7 @@ authors:
   chloeeekim:
     name: Chloe Jungah Kim
     display_name: Chloe Jungah Kim
-    avatar: 'assets/images/avatar.jpg'
+    avatar: "assets/images/avatar.jpg"
     email: chloeeekim@gmail.com
     web: https://chloeeekim.github.io
     description: "A blogger who writes about everything."
@@ -29,19 +28,19 @@ plugins:
   - jekyll-seo-tag
   - jekyll-archives
   - jekyll-admin
-    
+
 # Archives
 jekyll-archives:
   enabled:
     - categories
   layout: archive
   permalinks:
-    category: '/category/:name/'
-    
-# Pagination 
+    category: "/category/:name/"
+
+# Pagination
 paginate: 6
 paginate_path: /page:num/
-    
+
 # Other
 markdown: kramdown
 

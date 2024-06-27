@@ -4,7 +4,7 @@ title:  "[CUDA 5.0] CUDA Syntax Highlighting 설정하기"
 author: chloeeekim
 categories: [ CUDA, Programming ]
 image: assets/images/cuda-syntax-highlighting/title.png
-featured: true
+featured: false
 toc: false
 ---
 
