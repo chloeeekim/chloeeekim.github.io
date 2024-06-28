@@ -3,7 +3,7 @@ layout: post
 title: "[CUDA 7] GPU 실행시간 측정 - cudaEvent"
 author: chloeeekim
 categories: [CUDA, Programming]
-image: assets/images/gpu-실행시간-측정/title.png
+image: assets/images/cudaEvent/title.png
 featured: false
 toc: false
 ---

@@ -5,8 +5,8 @@
     <description>Chloeeekim&apos;s Blog - All about everything</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Jun 2024 07:47:43 +0900</pubDate>
-    <lastBuildDate>Sat, 29 Jun 2024 07:47:43 +0900</lastBuildDate>
+    <pubDate>Sat, 29 Jun 2024 08:28:53 +0900</pubDate>
+    <lastBuildDate>Sat, 29 Jun 2024 08:28:53 +0900</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
     
       <item>
@@ -297,8 +297,8 @@
 &lt;p&gt;우선 두 개의 cudaEvent 변수를 생성해주어야 합니다. cudaEvent는 record하는 순간의 timestamp를 저장하는 형식이기 때문에 2개가 필요합니다. 이후 cudaEventRecord() 함수를 이용하여 시작하는 순간과 끝나는 순간의 timestamp를 저장하면 됩니다. 시간은 cudaEventElapsedTime() 함수를 이용하여 받아오는데, 기본적으로 float 형을 사용합니다. 마지막으로 cudaEventDestroy() 함수를 이용하여 cudaEvent를 destroy 해주면 마무리됩니다.&lt;/p&gt;
 </description>
         <pubDate>Fri, 15 Jan 2016 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/gpu-%EC%8B%A4%ED%96%89%EC%8B%9C%EA%B0%84-%EC%B8%A1%EC%A0%95/</link>
-        <guid isPermaLink="true">http://localhost:4000/gpu-%EC%8B%A4%ED%96%89%EC%8B%9C%EA%B0%84-%EC%B8%A1%EC%A0%95/</guid>
+        <link>http://localhost:4000/cudaEvent/</link>
+        <guid isPermaLink="true">http://localhost:4000/cudaEvent/</guid>
         
         
         <category>CUDA</category>
