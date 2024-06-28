@@ -114,4 +114,4 @@ wdm 설치에 실패하여 발생하는 에러입니다. windows에서 `--watch`
 gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 ```
 
-`--watch` 옵션을 사용하고 싶은 경우에는 현재 ruby의 버전을 특정 버전으로 낮추는 방법 밖에는 없습니다. 우선 설치되어 있는 ruby를 완전히 삭제하고, `C:\` 드라이브에 있는 Ruby 관련 폴더도 삭제헤줍니다. 이후 <a href="https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.1.2-1/rubyinstaller-devkit-3.1.2-1-x64.exe" target="_blank">ruby 3.1.2-1 버전</a>을 다운받아 설치한 후, `bundle install`부터 다시 실행시켜 주면 해결이 가능합니다.
+`--watch` 옵션을 사용하고 싶은 경우에는 현재 ruby의 버전을 특정 버전으로 낮추는 방법 밖에는 없습니다. 우선 설치되어 있는 ruby를 완전히 삭제하고, `C:\` 드라이브에 있는 Ruby 관련 폴더도 삭제해줍니다. 이후 <a href="https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.1.2-1/rubyinstaller-devkit-3.1.2-1-x64.exe" target="_blank">ruby 3.1.2-1 버전</a>을 다운받아 설치한 후, `bundle install`부터 다시 실행시켜 주면 해결이 가능합니다.
