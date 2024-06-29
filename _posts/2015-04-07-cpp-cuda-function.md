@@ -3,7 +3,7 @@ layout: post
 title: "[CUDA 5.5] cpp에서 CUDA 함수 사용하기"
 author: chloeeekim
 categories: [CUDA, Programming]
-image: assets/images/cpp에서-cuda-함수-사용하기/title.png
+image: assets/images/cpp-cuda-function/title.png
 featured: false
 toc: false
 ---
@@ -12,7 +12,7 @@ toc: false
 
 지금껏 `.cu` 파일만으로 프로젝트를 구성하게 되면 다음과 같은 구조로 나타납니다.
 
-<img src="/assets/images/cpp에서-cuda-함수-사용하기/1.png" alt=".cu file project example" class="post-img">
+<img src="/assets/images/cpp-cuda-function/1.png" alt=".cu file project example" class="post-img">
 
 main 함수에서는 kernel 함수로 `__global__` 함수를 호출하고, `__global__` 함수는 sub 함수로 `__device__` 함수를 호출하면서 프로그램이 진행됩니다. 즉, `.cu` 파일 내에서 main 함수가 있고, `__global__` 함수와 `__device__` 함수가 존재해 서로를 호출하는 데에 문제가 없었을 것입니다.
 
@@ -20,7 +20,7 @@ main 함수에서는 kernel 함수로 `__global__` 함수를 호출하고, `__gl
 
 cpp에서 CUDA 함수를 사용하게 되는 과정을 간단히 구조화하면 다음과 같습니다.
 
-<img src="/assets/images/cpp에서-cuda-함수-사용하기/2.png" alt=".cpp and .cu file project example" class="post-img">
+<img src="/assets/images/cpp-cuda-function/2.png" alt=".cpp and .cu file project example" class="post-img">
 
 main 함수는 `.cpp` 파일에 있고, 다른 cpp 함수들도 호출하면서 프로그램이 진행됩니다. 그러다 CUDA 함수를 사용할 경우가 생기면 `.cu` 파일 내에 정의된 `__host__` function을 호출하는 방식으로 CUDA 함수를 사용합니다. `__host__` 함수는 필요한 CUDA 함수를 진행하여 결과를 얻어 main 함수, 혹은 cpp 함수로 전달해주는 역할을 합니다.
 

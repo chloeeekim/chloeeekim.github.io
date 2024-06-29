@@ -16,17 +16,17 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="이번 포스팅에서는 cpp에서 CUDA 함수를 사용하는 방법에 대하여 이야기해보겠습니다." />
 <meta property="og:description" content="이번 포스팅에서는 cpp에서 CUDA 함수를 사용하는 방법에 대하여 이야기해보겠습니다." />
-<link rel="canonical" href="http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" />
-<meta property="og:url" content="http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" />
+<link rel="canonical" href="http://localhost:4000/cpp-cuda-function/" />
+<meta property="og:url" content="http://localhost:4000/cpp-cuda-function/" />
 <meta property="og:site_name" content="Chloeeekim" />
-<meta property="og:image" content="http://localhost:4000/assets/images/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/title.png" />
+<meta property="og:image" content="http://localhost:4000/assets/images/cpp-cuda-function/title.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-04-07T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="http://localhost:4000/assets/images/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/title.png" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/cpp-cuda-function/title.png" />
 <meta property="twitter:title" content="[CUDA 5.5] cpp에서 CUDA 함수 사용하기" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2015-04-07T00:00:00+09:00","datePublished":"2015-04-07T00:00:00+09:00","description":"이번 포스팅에서는 cpp에서 CUDA 함수를 사용하는 방법에 대하여 이야기해보겠습니다.","headline":"[CUDA 5.5] cpp에서 CUDA 함수 사용하기","image":"http://localhost:4000/assets/images/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/title.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2015-04-07T00:00:00+09:00","datePublished":"2015-04-07T00:00:00+09:00","description":"이번 포스팅에서는 cpp에서 CUDA 함수를 사용하는 방법에 대하여 이야기해보겠습니다.","headline":"[CUDA 5.5] cpp에서 CUDA 함수 사용하기","image":"http://localhost:4000/assets/images/cpp-cuda-function/title.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/cpp-cuda-function/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/cpp-cuda-function/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -147,19 +147,19 @@
     </p>
     <ul>
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://twitter.com/intent/tweet?text=[CUDA 5.5] cpp에서 CUDA 함수 사용하기&url=http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[CUDA 5.5] cpp에서 CUDA 함수 사용하기&url=http://localhost:4000/cpp-cuda-function/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fab fa-twitter"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/cpp-cuda-function/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
                 <i class="fab fa-facebook-f"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/cpp-cuda-function/" onclick="window.open(this.href, 'width=550,height=435');return false;">
                 <i class="fab fa-linkedin-in"></i>
             </a>
         </li>
@@ -222,7 +222,7 @@
             
 
             
-            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/cpp에서-cuda-함수-사용하기/title.png" alt="[CUDA 5.5] cpp에서 CUDA 함수 사용하기">
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/cpp-cuda-function/title.png" alt="[CUDA 5.5] cpp에서 CUDA 함수 사용하기">
             
 
             
@@ -237,7 +237,7 @@
 
 <p>지금껏 <code class="language-plaintext highlighter-rouge">.cu</code> 파일만으로 프로젝트를 구성하게 되면 다음과 같은 구조로 나타납니다.</p>
 
-<p><img src="/assets/images/cpp에서-cuda-함수-사용하기/1.png" alt=".cu file project example" class="post-img" /></p>
+<p><img src="/assets/images/cpp-cuda-function/1.png" alt=".cu file project example" class="post-img" /></p>
 
 <p>main 함수에서는 kernel 함수로 <code class="language-plaintext highlighter-rouge">__global__</code> 함수를 호출하고, <code class="language-plaintext highlighter-rouge">__global__</code> 함수는 sub 함수로 <code class="language-plaintext highlighter-rouge">__device__</code> 함수를 호출하면서 프로그램이 진행됩니다. 즉, <code class="language-plaintext highlighter-rouge">.cu</code> 파일 내에서 main 함수가 있고, <code class="language-plaintext highlighter-rouge">__global__</code> 함수와 <code class="language-plaintext highlighter-rouge">__device__</code> 함수가 존재해 서로를 호출하는 데에 문제가 없었을 것입니다.</p>
 
@@ -245,7 +245,7 @@
 
 <p>cpp에서 CUDA 함수를 사용하게 되는 과정을 간단히 구조화하면 다음과 같습니다.</p>
 
-<p><img src="/assets/images/cpp에서-cuda-함수-사용하기/2.png" alt=".cpp and .cu file project example" class="post-img" /></p>
+<p><img src="/assets/images/cpp-cuda-function/2.png" alt=".cpp and .cu file project example" class="post-img" /></p>
 
 <p>main 함수는 <code class="language-plaintext highlighter-rouge">.cpp</code> 파일에 있고, 다른 cpp 함수들도 호출하면서 프로그램이 진행됩니다. 그러다 CUDA 함수를 사용할 경우가 생기면 <code class="language-plaintext highlighter-rouge">.cu</code> 파일 내에 정의된 <code class="language-plaintext highlighter-rouge">__host__</code> function을 호출하는 방식으로 CUDA 함수를 사용합니다. <code class="language-plaintext highlighter-rouge">__host__</code> 함수는 필요한 CUDA 함수를 진행하여 결과를 얻어 main 함수, 혹은 cpp 함수로 전달해주는 역할을 합니다.</p>
 
@@ -388,7 +388,7 @@
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                 <div class="col-md-6">
                     
-                    <a class="prev-next-card" href="/cuda-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94/">
+                    <a class="prev-next-card" href="/cuda-memory-optimization/">
                         <div class="arrow prev-arrow">&laquo;</div>
                         <div class="prev">
                             <div class="prev-next">Previous</div>

@@ -5,8 +5,8 @@
     <description>Chloeeekim&apos;s Blog - All about everything</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Jun 2024 08:28:53 +0900</pubDate>
-    <lastBuildDate>Sat, 29 Jun 2024 08:28:53 +0900</lastBuildDate>
+    <pubDate>Sat, 29 Jun 2024 10:10:39 +0900</pubDate>
+    <lastBuildDate>Sat, 29 Jun 2024 10:10:39 +0900</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
     
       <item>
@@ -313,7 +313,7 @@
 
 &lt;p&gt;지금껏 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cu&lt;/code&gt; 파일만으로 프로젝트를 구성하게 되면 다음과 같은 구조로 나타납니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cpp에서-cuda-함수-사용하기/1.png&quot; alt=&quot;.cu file project example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cpp-cuda-function/1.png&quot; alt=&quot;.cu file project example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;main 함수에서는 kernel 함수로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__global__&lt;/code&gt; 함수를 호출하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__global__&lt;/code&gt; 함수는 sub 함수로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__device__&lt;/code&gt; 함수를 호출하면서 프로그램이 진행됩니다. 즉, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cu&lt;/code&gt; 파일 내에서 main 함수가 있고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__global__&lt;/code&gt; 함수와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__device__&lt;/code&gt; 함수가 존재해 서로를 호출하는 데에 문제가 없었을 것입니다.&lt;/p&gt;
 
@@ -321,7 +321,7 @@
 
 &lt;p&gt;cpp에서 CUDA 함수를 사용하게 되는 과정을 간단히 구조화하면 다음과 같습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cpp에서-cuda-함수-사용하기/2.png&quot; alt=&quot;.cpp and .cu file project example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cpp-cuda-function/2.png&quot; alt=&quot;.cpp and .cu file project example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;main 함수는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cpp&lt;/code&gt; 파일에 있고, 다른 cpp 함수들도 호출하면서 프로그램이 진행됩니다. 그러다 CUDA 함수를 사용할 경우가 생기면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cu&lt;/code&gt; 파일 내에 정의된 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__host__&lt;/code&gt; function을 호출하는 방식으로 CUDA 함수를 사용합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__host__&lt;/code&gt; 함수는 필요한 CUDA 함수를 진행하여 결과를 얻어 main 함수, 혹은 cpp 함수로 전달해주는 역할을 합니다.&lt;/p&gt;
 
@@ -418,8 +418,8 @@
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Tue, 07 Apr 2015 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/</link>
-        <guid isPermaLink="true">http://localhost:4000/cpp%EC%97%90%EC%84%9C-cuda-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/</guid>
+        <link>http://localhost:4000/cpp-cuda-function/</link>
+        <guid isPermaLink="true">http://localhost:4000/cpp-cuda-function/</guid>
         
         
         <category>CUDA</category>
@@ -450,13 +450,13 @@
 
 &lt;h2 id=&quot;뱅크-충돌이-없는-공유-메모리-액세스&quot;&gt;뱅크 충돌이 없는 공유 메모리 액세스&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-메모리-성능-최적화/1.jpg&quot; alt=&quot;no bank conflict example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-memory-optimization/1.jpg&quot; alt=&quot;no bank conflict example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위 그림은 뱅크 충돌이 없는 공유 메모리 액세스를 나타냅니다. 공유 메모리에는 글로벌 메모리와 같은 시작 address나 결합 전송 조건은 없지만, 한 스레드 당 하나의 뱅크에 액세스 할 수 있다는 제약이 있습니다.&lt;/p&gt;
 
 &lt;p&gt;그림에서는 4개의 스레드가 각각 하나의 뱅크에 액세스하여 뱅크 충돌이 없는 이상적인 패턴을 나타내고 있습니다. 공유 메모리는 글로벌 메모리와 같은 액세스 시작 위치 또는 오름차순 정렬 조건이 없기 때문에 랜덤 액세스에 대해서도 같은 뱅크 액세스만 없으면 효괒거으로 동작하게 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-메모리-성능-최적화/2.jpg&quot; alt=&quot;no bank conflict example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-memory-optimization/2.jpg&quot; alt=&quot;no bank conflict example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;즉, 위 그림과 같이 스레드가 어지럽게 공유 메모리에 액세스하더라도 같은 뱅크끼리 겹치는 스레드가 없다면 공유 메모리는 효과적으로 동작합니다.&lt;/p&gt;
 
@@ -464,13 +464,13 @@
 
 &lt;p&gt;만일 모든 스레드가 한 번에 공유 메모리를 읽거나 쓸 때, 2개의 스레드가 하나의 뱅크에 액세스하려고 하면 뱅크 충돌이 발생하게 됩니다. 2번의 뱅크 충돌이 발생하는 것을 2-way 뱅크 충돌이라고 하는데, 2-way 뱅크 충돌이 발생하면 GPU가 2번의 사이클에 나누어 공유 메모리를 차례로 가져오게 되고, 결국 효율이 절반으로 떨어지게 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-메모리-성능-최적화/3.jpg&quot; alt=&quot;2-way bank conflict example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-memory-optimization/3.jpg&quot; alt=&quot;2-way bank conflict example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위 그림은 모든 스레드가 2개씩 하나의 뱅크에 액세스하고 있는 2-way 뱅크 충돌을 나타냅니다. 비슷한 예로 4-way 뱅크 충돌 또한 존재하는데, 4-way 뱅크 충돌이 일어나게 되면 효율은 1/4로 떨어지게 됩니다.&lt;/p&gt;
 
 &lt;p&gt;CUDA에서 항상 모든 스레드가 2개씩 하나의 뱅크에 액세스해야만이 2-way 뱅크 충돌이 되는 것은 아닙니다. 모든 스레드 중에서 2개의 스레드만 같은 뱅크에 액세스하더라도 결국 GPU는 2번의 사이클에 나누어 공유 메모리에 접근해야 하기 때문에 효율이 절반으로 떨어지는 것은 똑같습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-메모리-성능-최적화/4.jpg&quot; alt=&quot;2-way bank conflict example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-memory-optimization/4.jpg&quot; alt=&quot;2-way bank conflict example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위 그림처럼 모든 스레드가 정렬되어 공유 메모리에 액세스하고 있지만, 스레드 0과 스레드 1이 뱅크 1에 동시에 액세스하고 있는 경우 또한 2-way 뱅크 충돌입니다. 이렇게 프로그램이 구현되어 있으면 아무리 다른 스레드들이 정렬되어 있다고 하여도 전체 효율은 절반으로 떨어집니다. 이것은 워프 단위로 실행하고 워프의 절반 단위로 메모리에 액세스하는 CUDA thread의 특징 때문입니다.&lt;/p&gt;
 
@@ -480,15 +480,15 @@
 
 &lt;p&gt;16-way 뱅크 충돌이 주로 2차원 스레드-블록 구조에서 발생하는 이유는 1차원의 경우 일반적으로 행 방향으로 인덱스를 진행하여 액세스하지만, 2차원에서는 열 방향으로도 인덱스를 진행하는 경우가 생기기 때문입니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-메모리-성능-최적화/5.jpg&quot; alt=&quot;2-dim thread-block structure example without 16-way bank conflict&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-memory-optimization/5.jpg&quot; alt=&quot;2-dim thread-block structure example without 16-way bank conflict&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위 그림과 같이 행 방향으로만 인덱스를 진행할 경우 뱅크 충돌이 발생하지 않고 정상적으로 동작하게 됩니다. 하지만 열 방향으로 인덱스를 진행하면 아래와 같이 뱅크 충돌이 발생할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-메모리-성능-최적화/6.jpg&quot; alt=&quot;2-dim thread-block structure example with 16-way bank conflict&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-memory-optimization/6.jpg&quot; alt=&quot;2-dim thread-block structure example with 16-way bank conflict&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위 그림은 공유 메모리의 뱅크 0에 16개의 스레드가 모두 액세스하여 16-way 뱅크 충돌이 발생하게 되는 상황을 나타냅니다. 이와 같은 뱅크 충돌을 피하기 위해서는 알고리즘을 수정하기 보다는 메모리 할당 공간을 수정하는 것이 좋은 방법입니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-메모리-성능-최적화/7.jpg&quot; alt=&quot;solution for 16-way bank conflict example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-memory-optimization/7.jpg&quot; alt=&quot;solution for 16-way bank conflict example&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위 그림은 공유 메모리에 16x17의 배열이 물리적으로 할당된 형태를 나타냅니다. 이와 같은 방법을 메모리 패딩(Memory Padding)이라고 합니다. 위와 같이 공유 메모리를 16x17로 하면 행 방향과 열 방향의 메모리가 동일한 뱅크에 할당되지 않습니다. 약간의 공간을 더 소비함으로써 16-way 뱅크 충돌을 피하고, 뱅크 충돌이 발생했을 때보다 16배의 액세스 속도를 얻을 수 있습니다.&lt;/p&gt;
 
@@ -521,8 +521,8 @@
 &lt;p&gt;이것으로 CUDA 메모리 성능 최적화 기법에 대한 소개가 끝났습니다. 메모리 성능은 CUDA 프로그램의 성능과 직결된 문제인만큼 다양한 관점에서 최적화 방법을 모색해야 할 것입니다.&lt;/p&gt;
 </description>
         <pubDate>Sat, 04 Apr 2015 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/cuda-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94/</link>
-        <guid isPermaLink="true">http://localhost:4000/cuda-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94/</guid>
+        <link>http://localhost:4000/cuda-memory-optimization/</link>
+        <guid isPermaLink="true">http://localhost:4000/cuda-memory-optimization/</guid>
         
         
         <category>CUDA</category>
@@ -1275,7 +1275,7 @@
 
 &lt;p&gt;이름만으로도 어떤 프로그램인지 감이 오시나요? CUDA 5.0부터는 Installer에 samples 또한 포함이 되어 있다고 저번 포스팅에서 언급하였습니다. 이 프로그램이 바로 설치와 같이 다운 받은 예제 파일들을 찾아보고, 실행해 볼 수 있는 프로그램입니다. 한 번 실행해 봅시다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-예제-실행하기/1.jpg&quot; alt=&quot;CUDA Samples Browser v5.0&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-samples/1.jpg&quot; alt=&quot;CUDA Samples Browser v5.0&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;실행하면 보이는 바와 같이 다양한 샘플들을 찾아볼 수 있고, 실행시켜 볼 수도 있습니다. 이 샘플들을 실행시켰을 때, 아무 무리 없이 잘 돌아가면 설치가 제대로 되었다는 뜻입니다. 만약 실행이 되지 않는다면, 컴퓨터에 설치되어 있는 GPU가 CUDA 가속을 지원하는지를 확인하고, 또 NVIDIA 그래픽 드라이버가 최신 버전인지를 확인해 주세요.&lt;/p&gt;
 
@@ -1283,17 +1283,17 @@
 
 &lt;p&gt;실행하면 다음과 같은 창 하나가 뜹니다. 이 창에서는 프로그램에 대한 간단한 설명 등과 함께 맨 아래쪽에 보면 어떤 device를 사용하고 있는지에 대한 정보도 같이 볼 수 있습니다. simulation을 위해 하나의 device를 사용하였고, 그 device는 GeForce 310M이라는 정보가 뜹니다. 이 정보는 각자 사용하는 GPU에 따라 다르게 나타날 것입니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-예제-실행하기/2.jpg&quot; alt=&quot;CUDA N-Body Simulation&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-samples/2.jpg&quot; alt=&quot;CUDA N-Body Simulation&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;그리고 하나 더 뜨는 창에서는 다음과 같이 N-Body Simulation이 이루어집니다. 현재 시뮬레이션 되고 있는 상태에 대해서는 화면 위쪽에 나타나게 되고, 화면 전체에 N-Body Simulation이 약간의 끊김이 있기는 하지만 빠르고 매끄럽게 진행되는 것을 확인할 수 있습니다. 심지어 310M이라는 낮은 사양의 GPU에서도 말이죠.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-예제-실행하기/3.jpg&quot; alt=&quot;CUDA N-Body Simulation&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-samples/3.jpg&quot; alt=&quot;CUDA N-Body Simulation&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;NVIDA CUDA Samples Browser에서는 이러한 N-Body Simulation 이외에도 다양한 예제들을 실행시켜 볼 수 있습니다.&lt;/p&gt;
 
 &lt;p&gt;그리고 이러한 예제들의 코드 역시 같이 다운받아져 있는데, 이 코드들은 C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0 폴더에 잘 정리되어 있습니다. ProgramData 폴더는 숨겨져 있는 폴더이므로 C 드라이브에 들어갔는데 폴더가 없다고 당황하지 않으셔도 됩니다. 위 주소로 들어가보면 다음과 같이 잘 정리된 CUDA 예제들의 코드를 확인하고, 직접 실행시켜 볼 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-예제-실행하기/4.jpg&quot; alt=&quot;CUDA Samples&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-samples/4.jpg&quot; alt=&quot;CUDA Samples&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;아까 위에서 실행시켜 보았던 N-Body Simulation은 5_Simulation 폴더에 nbody라는 이름으로 들어가 있습니다. VS에서 실행시켜 보면 앞서 실행시켰던 것과 같은 결과가 나오는 것을 확인할 수 있습니다.&lt;/p&gt;
 
@@ -1301,19 +1301,19 @@
 
 &lt;p&gt;CUDA Project는 C/C++ Project를 그대로 이용해도 상관 없으나, VS에서는 CUDA를 설치하면 다음과 같이 CUDA 5.0 Runtime Project를 바로 생성할 수 있도록 해 줍니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-예제-실행하기/5.jpg&quot; alt=&quot;CUDA 5.0 Runtime Project&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-samples/5.jpg&quot; alt=&quot;CUDA 5.0 Runtime Project&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;CUDA 5.0 Rumtime Project를 생성하면 따로 무언가를 설정할 필요 없이 바로 컴파일이나 빌드를 할 수 있도록 되어 있습니다. 생성하면 kernel.cu라는 소스 파일 하나가 공통적으로 들어가 있는데요. 여기에는 1차원 array를 더하는 내용의 코드가 포함되어 있습니다. 무척 간단한 코드로 실행시켜 보면 다음과 같은 결과가 출력됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-예제-실행하기/6.jpg&quot; alt=&quot;CUDA Sample Project&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-samples/6.jpg&quot; alt=&quot;CUDA Sample Project&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이것으로 CUDA 예제를 가능한 모든 방법을 동원하여 실행하여 보았습니다. CUDA는 아직 한글로 번역된 책이 많이 없기 때문에 이미 만들어져 있는 예제들을 보면서 실행시켜 보고, 스스로 분석하고, 다른 코드를 CUDA로 포팅해보는 연습을 하다 보면 실력이 많이 느는 것을 확인할 수 있을 것입니다.&lt;/p&gt;
 
 &lt;p&gt;자, 이렇게 CUDA 5.0을 사용하여 코딩할 준비가 모두 끝났습니다. 다음 포스팅에서는 위 화면에 보이는 바와 같이 CUDA Syntax Highlighting 하는 방법에 대해서 이야기하도록 하겠습니다.&lt;/p&gt;
 </description>
         <pubDate>Tue, 31 Mar 2015 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/cuda-%EC%98%88%EC%A0%9C-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0/</link>
-        <guid isPermaLink="true">http://localhost:4000/cuda-%EC%98%88%EC%A0%9C-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0/</guid>
+        <link>http://localhost:4000/cuda-samples/</link>
+        <guid isPermaLink="true">http://localhost:4000/cuda-samples/</guid>
         
         
         <category>CUDA</category>

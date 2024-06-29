@@ -3,7 +3,7 @@ layout: post
 title: "[CUDA 5.5] CUDA 메모리 성능 최적화"
 author: chloeeekim
 categories: [CUDA, Programming]
-image: assets/images/cuda-메모리-성능-최적화/title.png
+image: assets/images/cuda-memory-optimization/title.png
 featured: false
 toc: true
 ---
@@ -28,13 +28,13 @@ GeForce 200 시리즈 이후로 글로벌 메모리 액세스 결합 전송 조�
 
 ## 뱅크 충돌이 없는 공유 메모리 액세스
 
-<img src="/assets/images/cuda-메모리-성능-최적화/1.jpg" alt="no bank conflict example" class="post-img">
+<img src="/assets/images/cuda-memory-optimization/1.jpg" alt="no bank conflict example" class="post-img">
 
 위 그림은 뱅크 충돌이 없는 공유 메모리 액세스를 나타냅니다. 공유 메모리에는 글로벌 메모리와 같은 시작 address나 결합 전송 조건은 없지만, 한 스레드 당 하나의 뱅크에 액세스 할 수 있다는 제약이 있습니다.
 
 그림에서는 4개의 스레드가 각각 하나의 뱅크에 액세스하여 뱅크 충돌이 없는 이상적인 패턴을 나타내고 있습니다. 공유 메모리는 글로벌 메모리와 같은 액세스 시작 위치 또는 오름차순 정렬 조건이 없기 때문에 랜덤 액세스에 대해서도 같은 뱅크 액세스만 없으면 효괒거으로 동작하게 됩니다.
 
-<img src="/assets/images/cuda-메모리-성능-최적화/2.jpg" alt="no bank conflict example" class="post-img">
+<img src="/assets/images/cuda-memory-optimization/2.jpg" alt="no bank conflict example" class="post-img">
 
 즉, 위 그림과 같이 스레드가 어지럽게 공유 메모리에 액세스하더라도 같은 뱅크끼리 겹치는 스레드가 없다면 공유 메모리는 효과적으로 동작합니다.
 
@@ -42,13 +42,13 @@ GeForce 200 시리즈 이후로 글로벌 메모리 액세스 결합 전송 조�
 
 만일 모든 스레드가 한 번에 공유 메모리를 읽거나 쓸 때, 2개의 스레드가 하나의 뱅크에 액세스하려고 하면 뱅크 충돌이 발생하게 됩니다. 2번의 뱅크 충돌이 발생하는 것을 2-way 뱅크 충돌이라고 하는데, 2-way 뱅크 충돌이 발생하면 GPU가 2번의 사이클에 나누어 공유 메모리를 차례로 가져오게 되고, 결국 효율이 절반으로 떨어지게 됩니다.
 
-<img src="/assets/images/cuda-메모리-성능-최적화/3.jpg" alt="2-way bank conflict example" class="post-img">
+<img src="/assets/images/cuda-memory-optimization/3.jpg" alt="2-way bank conflict example" class="post-img">
 
 위 그림은 모든 스레드가 2개씩 하나의 뱅크에 액세스하고 있는 2-way 뱅크 충돌을 나타냅니다. 비슷한 예로 4-way 뱅크 충돌 또한 존재하는데, 4-way 뱅크 충돌이 일어나게 되면 효율은 1/4로 떨어지게 됩니다.
 
 CUDA에서 항상 모든 스레드가 2개씩 하나의 뱅크에 액세스해야만이 2-way 뱅크 충돌이 되는 것은 아닙니다. 모든 스레드 중에서 2개의 스레드만 같은 뱅크에 액세스하더라도 결국 GPU는 2번의 사이클에 나누어 공유 메모리에 접근해야 하기 때문에 효율이 절반으로 떨어지는 것은 똑같습니다.
 
-<img src="/assets/images/cuda-메모리-성능-최적화/4.jpg" alt="2-way bank conflict example" class="post-img">
+<img src="/assets/images/cuda-memory-optimization/4.jpg" alt="2-way bank conflict example" class="post-img">
 
 위 그림처럼 모든 스레드가 정렬되어 공유 메모리에 액세스하고 있지만, 스레드 0과 스레드 1이 뱅크 1에 동시에 액세스하고 있는 경우 또한 2-way 뱅크 충돌입니다. 이렇게 프로그램이 구현되어 있으면 아무리 다른 스레드들이 정렬되어 있다고 하여도 전체 효율은 절반으로 떨어집니다. 이것은 워프 단위로 실행하고 워프의 절반 단위로 메모리에 액세스하는 CUDA thread의 특징 때문입니다.
 
@@ -58,15 +58,15 @@ CUDA에서 항상 모든 스레드가 2개씩 하나의 뱅크에 액세스해�
 
 16-way 뱅크 충돌이 주로 2차원 스레드-블록 구조에서 발생하는 이유는 1차원의 경우 일반적으로 행 방향으로 인덱스를 진행하여 액세스하지만, 2차원에서는 열 방향으로도 인덱스를 진행하는 경우가 생기기 때문입니다.
 
-<img src="/assets/images/cuda-메모리-성능-최적화/5.jpg" alt="2-dim thread-block structure example without 16-way bank conflict" class="post-img">
+<img src="/assets/images/cuda-memory-optimization/5.jpg" alt="2-dim thread-block structure example without 16-way bank conflict" class="post-img">
 
 위 그림과 같이 행 방향으로만 인덱스를 진행할 경우 뱅크 충돌이 발생하지 않고 정상적으로 동작하게 됩니다. 하지만 열 방향으로 인덱스를 진행하면 아래와 같이 뱅크 충돌이 발생할 수 있습니다.
 
-<img src="/assets/images/cuda-메모리-성능-최적화/6.jpg" alt="2-dim thread-block structure example with 16-way bank conflict" class="post-img">
+<img src="/assets/images/cuda-memory-optimization/6.jpg" alt="2-dim thread-block structure example with 16-way bank conflict" class="post-img">
 
 위 그림은 공유 메모리의 뱅크 0에 16개의 스레드가 모두 액세스하여 16-way 뱅크 충돌이 발생하게 되는 상황을 나타냅니다. 이와 같은 뱅크 충돌을 피하기 위해서는 알고리즘을 수정하기 보다는 메모리 할당 공간을 수정하는 것이 좋은 방법입니다.
 
-<img src="/assets/images/cuda-메모리-성능-최적화/7.jpg" alt="solution for 16-way bank conflict example" class="post-img">
+<img src="/assets/images/cuda-memory-optimization/7.jpg" alt="solution for 16-way bank conflict example" class="post-img">
 
 위 그림은 공유 메모리에 16x17의 배열이 물리적으로 할당된 형태를 나타냅니다. 이와 같은 방법을 메모리 패딩(Memory Padding)이라고 합니다. 위와 같이 공유 메모리를 16x17로 하면 행 방향과 열 방향의 메모리가 동일한 뱅크에 할당되지 않습니다. 약간의 공간을 더 소비함으로써 16-way 뱅크 충돌을 피하고, 뱅크 충돌이 발생했을 때보다 16배의 액세스 속도를 얻을 수 있습니다.
 
