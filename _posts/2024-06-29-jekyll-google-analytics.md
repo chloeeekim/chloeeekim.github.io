@@ -3,7 +3,7 @@ layout: post
 title: "Jekyll Blog(Github Pages)에 Google Anayltics 연결하기"
 author: chloeeekim
 categories: [Jekyll]
-image: assets/images/jekyll-google-analytics/title.png
+image: assets/images/jekyll-google-analytics/title.jpg
 featured: true
 toc: true
 ---
