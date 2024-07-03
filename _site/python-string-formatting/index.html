@@ -14,8 +14,8 @@
 <meta property="og:title" content="Python String Formatting 방법" />
 <meta name="author" content="chloeeekim" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="python은 다양한 문자열 포맷팅 방법을 지원합니다. python의 버전에 따라 지원되는 포맷팅 방법이 달라지기도 하니 사용하는 python의 버전을 확인하고 사용하시기 바랍니다." />
-<meta property="og:description" content="python은 다양한 문자열 포맷팅 방법을 지원합니다. python의 버전에 따라 지원되는 포맷팅 방법이 달라지기도 하니 사용하는 python의 버전을 확인하고 사용하시기 바랍니다." />
+<meta name="description" content="python은 다양한 문자열 포맷팅 방법을 지원합니다. 본 포스팅에서는 각 방법의 사용법과 장단점 등에 대하여 설명하도록 하겠습니다. 참고로, python의 버전에 따라 지원되는 포맷팅 방법이 달라지기도 하니 사용하는 python의 버전을 확인하고 사용하시기 바랍니다." />
+<meta property="og:description" content="python은 다양한 문자열 포맷팅 방법을 지원합니다. 본 포스팅에서는 각 방법의 사용법과 장단점 등에 대하여 설명하도록 하겠습니다. 참고로, python의 버전에 따라 지원되는 포맷팅 방법이 달라지기도 하니 사용하는 python의 버전을 확인하고 사용하시기 바랍니다." />
 <link rel="canonical" href="http://localhost:4000/python-string-formatting/" />
 <meta property="og:url" content="http://localhost:4000/python-string-formatting/" />
 <meta property="og:site_name" content="Chloeeekim" />
@@ -26,7 +26,7 @@
 <meta property="twitter:image" content="http://localhost:4000/assets/images/python-string-formatting/title.png" />
 <meta property="twitter:title" content="Python String Formatting 방법" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2021-06-06T00:00:00+09:00","datePublished":"2021-06-06T00:00:00+09:00","description":"python은 다양한 문자열 포맷팅 방법을 지원합니다. python의 버전에 따라 지원되는 포맷팅 방법이 달라지기도 하니 사용하는 python의 버전을 확인하고 사용하시기 바랍니다.","headline":"Python String Formatting 방법","image":"http://localhost:4000/assets/images/python-string-formatting/title.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/python-string-formatting/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/python-string-formatting/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2021-06-06T00:00:00+09:00","datePublished":"2021-06-06T00:00:00+09:00","description":"python은 다양한 문자열 포맷팅 방법을 지원합니다. 본 포스팅에서는 각 방법의 사용법과 장단점 등에 대하여 설명하도록 하겠습니다. 참고로, python의 버전에 따라 지원되는 포맷팅 방법이 달라지기도 하니 사용하는 python의 버전을 확인하고 사용하시기 바랍니다.","headline":"Python String Formatting 방법","image":"http://localhost:4000/assets/images/python-string-formatting/title.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/python-string-formatting/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/python-string-formatting/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -247,11 +247,11 @@
                     </div>
                 
                 <!-- End Toc -->
-                <p>python은 다양한 문자열 포맷팅 방법을 지원합니다. python의 버전에 따라 지원되는 포맷팅 방법이 달라지기도 하니 사용하는 python의 버전을 확인하고 사용하시기 바랍니다.</p>
+                <p>python은 다양한 문자열 포맷팅 방법을 지원합니다. 본 포스팅에서는 각 방법의 사용법과 장단점 등에 대하여 설명하도록 하겠습니다. 참고로, python의 버전에 따라 지원되는 포맷팅 방법이 달라지기도 하니 사용하는 python의 버전을 확인하고 사용하시기 바랍니다.</p>
 
 <h1 id="-operator">% operator</h1>
 
-<p>C 스타일로 문자열을 포맷팅하는 방법입니다. python3 이전에 사용되던 방법으로, python 버전에 상관이 없으며, C 문법에 익숙하다면 간단하게 사용할 수 있습니다. % operator를 사용하는 경우, 포맷팅하고자 하는 자료형의 데이터 타입이 동일해야 하는데, 때문에 자료형 별로 어떠한 문자열 포맷 코드를 사용해야 하는지를 알고 있어야 합니다. 사용 예시는 다음과 같습니다.</p>
+<p>% operator는 C 스타일로 문자열을 포맷팅하는 방법입니다. python3 이전에 사용되던 방법으로, python 버전에 상관이 없으며, C 문법에 익숙하다면 간단하게 사용할 수 있습니다. % operator를 사용하는 경우, 포맷팅하고자 하는 자료형의 데이터 타입이 동일해야 하는데, 때문에 자료형 별로 어떠한 문자열 포맷 코드를 사용해야 하는지를 알고 있어야 합니다. 사용 예시는 다음과 같습니다.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -466,7 +466,7 @@ https://search.google.com/structured-data/testing-tool/u/0/
                 
                     <a class="mt-1 mb-1" href="/categories#Python">Python (1)</a>
                 
-                    <a class="mt-1 mb-1" href="/categories#Jekyll">Jekyll (2)</a>
+                    <a class="mt-1 mb-1" href="/categories#Jekyll">Jekyll (3)</a>
                 
             
             

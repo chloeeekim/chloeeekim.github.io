@@ -5,9 +5,110 @@
     <description>Chloeeekim&apos;s Blog - All about everything</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 30 Jun 2024 10:08:01 +0900</pubDate>
-    <lastBuildDate>Sun, 30 Jun 2024 10:08:01 +0900</lastBuildDate>
+    <pubDate>Wed, 03 Jul 2024 10:52:22 +0900</pubDate>
+    <lastBuildDate>Wed, 03 Jul 2024 10:52:22 +0900</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
+    
+      <item>
+        <title>Jekyll Blog(Github Pages) 검색 엔진에 노출시키기 (Google, Naver)</title>
+        <description>&lt;p&gt;블로그를 만들었다면 다른 사람들이 내 블로그를 검색해서 유입되길 기대할 겁니다. 하지만 Github Pages와 Jekyll로 만든 블로그의 경우 검색 엔진에 자동으로 노출되지 않기 때문에 직접 사이트맵을 등록하여 데이터가 수집되도록 해야 합니다. Google Search Console, Naver Search Advisor 등을 사용하여 각 검색 엔진마다 등록해 줄 수 있습니다. 이번 포스팅에서는 구글과 네이버 두 곳에 등록하는 방법에 대해서 소개하도록 하겠습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;google-search-console&quot;&gt;Google Search Console&lt;/h1&gt;
+
+&lt;p&gt;구글에서는 구글 서치 콘솔(Google Search Console)을 통해 사이트맵을 등록하고, 검색을 통해 노출된 양과 유입된 내용을 확인할 수 있습니다. 참고로 구글 서치봇이 정보를 수집하는 데에 길게는 한 달까지도 소요될 수 있으며, 수집이 완료되었다고 해서 검색 상단에 노출되는 것이 보장되지는 않습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;google-search-console-1&quot;&gt;Google Search Console&lt;/h2&gt;
+
+&lt;p&gt;Github Pages와 Jekyll로 생성한 블로그의 경우, 트래픽 분석 등을 따로 제공하지 않기 때문에 누가 어떤 방식으로 내 블로그에 유입되었는지 알기 힘들다는 한계점이 있습니다. 이를 보완하기 위하여 Google Analytics를 통해 누가, 얼마나, 어떤 방식으로, 어느 지역에서 유입되는지를 확인할 수 있습니다. 참고로, 2024년 현재 구글 애널리틱스(Google Analytics, GA)는 GA4 버전만 생성 가능합니다. 이전 버전인 유니버셜 애널리틱스(Universal Analytics, UA)는 추후 지원이 되지 않을 수 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;ga-계정-만들기&quot;&gt;GA 계정 만들기&lt;/h1&gt;
+
+&lt;p&gt;우선 GA를 적용하기 위해 GA 계정부터 생성해야 합니다. &lt;a href=&quot;https://analytics.google.com/&quot; _target=&quot;blank&quot;&gt;Google Analytics&lt;/a&gt;에 접속하여 계정부터 설정해줍니다.&lt;/p&gt;
+
+&lt;p&gt;첫 번째로 계정 ID를 등록합니다. 여러 개의 ID를 생성할 수도 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/1.jpg&quot; alt=&quot;create account&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;두 번째로 GA를 통해 관리할 url을 속성에 넣어줍니다. 저는 제 github.io 주소를 입력하였습니다. 또, 시간대와 통화 등을 대한민국으로 설정을 바꿔주면 되는데, 추후에 변경할 수도 있으니 넘어가셔도 좋습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/2.jpg&quot; alt=&quot;create attribute&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이후에 비즈니스 세부정보, 목표 등을 적당히 설정해주고, 데이터 수집과 관련한 사항에 동의해줍니다. 마지막으로 데이터 소스 플랫폼을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;웹&lt;/code&gt;으로 선택해줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/3.jpg&quot; alt=&quot;select data source&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;데이터 스트림 설정에서는 관리할 사이트의 url을 입력하고, 우측 상단의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;만들고 계속하기&lt;/code&gt;를 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/4.jpg&quot; alt=&quot;setup data stream&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이제 측정 ID가 부여됩니다. 이 ID가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G-XXXXXXXX&lt;/code&gt; 형식인 것이 GA4 버전입니다. UA 버전의 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UA-XXXXXXXX-X&lt;/code&gt;와 같은 형식으로 나타납니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/5.jpg&quot; alt=&quot;measurement ID&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 태그 사용을 선택하고 다음으로 넘어가면, 아래와 같은 화면이 표시됩니다. 아직 태그를 설정해주지 않았기 때문에 데이터 수집이 활성화되어 있지 않은 상태입니다. 이제 블로그에 GA를 연결할 준비가 완료되었습니다. 참고로 아래 내용은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;설정 &amp;gt; 데이터 수집 및 수정 &amp;gt; 데이터 스트림&lt;/code&gt;에서도 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/6.jpg&quot; alt=&quot;web stream details&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;jekyll-블로그에-ga-연결하기&quot;&gt;Jekyll 블로그에 GA 연결하기&lt;/h1&gt;
+
+&lt;p&gt;블로그의 설정 등에 따라 방법이 여러 가지로 나뉠 수 있습니다. 저처럼 특정 테마를 사용하여 블로그를 세팅한 경우에는 블로그에서 지원하는 버전이 UA일 수 있습니다. 사용하고 있는 테마의 document나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; 파일을 살펴봅니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;예시가-ga4-버전인-경우&quot;&gt;예시가 GA4 버전인 경우&lt;/h2&gt;
+
+&lt;p&gt;여기서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G-XXXXXXXX&lt;/code&gt; 형식의 태그가 예시로 되어 있다면 별다른 변경 없이 발급받은 측정 ID를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;에 다음과 같이 추가해주기만 하면 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;na&quot;&gt;google_analytics&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;G-XXXXXXXX&quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;예시가-ua-버전인-경우&quot;&gt;예시가 UA 버전인 경우&lt;/h2&gt;
+
+&lt;p&gt;하지만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UA-XXXXXXXX-X&lt;/code&gt;와 같은 형식의 태그가 예시로 되어 있다면, 유니버셜 애널리틱스를 기준으로 테마가 만들어져 있는 상태입니다. 따라서 GA4 태그를 사용하기 위해서는 수정이 불가피합니다.&lt;/p&gt;
+
+&lt;p&gt;우선 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;설정 &amp;gt; 데이터 수집 및 수정 &amp;gt; 데이터 스트림 &amp;gt; 태그 안내 보기&lt;/code&gt;로 들어갑니다. 상단의 탭에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;직접 설치&lt;/code&gt;를 클릭하면 다음과 같이 gtag 코드가 나옵니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/7.jpg&quot; alt=&quot;gtag information&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Google&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;tag &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gtag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataLayer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataLayer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;gtag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataLayer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);}&lt;/span&gt;
+  &lt;span class=&quot;nf&quot;&gt;gtag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+
+  &lt;span class=&quot;nf&quot;&gt;gtag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;G-XXXXXXXXXX&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;설명에도 나와있듯, 해당 코드를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 요소 안에 붙여 넣으면 됩니다. 여기서도 테마마다 설정하는 방법이 달라집니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_includes&lt;/code&gt; 폴더에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;analytics.html&lt;/code&gt;이 있는 경우에는 해당 파일을 수정하면 되는데, 없는 경우에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 요소를 붙이는 파일을 찾아야 합니다. 저는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; 폴더에 있는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default.html&lt;/code&gt; 파일을 수정하였습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;ga-연결-확인하기&quot;&gt;GA 연결 확인하기&lt;/h1&gt;
+
+&lt;p&gt;수정된 코드를 github에 올리고, 빌드가 완료될 때까지 몇 분 정도 기다려줍니다. 빠르게 확인할 수 있는 방법으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;개발자 도구 &amp;gt; Console&lt;/code&gt;에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gtag&lt;/code&gt;를 입력해 볼 수 있습니다. 제대로 연결되지 않았다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Uncaught ReferenceError&lt;/code&gt;가 발생하고, 제대로 연결된 경우 다음과 같이 gtag를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/8.jpg&quot; alt=&quot;gtag: console&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Google Analytics에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;보고서 &amp;gt; 실시간&lt;/code&gt; 탭에서 사용자가 확인되면 GA 연결은 성공적으로 끝납니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/9.jpg&quot; alt=&quot;google analytics check&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 03 Jul 2024 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/jekyll-search/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-search/</guid>
+        
+        
+        <category>Jekyll</category>
+        
+      </item>
     
       <item>
         <title>Jekyll Blog(Github Pages)에 Google Anayltics 연결하기</title>
@@ -229,11 +330,11 @@
     
       <item>
         <title>Python String Formatting 방법</title>
-        <description>&lt;p&gt;python은 다양한 문자열 포맷팅 방법을 지원합니다. python의 버전에 따라 지원되는 포맷팅 방법이 달라지기도 하니 사용하는 python의 버전을 확인하고 사용하시기 바랍니다.&lt;/p&gt;
+        <description>&lt;p&gt;python은 다양한 문자열 포맷팅 방법을 지원합니다. 본 포스팅에서는 각 방법의 사용법과 장단점 등에 대하여 설명하도록 하겠습니다. 참고로, python의 버전에 따라 지원되는 포맷팅 방법이 달라지기도 하니 사용하는 python의 버전을 확인하고 사용하시기 바랍니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;-operator&quot;&gt;% operator&lt;/h1&gt;
 
-&lt;p&gt;C 스타일로 문자열을 포맷팅하는 방법입니다. python3 이전에 사용되던 방법으로, python 버전에 상관이 없으며, C 문법에 익숙하다면 간단하게 사용할 수 있습니다. % operator를 사용하는 경우, 포맷팅하고자 하는 자료형의 데이터 타입이 동일해야 하는데, 때문에 자료형 별로 어떠한 문자열 포맷 코드를 사용해야 하는지를 알고 있어야 합니다. 사용 예시는 다음과 같습니다.&lt;/p&gt;
+&lt;p&gt;% operator는 C 스타일로 문자열을 포맷팅하는 방법입니다. python3 이전에 사용되던 방법으로, python 버전에 상관이 없으며, C 문법에 익숙하다면 간단하게 사용할 수 있습니다. % operator를 사용하는 경우, 포맷팅하고자 하는 자료형의 데이터 타입이 동일해야 하는데, 때문에 자료형 별로 어떠한 문자열 포맷 코드를 사용해야 하는지를 알고 있어야 합니다. 사용 예시는 다음과 같습니다.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -1305,51 +1406,6 @@
         <pubDate>Thu, 02 Apr 2015 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/cuda-syntax-device/</link>
         <guid isPermaLink="true">http://localhost:4000/cuda-syntax-device/</guid>
-        
-        
-        <category>CUDA</category>
-        
-        <category>Programming</category>
-        
-      </item>
-    
-      <item>
-        <title>[CUDA 5.0] CUDA Syntax Highlighting 설정하기</title>
-        <description>&lt;div style=&quot;text-align: center; color: red;&quot;&gt;
-※ 이 글은 2013년도에 작성된 글입니다. &lt;br /&gt;사진이나 세부적인 내용은 지금과 다를 수 있습니다.&lt;br /&gt;&lt;br /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;VS에서 CUDA 코드를 작성하면 CUDA Syntax Highlighting은 물론이고 기본적인 C/C++ 문법마저도 Syntax Highlighting이 되지 않아 코드를 작성하기 무척이나 번거롭고 힘들었을 것입니다. 따라서, 이번 포스팅에서는 CUDA Syntax Highlighting 방법에 대해 소개하려 합니다. 이전 버전들과는 방법이 다르기 때문에, 다른 버전을 사용 중이라면 적용되지 않을 수도 있다는 점을 염두에 두시길 바랍니다.&lt;/p&gt;
-
-&lt;p&gt;우선 VS를 켜고, 상단 메뉴 바에서 도구 -&amp;gt; 옵션으로 들어갑니다. 창이 하나 나타나는데, 여기서 프로젝트 및 솔루션 -&amp;gt; VC++ 프로젝트 설정으로 들어가면 아래의 창 같은 화면이 뜹니다. 이 중 포함할 확장명에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cu; cuh;&lt;/code&gt;를 추가합니다. 확장자명끼리의 구분은 ;로 구분하게 됩니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cu&lt;/code&gt; 파일은 CUDA source file이고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cuh&lt;/code&gt; 파일은 CUDA header file입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-syntax-highlighting/1.jpg&quot; alt=&quot;CUDA Syntax Highlighting Setting&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;확장명에 추가했으면 이제 .cu와 .cuh를 C++ 편집 환경으로 설정해 줄 차례입니다. 옵션 창에서 텍스트 편집기 -&amp;gt; 파일 확장명으로 들어가면, 아래와 같은 창이 나타납니다. 여기에 확장명 .cu, 편집기 Microsoft Visual C++을 선택하고 적용하면 됩니다. .cuh도 마찬가지 방법으로 적용해 줍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-syntax-highlighting/2.jpg&quot; alt=&quot;CUDA Syntax Highlighting Setting&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이제 C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\doc\syntax_highlighting\visual_studio_8 폴더로 들어가보면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;usertype.dat&lt;/code&gt; 파일이 있을 것입니다. 이 파일을 C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE 폴더에 복사해 넣으면 됩니다. 주소는 32bit 기준이므로, 64bit라면 Program Files (x86) 폴더에서 찾아 복사해 넣도록 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-syntax-highlighting/3.jpg&quot; alt=&quot;usertype.dat file&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이것으로 CUDA Syntax Highlighting 준비가 모두 끝났습니다. VS를 다시 시작하거나 아니면 프로젝트를 다시 열면 문법에 맞는 색깔로 설정된 C/C++ 코드를 볼 수 있을 것입니다. 참고로, CUDA Syntax Highlighting을 위해서는 아래의 두 줄을 추가로 입력해 주어야지만 정상적으로 표현이 됩니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;cp&quot;&gt;#include&lt;/span&gt; &lt;span class=&quot;cpf&quot;&gt;&quot;cuda_runtime.h&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;
-#include&lt;/span&gt; &lt;span class=&quot;cpf&quot;&gt;&quot;device_launch_parameters.h&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이 두 줄은 모두 CUDA Project를 생성하면 만들어지는 kernel.cu에 포함되어 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/cuda-syntax-highlighting/4.jpg&quot; alt=&quot;CUDA Syntax Highlighting result&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위는 정상적으로 CUDA Syntax Highlighting이 적용된 코드입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__global__&lt;/code&gt;이나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;threadIdx&lt;/code&gt;와 같은 CUDA 문법들에도 highlighting이 적용된 것을 확인할 수 있습니다. 참고로 위 화면에서는 다른 테마가 적용되어 있으므로, 실제로 highlighting을 적용했을 때 다르게 보일 수 있습니다.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 01 Apr 2015 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/cuda-syntax-highlighting/</link>
-        <guid isPermaLink="true">http://localhost:4000/cuda-syntax-highlighting/</guid>
         
         
         <category>CUDA</category>
