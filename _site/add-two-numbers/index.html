@@ -6,27 +6,27 @@
 
 <link rel="icon" href="/assets/images/favicon.png">
 
-<title>[CUDA 7] GPU 실행시간 측정 - cudaEvent | Chloeeekim</title>
+<title>[Leetcode] 2. Add Two Numbers | Chloeeekim</title>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>[CUDA 7] GPU 실행시간 측정 - cudaEvent | Chloeeekim</title>
+<title>[Leetcode] 2. Add Two Numbers | Chloeeekim</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="[CUDA 7] GPU 실행시간 측정 - cudaEvent" />
+<meta property="og:title" content="[Leetcode] 2. Add Two Numbers" />
 <meta name="author" content="chloeeekim" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="GPU에서 실행 시간을 측정할 수 있는 방법은 StopWatchInterface를 사용하는 등 여러 가지가 있지만, NVIDIA에서 공식적으로 제공하는 Programming Guide에서 확인할 수 있는 내용인 cudaEvent를 소개하고자 합니다." />
-<meta property="og:description" content="GPU에서 실행 시간을 측정할 수 있는 방법은 StopWatchInterface를 사용하는 등 여러 가지가 있지만, NVIDIA에서 공식적으로 제공하는 Programming Guide에서 확인할 수 있는 내용인 cudaEvent를 소개하고자 합니다." />
-<link rel="canonical" href="http://localhost:4000/cudaEvent/" />
-<meta property="og:url" content="http://localhost:4000/cudaEvent/" />
+<meta name="description" content="두 개의 Linked List가 주어졌을 때, 두 Linked List의 합을 구하는 문제 각 노드에는 정확히 1자리의 숫자가 포함되어 있다. 숫자는 역순으로 저장되어 있다. (e.g., 342 : 2 -&gt; 4 -&gt; 3) 숫자 0이 아닌 경우, 0으로 시작하는 숫자는 없다. (e.g., 043은 없다)" />
+<meta property="og:description" content="두 개의 Linked List가 주어졌을 때, 두 Linked List의 합을 구하는 문제 각 노드에는 정확히 1자리의 숫자가 포함되어 있다. 숫자는 역순으로 저장되어 있다. (e.g., 342 : 2 -&gt; 4 -&gt; 3) 숫자 0이 아닌 경우, 0으로 시작하는 숫자는 없다. (e.g., 043은 없다)" />
+<link rel="canonical" href="http://localhost:4000/add-two-numbers/" />
+<meta property="og:url" content="http://localhost:4000/add-two-numbers/" />
 <meta property="og:site_name" content="Chloeeekim" />
-<meta property="og:image" content="http://localhost:4000/assets/images/cudaEvent/title.png" />
+<meta property="og:image" content="http://localhost:4000/assets/images/leetcode.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-01-15T00:00:00+09:00" />
+<meta property="article:published_time" content="2019-06-12T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="http://localhost:4000/assets/images/cudaEvent/title.png" />
-<meta property="twitter:title" content="[CUDA 7] GPU 실행시간 측정 - cudaEvent" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/leetcode.png" />
+<meta property="twitter:title" content="[Leetcode] 2. Add Two Numbers" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2016-01-15T00:00:00+09:00","datePublished":"2016-01-15T00:00:00+09:00","description":"GPU에서 실행 시간을 측정할 수 있는 방법은 StopWatchInterface를 사용하는 등 여러 가지가 있지만, NVIDIA에서 공식적으로 제공하는 Programming Guide에서 확인할 수 있는 내용인 cudaEvent를 소개하고자 합니다.","headline":"[CUDA 7] GPU 실행시간 측정 - cudaEvent","image":"http://localhost:4000/assets/images/cudaEvent/title.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/cudaEvent/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/cudaEvent/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-06-12T00:00:00+09:00","datePublished":"2019-06-12T00:00:00+09:00","description":"두 개의 Linked List가 주어졌을 때, 두 Linked List의 합을 구하는 문제 각 노드에는 정확히 1자리의 숫자가 포함되어 있다. 숫자는 역순으로 저장되어 있다. (e.g., 342 : 2 -&gt; 4 -&gt; 3) 숫자 0이 아닌 경우, 0으로 시작하는 숫자는 없다. (e.g., 043은 없다)","headline":"[Leetcode] 2. Add Two Numbers","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/add-two-numbers/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/add-two-numbers/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -147,19 +147,19 @@
     </p>
     <ul>
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://twitter.com/intent/tweet?text=[CUDA 7] GPU 실행시간 측정 - cudaEvent&url=http://localhost:4000/cudaEvent/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 2. Add Two Numbers&url=http://localhost:4000/add-two-numbers/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fab fa-twitter"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/cudaEvent/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/add-two-numbers/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
                 <i class="fab fa-facebook-f"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/cudaEvent/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/add-two-numbers/" onclick="window.open(this.href, 'width=550,height=435');return false;">
                 <i class="fab fa-linkedin-in"></i>
             </a>
         </li>
@@ -202,14 +202,16 @@
                 
 
                 <!-- Post Title -->
-                <h1 class="posttitle">[CUDA 7] GPU 실행시간 측정 - cudaEvent</h1>
+                <h1 class="posttitle">[Leetcode] 2. Add Two Numbers</h1>
 
                 <!-- Link -->
+                
+                <a href="https://leetcode.com/problems/add-two-numbers/" target="_blank">https://leetcode.com/problems/add-two-numbers/</a>
                 
 
                 <!-- Post Date -->
                 <small>
-                    <span class="post-date float-right"><time class="post-date align-right" datetime="2016-01-15">15 Jan 2016</time></span>           
+                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-06-12">12 Jun 2019</time></span>           
                     
                 </small>
 
@@ -223,7 +225,7 @@
             
 
             
-            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/cudaEvent/title.png" alt="[CUDA 7] GPU 실행시간 측정 - cudaEvent">
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 2. Add Two Numbers">
             
 
             
@@ -234,11 +236,36 @@
                 <!-- Toc if any -->
                 
                 <!-- End Toc -->
-                <p>GPU에서 실행 시간을 측정할 수 있는 방법은 StopWatchInterface를 사용하는 등 여러 가지가 있지만, NVIDIA에서 공식적으로 제공하는 Programming Guide에서 확인할 수 있는 내용인 cudaEvent를 소개하고자 합니다.</p>
+                <p>두 개의 Linked List가 주어졌을 때, 두 Linked List의 합을 구하는 문제</p>
+<ul>
+  <li>각 노드에는 정확히 1자리의 숫자가 포함되어 있다.</li>
+  <li>숫자는 역순으로 저장되어 있다. (e.g., 342 : 2 -&gt; 4 -&gt; 3)</li>
+  <li>숫자 0이 아닌 경우, 0으로 시작하는 숫자는 없다. (e.g., 043은 없다)</li>
+</ul>
 
-<p>사용하는 방법은 다음과 같습니다.</p>
+<h2>Example 1</h2>
+<ul>
+  <li>Input : l1= [2, 4, 3], l2 = [5, 6, 4]</li>
+  <li>Output : [7, 0, 8]</li>
+  <li>342 + 465 = 807</li>
+</ul>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<h2>Example 2</h2>
+<ul>
+  <li>Input : l1 = [0], l2 = [0]</li>
+  <li>Output : [0]</li>
+</ul>
+
+<h2>Example 3</h2>
+<ul>
+  <li>Input : l1 = [9, 9, 9, 9, 9, 9, 9], l2 = [9, 9, 9, 9]</li>
+  <li>Output : [8, 9, 9, 9, 0, 0, 0, 1]</li>
+</ul>
+
+<h2>Note</h2>
+<p>divmod : python 내장함수 (a/b, a%b 값을 리턴)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -259,30 +286,34 @@
 19
 20
 21
-</pre></td><td class="rouge-code"><pre><span class="c1">// cudaEvent create</span>
-<span class="n">cudaEvent_t</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">;</span>
-<span class="n">cudaEventCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">start</span><span class="p">);</span>
-<span class="n">cudaEventCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stop</span><span class="p">);</span>
-
-<span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
-
-<span class="n">cudaEventRecord</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-
-<span class="c1">// 실행 시간을 측정할 GPU 코드</span>
-
-<span class="n">cudaEventRecord</span><span class="p">(</span><span class="n">stop</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-<span class="n">cudaEventSynchronize</span><span class="p">(</span><span class="n">stop</span><span class="p">);</span>
-<span class="kt">float</span> <span class="n">elapsedTime</span><span class="p">;</span>
-<span class="n">cudaEventElapsedTime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">elapsedTime</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">);</span>
-
-<span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
-
-<span class="c1">// cudaEvent destroy</span>
-<span class="n">cudaEventDestroy</span><span class="p">(</span><span class="n">start</span><span class="p">);</span>
-<span class="n">cudaEventDestroy</span><span class="p">(</span><span class="n">stop</span><span class="p">);</span>
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="c1"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">l2</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span><span class="p">:</span>
+        <span class="n">up</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="nc">ListNode</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">res</span>
+        
+        <span class="k">while</span> <span class="n">l1</span> <span class="ow">or</span> <span class="n">l2</span> <span class="ow">or</span> <span class="n">up</span> <span class="p">:</span>
+            <span class="n">val1</span> <span class="o">=</span> <span class="p">(</span><span class="n">l1</span><span class="p">.</span><span class="n">val</span> <span class="k">if</span> <span class="n">l1</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">val2</span> <span class="o">=</span> <span class="p">(</span><span class="n">l2</span><span class="p">.</span><span class="n">val</span> <span class="k">if</span> <span class="n">l2</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">up</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="nf">divmod</span><span class="p">(</span><span class="n">val1</span> <span class="o">+</span> <span class="n">val2</span> <span class="o">+</span> <span class="n">up</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+            
+            <span class="n">tail</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="nc">ListNode</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+            <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="p">.</span><span class="nb">next</span>
+            
+            <span class="n">l1</span> <span class="o">=</span> <span class="p">(</span><span class="n">l1</span><span class="p">.</span><span class="nb">next</span> <span class="k">if</span> <span class="n">l1</span> <span class="k">else</span> <span class="bp">None</span><span class="p">)</span>
+            <span class="n">l2</span> <span class="o">=</span> <span class="p">(</span><span class="n">l2</span><span class="p">.</span><span class="nb">next</span> <span class="k">if</span> <span class="n">l2</span> <span class="k">else</span> <span class="bp">None</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="nb">next</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>우선 두 개의 cudaEvent 변수를 생성해주어야 합니다. cudaEvent는 record하는 순간의 timestamp를 저장하는 형식이기 때문에 2개가 필요합니다. 이후 cudaEventRecord() 함수를 이용하여 시작하는 순간과 끝나는 순간의 timestamp를 저장하면 됩니다. 시간은 cudaEventElapsedTime() 함수를 이용하여 받아오는데, 기본적으로 float 형을 사용합니다. 마지막으로 cudaEventDestroy() 함수를 이용하여 cudaEvent를 destroy 해주면 마무리됩니다.</p>
 
             </div>
 
@@ -295,11 +326,7 @@
                     
                     
                     <li>
-                        <a class="smoothscroll" href="/category/CUDA">CUDA</a>
-                    </li>
-                    
-                    <li>
-                        <a class="smoothscroll" href="/category/Programming">Programming</a>
+                        <a class="smoothscroll" href="/category/Algorithm">Algorithm</a>
                     </li>
                     
                 </ul>
@@ -329,11 +356,11 @@
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                 <div class="col-md-6">
                     
-                    <a class="prev-next-card" href="/cpp-cuda-function/">
+                    <a class="prev-next-card" href="/two-sum/">
                         <div class="arrow prev-arrow">&laquo;</div>
                         <div class="prev">
                             <div class="prev-next">Previous</div>
-                            <div class="page-title">[CUDA 5.5] cpp에서 CUDA 함수 사용하기</div>
+                            <div class="page-title">[Leetcode] 1. Two Sum</div>
                         </div>
                     </a>
                     
