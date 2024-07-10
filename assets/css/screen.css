@@ -1094,3 +1094,9 @@ table:not(.rouge-table) tr:nth-of-type(even) {
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }
+
+.see-all {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, .44);
+  margin-top: 0.3rem;
+}
