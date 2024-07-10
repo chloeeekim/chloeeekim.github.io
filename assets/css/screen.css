@@ -251,8 +251,8 @@ span.author-meta {
 span.post-date {
   color: rgba(0, 0, 0, 0.44);
   margin-right: 10px;
-  display: block;
   font-size: 0.9rem;
+  float: right;
 }
 
 .align-right {
