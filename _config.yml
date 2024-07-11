@@ -7,7 +7,7 @@ favicon: "assets/images/favicon.png"
 baseurl: ""
 url: "https://chloeeekim.github.io"
 google_analytics: "G-5DB4C9PFP7"
-include: ["_pages", .nojekyll]
+include: ["_pages"]
 permalink: /:title/
 
 # Authors
