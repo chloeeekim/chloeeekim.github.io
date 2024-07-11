@@ -6,27 +6,27 @@
 
 <link rel="icon" href="/assets/images/favicon.png">
 
-<title>[Leetcode] 7. Reverse Integer | Chloeeekim</title>
+<title>[Leetcode] 14. Longest Common Prefix | Chloeeekim</title>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>[Leetcode] 7. Reverse Integer | Chloeeekim</title>
+<title>[Leetcode] 14. Longest Common Prefix | Chloeeekim</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="[Leetcode] 7. Reverse Integer" />
+<meta property="og:title" content="[Leetcode] 14. Longest Common Prefix" />
 <meta name="author" content="chloeeekim" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="주어진 32-bit 정수를 뒤집는 문제 32-bit signed integer 기준 (범위 : -2^31 ~ 2^31 - 1) 해당 범위를 넘는 경우, 0을 출력" />
-<meta property="og:description" content="주어진 32-bit 정수를 뒤집는 문제 32-bit signed integer 기준 (범위 : -2^31 ~ 2^31 - 1) 해당 범위를 넘는 경우, 0을 출력" />
-<link rel="canonical" href="http://localhost:4000/reverse-integer/" />
-<meta property="og:url" content="http://localhost:4000/reverse-integer/" />
+<meta name="description" content="여러 문자열이 포함된 array(list)가 주어졌을 때, 가장 긴 common prefix(모든 문자열에서 등장하는 prefix)를 찾는 문제 common prefix가 없는 경우, 빈 문자열(““)을 리턴한다. 모든 입력은 소문자 알파벳으로만 주어진다." />
+<meta property="og:description" content="여러 문자열이 포함된 array(list)가 주어졌을 때, 가장 긴 common prefix(모든 문자열에서 등장하는 prefix)를 찾는 문제 common prefix가 없는 경우, 빈 문자열(““)을 리턴한다. 모든 입력은 소문자 알파벳으로만 주어진다." />
+<link rel="canonical" href="http://localhost:4000/longest-common-prefix/" />
+<meta property="og:url" content="http://localhost:4000/longest-common-prefix/" />
 <meta property="og:site_name" content="Chloeeekim" />
 <meta property="og:image" content="http://localhost:4000/assets/images/leetcode.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-06-20T00:00:00+09:00" />
+<meta property="article:published_time" content="2019-06-24T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/images/leetcode.png" />
-<meta property="twitter:title" content="[Leetcode] 7. Reverse Integer" />
+<meta property="twitter:title" content="[Leetcode] 14. Longest Common Prefix" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-06-20T00:00:00+09:00","datePublished":"2019-06-20T00:00:00+09:00","description":"주어진 32-bit 정수를 뒤집는 문제 32-bit signed integer 기준 (범위 : -2^31 ~ 2^31 - 1) 해당 범위를 넘는 경우, 0을 출력","headline":"[Leetcode] 7. Reverse Integer","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/reverse-integer/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/reverse-integer/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-06-24T00:00:00+09:00","datePublished":"2019-06-24T00:00:00+09:00","description":"여러 문자열이 포함된 array(list)가 주어졌을 때, 가장 긴 common prefix(모든 문자열에서 등장하는 prefix)를 찾는 문제 common prefix가 없는 경우, 빈 문자열(““)을 리턴한다. 모든 입력은 소문자 알파벳으로만 주어진다.","headline":"[Leetcode] 14. Longest Common Prefix","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/longest-common-prefix/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/longest-common-prefix/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -147,19 +147,19 @@
     </p>
     <ul>
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 7. Reverse Integer&url=http://localhost:4000/reverse-integer/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 14. Longest Common Prefix&url=http://localhost:4000/longest-common-prefix/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fab fa-twitter"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/reverse-integer/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/longest-common-prefix/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
                 <i class="fab fa-facebook-f"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/reverse-integer/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/longest-common-prefix/" onclick="window.open(this.href, 'width=550,height=435');return false;">
                 <i class="fab fa-linkedin-in"></i>
             </a>
         </li>
@@ -202,16 +202,16 @@
                 
 
                 <!-- Post Title -->
-                <h1 class="posttitle">[Leetcode] 7. Reverse Integer</h1>
+                <h1 class="posttitle">[Leetcode] 14. Longest Common Prefix</h1>
 
                 <!-- Link -->
                 
-                <a href="https://leetcode.com/problems/reverse-integer/" target="_blank">https://leetcode.com/problems/reverse-integer/</a>
+                <a href="https://leetcode.com/problems/longest-common-prefix/" target="_blank">https://leetcode.com/problems/longest-common-prefix/</a>
                 
 
                 <!-- Post Date -->
                 <small>
-                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-06-20">20 Jun 2019</time></span>           
+                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-06-24">24 Jun 2019</time></span>           
                     
                 </small>
 
@@ -225,7 +225,7 @@
             
 
             
-            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 7. Reverse Integer">
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 14. Longest Common Prefix">
             
 
             
@@ -236,32 +236,33 @@
                 <!-- Toc if any -->
                 
                 <!-- End Toc -->
-                <p>주어진 32-bit 정수를 뒤집는 문제</p>
+                <p>여러 문자열이 포함된 array(list)가 주어졌을 때, 가장 긴 common prefix(모든 문자열에서 등장하는 prefix)를 찾는 문제</p>
 <ul>
-  <li>32-bit signed integer 기준 (범위 : -2^31 ~ 2^31 - 1)</li>
-  <li>해당 범위를 넘는 경우, 0을 출력</li>
+  <li>common prefix가 없는 경우, 빈 문자열(““)을 리턴한다.</li>
+  <li>모든 입력은 소문자 알파벳으로만 주어진다.</li>
 </ul>
 
 <h2>Example 1</h2>
 <ul>
-  <li>Input : x = 123</li>
-  <li>Output : 321</li>
+  <li>Input : [“flower”, “flow”, “flight”]</li>
+  <li>Output : “fl”</li>
 </ul>
 
 <h2>Example 2</h2>
 <ul>
-  <li>Input : x = -123</li>
-  <li>Output : -321</li>
-</ul>
-
-<h2>Example 3</h2>
-<ul>
-  <li>Input : x = 120</li>
-  <li>Output : 21</li>
+  <li>Input : [“dog”, “racecar”, “car”]</li>
+  <li>Output : “”</li>
 </ul>
 
 <h2>Note</h2>
-<p>reverse 문자열 구하는 방법 : [::-1]</p>
+<ul>
+  <li>zip(*iterabble) : 동일한 개수로 이루어진 자료형을 묶어준다.
+    <ul>
+      <li>e.g., list(zip([1, 2, 3], [4, 5, 6])) -&gt; [(1, 4), (2, 5), (3, 6)]</li>
+    </ul>
+  </li>
+  <li>문자열 리스트를 정렬한 경우, 첫 번째 문자열과 마지막 문자열만 비교하면 가장 긴 common prefix를 구할 수 있다.</li>
+</ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -274,17 +275,23 @@
 9
 10
 11
+12
+13
+14
 </pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="n">x</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">else</span> <span class="p">:</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="nf">int</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        
-        <span class="k">if</span> <span class="o">-</span><span class="mi">2</span><span class="o">**</span><span class="mi">31</span> <span class="o">&lt;=</span> <span class="n">res</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">31</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:</span>
-            <span class="k">return</span> <span class="n">res</span>
-        <span class="k">else</span> <span class="p">:</span>
-            <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">longestCommonPrefix</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">strs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">strs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="sh">""</span>
+        <span class="k">elif</span> <span class="nf">len</span><span class="p">(</span><span class="n">strs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="n">strs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">strs</span><span class="p">.</span><span class="nf">sort</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="sh">""</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nf">zip</span><span class="p">(</span><span class="n">strs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">strs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="p">:</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="n">x</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="k">break</span>
+        <span class="k">return</span> <span class="n">res</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
             </div>
@@ -319,14 +326,6 @@
             
             
                 
-            
-                
-            
-                
-            
-                
-            
-                
                     
                     
                     
@@ -336,24 +335,16 @@
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                 <div class="col-md-6">
                     
-                    <a class="prev-next-card" href="/longest-substring-without-repeating-characters/">
+                    <a class="prev-next-card" href="/roman-to-integer/">
                         <div class="arrow prev-arrow">&laquo;</div>
                         <div class="prev">
                             <div class="prev-next">Previous</div>
-                            <div class="page-title">[Leetcode] 2. Longest Substring Without Repeating Characters</div>
+                            <div class="page-title">[Leetcode] 13. Roman to Integer</div>
                         </div>
                     </a>
                     
                 </div>
                 <div class="col-md-6">
-                    
-                    <a class="prev-next-card" href="/string-to-integer-atoi/">
-                        <div class="next">
-                            <div class="prev-next">Next</div>
-                            <div class="page-title">[Leetcode] 8. String to Integer (atoi)</div>
-                        </div>
-                        <div class="arrow next-arrow">&raquo;</div>
-                    </a>
                     
                 </div>
             </div>
