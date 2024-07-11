@@ -61,6 +61,10 @@
 <lastmod>2019-06-22T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/roman-to-integer/</loc>
+<lastmod>2019-06-23T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/jekyll-setup-windows/</loc>
 <lastmod>2024-06-26T00:00:00+09:00</lastmod>
 </url>
@@ -98,6 +102,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/page3/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page4/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/naverd086c9f2ec4c954f58569915ff0e758c.html</loc>

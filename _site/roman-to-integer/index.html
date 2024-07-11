@@ -6,27 +6,27 @@
 
 <link rel="icon" href="/assets/images/favicon.png">
 
-<title>[Leetcode] 9. Palindrome Number | Chloeeekim</title>
+<title>[Leetcode] 13. Roman to Integer | Chloeeekim</title>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>[Leetcode] 9. Palindrome Number | Chloeeekim</title>
+<title>[Leetcode] 13. Roman to Integer | Chloeeekim</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="[Leetcode] 9. Palindrome Number" />
+<meta property="og:title" content="[Leetcode] 13. Roman to Integer" />
 <meta name="author" content="chloeeekim" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="하나의 정수가 주어졌을 때, 해당 정수가 palindrome인지 확인하는 문제 Palindrome이란 : 회문. 거꾸로 읽었을 때도 제대로 읽었을 때와 동일한 경우" />
-<meta property="og:description" content="하나의 정수가 주어졌을 때, 해당 정수가 palindrome인지 확인하는 문제 Palindrome이란 : 회문. 거꾸로 읽었을 때도 제대로 읽었을 때와 동일한 경우" />
-<link rel="canonical" href="http://localhost:4000/palindrome-number/" />
-<meta property="og:url" content="http://localhost:4000/palindrome-number/" />
+<meta name="description" content="로마 숫자가 주어졌을 때, 정수로 변환하는 문제 각 문자(symbol)별 해당하는 값은 아래와 같다. I : 1 / V : 5 / X : 10 / L : 50 / C : 100 / D : 500 / M : 1000 왼쪽에서 오른쪽으로 읽으며, 큰 숫자에서 작은 숫자의 순서로 작성된다. 작은 값에 해당하는 문자가 큰 값에 해당하는 문자의 왼쪽에 위치할 경우, 그 값만큼을 뺀다. (e.g., IV : 4)" />
+<meta property="og:description" content="로마 숫자가 주어졌을 때, 정수로 변환하는 문제 각 문자(symbol)별 해당하는 값은 아래와 같다. I : 1 / V : 5 / X : 10 / L : 50 / C : 100 / D : 500 / M : 1000 왼쪽에서 오른쪽으로 읽으며, 큰 숫자에서 작은 숫자의 순서로 작성된다. 작은 값에 해당하는 문자가 큰 값에 해당하는 문자의 왼쪽에 위치할 경우, 그 값만큼을 뺀다. (e.g., IV : 4)" />
+<link rel="canonical" href="http://localhost:4000/roman-to-integer/" />
+<meta property="og:url" content="http://localhost:4000/roman-to-integer/" />
 <meta property="og:site_name" content="Chloeeekim" />
 <meta property="og:image" content="http://localhost:4000/assets/images/leetcode.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-06-22T00:00:00+09:00" />
+<meta property="article:published_time" content="2019-06-23T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/images/leetcode.png" />
-<meta property="twitter:title" content="[Leetcode] 9. Palindrome Number" />
+<meta property="twitter:title" content="[Leetcode] 13. Roman to Integer" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-06-22T00:00:00+09:00","datePublished":"2019-06-22T00:00:00+09:00","description":"하나의 정수가 주어졌을 때, 해당 정수가 palindrome인지 확인하는 문제 Palindrome이란 : 회문. 거꾸로 읽었을 때도 제대로 읽었을 때와 동일한 경우","headline":"[Leetcode] 9. Palindrome Number","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/palindrome-number/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/palindrome-number/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-06-23T00:00:00+09:00","datePublished":"2019-06-23T00:00:00+09:00","description":"로마 숫자가 주어졌을 때, 정수로 변환하는 문제 각 문자(symbol)별 해당하는 값은 아래와 같다. I : 1 / V : 5 / X : 10 / L : 50 / C : 100 / D : 500 / M : 1000 왼쪽에서 오른쪽으로 읽으며, 큰 숫자에서 작은 숫자의 순서로 작성된다. 작은 값에 해당하는 문자가 큰 값에 해당하는 문자의 왼쪽에 위치할 경우, 그 값만큼을 뺀다. (e.g., IV : 4)","headline":"[Leetcode] 13. Roman to Integer","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/roman-to-integer/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/roman-to-integer/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -147,19 +147,19 @@
     </p>
     <ul>
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 9. Palindrome Number&url=http://localhost:4000/palindrome-number/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 13. Roman to Integer&url=http://localhost:4000/roman-to-integer/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fab fa-twitter"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/palindrome-number/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/roman-to-integer/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
                 <i class="fab fa-facebook-f"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/palindrome-number/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/roman-to-integer/" onclick="window.open(this.href, 'width=550,height=435');return false;">
                 <i class="fab fa-linkedin-in"></i>
             </a>
         </li>
@@ -202,16 +202,16 @@
                 
 
                 <!-- Post Title -->
-                <h1 class="posttitle">[Leetcode] 9. Palindrome Number</h1>
+                <h1 class="posttitle">[Leetcode] 13. Roman to Integer</h1>
 
                 <!-- Link -->
                 
-                <a href="https://leetcode.com/problems/palindrome-number/" target="_blank">https://leetcode.com/problems/palindrome-number/</a>
+                <a href="https://leetcode.com/problems/roman-to-integer/" target="_blank">https://leetcode.com/problems/roman-to-integer/</a>
                 
 
                 <!-- Post Date -->
                 <small>
-                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-06-22">22 Jun 2019</time></span>           
+                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-06-23">23 Jun 2019</time></span>           
                     
                 </small>
 
@@ -225,7 +225,7 @@
             
 
             
-            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 9. Palindrome Number">
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 13. Roman to Integer">
             
 
             
@@ -236,32 +236,42 @@
                 <!-- Toc if any -->
                 
                 <!-- End Toc -->
-                <p>하나의 정수가 주어졌을 때, 해당 정수가 palindrome인지 확인하는 문제</p>
+                <p>로마 숫자가 주어졌을 때, 정수로 변환하는 문제</p>
 <ul>
-  <li>Palindrome이란 : 회문. 거꾸로 읽었을 때도 제대로 읽었을 때와 동일한 경우</li>
+  <li>각 문자(symbol)별 해당하는 값은 아래와 같다.
+    <ul>
+      <li>I : 1 / V : 5 / X : 10 / L : 50 / C : 100 / D : 500 / M : 1000</li>
+    </ul>
+  </li>
+  <li>왼쪽에서 오른쪽으로 읽으며, 큰 숫자에서 작은 숫자의 순서로 작성된다.</li>
+  <li>작은 값에 해당하는 문자가 큰 값에 해당하는 문자의 왼쪽에 위치할 경우, 그 값만큼을 뺀다. (e.g., IV : 4)</li>
 </ul>
 
 <h2>Example 1</h2>
 <ul>
-  <li>Input : x = 121</li>
-  <li>Output : true</li>
+  <li>Input : s = “III”</li>
+  <li>Output : 3</li>
 </ul>
 
 <h2>Example 2</h2>
 <ul>
-  <li>Input : x = -121</li>
-  <li>Output : false</li>
-  <li>거꾸로 읽으면 121-가 되므로 palindrome이 아니다.</li>
+  <li>Input : s = “LVIII”</li>
+  <li>Output : 58</li>
 </ul>
 
 <h2>Example 3</h2>
 <ul>
-  <li>Input : x = 10</li>
-  <li>Output : false</li>
+  <li>Input : s = “MCMXCIV”</li>
+  <li>Output : 1994</li>
 </ul>
 
 <h2>Note</h2>
-<p>reverse 문자열 구하는 방법 : [::-1]</p>
+<ul>
+  <li>dict 사용 (key : 로마 숫자(문자) / value : 문자에 해당하는 값)</li>
+  <li>이전에 나타난 문자가 현재 문자보다 작은 값일 경우 : 현재 문자의 값 - 이전 문자의 값</li>
+  <li>동일한 문자가 반복되는 경우 : 해당 문자보다 크거나 작은 값을 지닌 문자가 나올 때까지 더한다.</li>
+  <li>이전에 나타난 문자가 현재 문자보다 큰 값일 경우 : 이전까지의 값을 전부 더한다. (큰 숫자에서 작은 숫자로 작성되므로)</li>
+</ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -270,13 +280,39 @@
 5
 6
 7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 </pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span>
-            <span class="k">return</span> <span class="bp">True</span>
-        <span class="k">else</span> <span class="p">:</span> 
-            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">def</span> <span class="nf">romanToInt</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="sh">'</span><span class="s">I</span><span class="sh">'</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="sh">'</span><span class="s">V</span><span class="sh">'</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="sh">'</span><span class="s">X</span><span class="sh">'</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="sh">'</span><span class="s">L</span><span class="sh">'</span> <span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="sh">'</span><span class="s">C</span><span class="sh">'</span> <span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="sh">'</span><span class="s">D</span><span class="sh">'</span> <span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="sh">'</span><span class="s">M</span><span class="sh">'</span> <span class="p">:</span> <span class="mi">1000</span><span class="p">}</span>
+        
+        <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">before</span> <span class="o">=</span> <span class="mi">1000</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">before</span> <span class="o">&lt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="p">:</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="o">-</span> <span class="n">temp</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="n">temp</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">elif</span> <span class="n">before</span> <span class="o">==</span> <span class="nb">dict</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="p">:</span>
+                <span class="n">temp</span> <span class="o">+=</span> <span class="nb">dict</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="n">temp</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span>
+            <span class="n">before</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="n">temp</span>
+        <span class="k">return</span> <span class="n">res</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
             </div>
@@ -311,8 +347,6 @@
             
             
                 
-            
-                
                     
                     
                     
@@ -322,24 +356,16 @@
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                 <div class="col-md-6">
                     
-                    <a class="prev-next-card" href="/string-to-integer-atoi/">
+                    <a class="prev-next-card" href="/palindrome-number/">
                         <div class="arrow prev-arrow">&laquo;</div>
                         <div class="prev">
                             <div class="prev-next">Previous</div>
-                            <div class="page-title">[Leetcode] 8. String to Integer (atoi)</div>
+                            <div class="page-title">[Leetcode] 9. Palindrome Number</div>
                         </div>
                     </a>
                     
                 </div>
                 <div class="col-md-6">
-                    
-                    <a class="prev-next-card" href="/roman-to-integer/">
-                        <div class="next">
-                            <div class="prev-next">Next</div>
-                            <div class="page-title">[Leetcode] 13. Roman to Integer</div>
-                        </div>
-                        <div class="arrow next-arrow">&raquo;</div>
-                    </a>
                     
                 </div>
             </div>
