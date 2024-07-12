@@ -20,7 +20,7 @@ link: https://leetcode.com/problems/remove-element/
 - Output : length = 2, nums = [2, 2, ...]
 
 <h2>Example 2</h2>
-- Input : - Input : nums = [0, 1, 2, 2, 3, 0, 4, 2], val = 2
+- Input : nums = [0, 1, 2, 2, 3, 0, 4, 2], val = 2
 - Output : length = 5, nums = [0, 1, 3, 0, 4, ...]
 - nums의 첫 5개의 원소에 0, 0, 1, 3, 4가 포함되어 있으면 정답 처리
 
