@@ -137,6 +137,10 @@
 <lastmod>2019-10-13T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/partition-list/</loc>
+<lastmod>2019-10-14T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/remove-duplicates-from-sorted-array-ii/</loc>
 <lastmod>2019-10-14T00:00:00+09:00</lastmod>
 </url>
