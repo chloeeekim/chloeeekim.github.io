@@ -6,27 +6,27 @@
 
 <link rel="icon" href="/assets/images/favicon.png">
 
-<title>[Leetcode] 33. Search in Rotated Sorted Array | Chloeeekim</title>
+<title>[Leetcode] 62. Unique Paths | Chloeeekim</title>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>[Leetcode] 33. Search in Rotated Sorted Array | Chloeeekim</title>
+<title>[Leetcode] 62. Unique Paths | Chloeeekim</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="[Leetcode] 33. Search in Rotated Sorted Array" />
+<meta property="og:title" content="[Leetcode] 62. Unique Paths" />
 <meta name="author" content="chloeeekim" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="정렬된 리스트와 정수 하나가 주어졌을 때, 주어진 정수(target)의 인덱스를 찾는 문제 리스트는 증가하는 방향으로 정렬되어 있지만, rotate 되어 있다. e.g., [0, 1, 2, 4, 5, 6, 7]은 [4, 5, 6, 7, 0, 1, 2]가 될 수 있다. 리스트 내에 정수가 존재하지 않는 경우 -1을 리턴한다." />
-<meta property="og:description" content="정렬된 리스트와 정수 하나가 주어졌을 때, 주어진 정수(target)의 인덱스를 찾는 문제 리스트는 증가하는 방향으로 정렬되어 있지만, rotate 되어 있다. e.g., [0, 1, 2, 4, 5, 6, 7]은 [4, 5, 6, 7, 0, 1, 2]가 될 수 있다. 리스트 내에 정수가 존재하지 않는 경우 -1을 리턴한다." />
-<link rel="canonical" href="http://localhost:4000/search-in-rotated-sorted-array/" />
-<meta property="og:url" content="http://localhost:4000/search-in-rotated-sorted-array/" />
+<meta name="description" content="두 정수 m, n이 주어졌을 때, m x n 사이즈 그리드의 왼쪽 위에서 오른쪽 아래까지 도달하는 방법의 수를 구하는 문제 한 번에 한 칸만 아래 혹은 오른쪽으로 이동할 수 있다. m과 n은 최대 100 이하의 정수이다." />
+<meta property="og:description" content="두 정수 m, n이 주어졌을 때, m x n 사이즈 그리드의 왼쪽 위에서 오른쪽 아래까지 도달하는 방법의 수를 구하는 문제 한 번에 한 칸만 아래 혹은 오른쪽으로 이동할 수 있다. m과 n은 최대 100 이하의 정수이다." />
+<link rel="canonical" href="http://localhost:4000/unique-paths/" />
+<meta property="og:url" content="http://localhost:4000/unique-paths/" />
 <meta property="og:site_name" content="Chloeeekim" />
 <meta property="og:image" content="http://localhost:4000/assets/images/leetcode.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-10-07T00:00:00+09:00" />
+<meta property="article:published_time" content="2019-10-13T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/images/leetcode.png" />
-<meta property="twitter:title" content="[Leetcode] 33. Search in Rotated Sorted Array" />
+<meta property="twitter:title" content="[Leetcode] 62. Unique Paths" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-10-07T00:00:00+09:00","datePublished":"2019-10-07T00:00:00+09:00","description":"정렬된 리스트와 정수 하나가 주어졌을 때, 주어진 정수(target)의 인덱스를 찾는 문제 리스트는 증가하는 방향으로 정렬되어 있지만, rotate 되어 있다. e.g., [0, 1, 2, 4, 5, 6, 7]은 [4, 5, 6, 7, 0, 1, 2]가 될 수 있다. 리스트 내에 정수가 존재하지 않는 경우 -1을 리턴한다.","headline":"[Leetcode] 33. Search in Rotated Sorted Array","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/search-in-rotated-sorted-array/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/search-in-rotated-sorted-array/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-10-13T00:00:00+09:00","datePublished":"2019-10-13T00:00:00+09:00","description":"두 정수 m, n이 주어졌을 때, m x n 사이즈 그리드의 왼쪽 위에서 오른쪽 아래까지 도달하는 방법의 수를 구하는 문제 한 번에 한 칸만 아래 혹은 오른쪽으로 이동할 수 있다. m과 n은 최대 100 이하의 정수이다.","headline":"[Leetcode] 62. Unique Paths","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/unique-paths/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/unique-paths/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -147,19 +147,19 @@
     </p>
     <ul>
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 33. Search in Rotated Sorted Array&url=http://localhost:4000/search-in-rotated-sorted-array/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 62. Unique Paths&url=http://localhost:4000/unique-paths/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fab fa-twitter"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/search-in-rotated-sorted-array/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/unique-paths/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
                 <i class="fab fa-facebook-f"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/search-in-rotated-sorted-array/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/unique-paths/" onclick="window.open(this.href, 'width=550,height=435');return false;">
                 <i class="fab fa-linkedin-in"></i>
             </a>
         </li>
@@ -202,16 +202,16 @@
                 
 
                 <!-- Post Title -->
-                <h1 class="posttitle">[Leetcode] 33. Search in Rotated Sorted Array</h1>
+                <h1 class="posttitle">[Leetcode] 62. Unique Paths</h1>
 
                 <!-- Link -->
                 
-                <a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank">https://leetcode.com/problems/search-in-rotated-sorted-array/</a>
+                <a href="https://leetcode.com/problems/unique-paths/" target="_blank">https://leetcode.com/problems/unique-paths/</a>
                 
 
                 <!-- Post Date -->
                 <small>
-                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-10-07">07 Oct 2019</time></span>           
+                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-10-13">13 Oct 2019</time></span>           
                     
                 </small>
 
@@ -225,7 +225,7 @@
             
 
             
-            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 33. Search in Rotated Sorted Array">
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 62. Unique Paths">
             
 
             
@@ -236,54 +236,29 @@
                 <!-- Toc if any -->
                 
                 <!-- End Toc -->
-                <p>정렬된 리스트와 정수 하나가 주어졌을 때, 주어진 정수(target)의 인덱스를 찾는 문제</p>
+                <p>두 정수 m, n이 주어졌을 때, m x n 사이즈 그리드의 왼쪽 위에서 오른쪽 아래까지 도달하는 방법의 수를 구하는 문제</p>
 <ul>
-  <li>리스트는 증가하는 방향으로 정렬되어 있지만, rotate 되어 있다.</li>
-  <li>e.g., [0, 1, 2, 4, 5, 6, 7]은 [4, 5, 6, 7, 0, 1, 2]가 될 수 있다.</li>
-  <li>리스트 내에 정수가 존재하지 않는 경우 -1을 리턴한다.</li>
+  <li>한 번에 한 칸만 아래 혹은 오른쪽으로 이동할 수 있다.</li>
+  <li>m과 n은 최대 100 이하의 정수이다.</li>
 </ul>
 
 <h2>Example 1</h2>
 <ul>
-  <li>Input : nums = [4, 5, 6, 7, 0, 1, 2], target = 0</li>
-  <li>Output : 4</li>
+  <li>Input : m = 3, n = 7</li>
+  <li>Output : 28</li>
 </ul>
 
 <h2>Example 2</h2>
 <ul>
-  <li>Input : nums = [4, 5, 6, 7, 0, 1, 2], target = 3</li>
-  <li>Output : -1</li>
+  <li>Input : m = 3, n = 2</li>
+  <li>Output : 3</li>
 </ul>
-
-<h2>Example 3</h2>
-<ul>
-  <li>Input : nums = [1], target = 0</li>
-  <li>Output : -1</li>
-</ul>
-
-<h1>Solution 1</h1>
-
-<h2>Note</h2>
-<p>python 내장 함수 사용</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">nums</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="n">target</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
-        <span class="k">return</span> <span class="n">nums</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h1>Solution 2</h1>
 
 <h2>Note</h2>
 <ul>
-  <li>target과 동일한 값이 있는 경우, 해당 인덱스를 리턴한다.</li>
-  <li>리스트가 정렬되어 있기 때문에 이전 값이 target보다 작은데 다음 값이 target보다 큰 경우 target은 존재하지 않는다.</li>
+  <li>dp를 사용하여 해결</li>
+  <li>특정 칸에 도달하기 위한 방법의 수 : 위쪽 칸에 도달하기 위한 방법의 수 + 왼쪽 칸에 도달하기 위한 방법의 수</li>
+  <li>list를 특정 값(value)로 초기화 : lst = [value for i in range(size)]</li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -296,18 +271,16 @@
 8
 9
 10
-11
 </pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="n">issmall</span> <span class="o">=</span> <span class="bp">False</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span> <span class="p">:</span>
-            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span> <span class="p">:</span>
-                <span class="k">return</span> <span class="n">i</span>
-            <span class="k">elif</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span> <span class="p">:</span>
-                <span class="n">issmall</span> <span class="o">=</span> <span class="bp">True</span>
-            <span class="k">elif</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">target</span> <span class="ow">and</span> <span class="n">issmall</span> <span class="p">:</span>
-                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
-        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">uniquePaths</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">cal</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+                    <span class="n">cal</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="n">cal</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">cal</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">cal</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">cal</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
             </div>
@@ -342,20 +315,6 @@
             
             
                 
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
                     
                     
                     
@@ -365,24 +324,16 @@
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                 <div class="col-md-6">
                     
-                    <a class="prev-next-card" href="/count-and-say/">
+                    <a class="prev-next-card" href="/search-a-2d-matrix/">
                         <div class="arrow prev-arrow">&laquo;</div>
                         <div class="prev">
                             <div class="prev-next">Previous</div>
-                            <div class="page-title">[Leetcode] 38. Count and Say</div>
+                            <div class="page-title">[Leetcode] 74. Search a 2D Matrix</div>
                         </div>
                     </a>
                     
                 </div>
                 <div class="col-md-6">
-                    
-                    <a class="prev-next-card" href="/length-of-last-word/">
-                        <div class="next">
-                            <div class="prev-next">Next</div>
-                            <div class="page-title">[Leetcode] 58. Length of Last Word</div>
-                        </div>
-                        <div class="arrow next-arrow">&raquo;</div>
-                    </a>
                     
                 </div>
             </div>
