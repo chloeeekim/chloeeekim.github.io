@@ -6,27 +6,27 @@
 
 <link rel="icon" href="/assets/images/favicon.png">
 
-<title>[Leetcode] 55. Jump Game | Chloeeekim</title>
+<title>[Leetcode] 74. Search a 2D Matrix | Chloeeekim</title>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>[Leetcode] 55. Jump Game | Chloeeekim</title>
+<title>[Leetcode] 74. Search a 2D Matrix | Chloeeekim</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="[Leetcode] 55. Jump Game" />
+<meta property="og:title" content="[Leetcode] 74. Search a 2D Matrix" />
 <meta name="author" content="chloeeekim" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="양의 정수로 이루어진 리스트가 주어졌을 때, 최대 각 칸의 값만큼 점프할 수 있다고 가정하면, 마지막 인덱스에 도달할 수 있는지 확인하는 문제 e.g., 값이 3이라면 1칸, 2칸, 3칸 다음으로 이동할 수 있다." />
-<meta property="og:description" content="양의 정수로 이루어진 리스트가 주어졌을 때, 최대 각 칸의 값만큼 점프할 수 있다고 가정하면, 마지막 인덱스에 도달할 수 있는지 확인하는 문제 e.g., 값이 3이라면 1칸, 2칸, 3칸 다음으로 이동할 수 있다." />
-<link rel="canonical" href="http://localhost:4000/jump-game/" />
-<meta property="og:url" content="http://localhost:4000/jump-game/" />
+<meta name="description" content="m x n 사이즈의 2차원 리스트가 주어졌을 때, targeet이 존재하는지 찾는 문제 각 row에 있는 숫자들은 증가하는 순서로 정렬되어 있다. 각 row의 첫 번째 숫자는 이전 row의 마지막 숫자보다 크다." />
+<meta property="og:description" content="m x n 사이즈의 2차원 리스트가 주어졌을 때, targeet이 존재하는지 찾는 문제 각 row에 있는 숫자들은 증가하는 순서로 정렬되어 있다. 각 row의 첫 번째 숫자는 이전 row의 마지막 숫자보다 크다." />
+<link rel="canonical" href="http://localhost:4000/search-a-2d-matrix/" />
+<meta property="og:url" content="http://localhost:4000/search-a-2d-matrix/" />
 <meta property="og:site_name" content="Chloeeekim" />
 <meta property="og:image" content="http://localhost:4000/assets/images/leetcode.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-10-11T00:00:00+09:00" />
+<meta property="article:published_time" content="2019-10-12T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/images/leetcode.png" />
-<meta property="twitter:title" content="[Leetcode] 55. Jump Game" />
+<meta property="twitter:title" content="[Leetcode] 74. Search a 2D Matrix" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-10-11T00:00:00+09:00","datePublished":"2019-10-11T00:00:00+09:00","description":"양의 정수로 이루어진 리스트가 주어졌을 때, 최대 각 칸의 값만큼 점프할 수 있다고 가정하면, 마지막 인덱스에 도달할 수 있는지 확인하는 문제 e.g., 값이 3이라면 1칸, 2칸, 3칸 다음으로 이동할 수 있다.","headline":"[Leetcode] 55. Jump Game","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jump-game/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/jump-game/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-10-12T00:00:00+09:00","datePublished":"2019-10-12T00:00:00+09:00","description":"m x n 사이즈의 2차원 리스트가 주어졌을 때, targeet이 존재하는지 찾는 문제 각 row에 있는 숫자들은 증가하는 순서로 정렬되어 있다. 각 row의 첫 번째 숫자는 이전 row의 마지막 숫자보다 크다.","headline":"[Leetcode] 74. Search a 2D Matrix","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/search-a-2d-matrix/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/search-a-2d-matrix/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -147,19 +147,19 @@
     </p>
     <ul>
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 55. Jump Game&url=http://localhost:4000/jump-game/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 74. Search a 2D Matrix&url=http://localhost:4000/search-a-2d-matrix/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fab fa-twitter"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/jump-game/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/search-a-2d-matrix/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
                 <i class="fab fa-facebook-f"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/jump-game/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/search-a-2d-matrix/" onclick="window.open(this.href, 'width=550,height=435');return false;">
                 <i class="fab fa-linkedin-in"></i>
             </a>
         </li>
@@ -202,16 +202,16 @@
                 
 
                 <!-- Post Title -->
-                <h1 class="posttitle">[Leetcode] 55. Jump Game</h1>
+                <h1 class="posttitle">[Leetcode] 74. Search a 2D Matrix</h1>
 
                 <!-- Link -->
                 
-                <a href="https://leetcode.com/problems/jump-game/" target="_blank">https://leetcode.com/problems/jump-game/</a>
+                <a href="https://leetcode.com/problems/search-a-2d-matrix/" target="_blank">https://leetcode.com/problems/search-a-2d-matrix/</a>
                 
 
                 <!-- Post Date -->
                 <small>
-                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-10-11">11 Oct 2019</time></span>           
+                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-10-12">12 Oct 2019</time></span>           
                     
                 </small>
 
@@ -225,7 +225,7 @@
             
 
             
-            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 55. Jump Game">
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 74. Search a 2D Matrix">
             
 
             
@@ -236,27 +236,28 @@
                 <!-- Toc if any -->
                 
                 <!-- End Toc -->
-                <p>양의 정수로 이루어진 리스트가 주어졌을 때, 최대 각 칸의 값만큼 점프할 수 있다고 가정하면, 마지막 인덱스에 도달할 수 있는지 확인하는 문제</p>
+                <p>m x n 사이즈의 2차원 리스트가 주어졌을 때, targeet이 존재하는지 찾는 문제</p>
 <ul>
-  <li>e.g., 값이 3이라면 1칸, 2칸, 3칸 다음으로 이동할 수 있다.</li>
+  <li>각 row에 있는 숫자들은 증가하는 순서로 정렬되어 있다.</li>
+  <li>각 row의 첫 번째 숫자는 이전 row의 마지막 숫자보다 크다.</li>
 </ul>
 
 <h2>Example 1</h2>
 <ul>
-  <li>Input : nums = [2, 3, 1, 1, 4]</li>
+  <li>Input : matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3</li>
   <li>Output : true</li>
-  <li>인덱스 0에서 1칸 이동 -&gt; 인덱스 1에서 3칸 이동</li>
 </ul>
 
 <h2>Example 2</h2>
 <ul>
-  <li>Input : nums = [3, 2, 1, 0, 4]</li>
+  <li>Input : matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13</li>
   <li>Output : false</li>
-  <li>어떤 경우에도 무조건 인덱스 3에 도달할 수밖에 없고, 인덱스 3의 값이 0이므로 마지막 인덱스에 도달할 수 없다.</li>
 </ul>
 
 <h2>Note</h2>
-<p>단순하게 생각하여, 최대로 이동할 수 있는 길이가 리스트의 전체 길이보다 긴지 확인</p>
+<ul>
+  <li>해당 row가 target을 포함하는 범위인지 확인한 후, 해당 row에 target이 존재하는지 확인</li>
+</ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -268,15 +269,31 @@
 8
 9
 10
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">canJump</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="n">length</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
-        <span class="n">far</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">far</span> <span class="p">:</span>
-            <span class="n">far</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">far</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-            <span class="k">if</span> <span class="n">far</span> <span class="o">&gt;=</span> <span class="n">length</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:</span>
-                <span class="k">return</span> <span class="bp">True</span>
-            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre><span class="c1"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">searchMatrix</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matrix</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">row</span> <span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+            <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">target</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">target</span> <span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">row</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">True</span>
         <span class="k">return</span> <span class="bp">False</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -312,10 +329,6 @@
             
             
                 
-            
-                
-            
-                
                     
                     
                     
@@ -325,24 +338,16 @@
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                 <div class="col-md-6">
                     
-                    <a class="prev-next-card" href="/climbing-stairs/">
+                    <a class="prev-next-card" href="/remove-duplicates-from-sorted-list/">
                         <div class="arrow prev-arrow">&laquo;</div>
                         <div class="prev">
                             <div class="prev-next">Previous</div>
-                            <div class="page-title">[Leetcode] 70. Climbing Stairs</div>
+                            <div class="page-title">[Leetcode] 83. Remove Duplicates from Sorted List</div>
                         </div>
                     </a>
                     
                 </div>
                 <div class="col-md-6">
-                    
-                    <a class="prev-next-card" href="/remove-duplicates-from-sorted-list/">
-                        <div class="next">
-                            <div class="prev-next">Next</div>
-                            <div class="page-title">[Leetcode] 83. Remove Duplicates from Sorted List</div>
-                        </div>
-                        <div class="arrow next-arrow">&raquo;</div>
-                    </a>
                     
                 </div>
             </div>
