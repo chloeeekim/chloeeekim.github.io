@@ -6,27 +6,27 @@
 
 <link rel="icon" href="/assets/images/favicon.png">
 
-<title>[Leetcode] 34. Find First and Last Position of Element in Sorted Array | Chloeeekim</title>
+<title>[Leetcode] 38. Count and Say | Chloeeekim</title>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>[Leetcode] 34. Find First and Last Position of Element in Sorted Array | Chloeeekim</title>
+<title>[Leetcode] 38. Count and Say | Chloeeekim</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="[Leetcode] 34. Find First and Last Position of Element in Sorted Array" />
+<meta property="og:title" content="[Leetcode] 38. Count and Say" />
 <meta name="author" content="chloeeekim" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="하나의 정렬된 리스트와 정수가 주어졌을 때, 주어진 정수(target)가 등장하는 처음과 끝의 인덱스를 찾는 문제 리스트 내에 target이 없는 경우, [-1, -1]을 리턴한다." />
-<meta property="og:description" content="하나의 정렬된 리스트와 정수가 주어졌을 때, 주어진 정수(target)가 등장하는 처음과 끝의 인덱스를 찾는 문제 리스트 내에 target이 없는 경우, [-1, -1]을 리턴한다." />
-<link rel="canonical" href="http://localhost:4000/find-first-and-last-position-of-element-in-sorted-array/" />
-<meta property="og:url" content="http://localhost:4000/find-first-and-last-position-of-element-in-sorted-array/" />
+<meta name="description" content="특정한 규칙에 따라 sequence가 생성될 때, n번째 sequence를 구하는 문제 ‘1’은 “one 1”로 읽기 때문에 ‘11’이 된다. ‘11’은 “two 1s”로 읽기 때문에 ‘21’이 된다. ‘21’은 “one 2, one 1”으로 읽기 때문에 ‘1211’이 된다. n은 1 이상 30 이하로 주어진다. 첫 5개의 sequence는 다음과 같다. 1 11 21 1211 111221" />
+<meta property="og:description" content="특정한 규칙에 따라 sequence가 생성될 때, n번째 sequence를 구하는 문제 ‘1’은 “one 1”로 읽기 때문에 ‘11’이 된다. ‘11’은 “two 1s”로 읽기 때문에 ‘21’이 된다. ‘21’은 “one 2, one 1”으로 읽기 때문에 ‘1211’이 된다. n은 1 이상 30 이하로 주어진다. 첫 5개의 sequence는 다음과 같다. 1 11 21 1211 111221" />
+<link rel="canonical" href="http://localhost:4000/count-and-say/" />
+<meta property="og:url" content="http://localhost:4000/count-and-say/" />
 <meta property="og:site_name" content="Chloeeekim" />
 <meta property="og:image" content="http://localhost:4000/assets/images/leetcode.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-10-06T00:00:00+09:00" />
+<meta property="article:published_time" content="2019-10-07T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/images/leetcode.png" />
-<meta property="twitter:title" content="[Leetcode] 34. Find First and Last Position of Element in Sorted Array" />
+<meta property="twitter:title" content="[Leetcode] 38. Count and Say" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-10-06T00:00:00+09:00","datePublished":"2019-10-06T00:00:00+09:00","description":"하나의 정렬된 리스트와 정수가 주어졌을 때, 주어진 정수(target)가 등장하는 처음과 끝의 인덱스를 찾는 문제 리스트 내에 target이 없는 경우, [-1, -1]을 리턴한다.","headline":"[Leetcode] 34. Find First and Last Position of Element in Sorted Array","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/find-first-and-last-position-of-element-in-sorted-array/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/find-first-and-last-position-of-element-in-sorted-array/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-10-07T00:00:00+09:00","datePublished":"2019-10-07T00:00:00+09:00","description":"특정한 규칙에 따라 sequence가 생성될 때, n번째 sequence를 구하는 문제 ‘1’은 “one 1”로 읽기 때문에 ‘11’이 된다. ‘11’은 “two 1s”로 읽기 때문에 ‘21’이 된다. ‘21’은 “one 2, one 1”으로 읽기 때문에 ‘1211’이 된다. n은 1 이상 30 이하로 주어진다. 첫 5개의 sequence는 다음과 같다. 1 11 21 1211 111221","headline":"[Leetcode] 38. Count and Say","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/count-and-say/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/count-and-say/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -147,19 +147,19 @@
     </p>
     <ul>
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 34. Find First and Last Position of Element in Sorted Array&url=http://localhost:4000/find-first-and-last-position-of-element-in-sorted-array/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 38. Count and Say&url=http://localhost:4000/count-and-say/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fab fa-twitter"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/find-first-and-last-position-of-element-in-sorted-array/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/count-and-say/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
                 <i class="fab fa-facebook-f"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/find-first-and-last-position-of-element-in-sorted-array/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/count-and-say/" onclick="window.open(this.href, 'width=550,height=435');return false;">
                 <i class="fab fa-linkedin-in"></i>
             </a>
         </li>
@@ -202,16 +202,16 @@
                 
 
                 <!-- Post Title -->
-                <h1 class="posttitle">[Leetcode] 34. Find First and Last Position of Element in Sorted Array</h1>
+                <h1 class="posttitle">[Leetcode] 38. Count and Say</h1>
 
                 <!-- Link -->
                 
-                <a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank">https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/</a>
+                <a href="https://leetcode.com/problems/count-and-say/" target="_blank">https://leetcode.com/problems/count-and-say/</a>
                 
 
                 <!-- Post Date -->
                 <small>
-                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-10-06">06 Oct 2019</time></span>           
+                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-10-07">07 Oct 2019</time></span>           
                     
                 </small>
 
@@ -225,7 +225,7 @@
             
 
             
-            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 34. Find First and Last Position of Element in Sorted Array">
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 38. Count and Say">
             
 
             
@@ -236,34 +236,37 @@
                 <!-- Toc if any -->
                 
                 <!-- End Toc -->
-                <p>하나의 정렬된 리스트와 정수가 주어졌을 때, 주어진 정수(target)가 등장하는 처음과 끝의 인덱스를 찾는 문제</p>
+                <p>특정한 규칙에 따라 sequence가 생성될 때, n번째 sequence를 구하는 문제</p>
 <ul>
-  <li>리스트 내에 target이 없는 경우, [-1, -1]을 리턴한다.</li>
+  <li>‘1’은 “one 1”로 읽기 때문에 ‘11’이 된다.</li>
+  <li>‘11’은 “two 1s”로 읽기 때문에 ‘21’이 된다.</li>
+  <li>‘21’은 “one 2, one 1”으로 읽기 때문에 ‘1211’이 된다.</li>
+  <li>n은 1 이상 30 이하로 주어진다.</li>
+  <li>첫 5개의 sequence는 다음과 같다.
+    <ol>
+      <li>1</li>
+      <li>11</li>
+      <li>21</li>
+      <li>1211</li>
+      <li>111221</li>
+    </ol>
+  </li>
 </ul>
 
 <h2>Example 1</h2>
 <ul>
-  <li>Input : nums = [5, 7, 7, 8, 8, 10], target = 8</li>
-  <li>Output : [3, 4]</li>
+  <li>Input : n = 4</li>
+  <li>Output : “1211”</li>
 </ul>
 
 <h2>Example 2</h2>
 <ul>
-  <li>Input : nums = [5, 7, 7, 8, 8, 10], target = 6</li>
-  <li>Output : [-1, -1]</li>
-</ul>
-
-<h2>Example 3</h2>
-<ul>
-  <li>Input : nums = [], target = 0</li>
-  <li>Output : [-1, -1]</li>
+  <li>Input : n = 1</li>
+  <li>Output : “1”</li>
 </ul>
 
 <h2>Note</h2>
-<ul>
-  <li>count를 통해 리스트 내에 target의 존재 여부를 확인하고, index를 통해 리스트 내에서 처음 등장하는 인덱스를 찾는다.</li>
-  <li>정렬되어 있으므로, <code class="language-plaintext highlighter-rouge">첫 인덱스 + count - 1</code>까지 등장한다.</li>
-</ul>
+<p>동일한 숫자가 반복되는 경우를 count하여 temp 문자열에 추가</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -273,13 +276,27 @@
 6
 7
 8
+9
+10
+11
+12
+13
+14
+15
 </pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">searchRange</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-            <span class="k">return</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">countAndSay</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="sh">'</span><span class="s">1</span><span class="sh">'</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">count</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="sh">''</span><span class="p">,</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>            
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">res</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="n">num</span> <span class="p">:</span>
+                    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="n">temp</span> <span class="o">+=</span> <span class="nf">str</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">+</span> <span class="n">num</span>
+                    <span class="n">num</span> <span class="o">=</span> <span class="n">j</span>
+                    <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">temp</span> <span class="o">+=</span> <span class="nf">str</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">+</span> <span class="n">num</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">temp</span>
         <span class="k">return</span> <span class="n">res</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -317,10 +334,6 @@
                 
             
                 
-            
-                
-            
-                
                     
                     
                     
@@ -330,21 +343,21 @@
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                 <div class="col-md-6">
                     
-                    <a class="prev-next-card" href="/remove-duplicates-from-sorted-array/">
+                    <a class="prev-next-card" href="/search-insert-position/">
                         <div class="arrow prev-arrow">&laquo;</div>
                         <div class="prev">
                             <div class="prev-next">Previous</div>
-                            <div class="page-title">[Leetcode] 26. Remove Duplicates from Sorted Array</div>
+                            <div class="page-title">[Leetcode] 35. Search Insert Position</div>
                         </div>
                     </a>
                     
                 </div>
                 <div class="col-md-6">
                     
-                    <a class="prev-next-card" href="/search-insert-position/">
+                    <a class="prev-next-card" href="/search-in-rotated-sorted-array/">
                         <div class="next">
                             <div class="prev-next">Next</div>
-                            <div class="page-title">[Leetcode] 35. Search Insert Position</div>
+                            <div class="page-title">[Leetcode] 33. Search in Rotated Sorted Array</div>
                         </div>
                         <div class="arrow next-arrow">&raquo;</div>
                     </a>
