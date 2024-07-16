@@ -26,6 +26,7 @@ binary tree가 하나 주어졌을 때, 해당 트리의 preorder traversal의 �
 <h2>Note</h2>
 - preorder() 함수를 만들어 Recursive하게 해결
 - (참고) <a href="https://chloeeekim.github.io/binary-tree-inorder-traversal/" target="_blank">inorder traversal</a>
+- (참고) <a href="https://chloeeekim.github.io/binary-tree-postorder-traversal/" target="_blank">postorder traversal</a>
 
 ```python
 # Definition for a binary tree node.
