@@ -24,7 +24,8 @@ binary tree가 하나 주어졌을 때, 해당 트리의 inorder traversal의 �
 - Output : [1]
 
 <h2>Note</h2>
-inorder() 함수를 만들어 Recursive하게 해결
+- inorder() 함수를 만들어 Recursive하게 해결
+- (참고) <a href="https://chloeeekim.github.io/binary-tree-preorder-traversal/" target="_blank">preorder traversal</a>
 
 ```python
 # Definition for a binary tree node.

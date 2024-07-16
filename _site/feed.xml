@@ -5,8 +5,8 @@
     <description>Chloeeekim&apos;s Blog - All about everything</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 16 Jul 2024 13:03:11 +0900</pubDate>
-    <lastBuildDate>Tue, 16 Jul 2024 13:03:11 +0900</lastBuildDate>
+    <pubDate>Tue, 16 Jul 2024 13:04:24 +0900</pubDate>
+    <lastBuildDate>Tue, 16 Jul 2024 13:04:24 +0900</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
     
       <item>
@@ -884,8 +884,10 @@ Python 3.12.4
 &lt;/ul&gt;
 
 &lt;h2&gt;Note&lt;/h2&gt;
-&lt;p&gt;preorder() 함수를 만들어 Recursive하게 해결
-inorder와 함수 호출 순서만 변경 (참고 : &lt;a href=&quot;https://chloeeekim.github.io/binary-tree-inorder-traversal/&quot; target=&quot;_blank&quot;&gt;inorder traversal&lt;/a&gt;)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;preorder() 함수를 만들어 Recursive하게 해결&lt;/li&gt;
+  &lt;li&gt;(참고) &lt;a href=&quot;https://chloeeekim.github.io/binary-tree-inorder-traversal/&quot; target=&quot;_blank&quot;&gt;inorder traversal&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -957,7 +959,10 @@ inorder와 함수 호출 순서만 변경 (참고 : &lt;a href=&quot;https://chl
 &lt;/ul&gt;
 
 &lt;h2&gt;Note&lt;/h2&gt;
-&lt;p&gt;inorder() 함수를 만들어 Recursive하게 해결&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;inorder() 함수를 만들어 Recursive하게 해결&lt;/li&gt;
+  &lt;li&gt;(참고) &lt;a href=&quot;https://chloeeekim.github.io/binary-tree-preorder-traversal/&quot; target=&quot;_blank&quot;&gt;preorder traversal&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
