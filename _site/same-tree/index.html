@@ -6,27 +6,27 @@
 
 <link rel="icon" href="/assets/images/favicon.png">
 
-<title>[Leetcode] 80. Remove Duplicates from Sorted Array II | Chloeeekim</title>
+<title>[Leetcode] 100. Same Tree | Chloeeekim</title>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>[Leetcode] 80. Remove Duplicates from Sorted Array II | Chloeeekim</title>
+<title>[Leetcode] 100. Same Tree | Chloeeekim</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="[Leetcode] 80. Remove Duplicates from Sorted Array II" />
+<meta property="og:title" content="[Leetcode] 100. Same Tree" />
 <meta name="author" content="chloeeekim" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="정수로 이루어진 정렬된 리스트가 주어졌을 때, 하나의 숫자는 최대 2번만 등장하도록 겹치는 숫자들을 제외한 리스트를 만드는 문제 in-place : 다른 리스트를 할당하지 말고 주어진 리스트 내에서 해결할 것 각 원소는 최대 두 번씩만 나타나야 한다. 새롭게 만들어진 리스트의 길이를 리턴 리턴한 길이의 뒷부분에는 리스트에 어떤 값이 있건 상관하지 않는다." />
-<meta property="og:description" content="정수로 이루어진 정렬된 리스트가 주어졌을 때, 하나의 숫자는 최대 2번만 등장하도록 겹치는 숫자들을 제외한 리스트를 만드는 문제 in-place : 다른 리스트를 할당하지 말고 주어진 리스트 내에서 해결할 것 각 원소는 최대 두 번씩만 나타나야 한다. 새롭게 만들어진 리스트의 길이를 리턴 리턴한 길이의 뒷부분에는 리스트에 어떤 값이 있건 상관하지 않는다." />
-<link rel="canonical" href="http://localhost:4000/remove-duplicates-from-sorted-array-ii/" />
-<meta property="og:url" content="http://localhost:4000/remove-duplicates-from-sorted-array-ii/" />
+<meta name="description" content="binary tree가 두 개 주어졌을 때, 두 트리가 동일한 트리인지 확인하는 문제 동일한 트리의 조건 : 구조가 동일하고, 각 노드의 값이 동일하다." />
+<meta property="og:description" content="binary tree가 두 개 주어졌을 때, 두 트리가 동일한 트리인지 확인하는 문제 동일한 트리의 조건 : 구조가 동일하고, 각 노드의 값이 동일하다." />
+<link rel="canonical" href="http://localhost:4000/same-tree/" />
+<meta property="og:url" content="http://localhost:4000/same-tree/" />
 <meta property="og:site_name" content="Chloeeekim" />
 <meta property="og:image" content="http://localhost:4000/assets/images/leetcode.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-10-14T00:00:00+09:00" />
+<meta property="article:published_time" content="2019-10-21T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/images/leetcode.png" />
-<meta property="twitter:title" content="[Leetcode] 80. Remove Duplicates from Sorted Array II" />
+<meta property="twitter:title" content="[Leetcode] 100. Same Tree" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-10-14T00:00:00+09:00","datePublished":"2019-10-14T00:00:00+09:00","description":"정수로 이루어진 정렬된 리스트가 주어졌을 때, 하나의 숫자는 최대 2번만 등장하도록 겹치는 숫자들을 제외한 리스트를 만드는 문제 in-place : 다른 리스트를 할당하지 말고 주어진 리스트 내에서 해결할 것 각 원소는 최대 두 번씩만 나타나야 한다. 새롭게 만들어진 리스트의 길이를 리턴 리턴한 길이의 뒷부분에는 리스트에 어떤 값이 있건 상관하지 않는다.","headline":"[Leetcode] 80. Remove Duplicates from Sorted Array II","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/remove-duplicates-from-sorted-array-ii/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/remove-duplicates-from-sorted-array-ii/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-10-21T00:00:00+09:00","datePublished":"2019-10-21T00:00:00+09:00","description":"binary tree가 두 개 주어졌을 때, 두 트리가 동일한 트리인지 확인하는 문제 동일한 트리의 조건 : 구조가 동일하고, 각 노드의 값이 동일하다.","headline":"[Leetcode] 100. Same Tree","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/same-tree/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/same-tree/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -147,19 +147,19 @@
     </p>
     <ul>
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 80. Remove Duplicates from Sorted Array II&url=http://localhost:4000/remove-duplicates-from-sorted-array-ii/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 100. Same Tree&url=http://localhost:4000/same-tree/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fab fa-twitter"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/remove-duplicates-from-sorted-array-ii/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/same-tree/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
                 <i class="fab fa-facebook-f"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/remove-duplicates-from-sorted-array-ii/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/same-tree/" onclick="window.open(this.href, 'width=550,height=435');return false;">
                 <i class="fab fa-linkedin-in"></i>
             </a>
         </li>
@@ -202,16 +202,16 @@
                 
 
                 <!-- Post Title -->
-                <h1 class="posttitle">[Leetcode] 80. Remove Duplicates from Sorted Array II</h1>
+                <h1 class="posttitle">[Leetcode] 100. Same Tree</h1>
 
                 <!-- Link -->
                 
-                <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/" target="_blank">https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/</a>
+                <a href="https://leetcode.com/problems/same-tree/" target="_blank">https://leetcode.com/problems/same-tree/</a>
                 
 
                 <!-- Post Date -->
                 <small>
-                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-10-14">14 Oct 2019</time></span>           
+                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-10-21">21 Oct 2019</time></span>           
                     
                 </small>
 
@@ -225,7 +225,7 @@
             
 
             
-            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 80. Remove Duplicates from Sorted Array II">
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 100. Same Tree">
             
 
             
@@ -236,31 +236,37 @@
                 <!-- Toc if any -->
                 
                 <!-- End Toc -->
-                <p>정수로 이루어진 정렬된 리스트가 주어졌을 때, 하나의 숫자는 최대 2번만 등장하도록 겹치는 숫자들을 제외한 리스트를 만드는 문제</p>
+                <p>binary tree가 두 개 주어졌을 때, 두 트리가 동일한 트리인지 확인하는 문제</p>
 <ul>
-  <li>in-place : 다른 리스트를 할당하지 말고 주어진 리스트 내에서 해결할 것</li>
-  <li>각 원소는 최대 두 번씩만 나타나야 한다.</li>
-  <li>새롭게 만들어진 리스트의 길이를 리턴</li>
-  <li>리턴한 길이의 뒷부분에는 리스트에 어떤 값이 있건 상관하지 않는다.</li>
+  <li>동일한 트리의 조건 : 구조가 동일하고, 각 노드의 값이 동일하다.</li>
 </ul>
 
 <h2>Example 1</h2>
 <ul>
-  <li>Input : nums = [1,1,1,2,2,3]</li>
-  <li>Output : 5, nums = [1,1,2,2,3, …]</li>
+  <li>Input : p = [1,2,3], q = [1,2,3]</li>
+  <li>Output : true</li>
 </ul>
 
 <h2>Example 2</h2>
 <ul>
-  <li>Input : nums = [0,0,1,1,1,1,2,3,3]</li>
-  <li>Output : 7, nums = [0,0,1,1,2,3,3, …]</li>
+  <li>Input : p = [1,2], q = [1,null,2]</li>
+  <li>Output : false</li>
+</ul>
+
+<h2>Example 3</h2>
+<ul>
+  <li>Input : p = [1,2,1], q = [1,1,2]</li>
+  <li>Output : false</li>
 </ul>
 
 <h2>Note</h2>
-<ul>
-  <li>나타나는 원소가 이전과 동일한 경우 count를 하여 2번을 초과하여 나타나는 경우에 삭제하는 방법</li>
-  <li>리스트 내에서 순서를 바꾸는 방법도 가능</li>
-</ul>
+<p>isSameNode() 함수를 만들어서 각 노드를 비교</p>
+<ol>
+  <li>노드가 둘 다 None인 경우 : true(동일)</li>
+  <li>노드 중 하나만 None인 경우 : false (다름)</li>
+  <li>노드가 둘 다 None이 아니고, 값이 같은 경우 : left와 right를 비교</li>
+  <li>노드가 둘 다 None이 아니고, 값이 다른 경우 : false (다름)</li>
+</ol>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -280,24 +286,28 @@
 16
 17
 18
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">removeDuplicates</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">nums</span> <span class="p">:</span>
-            <span class="k">return</span> <span class="mi">0</span>
-        <span class="n">now</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">count</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
-        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="p">:</span>
-            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">now</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="p">:</span>
-                    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">else</span> <span class="p">:</span>
-                    <span class="k">del</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+19
+20
+</pre></td><td class="rouge-code"><pre><span class="c1"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">isSameTree</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">isSameNode</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">p</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">q</span> <span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+            <span class="nf">elif </span><span class="p">(</span><span class="ow">not</span> <span class="n">p</span> <span class="ow">and</span> <span class="n">q</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">p</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">q</span><span class="p">)</span> <span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
             <span class="k">else</span> <span class="p">:</span>
-                <span class="n">now</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-                <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
-                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="nf">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">p</span><span class="p">.</span><span class="n">val</span> <span class="o">==</span> <span class="n">q</span><span class="p">.</span><span class="n">val</span> <span class="p">:</span>
+                    <span class="k">return</span> <span class="nf">isSameNode</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">left</span><span class="p">,</span> <span class="n">q</span><span class="p">.</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="nf">isSameNode</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">right</span><span class="p">,</span> <span class="n">q</span><span class="p">.</span><span class="n">right</span><span class="p">)</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="nf">isSameNode</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
             </div>
@@ -332,30 +342,6 @@
             
             
                 
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
                     
                     
                     
@@ -365,24 +351,16 @@
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                 <div class="col-md-6">
                     
-                    <a class="prev-next-card" href="/partition-list/">
+                    <a class="prev-next-card" href="/minimum-path-sum/">
                         <div class="arrow prev-arrow">&laquo;</div>
                         <div class="prev">
                             <div class="prev-next">Previous</div>
-                            <div class="page-title">[Leetcode] 83. Partition List</div>
+                            <div class="page-title">[Leetcode] 64. Minimum Path Sum</div>
                         </div>
                     </a>
                     
                 </div>
                 <div class="col-md-6">
-                    
-                    <a class="prev-next-card" href="/unique-paths-ii/">
-                        <div class="next">
-                            <div class="prev-next">Next</div>
-                            <div class="page-title">[Leetcode] 63. Unique Paths II</div>
-                        </div>
-                        <div class="arrow next-arrow">&raquo;</div>
-                    </a>
                     
                 </div>
             </div>
