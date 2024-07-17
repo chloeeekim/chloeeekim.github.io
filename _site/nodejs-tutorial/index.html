@@ -416,10 +416,10 @@ v20.15.1
 <p>현재는 개발 중 코드 변경 시마다 서버를 수동으로 재시작해야 하는 불편함이 있습니다. Nodemon은 이러한 문제를 해결해주는 도구로, 코드 변경을 감지하여 자동으로 서버를 재시작해줍니다. 다음 명령어로 Nodemon을 설치할 수 있습니다.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>npm <span class="nb">install </span>nodemon
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-g</span> nodemon
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Nodemon을 설치햇다면, <code class="language-plaintext highlighter-rouge">node index.js</code> 명령어 대신 <code class="language-plaintext highlighter-rouge">nodemon index.js</code> 명령어를 통해 서버를 실행하실 수 있습니다.</p>
+<p>만약 위 명령어를 실행했는데 permission 에러가 발생한다면, <code class="language-plaintext highlighter-rouge">sudo npm install -g nodemon</code> 명령어를 사용해주세요. Nodemon을 설치했다면, <code class="language-plaintext highlighter-rouge">node index.js</code> 명령어 대신 <code class="language-plaintext highlighter-rouge">nodemon index.js</code> 명령어를 통해 서버를 실행하실 수 있습니다.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre><span class="nv">$ </span>nodemon index.js
