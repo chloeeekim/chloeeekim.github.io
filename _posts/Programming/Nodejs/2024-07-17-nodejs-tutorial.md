@@ -127,7 +127,7 @@ app.listen(port, () => {
 현재는 개발 중 코드 변경 시마다 서버를 수동으로 재시작해야 하는 불편함이 있습니다. Nodemon은 이러한 문제를 해결해주는 도구로, 코드 변경을 감지하여 자동으로 서버를 재시작해줍니다. 다음 명령어로 Nodemon을 설치할 수 있습니다.
 
 ```bash
-$ npm install -g nodemon
+$ npm install nodemon
 ```
 
 Nodemon을 설치햇다면, `node index.js` 명령어 대신 `nodemon index.js` 명령어를 통해 서버를 실행하실 수 있습니다.
