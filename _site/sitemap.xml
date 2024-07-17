@@ -245,6 +245,10 @@
 <lastmod>2024-07-16T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/nodejs-tutorial/</loc>
+<lastmod>2024-07-17T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/python-automation-script/</loc>
 <lastmod>2024-07-17T00:00:00+09:00</lastmod>
 </url>
@@ -271,6 +275,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/category/python/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/category/nodejs/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/page2/</loc>
