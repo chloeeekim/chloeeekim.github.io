@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/assets/images/favicon.png">
+
+<title>Python으로 웹 스크래핑(웹 크롤링)하기 | Chloeeekim</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Python으로 웹 스크래핑(웹 크롤링)하기 | Chloeeekim</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="Python으로 웹 스크래핑(웹 크롤링)하기" />
+<meta name="author" content="chloeeekim" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="웹 스크래핑(웹 크롤링)은 웹사이트에서 데이터를 추출하여 분석하거나 저장하는 기술입니다. 파이썬은 웹 스크래핑 작업에 널리 사용되는 프로그래밍 언어인데요. 이번 포스팅에서는 Requests와 BeautifulSoup 라이브러리를 사용하여 웹 스크래핑 하는 방법에 대해 단계별로 설명하도록 하겠습니다." />
+<meta property="og:description" content="웹 스크래핑(웹 크롤링)은 웹사이트에서 데이터를 추출하여 분석하거나 저장하는 기술입니다. 파이썬은 웹 스크래핑 작업에 널리 사용되는 프로그래밍 언어인데요. 이번 포스팅에서는 Requests와 BeautifulSoup 라이브러리를 사용하여 웹 스크래핑 하는 방법에 대해 단계별로 설명하도록 하겠습니다." />
+<link rel="canonical" href="http://localhost:4000/python-web-scraping/" />
+<meta property="og:url" content="http://localhost:4000/python-web-scraping/" />
+<meta property="og:site_name" content="Chloeeekim" />
+<meta property="og:image" content="http://localhost:4000/assets/images/python-web-scraping/title.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-07-18T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/python-web-scraping/title.jpg" />
+<meta property="twitter:title" content="Python으로 웹 스크래핑(웹 크롤링)하기" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2024-07-18T00:00:00+09:00","datePublished":"2024-07-18T00:00:00+09:00","description":"웹 스크래핑(웹 크롤링)은 웹사이트에서 데이터를 추출하여 분석하거나 저장하는 기술입니다. 파이썬은 웹 스크래핑 작업에 널리 사용되는 프로그래밍 언어인데요. 이번 포스팅에서는 Requests와 BeautifulSoup 라이브러리를 사용하여 웹 스크래핑 하는 방법에 대해 단계별로 설명하도록 하겠습니다.","headline":"Python으로 웹 스크래핑(웹 크롤링)하기","image":"http://localhost:4000/assets/images/python-web-scraping/title.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/python-web-scraping/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/python-web-scraping/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/assets/css/screen.css" rel="stylesheet">
+
+<link href="/assets/css/main.css" rel="stylesheet">
+
+<script src="/assets/js/jquery.min.js"></script>
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8645952198049208"
+     crossorigin="anonymous"></script>
+
+</head>
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+    <img src="/assets/images/home.png" alt="Chloeeekim">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/categories">Categories</a>
+                </li>
+
+                <script src="/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle font-weight-bold">Chloeeekim</h1>
+    <p class="lead site-description">
+        Chloeeekim's Blog - All about everything
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Python으로 웹 스크래핑(웹 크롤링)하기&url=http://localhost:4000/python-web-scraping/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/python-web-scraping/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/python-web-scraping/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-10 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        <img class="author-thumb" src="/assets/images/avatar.jpg" alt="Chloe Jungah Kim">
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left centered-container">
+                        <div class="centered-element">
+                            <a target="_blank" class="font-weight-bold" href="https://chloeeekim.github.io">Chloe Jungah Kim</a>
+                            <div>
+                                <span class="author-description">A blogger who writes about everything.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">Python으로 웹 스크래핑(웹 크롤링)하기</h1>
+
+                <!-- Link -->
+                
+
+                <!-- Post Date -->
+                <small>
+                    <span class="post-date float-right"><time class="post-date align-right" datetime="2024-07-18">18 Jul 2024</time></span>           
+                    
+                </small>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+
+            
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/python-web-scraping/title.jpg" alt="Python으로 웹 스크래핑(웹 크롤링)하기">
+            
+
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                    
+                    <div class="toc mt-4 mb-4 lead">
+                        <h1 class="font-weight-bold">Summary</h1>
+                        <ul>
+  <li><a href="#환경-설정">환경 설정</a></li>
+  <li><a href="#웹-스크래핑하기">웹 스크래핑하기</a>
+    <ul>
+      <li><a href="#웹페이지-요청">웹페이지 요청</a></li>
+      <li><a href="#html-파싱">HTML 파싱</a></li>
+      <li><a href="#데이터-저장">데이터 저장</a></li>
+    </ul>
+  </li>
+  <li><a href="#다양한-기능-추가하기">다양한 기능 추가하기</a>
+    <ul>
+      <li><a href="#pagination-처리">Pagination 처리</a></li>
+      <li><a href="#요청-사이에-지연-추가">요청 사이에 지연 추가</a></li>
+    </ul>
+  </li>
+</ul>
+                    </div>
+                
+                <!-- End Toc -->
+                <p>웹 스크래핑(웹 크롤링)은 웹사이트에서 데이터를 추출하여 분석하거나 저장하는 기술입니다. 파이썬은 웹 스크래핑 작업에 널리 사용되는 프로그래밍 언어인데요. 이번 포스팅에서는 <code class="language-plaintext highlighter-rouge">Requests</code>와 <code class="language-plaintext highlighter-rouge">BeautifulSoup</code> 라이브러리를 사용하여 웹 스크래핑 하는 방법에 대해 단계별로 설명하도록 하겠습니다.</p>
+
+<p>파이썬을 설치하는 과정과 기본 문법에 대해서는 이전에 작성해 둔 <a href="https://chloeeekim.github.io/python-tutorial/" target="_blank">Python Tutorial</a> 포스팅을 참고하시기 바랍니다.</p>
+
+<h1 id="환경-설정">환경 설정</h1>
+
+<p>파이썬이 설치되어 있다는 가정 하에, 필요한 두 라이브러리를 사용하기 위해서는 패키지를 설치해야 하는데, 터미널 혹은 명령 프롬프트를 열고 <code class="language-plaintext highlighter-rouge">pip</code>를 사용하여 설치하면 됩니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>pip <span class="nb">install </span>requests beautifulsoup4
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="웹-스크래핑하기">웹 스크래핑하기</h1>
+
+<p>웹 스크래핑 프로젝트의 기본 구조는 다음과 같습니다.</p>
+
+<ol>
+  <li>웹페이지 요청 : Requests 라이브러리를 사용하여 웹페이지에 HTTP 요청을 보냅니다.</li>
+  <li>HTML 파싱 : BeautifulSoup을 사용하여 HTML을 파싱하고 원하는 데이터를 추출합니다.</li>
+  <li>데이터 저장 : 추출한 데이터를 CSV 파일이나 데이터베이스에 저장합니다.</li>
+</ol>
+
+<p>이번에는 간단한 구조를 지니고 있는 특정 뉴스 웹사이트에서 최신 뉴스 헤드라인을 수집하는 예제를 작성해보겠습니다.</p>
+
+<h2 id="웹페이지-요청">웹페이지 요청</h2>
+
+<p>다음 코드는 Requests 라이브러리를 사용하여 <code class="language-plaintext highlighter-rouge">news.ycombinator.com</code>이라는 웹사이트에 <code class="language-plaintext highlighter-rouge">requests.get</code> 함수를 사용하여 HTTP 요청을 보냅니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="sh">"</span><span class="s">https://news.ycombinator.com/</span><span class="sh">"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">html</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">content</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="html-파싱">HTML 파싱</h2>
+
+<p>다음으로, BeautifulSoup을 사용하여 HTML을 파싱하고, <code class="language-plaintext highlighter-rouge">find_all</code> 메서드를 사용하여 뉴스 헤드라인을 포함하는 모든 <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> 태그를 찾습니다. 제대로 찾아졌는지 확인하기 위해서 번호를 붙여 출력해봅니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="n">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="nc">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="sh">"</span><span class="s">html.parser</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">headlines</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="nf">find_all</span><span class="p">(</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="sh">"</span><span class="s">storylink</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">headline</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">headlines</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s">. </span><span class="si">{</span><span class="n">headline</span><span class="p">.</span><span class="nf">get_text</span><span class="p">()</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="데이터-저장">데이터 저장</h2>
+
+<p>수집한 데이터를 CSV 파일에 저장하면 나중에 분석하거나 공유하기 쉽습니다. 다음은 <code class="language-plaintext highlighter-rouge">headlines.csv</code> 파일을 생성하고, 수집한 뉴스 헤드라인을 저장하는 예제입니다. <code class="language-plaintext highlighter-rouge">csv.writer</code>를 사용하여 데이터를 csv 형식으로 저장하게 됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">csv</span>
+
+<span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">headlines.csv</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">w</span><span class="sh">"</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="sh">""</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span> <span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="nf">writer</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+    <span class="n">writer</span><span class="p">.</span><span class="nf">writerow</span><span class="p">([</span><span class="sh">"</span><span class="s">No</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Headline</span><span class="sh">"</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">headline</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">headlines</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">writer</span><span class="p">.</span><span class="nf">writerow</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">headline</span><span class="p">.</span><span class="nf">get_text</span><span class="p">()])</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="다양한-기능-추가하기">다양한 기능 추가하기</h1>
+
+<h2 id="pagination-처리">Pagination 처리</h2>
+
+<p>많은 웹사이트는 여러 페이지에 걸쳐서 데이터를 제공합니다. 이러한 경우 페이지네이션을 처리해야 합니다. 다음은 페이지네이션을 처리하여 여러 페이지에 걸쳐서 데이터를 수집하는 코드입니다. <code class="language-plaintext highlighter-rouge">get_headlines</code> 함수는 주어진 url에서 헤드라인을 추출하고, while 문을 통해 5페이지까지의 뉴스 헤드라인을 수집하게 됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">requests</span>
+<span class="kn">from</span> <span class="n">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="k">def</span> <span class="nf">get_headlines</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="nc">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">,</span> <span class="sh">"</span><span class="s">html.parser</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">soup</span><span class="p">.</span><span class="nf">find_all</span><span class="p">(</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="sh">"</span><span class="s">storylink</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="n">base_url</span> <span class="o">=</span> <span class="sh">"</span><span class="s">https://news.ycombinator.com/news?p=</span><span class="sh">"</span>
+<span class="n">page_number</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">all_headlines</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">while</span> <span class="n">page_number</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="p">:</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}{</span><span class="n">page_number</span><span class="si">}</span><span class="sh">"</span>
+    <span class="n">headlines</span> <span class="o">=</span> <span class="nf">get_headlines</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">all_headlines</span><span class="p">.</span><span class="nf">extend</span><span class="p">(</span><span class="n">headlines</span><span class="p">)</span>
+    <span class="n">page_number</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">headline</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">all_headlines</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s">. </span><span class="si">{</span><span class="n">headline</span><span class="p">.</span><span class="nf">get_text</span><span class="p">()</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="요청-사이에-지연-추가">요청 사이에 지연 추가</h2>
+
+<p>과도한 요청은 서버에 부하를 줄 수 있기도 하고, 데이터가 로드되는 데까지 시간이 걸릴 수 있기 때문에 필요한 경우 요청 사이에 지연을 추가해주는 것이 좋습니다. <code class="language-plaintext highlighter-rouge">time</code>을 사용하여 간단한 방법으로 지연을 추가할 수 있습니다. 초 단위로 지정되며, 실수도 허용되기 때문에 0.1초 등으로도 사용이 가능합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">time</span>
+
+<span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 1초의 지연 시간을 추가
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이번 포스팅에서는 파이썬을 사용하여 웹 스크래핑(웹 크롤링)을 하는 방법에 대하여 알아보았습니다. 웹 스크래핑을 통해 다양한 웹사이트에서 데이터를 수집하고, 이를 분석하여 유용한 정보를 얻을 수 있습니다. Requests와 BeautifulSoup 라이브러리를 사용하면 웹 스크래핑 작업을 손쉽게 수행할 수 있습니다. 수집한 데이터를 저장해두면 추후에 유용하게 활용할 수 있을 것입니다.</p>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/category/programming/">Programming</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/category/python/">Python</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            
+            
+            
+                
+                    
+                    
+                    
+                    
+                    
+
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                <div class="col-md-6">
+                    
+                    <a class="prev-next-card" href="/python-automation-script/">
+                        <div class="arrow prev-arrow">&laquo;</div>
+                        <div class="prev">
+                            <div class="prev-next">Previous</div>
+                            <div class="page-title">Python 자동화 스크립트 작성하기</div>
+                        </div>
+                    </a>
+                    
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-12">
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://chloeeekim.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1">Categories</h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/category/cuda/">CUDA (9)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/programming/">Programming (15)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/algorithm/">Algorithm (47)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/jekyll/">Jekyll (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/python/">Python (4)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/nodejs/">Nodejs (2)</a>
+                
+            
+            
+		</div>
+	</div>
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Chloeeekim 
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/assets/js/mediumish.js"></script>
+
+
+<script src="/assets/js/lazyload.js"></script>
+
+
+<script src="/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+
+
+</body>
+</html>
