@@ -12,13 +12,18 @@ title: Home
         <h2><span>Featured</span></h2>
     </div>
     <div class="row">
-
+    
+    {% assign count = 0 %}
     {% for post in site.posts %}
 
         {% if post.featured == true %}
-
+            {% assign count = count | plus: 1 %}
             {% include featuredbox.html %}
 
+        {% endif %}
+
+        {% if count == 4 %}
+            {% break %}
         {% endif %}
 
     {% endfor %}
