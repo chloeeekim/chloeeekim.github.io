@@ -5,8 +5,8 @@
     <description>Chloeeekim&apos;s Blog - All about everything</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 22 Jul 2024 14:57:52 +0900</pubDate>
-    <lastBuildDate>Mon, 22 Jul 2024 14:57:52 +0900</lastBuildDate>
+    <pubDate>Mon, 22 Jul 2024 15:01:58 +0900</pubDate>
+    <lastBuildDate>Mon, 22 Jul 2024 15:01:58 +0900</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
     
       <item>
@@ -140,7 +140,7 @@
 
 &lt;p&gt;고차 함수는 파이썬을 비롯한 여러 프로그래밍 언어에서 강력한 도구로 활용됩니다. 함수를 인자로 받거나 반환하는 이러한 함수들은 코드의 재사용성과 가독성을 높이며, 유연하고 간결한 코드를 작성하는 데 큰 도움이 됩니다. 이러한 고차 함수를 잘 활용하면 더욱 효율적인 코드를 작성할 수 있을 것입니다.&lt;/p&gt;
 </description>
-        <pubDate>Mon, 22 Jul 2024 00:00:00 +0900</pubDate>
+        <pubDate>Sun, 21 Jul 2024 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/python-higher-order-function/</link>
         <guid isPermaLink="true">http://localhost:4000/python-higher-order-function/</guid>
         
