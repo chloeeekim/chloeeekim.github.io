@@ -5,9 +5,151 @@
     <description>Chloeeekim&apos;s Blog - All about everything</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 19 Jul 2024 16:33:52 +0900</pubDate>
-    <lastBuildDate>Fri, 19 Jul 2024 16:33:52 +0900</lastBuildDate>
+    <pubDate>Mon, 22 Jul 2024 14:57:52 +0900</pubDate>
+    <lastBuildDate>Mon, 22 Jul 2024 14:57:52 +0900</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
+    
+      <item>
+        <title>Python에서의 고차 함수 (feat. map, filter, reduce)</title>
+        <description>&lt;p&gt;프로그래밍 언어에서 고차 함수(Higher-order function)는 함수를 인자로 받거나, 함수를 반환하는 함수를 의미합니다. 이러한 함수들은 함수형 프로그래밍의 핵심 요소로, 코드의 재사용성과 가독성을 높이는 데 큰 역할을 합니다. 특히 파이썬에서는 고차 함수를 활용하기 좋습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;고차-함수의-개념&quot;&gt;고차 함수의 개념&lt;/h1&gt;
+
+&lt;p&gt;고차 함수는 다음 두 가지 특성 중 하나 이상을 만족하는 함수입니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;하나 이상의 함수를 인자로 받을 수 있다.&lt;/li&gt;
+  &lt;li&gt;함수를 반환할 수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이러한 특성 덕분에 고차 함수는 매우 유연하고 강력한 도구로 사용됩니다. 대표적인 고차 함수로는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filter()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reduce()&lt;/code&gt; 등이 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;고차-함수의-장점&quot;&gt;고차 함수의 장점&lt;/h2&gt;
+
+&lt;p&gt;고차 함수는 다음의 여러 가지 장점을 가지고 있습니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;코드의 재사용성 : 고차 함수를 사용하면 동일한 코드 블럭을 여러 번 사용할 수 있어 코드의 재사용성이 높아집니다.&lt;/li&gt;
+  &lt;li&gt;가독성 향상 : 고차 함수를 사용하면 코드를 간결하게 작성할 수 있어 가독성이 향상됩니다. 특히, 익명 함수(lambda 함수)를 사용하면 더 짧고 명료한 코드를 작성할 수 있습니다.&lt;/li&gt;
+  &lt;li&gt;유연성 : 함수를 인자로 받거나 반환할 수 있어 매우 유연한 코드를 설계할 수 있습니다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;함수를-인자로-받는-함수의-예시&quot;&gt;함수를 인자로 받는 함수의 예시&lt;/h2&gt;
+
+&lt;p&gt;다음 예시는 함수를 인자로 받는 고차 함수를 생성합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apply_function&lt;/code&gt; 함수는 함수를 인자로 받아 해당 함수를 실행하게 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;apply_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;square&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;apply_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;square&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 25
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;함수를-반환하는-함수의-예시&quot;&gt;함수를 반환하는 함수의 예시&lt;/h2&gt;
+
+&lt;p&gt;다음 예시는 함수를 반환하는 고차 함수를 생성합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;create_multiplier&lt;/code&gt; 함수는 입력값에 특정 값을 곱하는 기능을 하는 함수를 반환합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create_multiplier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;multiplier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multiplier&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;multiply_by_3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create_multiplier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;multiply_by_3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 30
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;python에서의-고차-함수&quot;&gt;Python에서의 고차 함수&lt;/h1&gt;
+
+&lt;p&gt;파이썬은 고차 함수를 매우 효율적으로 지원합니다. 파이썬에서 자주 사용되는 몇 가지 고차 함수들에 대해서 설명하도록 하겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;map&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map()&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map()&lt;/code&gt; 함수는 주어진 함수와 iterable을 인자로 받아, iterable의 각 요소에 함수를 적용한 결과를 반환합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;square&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;squared_numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;square&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;squared_numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# [1, 4, 9, 16, 25]
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;filter&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filter()&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filter()&lt;/code&gt; 함수는 주어진 함수와 iterable을 인자로 받아, 함수의 조건을 만족하는 요소만을 포함하는 iterable을 반환합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;is_even&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;even_numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_even&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;even_numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# [2, 4]
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;reduce&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reduce()&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reduce()&lt;/code&gt; 함수는 iterable의 각 요소에 누적 함수를 적용하여 단일 값을 반환합니다. 이 함수는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;functools&lt;/code&gt; 모듈에서 제공됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;functools&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;reduce&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sum_of_numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reduce&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum_of_numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 15
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;고차 함수는 파이썬을 비롯한 여러 프로그래밍 언어에서 강력한 도구로 활용됩니다. 함수를 인자로 받거나 반환하는 이러한 함수들은 코드의 재사용성과 가독성을 높이며, 유연하고 간결한 코드를 작성하는 데 큰 도움이 됩니다. 이러한 고차 함수를 잘 활용하면 더욱 효율적인 코드를 작성할 수 있을 것입니다.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 22 Jul 2024 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/python-higher-order-function/</link>
+        <guid isPermaLink="true">http://localhost:4000/python-higher-order-function/</guid>
+        
+        
+        <category>Python</category>
+        
+        <category>Programming</category>
+        
+      </item>
     
       <item>
         <title>Django를 사용하여 RESTful API 구축하기</title>
@@ -1845,99 +1987,6 @@ Python 3.12.4
         <pubDate>Wed, 03 Jul 2024 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/jekyll-search/</link>
         <guid isPermaLink="true">http://localhost:4000/jekyll-search/</guid>
-        
-        
-        <category>Jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Jekyll Blog(Github Pages)에 Google Anayltics 연결하기</title>
-        <description>&lt;p&gt;Github Pages와 Jekyll로 생성한 블로그의 경우, 트래픽 분석 등을 따로 제공하지 않기 때문에 누가 어떤 방식으로 내 블로그에 유입되었는지 알기 힘들다는 한계점이 있습니다. 이를 보완하기 위하여 Google Analytics를 통해 누가, 얼마나, 어떤 방식으로, 어느 지역에서 유입되는지를 확인할 수 있습니다. 참고로, 2024년 현재 구글 애널리틱스(Google Analytics, GA)는 GA4 버전만 생성 가능합니다. 이전 버전인 유니버셜 애널리틱스(Universal Analytics, UA)는 추후 지원이 되지 않을 수 있습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;ga-계정-만들기&quot;&gt;GA 계정 만들기&lt;/h1&gt;
-
-&lt;p&gt;우선 GA를 적용하기 위해 GA 계정부터 생성해야 합니다. &lt;a href=&quot;https://analytics.google.com/&quot; _target=&quot;blank&quot;&gt;Google Analytics&lt;/a&gt;에 접속하여 계정부터 설정해줍니다.&lt;/p&gt;
-
-&lt;p&gt;첫 번째로 계정 ID를 등록합니다. 여러 개의 ID를 생성할 수도 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/1.jpg&quot; alt=&quot;create account&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;두 번째로 GA를 통해 관리할 url을 속성에 넣어줍니다. 저는 제 github.io 주소를 입력하였습니다. 또, 시간대와 통화 등을 대한민국으로 설정을 바꿔주면 되는데, 추후에 변경할 수도 있으니 넘어가셔도 좋습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/2.jpg&quot; alt=&quot;create attribute&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이후에 비즈니스 세부정보, 목표 등을 적당히 설정해주고, 데이터 수집과 관련한 사항에 동의해줍니다. 마지막으로 데이터 소스 플랫폼을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;웹&lt;/code&gt;으로 선택해줍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/3.jpg&quot; alt=&quot;select data source&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;데이터 스트림 설정에서는 관리할 사이트의 url을 입력하고, 우측 상단의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;만들고 계속하기&lt;/code&gt;를 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/4.jpg&quot; alt=&quot;setup data stream&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이제 측정 ID가 부여됩니다. 이 ID가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G-XXXXXXXX&lt;/code&gt; 형식인 것이 GA4 버전입니다. UA 버전의 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UA-XXXXXXXX-X&lt;/code&gt;와 같은 형식으로 나타납니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/5.jpg&quot; alt=&quot;measurement ID&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;여기서 태그 사용을 선택하고 다음으로 넘어가면, 아래와 같은 화면이 표시됩니다. 아직 태그를 설정해주지 않았기 때문에 데이터 수집이 활성화되어 있지 않은 상태입니다. 이제 블로그에 GA를 연결할 준비가 완료되었습니다. 참고로 아래 내용은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;설정 &amp;gt; 데이터 수집 및 수정 &amp;gt; 데이터 스트림&lt;/code&gt;에서도 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/6.jpg&quot; alt=&quot;web stream details&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;jekyll-블로그에-ga-연결하기&quot;&gt;Jekyll 블로그에 GA 연결하기&lt;/h1&gt;
-
-&lt;p&gt;블로그의 설정 등에 따라 방법이 여러 가지로 나뉠 수 있습니다. 저처럼 특정 테마를 사용하여 블로그를 세팅한 경우에는 블로그에서 지원하는 버전이 UA일 수 있습니다. 사용하고 있는 테마의 document나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; 파일을 살펴봅니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;예시가-ga4-버전인-경우&quot;&gt;예시가 GA4 버전인 경우&lt;/h2&gt;
-
-&lt;p&gt;여기서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G-XXXXXXXX&lt;/code&gt; 형식의 태그가 예시로 되어 있다면 별다른 변경 없이 발급받은 측정 ID를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;에 다음과 같이 추가해주기만 하면 됩니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;na&quot;&gt;google_analytics&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;G-XXXXXXXX&quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;예시가-ua-버전인-경우&quot;&gt;예시가 UA 버전인 경우&lt;/h2&gt;
-
-&lt;p&gt;하지만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UA-XXXXXXXX-X&lt;/code&gt;와 같은 형식의 태그가 예시로 되어 있다면, 유니버셜 애널리틱스를 기준으로 테마가 만들어져 있는 상태입니다. 따라서 GA4 태그를 사용하기 위해서는 수정이 불가피합니다.&lt;/p&gt;
-
-&lt;p&gt;우선 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;설정 &amp;gt; 데이터 수집 및 수정 &amp;gt; 데이터 스트림 &amp;gt; 태그 안내 보기&lt;/code&gt;로 들어갑니다. 상단의 탭에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;직접 설치&lt;/code&gt;를 클릭하면 다음과 같이 gtag 코드가 나옵니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/7.jpg&quot; alt=&quot;gtag information&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Google&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;tag &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gtag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataLayer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataLayer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;gtag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataLayer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);}&lt;/span&gt;
-  &lt;span class=&quot;nf&quot;&gt;gtag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-
-  &lt;span class=&quot;nf&quot;&gt;gtag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;G-XXXXXXXXXX&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;설명에도 나와있듯, 해당 코드를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 요소 안에 붙여 넣으면 됩니다. 여기서도 테마마다 설정하는 방법이 달라집니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_includes&lt;/code&gt; 폴더에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;analytics.html&lt;/code&gt;이 있는 경우에는 해당 파일을 수정하면 되는데, 없는 경우에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 요소를 붙이는 파일을 찾아야 합니다. 저는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; 폴더에 있는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default.html&lt;/code&gt; 파일을 수정하였습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;ga-연결-확인하기&quot;&gt;GA 연결 확인하기&lt;/h1&gt;
-
-&lt;p&gt;수정된 코드를 github에 올리고, 빌드가 완료될 때까지 몇 분 정도 기다려줍니다. 빠르게 확인할 수 있는 방법으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;개발자 도구 &amp;gt; Console&lt;/code&gt;에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gtag&lt;/code&gt;를 입력해 볼 수 있습니다. 제대로 연결되지 않았다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Uncaught ReferenceError&lt;/code&gt;가 발생하고, 제대로 연결된 경우 다음과 같이 gtag를 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/8.jpg&quot; alt=&quot;gtag: console&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Google Analytics에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;보고서 &amp;gt; 실시간&lt;/code&gt; 탭에서 사용자가 확인되면 GA 연결은 성공적으로 끝납니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/jekyll-google-analytics/9.jpg&quot; alt=&quot;google analytics check&quot; class=&quot;post-img&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 29 Jun 2024 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/jekyll-google-analytics/</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll-google-analytics/</guid>
         
         
         <category>Jekyll</category>
