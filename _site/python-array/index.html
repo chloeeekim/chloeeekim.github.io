@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/assets/images/favicon.png">
+
+<title>Python의 배열(Array) - 효율적인 데이터 처리하기 | Chloeeekim</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Python의 배열(Array) - 효율적인 데이터 처리하기 | Chloeeekim</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="Python의 배열(Array) - 효율적인 데이터 처리하기" />
+<meta name="author" content="chloeeekim" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="파이썬은 다양한 자료형(data type)을 제공합니다. 그 중에서도 배열(Array)은 확장 자료형으로 효율적인 데이터 처리를 위해 반드시 알아야 할 중요한 개념입니다. 이번 포스팅에서는 파이썬의 배열에 대해 자세히 알아보겠습니다." />
+<meta property="og:description" content="파이썬은 다양한 자료형(data type)을 제공합니다. 그 중에서도 배열(Array)은 확장 자료형으로 효율적인 데이터 처리를 위해 반드시 알아야 할 중요한 개념입니다. 이번 포스팅에서는 파이썬의 배열에 대해 자세히 알아보겠습니다." />
+<link rel="canonical" href="http://localhost:4000/python-array/" />
+<meta property="og:url" content="http://localhost:4000/python-array/" />
+<meta property="og:site_name" content="Chloeeekim" />
+<meta property="og:image" content="http://localhost:4000/assets/images/python-array/title.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-07-23T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/python-array/title.jpg" />
+<meta property="twitter:title" content="Python의 배열(Array) - 효율적인 데이터 처리하기" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2024-07-23T00:00:00+09:00","datePublished":"2024-07-23T00:00:00+09:00","description":"파이썬은 다양한 자료형(data type)을 제공합니다. 그 중에서도 배열(Array)은 확장 자료형으로 효율적인 데이터 처리를 위해 반드시 알아야 할 중요한 개념입니다. 이번 포스팅에서는 파이썬의 배열에 대해 자세히 알아보겠습니다.","headline":"Python의 배열(Array) - 효율적인 데이터 처리하기","image":"http://localhost:4000/assets/images/python-array/title.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/python-array/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/python-array/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/assets/css/screen.css" rel="stylesheet">
+
+<link href="/assets/css/main.css" rel="stylesheet">
+
+<script src="/assets/js/jquery.min.js"></script>
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8645952198049208"
+     crossorigin="anonymous"></script>
+
+</head>
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+    <img src="/assets/images/home.png" alt="Chloeeekim">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/categories">Categories</a>
+                </li>
+
+                <script src="/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle font-weight-bold">Chloeeekim</h1>
+    <p class="lead site-description">
+        Chloeeekim's Blog - All about everything
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Python의 배열(Array) - 효율적인 데이터 처리하기&url=http://localhost:4000/python-array/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/python-array/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/python-array/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-10 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        <img class="author-thumb" src="/assets/images/avatar.jpg" alt="Chloe Jungah Kim">
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left centered-container">
+                        <div class="centered-element">
+                            <a target="_blank" class="font-weight-bold" href="https://chloeeekim.github.io">Chloe Jungah Kim</a>
+                            <div>
+                                <span class="author-description">A blogger who writes about everything.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">Python의 배열(Array) - 효율적인 데이터 처리하기</h1>
+
+                <!-- Link -->
+                
+
+                <!-- Post Date -->
+                <small>
+                    <span class="post-date float-right"><time class="post-date align-right" datetime="2024-07-23">23 Jul 2024</time></span>           
+                    
+                </small>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+
+            
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/python-array/title.jpg" alt="Python의 배열(Array) - 효율적인 데이터 처리하기">
+            
+
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                    
+                    <div class="toc mt-4 mb-4 lead">
+                        <h1 class="font-weight-bold">Summary</h1>
+                        <ul>
+  <li><a href="#배열array이란">배열(Array)이란?</a></li>
+  <li><a href="#python에서-배열-사용하기">Python에서 배열 사용하기</a>
+    <ul>
+      <li><a href="#배열-생성하기">배열 생성하기</a></li>
+      <li><a href="#배열-요소-접근">배열 요소 접근</a></li>
+      <li><a href="#배열-메서드">배열 메서드</a></li>
+    </ul>
+  </li>
+  <li><a href="#배열-vs-리스트">배열 vs. 리스트</a></li>
+</ul>
+                    </div>
+                
+                <!-- End Toc -->
+                <p>파이썬은 다양한 자료형(data type)을 제공합니다. 그 중에서도 배열(Array)은 확장 자료형으로 효율적인 데이터 처리를 위해 반드시 알아야 할 중요한 개념입니다. 이번 포스팅에서는 파이썬의 배열에 대해 자세히 알아보겠습니다.</p>
+
+<p>파이썬의 기본 문법에 대해서는 이전에 작성해 둔 <a href="https://chloeeekim.github.io/python-tutorial/" target="_blank">Python Tutorial</a> 포스팅을 참고하시기 바랍니다. 또, 파이썬의 자료형에 대해서는 <a href="https://chloeeekim.github.io/python-data-types/" target="_blank">Python의 자료형 살펴보기</a> 포스팅을 참고하시기 바랍니다.</p>
+
+<h1 id="배열array이란">배열(Array)이란?</h1>
+
+<p>배열은 동일한 자료형의 요소들을 저장하는 자료구조입니다. 파이썬에서는 기본적으로 리스트(List)를 사용하지만, 배열(Array)을 사용하면 더 효율적인 메모리 사용과 성능을 얻을 수 있습니다. 배열은 특히 대량의 데이터 처리에 유리합니다.</p>
+
+<h1 id="python에서-배열-사용하기">Python에서 배열 사용하기</h1>
+
+<p>파이썬에서 배열을 사용하기 위해서는 <code class="language-plaintext highlighter-rouge">array</code> 모듈을 임포트해야 합니다. 배열은 리스트와 유사하지만, 모든 요소가 동일한 자료형이어야 한다는 점에서 차이가 있습니다.</p>
+
+<h2 id="배열-생성하기">배열 생성하기</h2>
+
+<p>배열을 생성하려면 <code class="language-plaintext highlighter-rouge">array.array</code> 메소드를 사용합니다. 이 때, 배열의 자료형과 초기 요소들을 지정해줍니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">array</span>
+<span class="n">my_array</span> <span class="o">=</span> <span class="n">array</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="sh">'</span><span class="s">i</span><span class="sh">'</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span> <span class="c1"># array('i', [1, 2, 3, 4, 5])
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위 코드에서 <code class="language-plaintext highlighter-rouge">'i'</code>는 배열이 정수형(integer) 요소들로 구성된다는 것을 의미합니다. 파이썬의 array 모듈은 다양한 자료형 코드를 지원합니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">자료형 코드</th>
+      <th style="text-align: center">설명</th>
+      <th style="text-align: center">최소 크기</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'b'</code></td>
+      <td style="text-align: center">부호 있는 정수</td>
+      <td style="text-align: center">1 byte</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'B'</code></td>
+      <td style="text-align: center">부호 없는 정수</td>
+      <td style="text-align: center">1 byte</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'h'</code></td>
+      <td style="text-align: center">부호 있는 정수</td>
+      <td style="text-align: center">2 byte</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'H'</code></td>
+      <td style="text-align: center">부호 없는 정수</td>
+      <td style="text-align: center">2 byte</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'i'</code></td>
+      <td style="text-align: center">부호 있는 정수</td>
+      <td style="text-align: center">2 byte</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'I'</code></td>
+      <td style="text-align: center">부호 없는 정수</td>
+      <td style="text-align: center">2 byte</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'l'</code></td>
+      <td style="text-align: center">부호 있는 정수</td>
+      <td style="text-align: center">4 byte</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'L'</code></td>
+      <td style="text-align: center">부호 없는 정수</td>
+      <td style="text-align: center">4 byte</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'q'</code></td>
+      <td style="text-align: center">부호 있는 정수</td>
+      <td style="text-align: center">8 byte</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'Q'</code></td>
+      <td style="text-align: center">부호 없는 정수</td>
+      <td style="text-align: center">8 byte</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'f'</code></td>
+      <td style="text-align: center">부동 소수점</td>
+      <td style="text-align: center">4 byte</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'d'</code></td>
+      <td style="text-align: center">부동 소수점</td>
+      <td style="text-align: center">8 byte</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="배열-요소-접근">배열 요소 접근</h2>
+
+<p>배열 요소에 접근하는 방법은 리스트와 동일합니다. 인덱스를 사용하여 요소를 조회하거나, 변경할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">array</span>
+<span class="n">my_array</span> <span class="o">=</span> <span class="n">array</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="sh">'</span><span class="s">i</span><span class="sh">'</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">my_array</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 1
+</span><span class="n">my_array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span> <span class="c1"># array('i', [1, 10, 3, 4, 5])
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="배열-메서드">배열 메서드</h2>
+
+<p>배열은 다양한 메서드를 제공하여 요소를 추가, 제거, 검색할 수 있습니다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">append()</code> : 배열 끝에 요소를 추가합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">insert()</code> : 특정 인덱스에 요소를 추가합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">pop()</code> : 특정 인덱스의 요소를 제거하고 반환합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">remove()</code> : 첫 번째로 일치하는 요소를 제거합니다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">array</span>
+<span class="n">my_array</span> <span class="o">=</span> <span class="n">array</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="sh">'</span><span class="s">i</span><span class="sh">'</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># append()
+</span><span class="n">my_array</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span> <span class="c1"># array('i', [1, 2, 3, 4, 5, 6])
+</span>
+<span class="c1"># insert()
+</span><span class="n">my_array</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span> <span class="c1"># array('i', [1, 2, 7, 3, 4, 5, 6])
+</span>
+<span class="c1"># pop()
+</span><span class="n">my_array</span><span class="p">.</span><span class="nf">pop</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span> <span class="c1"># array('i', [1, 2, 7, 4, 5, 6])
+</span>
+<span class="c1"># remove()
+</span><span class="n">my_array</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span> <span class="c1"># array('i', [1, 2, 4, 5, 6])
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="배열-vs-리스트">배열 vs. 리스트</h1>
+
+<p>파이썬에서 리스트와 배열은 비슷해 보이지만, 몇 가지 중요한 차이점이 있습니다.</p>
+
+<ol>
+  <li>자료형 : 리스트는 서로 다른 자료형의 요소들을 가질 수 있지만, 배열은 동일한 자료형의 요소들로만 구성됩니다.</li>
+  <li>성능 : 배열은 메모리 효율성과 성능 면에서 리스트보다 뛰어납니다. 이는 배열이 메모리 상에서 연속된 공간을 차지하기 때문입니다.</li>
+  <li>용도 : 리스트는 일반적인 용도로, 배열은 대량의 데이터 처리가 필요한 경우에 적합합니다.</li>
+</ol>
+
+<p>파이썬에서 배열은 효율적인 데이터 처리를 위해 중요한 자료구조입니다. 배열을 사용하면 메모리 효율성과 성능을 크게 향상시킬 수 있습니다. 배열에 대한 더 자세한 내용은 파이썬 공식 문서를 참고해 보시길 바랍니다.</p>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/category/programming/">Programming</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/category/python/">Python</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            
+            
+            
+                
+            
+                
+                    
+                    
+                    
+                    
+                    
+
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                <div class="col-md-6">
+                    
+                    <a class="prev-next-card" href="/python-lambda-function/">
+                        <div class="arrow prev-arrow">&laquo;</div>
+                        <div class="prev">
+                            <div class="prev-next">Previous</div>
+                            <div class="page-title">Python Lambda Function에 대하여</div>
+                        </div>
+                    </a>
+                    
+                </div>
+                <div class="col-md-6">
+                    
+                    <a class="prev-next-card" href="/python-data-types/">
+                        <div class="next">
+                            <div class="prev-next">Next</div>
+                            <div class="page-title">Python의 자료형 살펴보기</div>
+                        </div>
+                        <div class="arrow next-arrow">&raquo;</div>
+                    </a>
+                    
+                </div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-12">
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://chloeeekim.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1">Categories</h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/category/cuda/">CUDA (9)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/programming/">Programming (21)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/algorithm/">Algorithm (47)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/jekyll/">Jekyll (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/python/">Python (9)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/nodejs/">Nodejs (3)</a>
+                
+            
+            
+		</div>
+	</div>
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Chloeeekim 
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/assets/js/mediumish.js"></script>
+
+
+<script src="/assets/js/lazyload.js"></script>
+
+
+<script src="/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+
+
+</body>
+</html>
