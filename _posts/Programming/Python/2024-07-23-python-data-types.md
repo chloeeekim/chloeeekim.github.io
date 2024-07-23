@@ -94,7 +94,7 @@ z = x + int(y) # 30 (int)
 
 ## 배열 (Array)
 
-배열은 동일한 자료형의 요소들을 저장하는 자료형으로, `array` 모듈을 사용하여 정의할 수 있습니다. 배열은 리스트와 유사하지만, 더 효율적인 메모리 사용과 성능을 제공합니다.
+배열은 동일한 자료형의 요소들을 저장하는 자료형으로, `array` 모듈을 사용하여 정의할 수 있습니다. 배열은 리스트와 유사하지만, 더 효율적인 메모리 사용과 성능을 제공합니다. 배열의 사용법에 대해서는 <a href="https://chloeeekim.github.io/python-array/" target="_blank">Python의 배열(Array) - 효율적인 데이터 처리하기</a> 포스팅을 참고하시기 바랍니다.
 
 ```python
 import array as arr

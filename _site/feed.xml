@@ -5,8 +5,8 @@
     <description>Chloeeekim&apos;s Blog - All about everything</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 Jul 2024 16:28:21 +0900</pubDate>
-    <lastBuildDate>Tue, 23 Jul 2024 16:28:21 +0900</lastBuildDate>
+    <pubDate>Tue, 23 Jul 2024 16:30:11 +0900</pubDate>
+    <lastBuildDate>Tue, 23 Jul 2024 16:30:11 +0900</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
     
       <item>
@@ -103,7 +103,7 @@
 
 &lt;h2 id=&quot;배열-array&quot;&gt;배열 (Array)&lt;/h2&gt;
 
-&lt;p&gt;배열은 동일한 자료형의 요소들을 저장하는 자료형으로, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;array&lt;/code&gt; 모듈을 사용하여 정의할 수 있습니다. 배열은 리스트와 유사하지만, 더 효율적인 메모리 사용과 성능을 제공합니다.&lt;/p&gt;
+&lt;p&gt;배열은 동일한 자료형의 요소들을 저장하는 자료형으로, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;array&lt;/code&gt; 모듈을 사용하여 정의할 수 있습니다. 배열은 리스트와 유사하지만, 더 효율적인 메모리 사용과 성능을 제공합니다. 배열의 사용법에 대해서는 &lt;a href=&quot;https://chloeeekim.github.io/python-array/&quot; target=&quot;_blank&quot;&gt;Python의 배열(Array) - 효율적인 데이터 처리하기&lt;/a&gt; 포스팅을 참고하시기 바랍니다.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
