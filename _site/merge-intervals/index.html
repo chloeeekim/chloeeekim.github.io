@@ -6,27 +6,27 @@
 
 <link rel="icon" href="/assets/images/favicon.png">
 
-<title>[Leetcode] 39. Combination Sum | Chloeeekim</title>
+<title>[Leetcode] 56. Merge Intervals | Chloeeekim</title>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>[Leetcode] 39. Combination Sum | Chloeeekim</title>
+<title>[Leetcode] 56. Merge Intervals | Chloeeekim</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="[Leetcode] 39. Combination Sum" />
+<meta property="og:title" content="[Leetcode] 56. Merge Intervals" />
 <meta name="author" content="chloeeekim" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="candidate number의 set이 주어졌을 때, 이를 이용해 target number를 만들 수 있는 모든 unique한 combination을 구하는 문제 candidates 내의 숫자는 동일한 숫자를 몇 번을 반복해 사용해도 된다. target을 포함한 주어지는 모든 숫자는 양의 정수이다. 결과는 겹치는 combination을 포함해서는 안 된다." />
-<meta property="og:description" content="candidate number의 set이 주어졌을 때, 이를 이용해 target number를 만들 수 있는 모든 unique한 combination을 구하는 문제 candidates 내의 숫자는 동일한 숫자를 몇 번을 반복해 사용해도 된다. target을 포함한 주어지는 모든 숫자는 양의 정수이다. 결과는 겹치는 combination을 포함해서는 안 된다." />
-<link rel="canonical" href="http://localhost:4000/combination-sum/" />
-<meta property="og:url" content="http://localhost:4000/combination-sum/" />
+<meta name="description" content="interval들의 collection이 주어졌을 때, 겹치는 모든 interval들을 합치는 문제" />
+<meta property="og:description" content="interval들의 collection이 주어졌을 때, 겹치는 모든 interval들을 합치는 문제" />
+<link rel="canonical" href="http://localhost:4000/merge-intervals/" />
+<meta property="og:url" content="http://localhost:4000/merge-intervals/" />
 <meta property="og:site_name" content="Chloeeekim" />
 <meta property="og:image" content="http://localhost:4000/assets/images/leetcode.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-10-25T00:00:00+09:00" />
+<meta property="article:published_time" content="2019-10-27T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/images/leetcode.png" />
-<meta property="twitter:title" content="[Leetcode] 39. Combination Sum" />
+<meta property="twitter:title" content="[Leetcode] 56. Merge Intervals" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-10-25T00:00:00+09:00","datePublished":"2019-10-25T00:00:00+09:00","description":"candidate number의 set이 주어졌을 때, 이를 이용해 target number를 만들 수 있는 모든 unique한 combination을 구하는 문제 candidates 내의 숫자는 동일한 숫자를 몇 번을 반복해 사용해도 된다. target을 포함한 주어지는 모든 숫자는 양의 정수이다. 결과는 겹치는 combination을 포함해서는 안 된다.","headline":"[Leetcode] 39. Combination Sum","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/combination-sum/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/combination-sum/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2019-10-27T00:00:00+09:00","datePublished":"2019-10-27T00:00:00+09:00","description":"interval들의 collection이 주어졌을 때, 겹치는 모든 interval들을 합치는 문제","headline":"[Leetcode] 56. Merge Intervals","image":"http://localhost:4000/assets/images/leetcode.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/merge-intervals/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/merge-intervals/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -150,19 +150,19 @@
     </p>
     <ul>
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 39. Combination Sum&url=http://localhost:4000/combination-sum/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Leetcode] 56. Merge Intervals&url=http://localhost:4000/merge-intervals/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fab fa-twitter"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/combination-sum/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/merge-intervals/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
                 <i class="fab fa-facebook-f"></i>
             </a>
         </li>
 
         <li class="ml-1 mr-1">
-            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/combination-sum/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/merge-intervals/" onclick="window.open(this.href, 'width=550,height=435');return false;">
                 <i class="fab fa-linkedin-in"></i>
             </a>
         </li>
@@ -205,16 +205,16 @@
                 
 
                 <!-- Post Title -->
-                <h1 class="posttitle">[Leetcode] 39. Combination Sum</h1>
+                <h1 class="posttitle">[Leetcode] 56. Merge Intervals</h1>
 
                 <!-- Link -->
                 
-                <a href="https://leetcode.com/problems/combination-sum/" target="_blank">https://leetcode.com/problems/combination-sum/</a>
+                <a href="https://leetcode.com/problems/merge-intervals/" target="_blank">https://leetcode.com/problems/merge-intervals/</a>
                 
 
                 <!-- Post Date -->
                 <small>
-                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-10-25">25 Oct 2019</time></span>           
+                    <span class="post-date float-right"><time class="post-date align-right" datetime="2019-10-27">27 Oct 2019</time></span>           
                     
                 </small>
 
@@ -228,7 +228,7 @@
             
 
             
-            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 39. Combination Sum">
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/leetcode.png" alt="[Leetcode] 56. Merge Intervals">
             
 
             
@@ -239,39 +239,22 @@
                 <!-- Toc if any -->
                 
                 <!-- End Toc -->
-                <p>candidate number의 set이 주어졌을 때, 이를 이용해 target number를 만들 수 있는 모든 unique한 combination을 구하는 문제</p>
-<ul>
-  <li>candidates 내의 숫자는 동일한 숫자를 몇 번을 반복해 사용해도 된다.</li>
-  <li>target을 포함한 주어지는 모든 숫자는 양의 정수이다.</li>
-  <li>결과는 겹치는 combination을 포함해서는 안 된다.</li>
-</ul>
+                <p>interval들의 collection이 주어졌을 때, 겹치는 모든 interval들을 합치는 문제</p>
 
 <h2>Example 1</h2>
 <ul>
-  <li>Input : candidates = [2,3,6,7], target = 7</li>
-  <li>Output : [[2,2,3],[7]]</li>
+  <li>Input : intervals = [[1,3],[2,6],[8,10],[15,18]]</li>
+  <li>Output : [[1,6],[8,10],[15,18]]</li>
 </ul>
 
 <h2>Example 2</h2>
 <ul>
-  <li>Input : candidates = [2,3,5], target = 8</li>
-  <li>Output : [[2,2,2,2],[2,3,3],[3,5]]</li>
-</ul>
-
-<h2>Example 3</h2>
-<ul>
-  <li>Input : candidates = [2], target = 1</li>
-  <li>Output : []</li>
+  <li>Input : intervals = [[1,4],[4,5]]</li>
+  <li>Output : [[1,5]]</li>
 </ul>
 
 <h2>Note</h2>
-<ul>
-  <li>getComb() 라는 함수를 만들어서 recursive하게 해결</li>
-  <li>target과 동일한 값이 나오면 해당 combination을 res에 append</li>
-  <li>target보다 작은 값일 경우, combination에 일단 포함시키고 다음 값을 고려</li>
-  <li>target보다 큰 값일 경우, 더 이상 진행하는 것이 의미가 없다.</li>
-  <li>(참고) candidates가 정렬되어 있다는 조건이 없다.</li>
-</ul>
+<p>interval들을 sorting 한 후, 하나씩 비교하면서 합치는 방식으로 해결</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -284,25 +267,17 @@
 9
 10
 11
-12
-13
-14
-15
 </pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">combinationSum</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">candidates</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">candidates</span><span class="p">.</span><span class="nf">sort</span><span class="p">()</span>
-        <span class="k">def</span> <span class="nf">getComb</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">tempSum</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="p">:</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">candidates</span><span class="p">))</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">tempSum</span> <span class="o">+</span> <span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span> <span class="p">:</span>
-                    <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">+</span> <span class="p">[</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
-                    <span class="n">res</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="n">tempSum</span> <span class="o">+</span> <span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">target</span> <span class="p">:</span>
-                    <span class="k">break</span>
-                <span class="k">else</span> <span class="p">:</span>
-                    <span class="nf">getComb</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">temp</span><span class="o">+</span><span class="p">[</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">tempSum</span><span class="o">+</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">)</span>
-        <span class="nf">getComb</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="p">[],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">res</span>
+    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">intervals</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">intervals</span><span class="p">.</span><span class="nf">sort</span><span class="p">()</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">intervals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span>
+                <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">del</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">intervals</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
             </div>
@@ -339,20 +314,6 @@
                 
             
                 
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
                     
                     
                     
@@ -362,21 +323,21 @@
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                 <div class="col-md-6">
                     
-                    <a class="prev-next-card" href="/binary-tree-right-side-view/">
+                    <a class="prev-next-card" href="/letter-combinations-of-a-phone-number/">
                         <div class="arrow prev-arrow">&laquo;</div>
                         <div class="prev">
                             <div class="prev-next">Previous</div>
-                            <div class="page-title">[Leetcode] 199. Binary Tree Right Side View</div>
+                            <div class="page-title">[Leetcode] 17. Letter Combinations of a Phone Number</div>
                         </div>
                     </a>
                     
                 </div>
                 <div class="col-md-6">
                     
-                    <a class="prev-next-card" href="/contains-duplicate/">
+                    <a class="prev-next-card" href="/permutations-ii/">
                         <div class="next">
                             <div class="prev-next">Next</div>
-                            <div class="page-title">[Leetcode] 217. Contains Duplicate</div>
+                            <div class="page-title">[Leetcode] 47. Permutations II</div>
                         </div>
                         <div class="arrow next-arrow">&raquo;</div>
                     </a>
