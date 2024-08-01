@@ -289,6 +289,10 @@
 <lastmod>2019-10-28T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/mini/</loc>
+<lastmod>2019-10-28T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/minimum-depth-of-binary-tree/</loc>
 <lastmod>2019-10-28T00:00:00+09:00</lastmod>
 </url>
@@ -428,6 +432,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/page15/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page16/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/naverd086c9f2ec4c954f58569915ff0e758c.html</loc>
