@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/assets/images/favicon.png">
+
+<title>Python에서 MongoDB를 사용하여 CRUD 작업 수행하기 (feat. pymongo) | Chloeeekim</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Python에서 MongoDB를 사용하여 CRUD 작업 수행하기 (feat. pymongo) | Chloeeekim</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="Python에서 MongoDB를 사용하여 CRUD 작업 수행하기 (feat. pymongo)" />
+<meta name="author" content="chloeeekim" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="MongoDB는 NoSQL 데이터베이스로, 스키마 없는 데이터 모델을 사용하여 데이터를 문서 형태로 저장합니다. 이번 포스팅에서는 Python과 MongoDB를 연동하여 데이터를 저장하고 관리하는 방법에 대해 설명하도록 하겠습니다. 파이썬에서 MongoDB를 사용하면 빠르고 유연한 데이터 처리를 할 수 있어 다양한 프로젝트에 유용하게 사용할 수 있습니다." />
+<meta property="og:description" content="MongoDB는 NoSQL 데이터베이스로, 스키마 없는 데이터 모델을 사용하여 데이터를 문서 형태로 저장합니다. 이번 포스팅에서는 Python과 MongoDB를 연동하여 데이터를 저장하고 관리하는 방법에 대해 설명하도록 하겠습니다. 파이썬에서 MongoDB를 사용하면 빠르고 유연한 데이터 처리를 할 수 있어 다양한 프로젝트에 유용하게 사용할 수 있습니다." />
+<link rel="canonical" href="http://localhost:4000/python-pymongo/" />
+<meta property="og:url" content="http://localhost:4000/python-pymongo/" />
+<meta property="og:site_name" content="Chloeeekim" />
+<meta property="og:image" content="http://localhost:4000/assets/images/python-pymongo/title.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-08-02T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/python-pymongo/title.png" />
+<meta property="twitter:title" content="Python에서 MongoDB를 사용하여 CRUD 작업 수행하기 (feat. pymongo)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2024-08-02T00:00:00+09:00","datePublished":"2024-08-02T00:00:00+09:00","description":"MongoDB는 NoSQL 데이터베이스로, 스키마 없는 데이터 모델을 사용하여 데이터를 문서 형태로 저장합니다. 이번 포스팅에서는 Python과 MongoDB를 연동하여 데이터를 저장하고 관리하는 방법에 대해 설명하도록 하겠습니다. 파이썬에서 MongoDB를 사용하면 빠르고 유연한 데이터 처리를 할 수 있어 다양한 프로젝트에 유용하게 사용할 수 있습니다.","headline":"Python에서 MongoDB를 사용하여 CRUD 작업 수행하기 (feat. pymongo)","image":"http://localhost:4000/assets/images/python-pymongo/title.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/python-pymongo/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/python-pymongo/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/assets/css/screen.css" rel="stylesheet">
+
+<link href="/assets/css/main.css" rel="stylesheet">
+
+<script src="/assets/js/jquery.min.js"></script>
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8645952198049208"
+     crossorigin="anonymous"></script>
+
+</head>
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+    <img src="/assets/images/home.png" alt="Chloeeekim">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/categories">Categories</a>
+                </li>
+
+                <script src="/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle font-weight-bold">Chloeeekim</h1>
+    <p class="lead site-description">
+        Chloeeekim's Blog - All about everything
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Python에서 MongoDB를 사용하여 CRUD 작업 수행하기 (feat. pymongo)&url=http://localhost:4000/python-pymongo/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/python-pymongo/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/python-pymongo/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-10 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        <img class="author-thumb" src="/assets/images/avatar.jpg" alt="Chloe Jungah Kim">
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left centered-container">
+                        <div class="centered-element">
+                            <a target="_blank" class="font-weight-bold" href="https://chloeeekim.github.io">Chloe Jungah Kim</a>
+                            <div>
+                                <span class="author-description">A blogger who writes about everything.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">Python에서 MongoDB를 사용하여 CRUD 작업 수행하기 (feat. pymongo)</h1>
+
+                <!-- Link -->
+                
+
+                <!-- Post Date -->
+                <small>
+                    <span class="post-date float-right"><time class="post-date align-right" datetime="2024-08-02">02 Aug 2024</time></span>           
+                    
+                </small>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+
+            
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/python-pymongo/title.png" alt="Python에서 MongoDB를 사용하여 CRUD 작업 수행하기 (feat. pymongo)">
+            
+
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                    
+                    <div class="toc mt-4 mb-4 lead">
+                        <h1 class="font-weight-bold">Summary</h1>
+                        <ul>
+  <li><a href="#mongodb란">MongoDB란?</a></li>
+  <li><a href="#python과-mongodb-연동하기">Python과 MongoDB 연동하기</a></li>
+  <li><a href="#mongodb를-사용하여-crud-작업-수행하기">MongoDB를 사용하여 CRUD 작업 수행하기</a>
+    <ul>
+      <li><a href="#create">Create</a></li>
+      <li><a href="#read">Read</a></li>
+      <li><a href="#update">Update</a></li>
+      <li><a href="#delete">Delete</a></li>
+    </ul>
+  </li>
+</ul>
+                    </div>
+                
+                <!-- End Toc -->
+                <p>MongoDB는 NoSQL 데이터베이스로, 스키마 없는 데이터 모델을 사용하여 데이터를 문서 형태로 저장합니다. 이번 포스팅에서는 Python과 MongoDB를 연동하여 데이터를 저장하고 관리하는 방법에 대해 설명하도록 하겠습니다. 파이썬에서 MongoDB를 사용하면 빠르고 유연한 데이터 처리를 할 수 있어 다양한 프로젝트에 유용하게 사용할 수 있습니다.</p>
+
+<h1 id="mongodb란">MongoDB란?</h1>
+
+<p>MongoDB는 JSON과 유사한 BJSON(Binary JSON) 형식으로 데이터를 저장하는 NoSQL 데이터베이스입니다. 관계형 데이터베이스와는 달리 테이블, 행, 열 구조가 아닌 컬렉션과 문서 구조를 사용합니다. 이로 인해 스키마를 유연하게 관리할 수 있으며, 대용량 데이터 처리에 적합합니다.</p>
+
+<h1 id="python과-mongodb-연동하기">Python과 MongoDB 연동하기</h1>
+
+<p>우선 MongoDB를 설치해야 합니다. <a href="https://www.mongodb.com/try/download/community" target="_blank">MongoDB 공식 사이트</a>에서 운영 체제에 맞는 설치 파일을 다운로드하고 설치합니다.</p>
+
+<p>파이썬에서 MongoDB를 사용할 때는 <code class="language-plaintext highlighter-rouge">pymongo</code> 라이브러리를 사용합니다. 설치는 다음 명령어로 이루어집니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>pip <span class="nb">install </span>pymongo
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>그런 다음, MongoDB 서버에 연결하려면 MongoDB 클라이언트를 생성해야 합니다. 다음 코드는 로컬호스트에서 실행 중인 MongoDB 서버에 연결하고, <code class="language-plaintext highlighter-rouge">mydatabase</code>라는 데이터베이스를 선택하고, <code class="language-plaintext highlighter-rouge">mycollection</code>이라는 컬렉션을 사용합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="n">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="nc">MongoClient</span><span class="p">(</span><span class="sh">'</span><span class="s">mongodb://localhost/27017/</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="sh">'</span><span class="s">mydatabase</span><span class="sh">'</span><span class="p">]</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="sh">'</span><span class="s">mycollection</span><span class="sh">'</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="mongodb를-사용하여-crud-작업-수행하기">MongoDB를 사용하여 CRUD 작업 수행하기</h1>
+
+<p>pymongo를 사용하여 기본적인 CRUD(Create, Read, Update, Delete) 작업을 수행하는 방법에 대해 살펴보겠습니다.</p>
+
+<h2 id="create">Create</h2>
+
+<p>데이터를 삽입하려면 <code class="language-plaintext highlighter-rouge">insert_one</code> 또는 <code class="language-plaintext highlighter-rouge">insert_many</code> 메서드를 사용합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="c1"># 단일 문서 삽입
+</span><span class="n">document</span> <span class="o">=</span> <span class="p">{</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Alice</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">age</span><span class="sh">"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="sh">"</span><span class="s">address</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">New York</span><span class="sh">"</span><span class="p">}</span>
+<span class="n">db</span><span class="p">.</span><span class="n">users</span><span class="p">.</span><span class="nf">insert_one</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+
+<span class="c1"># 다중 문서 삽입
+</span><span class="n">documents</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Alice</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">age</span><span class="sh">"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="sh">"</span><span class="s">address</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">New York</span><span class="sh">"</span><span class="p">},</span>
+    <span class="p">{</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Bob</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">age</span><span class="sh">"</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="sh">"</span><span class="s">address</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">LA</span><span class="sh">"</span><span class="p">}</span>
+<span class="p">]</span>
+<span class="n">db</span><span class="p">.</span><span class="n">users</span><span class="p">.</span><span class="nf">insert_many</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="read">Read</h2>
+
+<p>데이터를 조회하려면 <code class="language-plaintext highlighter-rouge">find_one</code> 또는 <code class="language-plaintext highlighter-rouge">find</code> 메서드를 사용합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1"># 단일 문서 조회
+</span><span class="n">user</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">users</span><span class="p">.</span><span class="nf">find_one</span><span class="p">({</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Alice</span><span class="sh">"</span><span class="p">})</span>
+
+<span class="c1"># 다중 문서 조회
+</span><span class="n">users</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">users</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span><span class="sh">"</span><span class="s">city</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">New York</span><span class="sh">"</span><span class="p">})</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="update">Update</h2>
+
+<p>데이터를 수정하려면 <code class="language-plaintext highlighter-rouge">update_one</code> 또는 <code class="language-plaintext highlighter-rouge">update_many</code> 메서드를 사용합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1"># 단일 문서 수정
+</span><span class="n">db</span><span class="p">.</span><span class="n">users</span><span class="p">.</span><span class="nf">update_one</span><span class="p">({</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Alice</span><span class="sh">"</span><span class="p">},</span> <span class="p">{</span><span class="sh">"</span><span class="s">$set</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span><span class="sh">"</span><span class="s">age</span><span class="sh">"</span><span class="p">:</span> <span class="mi">31</span><span class="p">}})</span>
+
+<span class="c1"># 다중 문서 수정
+</span><span class="n">db</span><span class="p">.</span><span class="n">users</span><span class="p">.</span><span class="nf">update_many</span><span class="p">({</span><span class="sh">"</span><span class="s">city</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">New York</span><span class="sh">"</span><span class="p">},</span> <span class="p">{</span><span class="sh">"</span><span class="s">$set</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span><span class="sh">"</span><span class="s">city</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Seoul</span><span class="sh">"</span><span class="p">}})</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="delete">Delete</h2>
+
+<p>데이터를 삭제하려면 <code class="language-plaintext highlighter-rouge">delete_one</code> 또는 <code class="language-plaintext highlighter-rouge">delete_many</code> 메서드를 사용합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1"># 단일 문서 삭제
+</span><span class="n">db</span><span class="p">.</span><span class="n">users</span><span class="p">.</span><span class="nf">delete_one</span><span class="p">({</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Alice</span><span class="sh">"</span><span class="p">})</span>
+
+<span class="c1"># 다중 문서 삭제
+</span><span class="n">db</span><span class="p">.</span><span class="n">users</span><span class="p">.</span><span class="nf">delete_many</span><span class="p">({</span><span class="sh">"</span><span class="s">age</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span><span class="sh">"</span><span class="s">$lt</span><span class="sh">"</span><span class="p">:</span> <span class="mi">30</span><span class="p">}})</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이번 포스팅에서는 파이썬에서 MongoDB를 사용하여 CRUD 작업을 수행하는 방법을 다루었습니다. pymongo 라이브러리를 사용하여 MongoDB와 연결하고, 데이터를 삽입, 조회, 업데이트, 삭제할 수 있습니다. MongoDB는 대규모 데이터를 효율적으로 처리할 수 있는 강력한 도구로, 파이썬과 함께 사용하면 강력한 데이터베이스 어플리케이션을 구축할 수 있을 것입니다.</p>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/category/programming/">Programming</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/category/python/">Python</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            
+            
+            
+                
+                    
+                    
+                    
+                    
+                    
+
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                <div class="col-md-6">
+                    
+                    <a class="prev-next-card" href="/python-super-multiple-inheritance/">
+                        <div class="arrow prev-arrow">&laquo;</div>
+                        <div class="prev">
+                            <div class="prev-next">Previous</div>
+                            <div class="page-title">Python의 super 키워드와 다중 상속</div>
+                        </div>
+                    </a>
+                    
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-12">
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://chloeeekim.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1">Categories</h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/category/cuda/">CUDA (9)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/programming/">Programming (24)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/algorithm/">Algorithm (64)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/jekyll/">Jekyll (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/python/">Python (12)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/nodejs/">Nodejs (3)</a>
+                
+            
+            
+		</div>
+	</div>
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Chloeeekim 
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/assets/js/mediumish.js"></script>
+
+
+<script src="/assets/js/lazyload.js"></script>
+
+
+<script src="/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+
+
+</body>
+</html>
