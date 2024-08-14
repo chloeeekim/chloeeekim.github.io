@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/assets/images/favicon.png">
+
+<title>Python의 locals()와 globals() 함수 이해하기 | Chloeeekim</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Python의 locals()와 globals() 함수 이해하기 | Chloeeekim</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="Python의 locals()와 globals() 함수 이해하기" />
+<meta name="author" content="chloeeekim" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Python은 많은 내장 함수를 제공하고 있습니다. 덕분에 코드를 보다 효율적이고 이해하기 쉽게 작성할 수 있습니다. 그 중에서도 locals()와 globals() 함수는 현재 상태를 이해하고 디버깅하는 데 매우 유용하게 사용될 수 있습니다. 이번 포스팅에서는 locals()와 globals() 함수에 대해 알아보도록 하겠습니다." />
+<meta property="og:description" content="Python은 많은 내장 함수를 제공하고 있습니다. 덕분에 코드를 보다 효율적이고 이해하기 쉽게 작성할 수 있습니다. 그 중에서도 locals()와 globals() 함수는 현재 상태를 이해하고 디버깅하는 데 매우 유용하게 사용될 수 있습니다. 이번 포스팅에서는 locals()와 globals() 함수에 대해 알아보도록 하겠습니다." />
+<link rel="canonical" href="http://localhost:4000/python-locals-globals/" />
+<meta property="og:url" content="http://localhost:4000/python-locals-globals/" />
+<meta property="og:site_name" content="Chloeeekim" />
+<meta property="og:image" content="http://localhost:4000/assets/images/python-locals-globals/title.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-08-14T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/python-locals-globals/title.jpg" />
+<meta property="twitter:title" content="Python의 locals()와 globals() 함수 이해하기" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chloeeekim"},"dateModified":"2024-08-14T00:00:00+09:00","datePublished":"2024-08-14T00:00:00+09:00","description":"Python은 많은 내장 함수를 제공하고 있습니다. 덕분에 코드를 보다 효율적이고 이해하기 쉽게 작성할 수 있습니다. 그 중에서도 locals()와 globals() 함수는 현재 상태를 이해하고 디버깅하는 데 매우 유용하게 사용될 수 있습니다. 이번 포스팅에서는 locals()와 globals() 함수에 대해 알아보도록 하겠습니다.","headline":"Python의 locals()와 globals() 함수 이해하기","image":"http://localhost:4000/assets/images/python-locals-globals/title.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/python-locals-globals/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/home.png"},"name":"chloeeekim"},"url":"http://localhost:4000/python-locals-globals/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/assets/css/screen.css" rel="stylesheet">
+
+<link href="/assets/css/main.css" rel="stylesheet">
+
+<script src="/assets/js/jquery.min.js"></script>
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8645952198049208"
+     crossorigin="anonymous"></script>
+
+</head>
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+    <img src="/assets/images/home.png" alt="Chloeeekim">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/categories">Categories</a>
+                </li>
+
+                <script src="/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle font-weight-bold">Chloeeekim</h1>
+    <p class="lead site-description">
+        Chloeeekim's Blog - All about everything
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Python의 locals()와 globals() 함수 이해하기&url=http://localhost:4000/python-locals-globals/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/python-locals-globals/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/python-locals-globals/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-10 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        <img class="author-thumb" src="/assets/images/avatar.jpg" alt="Chloe Jungah Kim">
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left centered-container">
+                        <div class="centered-element">
+                            <a target="_blank" class="font-weight-bold" href="https://chloeeekim.github.io">Chloe Jungah Kim</a>
+                            <div>
+                                <span class="author-description">A blogger who writes about everything.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">Python의 locals()와 globals() 함수 이해하기</h1>
+
+                <!-- Link -->
+                
+
+                <!-- Post Date -->
+                <small>
+                    <span class="post-date float-right"><time class="post-date align-right" datetime="2024-08-14">14 Aug 2024</time></span>           
+                    
+                </small>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+
+            
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="/assets/images/python-locals-globals/title.jpg" alt="Python의 locals()와 globals() 함수 이해하기">
+            
+
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                    
+                    <div class="toc mt-4 mb-4 lead">
+                        <h1 class="font-weight-bold">Summary</h1>
+                        <ul>
+  <li><a href="#locals-함수란"><code class="language-plaintext highlighter-rouge">locals()</code> 함수란?</a></li>
+  <li><a href="#globals-함수란"><code class="language-plaintext highlighter-rouge">globals()</code> 함수란?</a></li>
+  <li><a href="#locals와-globals-비교하기"><code class="language-plaintext highlighter-rouge">locals()</code>와 <code class="language-plaintext highlighter-rouge">globals()</code> 비교하기</a></li>
+</ul>
+                    </div>
+                
+                <!-- End Toc -->
+                <p>Python은 많은 내장 함수를 제공하고 있습니다. 덕분에 코드를 보다 효율적이고 이해하기 쉽게 작성할 수 있습니다. 그 중에서도 <code class="language-plaintext highlighter-rouge">locals()</code>와 <code class="language-plaintext highlighter-rouge">globals()</code> 함수는 현재 상태를 이해하고 디버깅하는 데 매우 유용하게 사용될 수 있습니다. 이번 포스팅에서는 <code class="language-plaintext highlighter-rouge">locals()</code>와 <code class="language-plaintext highlighter-rouge">globals()</code> 함수에 대해 알아보도록 하겠습니다.</p>
+
+<h1 id="locals-함수란"><code class="language-plaintext highlighter-rouge">locals()</code> 함수란?</h1>
+
+<p><code class="language-plaintext highlighter-rouge">locals()</code> 함수는 현재의 지역 스코프(local scope) 내에 있는 모든 변수를 딕셔너리 형태로 반환해주는 파이썬 내장 함수입니다. 이 함수는 호출된 위치에 따라서 반환하는 값이 달라지며, 반환되는 딕셔너리는 변수 이름을 key로, 변수 값을 value로 가집니다. 다음 예제는 <code class="language-plaintext highlighter-rouge">example()</code> 함수 내의 변수들을 딕셔너리 형태로 출력하게 됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">example</span><span class="p">()</span> <span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">locals</span><span class="p">())</span>
+
+<span class="nf">example</span><span class="p">()</span> <span class="c1"># {'a': 10, 'b': 20}
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>참고로 <code class="language-plaintext highlighter-rouge">locals()</code> 함수는 현재 로컬 스코프의 복사본을 반환하기 때문에, 반환된 딕셔너리를 수정하더라도 실제 로컬 변수에는 반영되지 않습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">modify_locals</span><span class="p">()</span> <span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="nf">locals</span><span class="p">()[</span><span class="sh">'</span><span class="s">a</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">locals</span><span class="p">())</span>
+
+<span class="nf">modify_locals</span><span class="p">()</span> <span class="c1"># {'a': 1, 'b': 2}
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="globals-함수란"><code class="language-plaintext highlighter-rouge">globals()</code> 함수란?</h1>
+
+<p><code class="language-plaintext highlighter-rouge">globals()</code> 함수는 현재의 전역 스코프(global scope) 내에 있는 모든 변수를 딕셔너리 형태로 반환해주는 파이썬 내장 함수입니다. 이 함수는 언제나 전역 변수를 참조하며, 반환되는 딕셔너리는 변수 이름을 key로, 변수 값을 value로 가집니다. 다음 예제는 전역 스코프의 모든 변수들을 딕셔너리 형태로 출력하게 됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="k">def</span> <span class="nf">example</span><span class="p">()</span> <span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">globals</span><span class="p">())</span>
+
+<span class="nf">example</span><span class="p">()</span> <span class="c1"># {'__name__': '__main__', '__doc__': None, '__packeage__': None, 'a': 10, 'b': 20}
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>참고로 <code class="language-plaintext highlighter-rouge">globals()</code> 함수로 반환된 딕셔너리는 실제 전역 변수를 참조하고 있기 때문에, 이 딕셔너리를 수정하면 실제 전역 변수도 수정되게 됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">modify_gloabls</span><span class="p">()</span> <span class="p">:</span>
+    <span class="nf">globals</span><span class="p">()[</span><span class="sh">'</span><span class="s">a</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">globals</span><span class="p">())</span>
+
+<span class="nf">modify_globals</span><span class="p">()</span> <span class="c1"># {'__name__': '__main__', '__doc__': None, '__packeage__': None, 'a': 100, 'b': 2}
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="locals와-globals-비교하기"><code class="language-plaintext highlighter-rouge">locals()</code>와 <code class="language-plaintext highlighter-rouge">globals()</code> 비교하기</h1>
+
+<p>두 함수의 가장 큰 차이는 <code class="language-plaintext highlighter-rouge">locals()</code>는 현재 지역 스코프의 변수를 반환하고, <code class="language-plaintext highlighter-rouge">globals()</code>는 현재 전역 스코프의 변수를 반환한다는 것입니다. 즉, 호출 위치에 따라 반환되는 변수의 범위가 달라집니다. 다음 예제를 통해 두 함수의 차이점을 비교해 볼 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="k">def</span> <span class="nf">example</span><span class="p">()</span> <span class="p">:</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="mi">40</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Locals:</span><span class="sh">"</span><span class="p">,</span> <span class="nf">locals</span><span class="p">())</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Globals:</span><span class="sh">"</span><span class="p">,</span> <span class="nf">globals</span><span class="p">())</span>
+
+<span class="nf">example</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위 예제를 실행하면 다음과 같은 결과가 출력됩니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Locals: <span class="o">{</span><span class="s1">'c'</span>: 30, <span class="s1">'d'</span>: 40<span class="o">}</span>
+Globals: <span class="o">{</span><span class="s1">'__name__'</span>: <span class="s1">'__main__'</span>, <span class="s1">'__doc__'</span>: None, <span class="s1">'__package__'</span>: None, <span class="s1">'a'</span>: 10, <span class="s1">'b'</span>: 20, ...<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>또, 앞서 설명했듯 <code class="language-plaintext highlighter-rouge">locals()</code> 함수는 복사본이기 때문에 해당 딕셔너리를 수정하더라도 지역 변수의 값에는 변화가 없지만, <code class="language-plaintext highlighter-rouge">globals()</code> 함수는 실제 전역 변수를 참조하고 있기 때문에 해당 딕셔너리를 수정하면 전역 변수의 값에 변화가 생긴다는 차이점이 있습니다. 따라서 이러한 특성을 잘 이해하고 유의하여 사용해야 합니다.</p>
+
+<p>Python의 <code class="language-plaintext highlighter-rouge">locals()</code>와 <code class="language-plaintext highlighter-rouge">globals()</code> 함수는 현재 스코프의 변수를 딕셔너리 형태로 반환해줍니다. 디버깅, 로깅, 동적 변수 처리 등 다양한 상황에서 활용할 수 있는 강력한 도구입니다. <code class="language-plaintext highlighter-rouge">locals()</code> 함수는 주로 함수 내부에서 사용되며, <code class="language-plaintext highlighter-rouge">globals()</code> 함수는 전역 변수 관리를 위해 사용됩니다. 이번 포스팅이 두 함수에 대한 이해를 높이고, 실제 활용에 도움이 될 수 있기를 바랍니다.</p>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/category/programming/">Programming</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/category/python/">Python</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            
+            
+            
+                
+                    
+                    
+                    
+                    
+                    
+
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                <div class="col-md-6">
+                    
+                    <a class="prev-next-card" href="/python-pymongo/">
+                        <div class="arrow prev-arrow">&laquo;</div>
+                        <div class="prev">
+                            <div class="prev-next">Previous</div>
+                            <div class="page-title">Python에서 MongoDB를 사용하여 CRUD 작업 수행하기 (feat. pymongo)</div>
+                        </div>
+                    </a>
+                    
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-12">
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://chloeeekim.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1">Categories</h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/category/cuda/">CUDA (9)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/programming/">Programming (25)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/algorithm/">Algorithm (64)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/jekyll/">Jekyll (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/python/">Python (13)</a>
+                
+                    <a class="mt-1 mb-1" href="/category/nodejs/">Nodejs (3)</a>
+                
+            
+            
+		</div>
+	</div>
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Chloeeekim 
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/assets/js/mediumish.js"></script>
+
+
+<script src="/assets/js/lazyload.js"></script>
+
+
+<script src="/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+
+
+</body>
+</html>
