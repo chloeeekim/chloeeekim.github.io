@@ -5,19 +5,26 @@
 
 :root,
 html[data-theme="light"] {
-  --background: #f2f5ec;
-  --foreground: #353538;
-  --accent: #1158d1;
-  --muted: #bbc789;
-  --border: #7cadff;
+  --background: #f8f8f2;
+  --foreground: #232630;
+  --accent: #0e7490;
+  --muted: #c3d6df;
+  --border: #9db4be;
+  --featured: #8d5aaf;
+  /* 코드블록 표면. 라이트는 Shiki min-light 가 순백(#fff)이라 따로 둔다 */
+  --code-bg: #e5eceb;
 }
 
 html[data-theme="dark"] {
-  --background: #10131a;
-  --foreground: #f6f7f8;
-  --accent: #008fec;
-  --muted: #212f3f;
-  --border: #2264e3;
+  /* Dracula 의 어두운 변형. 코드블록 배경(#282a36)과 구분되도록 한 단계 낮춘다 */
+  --background: #21222c;
+  --foreground: #f8f8f2;
+  --accent: #8be9fd;
+  --muted: #44475a;
+  --border: #6272a4;
+  --featured: #dbcce6;
+  /* Dracula 표준 배경. 페이지 배경(#21222c)과 구분된다 */
+  --code-bg: #282a36;
 }
 
 @theme inline {
@@ -32,6 +39,7 @@ html[data-theme="dark"] {
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-featured: var(--featured);
 }
 
 .italic,

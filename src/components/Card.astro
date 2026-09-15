@@ -68,17 +68,17 @@ if (SITE.showCoverImages) {
 
     // Default posts styling
     !featured && [
-      "border-border/25 bg-muted/10",
-      "hover:border-accent/40 hover:bg-accent/5 focus-within:border-accent/40 focus-within:bg-accent/5",
+      "border-border/75 bg-muted/30",
+      "hover:border-accent/60 hover:bg-accent/5 focus-within:border-accent/60 focus-within:bg-accent/5",
       "hover:shadow-accent/10 focus-within:shadow-accent/10",
     ],
 
     // Featured posts styling
     featured && [
-      "border-amber-500/30 bg-amber-500/5",
-      "hover:border-amber-500/50 hover:bg-amber-500/10 focus-within:border-amber-500/50 focus-within:bg-amber-500/10",
-      "hover:shadow-amber-500/10 focus-within:shadow-amber-500/10",
-      "shadow-[0_0_20px_-5px_rgba(245,158,11,0.15)]",
+      "border-featured/45 bg-featured/8",
+      "hover:border-featured/70 hover:bg-featured/10 focus-within:border-featured/70 focus-within:bg-featured/10",
+      "hover:shadow-featured/10 focus-within:shadow-featured/10",
+      "shadow-[0_0_20px_-5px_color-mix(in_srgb,var(--featured)_18%,transparent)]",
     ],
   ]}
 >
@@ -125,7 +125,7 @@ if (SITE.showCoverImages) {
       class:list={[
         "text-lg font-semibold text-foreground transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm",
         featured
-          ? "group-hover/card:text-amber-500 focus-visible:ring-amber-500"
+          ? "group-hover/card:text-featured focus-visible:ring-featured"
           : "group-hover/card:text-accent focus-visible:ring-accent"
       ]}
       aria-labelledby={headingId}
@@ -169,7 +169,7 @@ if (SITE.showCoverImages) {
                 "text-xs font-medium",
                 "border transition-colors duration-200",
                 featured
-                  ? "border-amber-500/25 bg-amber-500/8 text-amber-500/80 hover:border-amber-500/50 hover:bg-amber-500/15 hover:text-amber-500"
+                  ? "border-featured/25 bg-featured/8 text-featured/80 hover:border-featured/50 hover:bg-featured/15 hover:text-featured"
                   : "border-border/30 bg-muted/15 text-foreground/60 hover:border-accent/40 hover:bg-accent/10 hover:text-accent",
               ]}
             >
