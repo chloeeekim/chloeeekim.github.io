@@ -209,6 +209,28 @@ const showGrain = SITE.backdropEffects.grain;
       )
     }
 
+    {
+      // Jekyll 시절과 동일하게 프로덕션 빌드에서만 GA 스크립트를 넣는다
+      import.meta.env.PROD && SITE.googleAnalyticsId && (
+        <Fragment>
+          <script
+            is:inline
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${SITE.googleAnalyticsId}`}
+          />
+          <script
+            is:inline
+            set:html={`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${SITE.googleAnalyticsId}');
+            `}
+          />
+        </Fragment>
+      )
+    }
+
     <ClientRouter />
 
     <!-- Minimal inline script to prevent FOUC - sets theme immediately -->

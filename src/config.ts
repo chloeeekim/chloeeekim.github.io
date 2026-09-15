@@ -5,6 +5,7 @@ export const SITE = {
   desc: "Chloeeekim's Blog - All about everything",
   title: "Chloeeekim",
   ogImage: "", // 비우면 src/pages/og.png.ts 가 동적 생성한 /og.png 사용
+  googleAnalyticsId: "G-5DB4C9PFP7", // GA4 측정 ID. 비우면 스크립트를 넣지 않음
   lightAndDarkMode: true,
   postPerIndex: 6,
   postPerPage: 12,
