@@ -3,6 +3,7 @@ import IconMoon from "@/assets/icons/IconMoon.svg";
 import IconSearch from "@/assets/icons/IconSearch.svg";
 import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
+import Logo from "@/assets/logo/chloeeekim.svg";
 import LinkButton from "./LinkButton.astro";
 import MobileMenu from "./MobileMenu.astro";
 import IntroAudioCompact from "./IntroAudioCompact.astro";
@@ -47,7 +48,8 @@ const isActive = (path: string) => {
           href="/"
           class="group relative z-20 flex items-center gap-2 text-xl font-bold tracking-tight sm:text-2xl shrink-0"
         >
-          <span class="nav-logo-text">{SITE.title}</span>
+          <Logo class="h-6 w-auto sm:h-7" />
+          <span class="sr-only">{SITE.title}</span>
         </a>
 
         <!-- Center Audio Player -->
