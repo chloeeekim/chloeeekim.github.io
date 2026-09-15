@@ -83,12 +83,6 @@ export default defineConfig({
         context: "client",
         optional: true,
       }),
-      // URL of the hosted repo used by the "Edit this post" button
-      PUBLIC_EDIT_POST_URL: envField.string({
-        access: "public",
-        context: "client",
-        optional: true,
-      }),
     },
   },
 
