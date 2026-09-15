@@ -88,19 +88,6 @@ export default defineConfig({
 
   fonts: [
     {
-      name: "Wotfard",
-      cssVariable: "--font-wotfard",
-      fallbacks: ["sans-serif"],
-      provider: fontProviders.local(),
-      options: {
-        variants: [
-          {
-            src: ["./src/assets/fonts/wotfard.woff2"],
-          },
-        ],
-      },
-    },
-    {
       name: "Sriracha",
       cssVariable: "--font-sriracha",
       fallbacks: ["cursive"],

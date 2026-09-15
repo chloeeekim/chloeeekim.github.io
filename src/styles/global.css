@@ -21,7 +21,10 @@ html[data-theme="dark"] {
 }
 
 @theme inline {
-  --font-app: var(--font-wotfard);
+  --font-app:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
+    sans-serif;
   --font-sriracha: var(--font-sriracha);
   --font-firacode: var(--font-firacode);
   --color-background: var(--background);
