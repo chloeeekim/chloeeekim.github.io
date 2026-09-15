@@ -5,14 +5,11 @@ import { slugifyStr } from "./slugify";
  * Get full path of a blog post
  * @param id - id of the blog post (aka slug)
  * @param filePath - the blog post full file location
- * @param includeBase - whether to include `/posts` in return value
  * @returns blog post path
+ *
+ * Jekyll 시절 퍼머링크 /:title/ 를 유지하기 위해 `/posts` 접두어를 붙이지 않는다.
  */
-export function getPath(
-  id: string,
-  filePath: string | undefined,
-  includeBase = true
-) {
+export function getPath(id: string, filePath: string | undefined) {
   const pathSegments = filePath
     ?.replace(BLOG_PATH, "")
     .split("/")
@@ -21,7 +18,7 @@ export function getPath(
     .slice(0, -1) // remove the last segment_ file name_ since it's unnecessary
     .map(segment => slugifyStr(segment)); // slugify each segment path
 
-  const basePath = includeBase ? "/posts" : "";
+  const basePath = "";
 
   // Making sure `id` does not contain the directory
   const blogId = id.split("/");
