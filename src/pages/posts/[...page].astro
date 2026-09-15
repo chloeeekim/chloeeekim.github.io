@@ -28,8 +28,8 @@ const metaTitle = page.currentPage > 1
   : `Posts | ${SITE.title}`;
 
 const metaDesc = page.currentPage > 1
-  ? `Browse articles, guides, and tutorials on Astro Devosfera (Page ${page.currentPage} of ${page.lastPage}).`
-  : `All the articles I have published.`;
+  ? `${SITE.title} 의 글 목록 (${page.currentPage} / ${page.lastPage} 페이지).`
+  : `지금까지 발행한 모든 글.`;
 
 const prevURL = page.url.prev ? new URL(page.url.prev, SITE.website).toString() : undefined;
 const nextURL = page.url.next ? new URL(page.url.next, SITE.website).toString() : undefined;

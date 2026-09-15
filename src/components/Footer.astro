@@ -3,7 +3,6 @@ import type { HTMLAttributes } from "astro/types";
 import { SOCIALS } from "@/constants";
 import LinkButton from "./LinkButton.astro";
 import { SITE } from "@/config";
-import Logo from "@/assets/logo/devosfera.svg";
 
 const currentYear = new Date().getFullYear();
 const socialHeadingId = "footer-social-heading";
@@ -43,8 +42,10 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
           aria-label={`Go to home of ${SITE.title}`}
           class="group footer-home-link relative flex items-center gap-2 rounded-md text-lg font-bold tracking-tight"
         >
-          <Logo class="footer-logo w-28 opacity-80 transition-all duration-300 group-hover:opacity-100 group-hover:scale-105 dark:invert" />
-          <span class="sr-only">{SITE.title}</span>
+          <span
+            class="footer-logo-text opacity-80 transition-opacity duration-300 group-hover:opacity-100"
+            >{SITE.title}</span
+          >
         </a>
         <p
           class="max-w-xs text-center font-firacode text-[11px] leading-relaxed tracking-wide text-foreground/55 sm:text-start"
@@ -146,5 +147,17 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
       transform: none;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
+  }
+
+  .footer-logo-text {
+    background: linear-gradient(
+      135deg,
+      var(--foreground) 0%,
+      var(--foreground) 60%,
+      var(--accent) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 </style>
