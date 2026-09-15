@@ -44,7 +44,7 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
           class="group footer-home-link relative flex items-center gap-2 rounded-md text-lg font-bold tracking-tight"
         >
           <Logo
-            class="h-5 w-auto opacity-75 transition-opacity duration-300 group-hover:opacity-100"
+            class="footer-logo h-5 w-auto opacity-75 transition-opacity duration-300 group-hover:opacity-100"
           />
           <span class="sr-only">{SITE.title}</span>
         </a>
@@ -150,15 +150,9 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
     }
   }
 
-  .footer-logo-text {
-    background: linear-gradient(
-      135deg,
-      var(--foreground) 0%,
-      var(--foreground) 60%,
-      var(--accent) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  /* 헤더에서 이미 깜빡이므로 푸터의 커서는 켜진 채로 고정한다 */
+  .footer-logo :global(.ck-caret) {
+    animation: none;
+    opacity: 1;
   }
 </style>

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 32" role="img" aria-label="Chloeeekim">
   <style>
     .ck-caret {
-      animation: ck-blink 1.06s steps(1, end) infinite;
+      animation: ck-blink 1.5s steps(1, end) infinite;
     }
     @keyframes ck-blink {
       0%, 50% { opacity: 1; }
@@ -11,7 +11,7 @@
       .ck-caret { animation: none; }
     }
   </style>
-  <path d="M4 10 L11 16 L4 22" fill="none" stroke="#008fec" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4 10 L11 16 L4 22" fill="none" stroke="#008fec" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
   <text x="20" y="22" textLength="110" lengthAdjust="spacing" font-family="Fira Code, ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="currentColor">chloeeekim</text>
-  <rect class="ck-caret" x="135" y="9" width="10" height="14" rx="1.5" fill="#008fec"/>
+  <rect class="ck-caret" x="135" y="23.4" width="11" height="2.8" rx="1.4" fill="#008fec"/>
 </svg>
