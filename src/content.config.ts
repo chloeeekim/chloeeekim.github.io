@@ -6,7 +6,13 @@ import { SITE } from "@/config";
 export const BLOG_PATH = "src/data/blog";
 
 const blog = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: `./${BLOG_PATH}` }),
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: `./${BLOG_PATH}`,
+    // 기본 generateId 는 id 를 소문자로 만든다. Jekyll 시절 /cudaEvent/ 처럼
+    // 대문자가 섞인 퍼머링크가 있어 파일명을 그대로 슬러그로 쓴다.
+    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, ""),
+  }),
   schema: ({ image }) =>
     z.object({
       author: z.string().default(SITE.author),
