@@ -13,13 +13,8 @@ import getSortedPosts from "@/utils/getSortedPosts";
 import { SITE } from "@/config";
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const [blogPosts, galleryPosts] = await Promise.all([
-    getCollection("blog", ({ data }) => !data.draft),
-    SITE.showGalleries && SITE.showGalleriesInIndex
-      ? getCollection("galleries", ({ data }) => !data.draft)
-      : Promise.resolve([]),
-  ]);
-  return paginate(getSortedPosts([...blogPosts, ...galleryPosts]), {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return paginate(getSortedPosts(posts), {
     pageSize: SITE.postPerPage,
   });
 }) satisfies GetStaticPaths;

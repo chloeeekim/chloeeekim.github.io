@@ -2,7 +2,6 @@
 import IconMoon from "@/assets/icons/IconMoon.svg";
 import IconSearch from "@/assets/icons/IconSearch.svg";
 import IconArchive from "@/assets/icons/IconArchive.svg";
-import IconGallery from "@/assets/icons/IconGallery.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import Logo from "@/assets/logo/devosfera.svg";
 import LinkButton from "./LinkButton.astro";
@@ -129,24 +128,6 @@ const isActive = (path: string) => {
                   >
                     <IconArchive class="hidden sm:inline-block" />
                     <span class="sm:sr-only">Archives</span>
-                  </LinkButton>
-                </li>
-              )
-            }
-            {
-              SITE.showGalleries && (
-                <li>
-                  <LinkButton
-                    href="/galleries"
-                    class:list={[
-                      "nav-link",
-                      { "nav-active": isActive("/galleries") },
-                    ]}
-                    title="Galleries"
-                    aria-label="galleries"
-                  >
-                    <IconGallery class="hidden sm:inline-block" />
-                    <span class="sm:sr-only">Galleries</span>
                   </LinkButton>
                 </li>
               )

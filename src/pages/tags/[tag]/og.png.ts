@@ -2,16 +2,9 @@ import type { APIRoute, GetStaticPathsResult } from "astro";
 import { getCollection } from "astro:content";
 import getUniqueTags from "@/utils/getUniqueTags";
 import { generateOgImageForTag } from "@/utils/generateOgImages";
-import { SITE } from "@/config";
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-  const [blogPosts, galleryPosts] = await Promise.all([
-    getCollection("blog"),
-    SITE.showGalleries && SITE.showGalleriesInIndex
-      ? getCollection("galleries")
-      : Promise.resolve([]),
-  ]);
-  const posts = [...blogPosts, ...galleryPosts];
+  const posts = await getCollection("blog");
   const tags = getUniqueTags(posts);
 
   return tags.map(({ tag, tagName }) => ({

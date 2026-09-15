@@ -4,7 +4,6 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
-import IconGallery from "@/assets/icons/IconGallery.svg";
 import { getEntryPath } from "@/utils/contentEntry";
 import { slugifyStr } from "@/utils/slugify";
 import getPostsByGroupCondition from "@/utils/getPostsByGroupCondition";
@@ -14,13 +13,7 @@ if (!SITE.showArchives) {
   return Astro.redirect("/404");
 }
 
-const [blogPosts, galleryPosts] = await Promise.all([
-  getCollection("blog", ({ data }) => !data.draft),
-  SITE.showGalleries && SITE.showGalleriesInIndex
-    ? getCollection("galleries", ({ data }) => !data.draft)
-    : Promise.resolve([]),
-]);
-const posts = [...blogPosts, ...galleryPosts];
+const posts = await getCollection("blog", ({ data }) => !data.draft);
 
 const months = [
   "Enero",
@@ -130,11 +123,6 @@ const yearGroups = Object.entries(
                                     ),
                                   }}
                                 >
-                                  {post.collection === "galleries" && (
-                                    <span title="Gallery" class="inline-flex items-center justify-center p-0.5 rounded-md text-accent/80 opacity-70">
-                                      <IconGallery class="size-3.5" />
-                                    </span>
-                                  )}
                                   {post.data.title}
                                 </span>
                                 <p class="post-desc">{post.data.description}</p>

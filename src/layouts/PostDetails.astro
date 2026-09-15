@@ -7,7 +7,6 @@ import Datetime from "@/components/Datetime.astro";
 import ShareLinks from "@/components/ShareLinks.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
-import GalleryEmbed from "@/components/GalleryEmbed.astro";
 import { getPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
 import { getReadingTime } from "@/utils/readingTime";
@@ -197,7 +196,7 @@ const nextPost =
       id="article"
       class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"
     >
-      <Content components={{ GalleryEmbed }} />
+      <Content />
     </article>
 
     <!-- ═══════ Post footer section ═══════ -->

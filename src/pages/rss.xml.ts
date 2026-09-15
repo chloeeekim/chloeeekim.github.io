@@ -5,13 +5,7 @@ import getSortedPosts from "@/utils/getSortedPosts";
 import { SITE } from "@/config";
 
 export async function GET() {
-  const [blogPosts, galleryPosts] = await Promise.all([
-    getCollection("blog"),
-    SITE.showGalleries && SITE.showGalleriesInIndex
-      ? getCollection("galleries")
-      : Promise.resolve([]),
-  ]);
-  const sortedPosts = getSortedPosts([...blogPosts, ...galleryPosts]);
+  const sortedPosts = getSortedPosts(await getCollection("blog"));
   return rss({
     title: SITE.title,
     description: SITE.desc,
