@@ -1,15 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": [
-    "dist",
-    "public/pagefind",
-    "_site",
-    "_includes",
-    "_layouts",
-    "_sass",
-    "assets"
-  ],
+  "exclude": ["dist", "public/pagefind"],
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
