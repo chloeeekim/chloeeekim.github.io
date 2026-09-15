@@ -18,27 +18,27 @@ Github Pages와 Jekyll로 생성한 블로그의 경우, 트래픽 분석 등을
 
 첫 번째로 계정 ID를 등록합니다. 여러 개의 ID를 생성할 수도 있습니다.
 
-<img src="/assets/images/jekyll-google-analytics/1.jpg" alt="create account" class="post-img">
+<img src="/assets/images/jekyll-google-analytics/1.webp" alt="create account" class="post-img">
 
 두 번째로 GA를 통해 관리할 url을 속성에 넣어줍니다. 저는 제 github.io 주소를 입력하였습니다. 또, 시간대와 통화 등을 대한민국으로 설정을 바꿔주면 되는데, 추후에 변경할 수도 있으니 넘어가셔도 좋습니다.
 
-<img src="/assets/images/jekyll-google-analytics/2.jpg" alt="create attribute" class="post-img">
+<img src="/assets/images/jekyll-google-analytics/2.webp" alt="create attribute" class="post-img">
 
 이후에 비즈니스 세부정보, 목표 등을 적당히 설정해주고, 데이터 수집과 관련한 사항에 동의해줍니다. 마지막으로 데이터 소스 플랫폼을 `웹`으로 선택해줍니다.
 
-<img src="/assets/images/jekyll-google-analytics/3.jpg" alt="select data source" class="post-img">
+<img src="/assets/images/jekyll-google-analytics/3.webp" alt="select data source" class="post-img">
 
 데이터 스트림 설정에서는 관리할 사이트의 url을 입력하고, 우측 상단의 `만들고 계속하기`를 클릭합니다.
 
-<img src="/assets/images/jekyll-google-analytics/4.jpg" alt="setup data stream" class="post-img">
+<img src="/assets/images/jekyll-google-analytics/4.webp" alt="setup data stream" class="post-img">
 
 이제 측정 ID가 부여됩니다. 이 ID가 `G-XXXXXXXX` 형식인 것이 GA4 버전입니다. UA 버전의 경우 `UA-XXXXXXXX-X`와 같은 형식으로 나타납니다.
 
-<img src="/assets/images/jekyll-google-analytics/5.jpg" alt="measurement ID" class="post-img">
+<img src="/assets/images/jekyll-google-analytics/5.webp" alt="measurement ID" class="post-img">
 
 여기서 태그 사용을 선택하고 다음으로 넘어가면, 아래와 같은 화면이 표시됩니다. 아직 태그를 설정해주지 않았기 때문에 데이터 수집이 활성화되어 있지 않은 상태입니다. 이제 블로그에 GA를 연결할 준비가 완료되었습니다. 참고로 아래 내용은 `설정 > 데이터 수집 및 수정 > 데이터 스트림`에서도 확인할 수 있습니다.
 
-<img src="/assets/images/jekyll-google-analytics/6.jpg" alt="web stream details" class="post-img">
+<img src="/assets/images/jekyll-google-analytics/6.webp" alt="web stream details" class="post-img">
 
 # Jekyll 블로그에 GA 연결하기
 
@@ -58,7 +58,7 @@ google_analytics: "G-XXXXXXXX"
 
 우선 `설정 > 데이터 수집 및 수정 > 데이터 스트림 > 태그 안내 보기`로 들어갑니다. 상단의 탭에서 `직접 설치`를 클릭하면 다음과 같이 gtag 코드가 나옵니다.
 
-<img src="/assets/images/jekyll-google-analytics/7.jpg" alt="gtag information" class="post-img">
+<img src="/assets/images/jekyll-google-analytics/7.webp" alt="gtag information" class="post-img">
 
 ```javascript
 <!-- Google tag (gtag.js) -->
@@ -78,8 +78,8 @@ google_analytics: "G-XXXXXXXX"
 
 수정된 코드를 github에 올리고, 빌드가 완료될 때까지 몇 분 정도 기다려줍니다. 빠르게 확인할 수 있는 방법으로 `개발자 도구 > Console`에 `gtag`를 입력해 볼 수 있습니다. 제대로 연결되지 않았다면 `Uncaught ReferenceError`가 발생하고, 제대로 연결된 경우 다음과 같이 gtag를 확인할 수 있습니다.
 
-<img src="/assets/images/jekyll-google-analytics/8.jpg" alt="gtag: console" class="post-img">
+<img src="/assets/images/jekyll-google-analytics/8.webp" alt="gtag: console" class="post-img">
 
 Google Analytics에서는 `보고서 > 실시간` 탭에서 사용자가 확인되면 GA 연결은 성공적으로 끝납니다.
 
-<img src="/assets/images/jekyll-google-analytics/9.jpg" alt="google analytics check" class="post-img">
+<img src="/assets/images/jekyll-google-analytics/9.webp" alt="google analytics check" class="post-img">

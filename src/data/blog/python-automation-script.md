@@ -40,7 +40,7 @@ for h1 in h1s :
 
 참고로, `example.com` 사이트의 구조는 다음과 같습니다.
 
-<img src="/assets/images/python-automation-script/1.jpg" alt="example.com" class="post-img">
+<img src="/assets/images/python-automation-script/1.webp" alt="example.com" class="post-img">
 
 따라서, 위 코드를 실행하게 되면 `Example Domain`이 출력됩니다.
 

@@ -93,7 +93,7 @@ $ node index.js
 
 브라우저를 열고, `http://127.0.0.1:3000/`에 접속하면, `Hello, World!` 메시지를 확인하실 수 있습니다.
 
-<img src="/assets/images/nodejs-tutorial/1.jpg" alt="first nodejs application" class="post-img">
+<img src="/assets/images/nodejs-tutorial/1.webp" alt="first nodejs application" class="post-img">
 
 # Node.js 프로젝트 관리 및 확장
 
