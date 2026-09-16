@@ -26,6 +26,11 @@ export const SITE = {
     cursorGlow: true, // cursor tracking with soft halo
     grain: true, // background visual noise layer
   },
+  about: {
+    // public/ 기준 경로. 비우면 모노그램으로 대체된다.
+    avatar: "/assets/images/profile.webp",
+    badges: ["⚙️ Backend Engineer", "☕ Kotlin · Spring · Vert.x", "🎮 Gamer"],
+  },
   dynamicOgImage: true,
   dir: "ltr", // "rtl" | "auto"
   lang: "ko", // html lang code. Set this empty and default will be "en"
