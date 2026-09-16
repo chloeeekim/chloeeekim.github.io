@@ -4,7 +4,7 @@ export const SITE = {
   // 홈의 "Written by" 링크와 JSON-LD Person.url 에 쓰인다.
   // .env 는 gitignore 되어 CI 빌드에는 값이 없으므로 여기에 직접 둔다.
   profile: "https://github.com/chloeeekim",
-  desc: "Chloeeekim's Blog - All about everything",
+  desc: "A developer's notes on architecture, tooling, and whatever else is worth writing down.",
   title: "Chloeeekim",
   ogImage: "", // 비우면 src/pages/og.png.ts 가 동적 생성한 /og.png 사용
   googleAnalyticsId: "G-5DB4C9PFP7", // GA4 측정 ID. 비우면 스크립트를 넣지 않음
@@ -19,7 +19,7 @@ export const SITE = {
   indexPostsGrid: false, // show recent/featured posts in grid layout on the home page (like /posts page)
   heroTerminalPrompt: {
     prefix: "~", // highlighted part on the left
-    path: "/ready-to-go", // central prompt text
+    path: "/still-curious", // central prompt text
     suffix: "$", // terminal symbol on the right
   },
   backdropEffects: {
