@@ -59,12 +59,8 @@ const nextURL = page.url.next ? new URL(page.url.next, SITE.website).toString() 
     pageDesc={`All the articles with the tag "${tagName}".`}
   >
     <ul>
-      {page.data.map((data, index) => (
-        <Card
-          {...data}
-          loading={index < 3 ? "eager" : "lazy"}
-          fetchpriority={index < 3 ? "high" : "auto"}
-        />
+      {page.data.map(data => (
+        <Card {...data} />
       ))}
     </ul>
   </Main>
