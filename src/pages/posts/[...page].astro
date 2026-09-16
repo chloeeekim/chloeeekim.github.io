@@ -99,12 +99,8 @@ const nextURL = page.url.next ? new URL(page.url.next, SITE.website).toString() 
           </div>
         ) : (
           <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {page.data.map((data: ContentEntry, index) => (
-              <Card
-                {...data}
-                loading={index < 3 ? "eager" : "lazy"}
-                fetchpriority={index < 3 ? "high" : "auto"}
-              />
+            {page.data.map((data: ContentEntry) => (
+              <Card {...data} />
             ))}
           </ul>
         )

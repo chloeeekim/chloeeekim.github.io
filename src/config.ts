@@ -15,7 +15,6 @@ export const SITE = {
   showArchives: true,
   showBackButton: true, // show back button in post detail
   showTagsInCards: true, // show tag pills at the bottom of post cards
-  showCoverImages: false, // show cover images (OG) in post cards (requires pnpm build in dev mode)
   indexPostsGrid: false, // show recent/featured posts in grid layout on the home page (like /posts page)
   heroTerminalPrompt: {
     prefix: "~", // highlighted part on the left
