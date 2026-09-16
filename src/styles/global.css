@@ -104,15 +104,21 @@ i {
   --pagefind-ui-primary: var(--accent);
   --pagefind-ui-tag: var(--background);
   --pagefind-ui-border-radius: 0.75rem;
+  /* 아이콘·clear 버튼이 input 높이를 따라가도록 한곳에서 관리 */
+  --search-input-height: calc(52px * var(--pagefind-ui-scale, 1));
 }
 
 /* Search input look */
 .premium-search input.pagefind-ui__search-input {
   font-weight: 400;
+  /* Pagefind 기본 UI 는 height 로 높이를 정한다(64px). padding 만 줄여서는
+     낮아지지 않으므로 height 를 직접 낮춘다. scale 은 모달(0.9)에서 쓰므로 유지. */
+  height: var(--search-input-height);
   border: 1px solid color-mix(in srgb, var(--border) 40%, transparent);
   border-radius: 1rem;
   background: color-mix(in srgb, var(--foreground) 3%, var(--background));
-  padding: 1rem 1rem 1rem 3.5rem;
+  /* 오른쪽은 clear 버튼 자리. 좁으면 입력 글자가 버튼 밑으로 들어간다. */
+  padding: 0 calc(78px * var(--pagefind-ui-scale, 1)) 0 3.5rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 20px -5px color-mix(in srgb, var(--background) 50%, transparent);
 }
@@ -130,24 +136,41 @@ i {
   color: color-mix(in srgb, var(--foreground) 35%, transparent);
 }
 
-.premium-search form::before {
+/* 기본 규칙이 `.pagefind-ui__form.svelte-xxx::before` (클래스 2개)라
+   `.premium-search form::before` (클래스1+요소1)로는 명시도에서 진다.
+   또 form 안에는 결과 목록(drawer)까지 들어있어 50% 기준 세로 중앙은 틀린다.
+   input 높이를 기준으로 직접 중앙에 놓는다. */
+.premium-search .pagefind-ui__form::before {
   background-color: var(--foreground);
   opacity: 0.6;
-  width: 20px;
-  height: 20px;
+  width: calc(20px * var(--pagefind-ui-scale, 1));
+  height: calc(20px * var(--pagefind-ui-scale, 1));
   left: 20px;
-  top: calc(50% - 10px);
+  top: calc(
+    (var(--search-input-height) - 20px * var(--pagefind-ui-scale, 1)) / 2
+  );
 }
 
+/* clear 버튼은 아래 .pagefind-ui__button(Load more)과 같은 생김새로 맞춘다.
+   기본 UI 가 height 를 58px 로 고정하므로 top/bottom 으로 늘려 input 높이를 따라가게 한다. */
 .premium-search .pagefind-ui__search-clear {
-  border-radius: 0.5rem;
-  padding: 0 1rem;
-  background: color-mix(in srgb, var(--foreground) 5%, transparent);
-  right: 10px;
+  top: 4px;
+  bottom: auto;
+  right: 8px;
+  /* bottom 을 쓰면 form 안의 결과 목록까지 포함한 높이로 늘어난다 */
+  height: calc(var(--search-input-height) - 8px);
+  padding: 0 0.85rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  color: var(--accent);
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .premium-search .pagefind-ui__search-clear:hover {
   background: color-mix(in srgb, var(--accent) 15%, transparent);
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--accent) 15%, transparent);
   color: var(--accent);
 }
 
