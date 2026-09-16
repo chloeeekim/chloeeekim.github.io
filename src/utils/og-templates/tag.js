@@ -1,6 +1,7 @@
 import satori from "satori";
 import { SITE } from "@/config";
 import loadGoogleFonts from "../loadGoogleFont";
+import { OG } from "./palette";
 
 /**
  * Generates an OG image for a tag page.
@@ -20,11 +21,10 @@ export default async tagName => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#0f172a",
-          backgroundImage:
-            "radial-gradient(circle at 25px 25px, #1e293b 2%, transparent 0%), radial-gradient(circle at 75px 75px, #1e293b 2%, transparent 0%)",
+          backgroundColor: OG.background,
+          backgroundImage: `radial-gradient(circle at 25px 25px, ${OG.dot} 2%, transparent 0%), radial-gradient(circle at 75px 75px, ${OG.dot} 2%, transparent 0%)`,
           backgroundSize: "100px 100px",
-          color: "white",
+          color: OG.foreground,
           position: "relative",
         },
         children: [
@@ -38,9 +38,9 @@ export default async tagName => {
                 right: "-80px",
                 width: "550px",
                 height: "550px",
-                background: "linear-gradient(140deg, #008fec, #6366f1)",
+                background: `linear-gradient(140deg, ${OG.accent}, ${OG.featured})`,
                 filter: "blur(110px)",
-                opacity: 0.35,
+                opacity: 0.16,
                 borderRadius: "100%",
               },
             },
@@ -55,9 +55,9 @@ export default async tagName => {
                 left: "-80px",
                 width: "450px",
                 height: "450px",
-                background: "linear-gradient(140deg, #3b82f6, #0ea5e9)",
+                background: `linear-gradient(140deg, ${OG.featured}, ${OG.accent})`,
                 filter: "blur(110px)",
-                opacity: 0.25,
+                opacity: 0.12,
                 borderRadius: "100%",
               },
             },
@@ -93,7 +93,7 @@ export default async tagName => {
                           style: {
                             fontSize: 80,
                             fontWeight: 900,
-                            color: "#008fec",
+                            color: OG.accent,
                             opacity: 0.7,
                             lineHeight: 1,
                             marginRight: "4px",
@@ -108,9 +108,8 @@ export default async tagName => {
                             fontSize: 96,
                             fontWeight: 900,
                             letterSpacing: "-2px",
-                            color: "white",
+                            color: OG.foreground,
                             lineHeight: 1,
-                            textShadow: "0 4px 20px rgba(0,0,0,0.5)",
                           },
                           children: tagName,
                         },
@@ -126,7 +125,7 @@ export default async tagName => {
                     style: {
                       width: "80px",
                       height: "5px",
-                      backgroundColor: "#008fec",
+                      backgroundColor: OG.accent,
                       borderRadius: "4px",
                       margin: "28px 0",
                       opacity: 0.7,
@@ -140,7 +139,7 @@ export default async tagName => {
                   props: {
                     style: {
                       fontSize: 32,
-                      color: "#94a3b8",
+                      color: OG.secondary,
                       margin: 0,
                       lineHeight: 1.4,
                       fontWeight: 400,
@@ -162,8 +161,8 @@ export default async tagName => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "rgba(255, 255, 255, 0.05)",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
+                backgroundColor: OG.surface,
+                border: `1px solid ${OG.border}`,
                 padding: "12px 30px",
                 borderRadius: "100px",
               },
@@ -172,7 +171,7 @@ export default async tagName => {
                 props: {
                   style: {
                     fontSize: 22,
-                    color: "#94a3b8",
+                    color: OG.secondary,
                     fontWeight: 600,
                     letterSpacing: "1px",
                   },

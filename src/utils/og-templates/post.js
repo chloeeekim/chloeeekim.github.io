@@ -1,8 +1,11 @@
 import satori from "satori";
 import { SITE } from "@/config";
 import loadGoogleFonts from "../loadGoogleFont";
+import { OG } from "./palette";
 
 export default async post => {
+  const hostname = new URL(SITE.website).hostname;
+
   return satori(
     {
       type: "div",
@@ -14,8 +17,8 @@ export default async post => {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "space-between",
-          backgroundColor: "#0f172a", // Dark background (Slate 900)
-          color: "white",
+          backgroundColor: OG.background,
+          color: OG.foreground,
           padding: "80px",
           position: "relative",
         },
@@ -30,9 +33,9 @@ export default async post => {
                 right: "-100px",
                 width: "600px",
                 height: "600px",
-                background: "linear-gradient(140deg, #6366f1, #a855f7)",
+                background: `linear-gradient(140deg, ${OG.accent}, ${OG.featured})`,
                 filter: "blur(100px)",
-                opacity: 0.4,
+                opacity: 0.18,
                 borderRadius: "100%",
               },
             },
@@ -45,10 +48,10 @@ export default async post => {
               style: {
                 display: "flex",
                 alignItems: "center",
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                backgroundColor: OG.surface,
                 padding: "10px 24px",
                 borderRadius: "50px",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
+                border: `1px solid ${OG.border}`,
               },
               children: {
                 type: "span",
@@ -56,10 +59,10 @@ export default async post => {
                   style: {
                     fontSize: 24,
                     fontWeight: "bold",
-                    color: "#e2e8f0",
+                    color: OG.accent,
                     letterSpacing: "2px",
                   },
-                  children: SITE.title + ".com",
+                  children: hostname,
                 },
               },
             },
@@ -83,8 +86,7 @@ export default async post => {
                     fontWeight: 900,
                     lineHeight: 1.1,
                     margin: 0,
-                    color: "#ffffff",
-                    textShadow: "0 2px 10px rgba(0,0,0,0.3)",
+                    color: OG.foreground,
 
                     overflow: "hidden",
                     display: "-webkit-box",
@@ -115,7 +117,7 @@ export default async post => {
                     style: {
                       width: "60px",
                       height: "4px",
-                      backgroundColor: "#818cf8",
+                      backgroundColor: OG.accent,
                       marginRight: "24px",
                     },
                   },
@@ -125,7 +127,7 @@ export default async post => {
                   props: {
                     style: {
                       fontSize: 32,
-                      color: "#cbd5e1",
+                      color: OG.secondary,
                     },
                     children: [
                       "Written by ",
@@ -134,7 +136,7 @@ export default async post => {
                         props: {
                           style: {
                             fontWeight: "bold",
-                            color: "white",
+                            color: OG.foreground,
                             marginLeft: "8px",
                           },
                           children: post.data.author,
@@ -154,7 +156,7 @@ export default async post => {
       height: 630,
       embedFont: true,
       fonts: await loadGoogleFonts(
-        post.data.title + post.data.author + SITE.title + "Writtenby" + ".com"
+        post.data.title + post.data.author + hostname + "Writtenby"
       ),
     }
   );
