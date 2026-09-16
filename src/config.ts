@@ -1,7 +1,9 @@
 export const SITE = {
   website: "https://chloeeekim.github.io/",
   author: "Chloe Jungah Kim",
-  profile: process.env.PUBLIC_SOCIAL_GITHUB ?? "", // set in .env
+  // 홈의 "Written by" 링크와 JSON-LD Person.url 에 쓰인다.
+  // .env 는 gitignore 되어 CI 빌드에는 값이 없으므로 여기에 직접 둔다.
+  profile: "https://github.com/chloeeekim",
   desc: "Chloeeekim's Blog - All about everything",
   title: "Chloeeekim",
   ogImage: "", // 비우면 src/pages/og.png.ts 가 동적 생성한 /og.png 사용
@@ -23,6 +25,11 @@ export const SITE = {
   backdropEffects: {
     cursorGlow: true, // cursor tracking with soft halo
     grain: true, // background visual noise layer
+  },
+  about: {
+    // public/ 기준 경로. 비우면 모노그램으로 대체된다.
+    avatar: "/assets/images/profile.webp",
+    badges: ["⚙️ Backend Engineer", "☕ Kotlin · Spring · Vert.x", "🎮 Gamer"],
   },
   dynamicOgImage: true,
   dir: "ltr", // "rtl" | "auto"
