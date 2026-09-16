@@ -76,10 +76,12 @@ export default defineConfig({
         context: "client",
         optional: true,
       }),
+      // LinkedIn 도 사이트 소유자 정보라 GitHub 과 같은 이유로 기본값을 둔다.
       PUBLIC_SOCIAL_LINKEDIN: envField.string({
         access: "public",
         context: "client",
         optional: true,
+        default: "https://www.linkedin.com/in/chloeeekim",
       }),
       PUBLIC_SOCIAL_EMAIL: envField.string({
         access: "public",
