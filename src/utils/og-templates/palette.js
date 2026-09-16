@@ -5,7 +5,7 @@
  * 다크 모드를 따라가지 않고 라이트 팔레트 하나로 고정한다.
  */
 export const OG = {
-  background: "#f8f8f2", // --background
+  background: "#fdfdf9", // --background
   foreground: "#232630", // --foreground
   accent: "#0e7490", // --accent
   featured: "#8d5aaf", // --featured
