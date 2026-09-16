@@ -204,6 +204,15 @@ i {
   color: var(--accent);
 }
 
+/* 하위 결과 앞의 ⤷ 화살표와 제목 사이 간격이 0.1em 뿐이라 붙어 보인다.
+   기본 규칙이 클래스 4개(.result-nested.svelte-x .result-link.svelte-x)라
+   같은 수로 맞춰야 이긴다. 선택자를 겹쳐 써서 맞춘다. */
+.premium-search
+  .pagefind-ui__result-nested
+  .pagefind-ui__result-link.pagefind-ui__result-link::before {
+  right: calc(100% + 0.45em);
+}
+
 .premium-search .pagefind-ui__result-excerpt {
   opacity: 0.7;
   font-size: 0.9rem;
