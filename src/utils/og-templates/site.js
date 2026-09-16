@@ -1,6 +1,7 @@
 import satori from "satori";
 import { SITE } from "@/config";
 import loadGoogleFonts from "../loadGoogleFont";
+import { OG } from "./palette";
 
 export default async () => {
   // Get the clean hostname (e.g. mydomain.com)
@@ -17,11 +18,10 @@ export default async () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#0f172a", // Dark background (Slate 900)
-          backgroundImage:
-            "radial-gradient(circle at 25px 25px, #1e293b 2%, transparent 0%), radial-gradient(circle at 75px 75px, #1e293b 2%, transparent 0%)", // Subtle dot pattern (optional, delete if you don't like it)
+          backgroundColor: OG.background,
+          backgroundImage: `radial-gradient(circle at 25px 25px, ${OG.dot} 2%, transparent 0%), radial-gradient(circle at 75px 75px, ${OG.dot} 2%, transparent 0%)`,
           backgroundSize: "100px 100px",
-          color: "white",
+          color: OG.foreground,
           position: "relative",
         },
         children: [
@@ -35,9 +35,9 @@ export default async () => {
                 right: "-50px",
                 width: "600px",
                 height: "600px",
-                background: "linear-gradient(140deg, #a855f7, #ec4899)", // Purple to Pink
+                background: `linear-gradient(140deg, ${OG.accent}, ${OG.featured})`,
                 filter: "blur(120px)",
-                opacity: 0.3,
+                opacity: 0.16,
                 borderRadius: "100%",
               },
             },
@@ -52,9 +52,9 @@ export default async () => {
                 left: "-50px",
                 width: "500px",
                 height: "500px",
-                background: "linear-gradient(140deg, #3b82f6, #6366f1)", // Blue to Indigo
+                background: `linear-gradient(140deg, ${OG.featured}, ${OG.accent})`,
                 filter: "blur(120px)",
-                opacity: 0.3,
+                opacity: 0.12,
                 borderRadius: "100%",
               },
             },
@@ -82,10 +82,9 @@ export default async () => {
                       fontSize: 100, // Very large
                       fontWeight: 900,
                       letterSpacing: "-2px",
-                      color: "white",
+                      color: OG.foreground,
                       margin: "0 0 20px 0",
                       lineHeight: 1,
-                      textShadow: "0 4px 20px rgba(0,0,0,0.5)",
                     },
                     children: SITE.title,
                   },
@@ -98,7 +97,7 @@ export default async () => {
                     style: {
                       width: "80px",
                       height: "6px",
-                      backgroundColor: "#818cf8", // Indigo Accent
+                      backgroundColor: OG.accent,
                       borderRadius: "4px",
                       marginBottom: "30px",
                     },
@@ -111,7 +110,7 @@ export default async () => {
                   props: {
                     style: {
                       fontSize: 36,
-                      color: "#cbd5e1", // Slate 300 (light gray)
+                      color: OG.secondary,
                       maxWidth: "80%", // So it doesn't stretch too much to the sides
                       margin: 0,
                       lineHeight: 1.4,
@@ -134,8 +133,8 @@ export default async () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "rgba(255, 255, 255, 0.05)",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
+                backgroundColor: OG.surface,
+                border: `1px solid ${OG.border}`,
                 padding: "12px 30px",
                 borderRadius: "100px",
               },
@@ -144,7 +143,7 @@ export default async () => {
                 props: {
                   style: {
                     fontSize: 24,
-                    color: "#94a3b8", // Subtle text
+                    color: OG.secondary, // Subtle text
                     fontWeight: 600,
                     letterSpacing: "1px",
                   },
