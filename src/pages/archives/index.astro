@@ -15,19 +15,21 @@ if (!SITE.showArchives) {
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 
+// 테마(스페인어권)에서 넘어온 월 이름을 영어로 바꾼다.
+// 사이트의 다른 날짜 표기(Datetime.astro)도 영어라 표기를 맞춘다.
 const months = [
-  "Enero",
-  "Febrero",
-  "Marzo",
-  "Abril",
-  "Mayo",
-  "Junio",
-  "Julio",
-  "Agosto",
-  "Septiembre",
-  "Octubre",
-  "Noviembre",
-  "Diciembre",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 const totalPosts = posts.length;
@@ -58,7 +60,7 @@ const yearGroups = Object.entries(
           <span class="hero-badge">{totalPosts} posts</span>
           <span class="hero-badge"
             >{yearGroups.length}
-            {yearGroups.length === 1 ? "año" : "años"}</span
+            {yearGroups.length === 1 ? "year" : "years"}</span
           >
         </div>
       </div>
