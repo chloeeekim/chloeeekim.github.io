@@ -362,13 +362,18 @@ const yearGroups = Object.entries(
   /* ===== Timeline ===== */
   .timeline {
     position: relative;
-    padding-left: 1.5rem;
+    /* --line-x: 세로선의 x 위치, --content-x: 목록이 시작하는 x 위치.
+       연도 알약은 --content-x 만큼 되돌려 컨테이너 왼쪽 끝에 붙여두고,
+       선과 목록만 오른쪽으로 밀어 알약과 선 사이에 여백을 만든다 */
+    --line-x: 0.5rem;
+    --content-x: 2rem;
+    padding-left: var(--content-x);
   }
 
   .timeline::before {
     content: "";
     position: absolute;
-    left: 0;
+    left: var(--line-x);
     top: 0;
     bottom: 0;
     width: 2px;
@@ -392,7 +397,7 @@ const yearGroups = Object.entries(
     align-items: center;
     gap: 0.5rem;
     padding: 0.6rem 1.25rem;
-    margin-left: -1.5rem;
+    margin-left: calc(var(--content-x) * -1);
     margin-bottom: 1rem;
     border-radius: 999px;
     background: color-mix(
@@ -585,14 +590,14 @@ const yearGroups = Object.entries(
   /* Timeline dot */
   .post-dot {
     position: absolute;
-    left: -2rem;
+    left: calc(var(--line-x) - var(--content-x) + 1px);
     top: 50%;
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background: var(--color-background);
     border: 2px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
     transition:
       background 0.3s ease,
       border-color 0.3s ease,
@@ -670,13 +675,9 @@ const yearGroups = Object.entries(
 
   @media (max-width: 480px) {
     .timeline {
-      padding-left: 1.25rem;
-    }
-    .year-marker {
-      margin-left: -1.25rem;
+      --content-x: 1.75rem;
     }
     .post-dot {
-      left: -1.75rem;
       width: 8px;
       height: 8px;
     }
