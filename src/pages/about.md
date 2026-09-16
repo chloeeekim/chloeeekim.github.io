@@ -36,3 +36,4 @@ AI는 구현 방법을 빠르게 제안할 수 있지만, **어떤 문제를 해
 ## Links
 
 - [GitHub](https://github.com/chloeeekim)
+- [LinkedIn](https://www.linkedin.com/in/chloeeekim)
