@@ -5,7 +5,8 @@
 
 :root,
 html[data-theme="light"] {
-  --background: #f8f8f2;
+  /* Dracula 계열 웜 아이보리. 색상(H60)은 유지하고 명도만 올려 모바일에서 덜 칙칙하게 */
+  --background: #fdfdf9;
   --foreground: #232630;
   --accent: #0e7490;
   --muted: #c3d6df;
