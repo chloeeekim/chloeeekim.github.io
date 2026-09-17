@@ -13,7 +13,7 @@ html[data-theme="light"] {
   --border: #9db4be;
   --featured: #8d5aaf;
   /* 코드블록 표면. 라이트는 Shiki min-light 가 순백(#fff)이라 따로 둔다 */
-  --code-bg: #e5eceb;
+  --code-bg: #eef2f1;
 }
 
 html[data-theme="dark"] {

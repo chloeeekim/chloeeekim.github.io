@@ -10,11 +10,54 @@
     h3,
     h4,
     th {
-      @apply mb-3 text-foreground;
+      @apply text-foreground;
+    }
+
+    /* 제목의 위아래 여백. prose 기본값은 h1 의 margin-top 이 0 이라,
+       `#` 를 섹션 제목으로 쓰는 글에서 제목이 앞 문단에 붙어 보인다.
+       레벨이 낮아질수록 간격을 좁혀 계층이 드러나게 한다. */
+
+    /* H1 은 About 페이지 섹션 제목(AboutLayout.astro)과 같은 그라데이션
+       밑줄을 써서 사이트 전체 톤을 맞춘다. 밑줄이 margin 바깥으로
+       내려오므로 mb 는 그만큼 더 준다. */
+    h1 {
+      @apply relative mt-14 mb-7;
+    }
+
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      /* 제목 길이와 무관한 고정폭. em 이라 제목 글자 약 3개 폭으로
+         유지되고, 폰트 크기가 바뀌어도 같은 비율을 지킨다. */
+      width: 3em;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-accent), transparent);
+      border-radius: 999px;
+      box-shadow: 0 0 8px color-mix(in srgb, var(--color-accent) 30%, transparent);
+    }
+
+    h2 {
+      @apply mt-12 mb-4;
     }
 
     h3 {
-      @apply font-sriracha italic;
+      @apply mt-10 mb-3 font-sriracha italic;
+    }
+
+    h4 {
+      @apply mt-8 mb-2;
+    }
+
+    /* 본문 맨 앞의 제목은 위 여백을 없앤다 (컨테이너가 이미 띄워 준다). */
+    :is(h1, h2, h3, h4):first-child {
+      @apply mt-0;
+    }
+
+    /* 제목 바로 뒤에 하위 제목이 오는 경우엔 간격을 줄인다. */
+    :is(h1, h2, h3, h4) + :is(h2, h3, h4) {
+      @apply mt-6;
     }
 
     p,
@@ -55,7 +98,7 @@
     }
 
     img {
-      @apply mx-auto border border-border;
+      @apply mx-auto;
     }
 
     figcaption {
@@ -85,6 +128,14 @@
 
     code {
       @apply rounded-md bg-muted/45 px-1.5 py-0.5 wrap-break-word font-firacode text-sm text-foreground shadow-sm shadow-black/5 before:content-none after:content-none;
+    }
+
+    /* 제목 안의 인라인 코드. 위 규칙의 text-sm 은 고정값이라 제목 안에서
+       혼자 작아 보인다. em 으로 바꿔 제목 크기를 따라가게 하고, 굵기도
+       제목에 맞춘다. */
+    :is(h1, h2, h3, h4) code {
+      @apply text-[0.8em];
+      font-weight: inherit;
     }
 
     /* 인라인 코드용 code 규칙(rounded-md / shadow-sm)이 코드블록 안쪽
