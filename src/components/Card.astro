@@ -43,14 +43,14 @@ const readingTime = body ? getReadingTime(body) : null;
 
     // Default posts styling
     !featured && [
-      "border-border/75 bg-muted/30",
+      "border-border/75 bg-muted/15",
       "hover:border-accent/60 hover:bg-accent/5 focus-within:border-accent/60 focus-within:bg-accent/5",
       "hover:shadow-accent/10 focus-within:shadow-accent/10",
     ],
 
     // Featured posts styling
     featured && [
-      "border-featured/45 bg-featured/8",
+      "border-featured/45 bg-featured/4",
       "hover:border-featured/70 hover:bg-featured/10 focus-within:border-featured/70 focus-within:bg-featured/10",
       "hover:shadow-featured/10 focus-within:shadow-featured/10",
       "shadow-[0_0_20px_-5px_color-mix(in_srgb,var(--featured)_18%,transparent)]",
