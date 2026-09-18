@@ -1,11 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import type { GetStaticPathsOptions } from "astro";
-import Main from "@/layouts/Main.astro";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
 import Card from "@/components/Card.astro";
+import PageHero from "@/components/PageHero.astro";
 import Pagination from "@/components/Pagination.astro";
 import getUniqueTags from "@/utils/getUniqueTags";
 import getPostsByTag from "@/utils/getPostsByTag";
@@ -43,6 +44,10 @@ const tagDescription = page.currentPage > 1
 
 const prevURL = page.url.prev ? new URL(page.url.prev, SITE.website).toString() : undefined;
 const nextURL = page.url.next ? new URL(page.url.next, SITE.website).toString() : undefined;
+
+// 글 상세에서 "뒤로" 눌렀을 때 이 태그 목록으로 돌아오게 한다.
+// (Breadcrumb 이 sessionStorage 의 backUrl 을 읽는다)
+const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
 ---
 
 <Layout
@@ -53,20 +58,39 @@ const nextURL = page.url.next ? new URL(page.url.next, SITE.website).toString() 
   next={nextURL}
 >
   <Header />
-  <Main
-    pageTitle={[`Tag:`, `${tagName}`]}
-    titleTransition={tag}
-    pageDesc={`Everything tagged "${tagName}".`}
-  >
-    <ul>
+  <Breadcrumb />
+  <main data-backUrl={backUrl} id="main-content" class="app-layout pb-4">
+    <PageHero
+      class="mb-8"
+      titlePrefix="Tag:"
+      title={tagName}
+      transitionName={tag}
+      desc={`Everything tagged "${tagName}".`}
+      badges={[
+        `${page.total} ${page.total === 1 ? "post" : "posts"}`,
+        page.lastPage > 1 && `Page ${page.currentPage}/${page.lastPage}`,
+      ]}
+    />
+
+    <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {page.data.map(data => (
         <Card {...data} />
       ))}
     </ul>
-  </Main>
 
-  <Pagination {page} />
+    <Pagination {page} />
+  </main>
 
   <Footer noMarginTop={page.lastPage > 1} />
 </Layout>
 
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const mainContent: HTMLElement | null =
+      document.querySelector("#main-content");
+    const backUrl = mainContent?.dataset?.backurl;
+    if (backUrl) {
+      sessionStorage.setItem("backUrl", backUrl);
+    }
+  });
+</script>

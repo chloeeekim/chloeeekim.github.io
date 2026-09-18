@@ -1,0 +1,253 @@
+---
+// 목록 페이지(Posts / Tags / Tag 상세) 상단의 히어로 카드.
+// 원래 posts 와 tags 페이지가 같은 마크업·CSS 를 각자 복사해 두고 있었고
+// tag 상세만 맨 제목이었다. 셋이 같은 모양을 유지하도록 한 곳으로 모은다.
+//
+// 바깥 여백은 여기서 주지 않는다. 페이지마다 다르고, scoped style 과
+// Tailwind 유틸리티가 같은 명시도라 순서에 따라 이겼다 졌다 하기 때문에
+// 사용하는 쪽에서 `class="mb-8"` 처럼 넘긴다.
+interface Props {
+  title: string;
+  /** 제목 앞에 붙는 라벨. 예) "Tag:" */
+  titlePrefix?: string;
+  /** view transition 이름. 태그 카드 -> 태그 상세 전환에 쓰인다 */
+  transitionName?: string;
+  desc?: string;
+  /** falsy 값은 걸러내므로 `page.lastPage > 1 && "..."` 형태로 넘겨도 된다 */
+  badges?: (string | false | undefined | null)[];
+  class?: string;
+}
+
+const {
+  title,
+  titlePrefix,
+  transitionName,
+  desc,
+  badges = [],
+  class: className,
+} = Astro.props;
+
+const visibleBadges = badges.filter(Boolean) as string[];
+---
+
+<div class:list={["page-hero", className]} data-page-hero>
+  <div class="aurora-orb aurora-orb-1"></div>
+  <div class="aurora-orb aurora-orb-2"></div>
+  <div class="aurora-orb aurora-orb-3"></div>
+  <div class="aurora-mouse" data-page-hero-mouse></div>
+  <div class="relative z-10">
+    <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
+      {titlePrefix && <span class="hero-prefix">{titlePrefix}</span>}
+      {
+        transitionName ? (
+          <span class="glow-text" transition:name={transitionName}>
+            {title}
+          </span>
+        ) : (
+          <span class="glow-text">{title}</span>
+        )
+      }
+    </h1>
+    {desc && <p class="mt-3 max-w-lg text-foreground/70 italic">{desc}</p>}
+    {
+      visibleBadges.length > 0 && (
+        <div class="mt-4 flex flex-wrap items-center gap-2">
+          {visibleBadges.map(badge => (
+            <span class="hero-badge">{badge}</span>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<script>
+  let heroCleanup: AbortController | null = null;
+
+  document.addEventListener("astro:page-load", () => {
+    if (heroCleanup) heroCleanup.abort();
+    heroCleanup = new AbortController();
+    const { signal } = heroCleanup;
+
+    document.querySelectorAll("[data-page-hero]").forEach(hero => {
+      const mouse = hero.querySelector(
+        "[data-page-hero-mouse]"
+      ) as HTMLElement | null;
+      if (!mouse) return;
+
+      hero.addEventListener(
+        "mousemove",
+        e => {
+          requestAnimationFrame(() => {
+            const rect = (hero as HTMLElement).getBoundingClientRect();
+            mouse.style.setProperty("--mx", `${(e as MouseEvent).clientX - rect.left}px`);
+            mouse.style.setProperty("--my", `${(e as MouseEvent).clientY - rect.top}px`);
+            mouse.style.opacity = "1";
+          });
+        },
+        { signal }
+      );
+
+      hero.addEventListener(
+        "mouseleave",
+        () => {
+          mouse.style.opacity = "0";
+        },
+        { signal }
+      );
+    });
+  });
+</script>
+
+<style>
+  .page-hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    background: color-mix(
+      in srgb,
+      var(--color-foreground) 3%,
+      var(--color-background)
+    );
+    border: 1px solid color-mix(in srgb, var(--color-accent) 12%, transparent);
+  }
+
+  @media (min-width: 640px) {
+    .page-hero {
+      padding: 3rem;
+    }
+  }
+
+  .hero-prefix {
+    margin-right: 0.5rem;
+    /* 본문 글자색을 그대로 쓴다 (라이트: 거의 검정, 다크: 거의 흰색).
+       #000 으로 박으면 다크 모드에서 배경에 묻힌다. */
+    color: var(--color-foreground);
+  }
+
+  /* Floating aurora orbs */
+  .aurora-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .aurora-orb-1 {
+    width: 300px;
+    height: 300px;
+    top: -30%;
+    left: -10%;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--color-accent) 25%, transparent),
+      transparent 70%
+    );
+    animation: orb-drift-1 7s ease-in-out infinite alternate;
+  }
+
+  .aurora-orb-2 {
+    width: 250px;
+    height: 250px;
+    top: 10%;
+    right: -5%;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--color-border) 20%, transparent),
+      transparent 70%
+    );
+    animation: orb-drift-2 9s ease-in-out infinite alternate;
+  }
+
+  .aurora-orb-3 {
+    width: 200px;
+    height: 200px;
+    bottom: -20%;
+    left: 40%;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--color-accent) 12%, transparent),
+      transparent 70%
+    );
+    animation: orb-drift-3 11s ease-in-out infinite alternate;
+  }
+
+  @keyframes orb-drift-1 {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    100% {
+      transform: translate(40px, 20px) scale(1.2);
+    }
+  }
+  @keyframes orb-drift-2 {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    100% {
+      transform: translate(-30px, 30px) scale(1.15);
+    }
+  }
+  @keyframes orb-drift-3 {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    100% {
+      transform: translate(20px, -25px) scale(1.1);
+    }
+  }
+
+  /* Mouse aurora follower inside hero */
+  .aurora-mouse {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--color-accent) 18%, transparent),
+      color-mix(in srgb, var(--color-border) 8%, transparent) 40%,
+      transparent 70%
+    );
+    filter: blur(50px);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    transform: translate(
+      calc(var(--mx, 0px) - 175px),
+      calc(var(--my, 0px) - 175px)
+    );
+    will-change: transform;
+    z-index: 1;
+  }
+
+  .glow-text {
+    background: linear-gradient(
+      135deg,
+      var(--color-foreground),
+      var(--color-accent)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(
+      0 0 25px color-mix(in srgb, var(--color-accent) 25%, transparent)
+    );
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 15%, transparent);
+    backdrop-filter: blur(8px);
+  }
+</style>
