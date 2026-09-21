@@ -9,13 +9,13 @@ export const SITE = {
   ogImage: "", // 비우면 src/pages/og.png.ts 가 동적 생성한 /og.png 사용
   googleAnalyticsId: "G-5DB4C9PFP7", // GA4 측정 ID. 비우면 스크립트를 넣지 않음
   lightAndDarkMode: true,
-  postPerIndex: 6,
+  postPerIndex: 4, // 홈 Recent 에 보여줄 글 수
   postPerPage: 12,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   showArchives: true,
   showBackButton: true, // show back button in post detail
   showTagsInCards: true, // show tag pills at the bottom of post cards
-  indexPostsGrid: false, // show recent/featured posts in grid layout on the home page (like /posts page)
+  indexPostsGrid: false, // 홈의 Recent 를 넓은 화면에서 3단까지 늘린다 (/posts 와 동일). 끄면 최대 2단
   heroTerminalPrompt: {
     prefix: "~", // highlighted part on the left
     path: "/still-curious", // central prompt text
