@@ -115,7 +115,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !("featured" in data && dat
             <div class="h-px flex-1 bg-border/20" />
           </div>
 
-          <ul class="grid gap-4 sm:grid-cols-2 [&>li]:my-0">
+          <ul class="grid gap-4 [&>li]:my-0">
             {featuredPosts.map(data => (
               <Card variant="h3" featured={true} {...data} />
             ))}
@@ -139,7 +139,8 @@ const recentPosts = sortedPosts.filter(({ data }) => !("featured" in data && dat
             </span>
           </div>
           <ul class:list={[
-            SITE.indexPostsGrid && "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            "grid grid-cols-1 gap-4 sm:grid-cols-2 [&>li]:my-0",
+            SITE.indexPostsGrid && "lg:grid-cols-3"
           ]}>
             {recentPosts.map(
               (data, index) =>
