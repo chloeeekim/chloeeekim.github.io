@@ -139,7 +139,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !("featured" in data && dat
             </span>
           </div>
           <ul class:list={[
-            "grid grid-cols-1 gap-6 sm:grid-cols-2",
+            "grid grid-cols-1 gap-4 sm:grid-cols-2 [&>li]:my-0",
             SITE.indexPostsGrid && "lg:grid-cols-3"
           ]}>
             {recentPosts.map(
