@@ -61,7 +61,7 @@ __host__ int main() {
 
 하지만 CUDA 5.0에서도 symbol을 direct로 사용하였을 때, 빨간 밑줄이 그어지며 다음과 같은 error가 발생합니다만, 실제로 실행시켰을 때는 아무런 문제가 없습니다. 추후에 업데이트 되면서 사라질 문제가 될 것 같습니다.
 
-<img src="/assets/images/cuda-c-extension-2/1.webp" alt="Error occuring when used it directly" class="post-img">
+![Error occuring when used it directly](../../assets/images/cuda-c-extension-2/1.jpg)
 
 ## `__constant__`
 

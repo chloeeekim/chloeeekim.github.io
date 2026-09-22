@@ -18,7 +18,7 @@ jekyll은 github pages를 지원하는 정적 웹사이트 생성기입니다. �
 
 github 계정이 있다는 전제하에, 새 repository를 생성하는 것으로 시작합니다. github pages를 사용하기 위해서는 특정한 repository의 이름을 설정해야 하는데, `githubId.github.io`와 같은 형식으로 설정해줘야 합니다. github id가 아닌 다른 repository 이름을 설정하는 경우, 추가적인 세팅이 필요해지기 때문에 되도록이면 id를 사용합니다.
 
-<img src="/assets/images/jekyll-setup-windows/1.webp" alt="create github pages" class="post-img">
+![create github pages](../../assets/images/jekyll-setup-windows/1.jpg)
 
 저의 경우에는 이미 `chloeeekim.github.io` repository가 있다고 표시됩니다. repository의 세팅은 변경할 내용 없이 생성해도 괜찮습니다. repository가 만들어지면 github pages도 생성이 완료된 것입니다.
 
@@ -30,13 +30,13 @@ github pages가 잘 동작하는지 알고 싶다면, repository에 `index.html`
 
 jekyll을 사용하기 위해서는 먼저 ruby를 설치해야 합니다. ruby를 설치하는 방법은 다양하지만, windows에서는 ruby installer를 이용하면 간단하게 설치할 수 있습니다. <a href="https://rubyinstaller.org/downloads/" target="_blank">ruby installer download</a> 페이지에 가서 ruby installer를 다운받아 주면 됩니다.
 
-<img src="/assets/images/jekyll-setup-windows/2.webp" alt="ruby installer download" class="post-img">
+![ruby installer download](../../assets/images/jekyll-setup-windows/2.jpg)
 
 사이트 좌측 상단을 보면 `WITH DEVKIT` 항목이 있는데, 꼭 Ruby+Devkit 버전을 다운받아야 합니다. 설치는 간단하게 진행되며, optional한 부분은 건드릴 필요 없이 기본 옵션으로 설치하면 됩니다. ruby installer는 windows를 기반으로 ruby 언어와 실행 환경 등을 포함하고 있습니다. 참고로 ruby installer 2.4 버전 이전의 경우에는 devkit을 따로 설치해야 합니다.
 
 ruby installer 설치가 완료되었다면, ruby command prompt를 실행해줍니다.
 
-<img src="/assets/images/jekyll-setup-windows/3.webp" alt="ruby command prompt" class="post-img">
+![ruby command prompt](../../assets/images/jekyll-setup-windows/3.jpg)
 
 ```ruby
 % ruby --version
