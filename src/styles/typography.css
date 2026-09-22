@@ -140,17 +140,71 @@
         width: var(--table-col, auto);
       }
 
+      /* 세로 테두리를 없애고 수평선만 남긴다. 격자보다 본문 흐름을 덜 끊는다. */
       th,
       td {
-        @apply border border-border p-2;
+        @apply border-0 px-3 py-2;
         /* break-word 는 min-content 폭을 줄이지 못해 셀이 늘어난다.
            anywhere 는 넘칠 때만 단어 중간을 끊어 주므로 일반 문장은 그대로 둔다. */
         overflow-wrap: anywhere;
         hyphens: auto;
       }
 
-      th {
-        @apply py-1.5;
+      /* 헤더는 본문보다 작게 + 자간을 벌려 라벨처럼 보이게 하고,
+         색만 액센트로 준다. 홈의 Featured 제목(index.astro)도 같은 조합이다.
+         아래 2px 선으로 본문 행과 끊는다. */
+      thead th {
+        @apply pb-1.5 text-[0.8rem] tracking-[0.06em];
+        color: var(--accent);
+        border-bottom: 2px solid color-mix(in srgb, var(--border) 80%, transparent);
+      }
+
+      /* plugin 이 thead 에 넣는 1px 선은 색이 --tw-prose-th-borders 고정값
+         (밝은 회색)이라 다크에서 흰 선으로 튄다. 위 2px 선만 남긴다. */
+      thead {
+        border-bottom: 0;
+      }
+
+      /* 줄무늬. 행이 많은 표에서 눈이 줄을 놓치지 않게 한다.
+         헤더 바로 아래 첫 행부터 칠해 헤더와의 경계가 분명해진다.
+         다크는 배경(#21222c)과 --muted(#44475a)의 거리가 라이트보다
+         가까워서 같은 농도면 줄무늬가 묻힌다. 그래서 농도를 두 배로 준다. */
+      tbody tr:nth-child(odd) {
+        background: color-mix(in srgb, var(--muted) 16%, transparent);
+
+        html[data-theme="dark"] & {
+          background: color-mix(in srgb, var(--muted) 32%, transparent);
+        }
+      }
+
+      /* 마지막 행 아래에 선을 둬서 표의 끝을 닫는다. */
+      tbody tr:last-child > * {
+        border-bottom: 1px solid color-mix(in srgb, var(--border) 45%, transparent);
+      }
+
+      /* 마우스가 올라간 행을 강조한다. 줄무늬(muted 16%)를 덮어써야 하므로
+         nth-child 규칙보다 뒤에 두고, 줄무늬가 칠해진 행에서도 변화가
+         보이도록 농도를 그보다 높게 잡았다. */
+      /* 행 구분선. @tailwindcss/typography 가 tbody tr 에 넣는
+         --tw-prose-td-borders 는 밝은 회색 고정값(oklch(92.8% ...))이라
+         다크에서 거의 흰색으로 튄다. 테마 색으로 바꾸고, 다크는 배경이
+         어두워 같은 농도라도 더 도드라지므로 한 단계 낮춘다. */
+      tbody tr {
+        @apply transition-colors duration-200 motion-reduce:transition-none;
+        border-bottom-color: color-mix(in srgb, var(--border) 30%, transparent);
+
+        html[data-theme="dark"] & {
+          border-bottom-color: color-mix(in srgb, var(--border) 20%, transparent);
+        }
+      }
+
+      tbody tr:hover {
+        background: color-mix(in srgb, var(--accent) 10%, transparent);
+
+        /* 줄무늬를 진하게 한 만큼 hover 도 같이 올려야 구분이 유지된다. */
+        html[data-theme="dark"] & {
+          background: color-mix(in srgb, var(--accent) 16%, transparent);
+        }
       }
 
       /* 전역 code 규칙의 wrap-break-word 가 셀의 anywhere 를 덮으므로 다시 지정한다. */
