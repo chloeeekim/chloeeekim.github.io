@@ -10,6 +10,7 @@ import {
   transformerNotationWordHighlight,
 } from "@shikijs/transformers";
 import { transformerFileName } from "./src/utils/transformers/fileName";
+import { transformerTokenColor } from "./src/utils/transformers/commentColor";
 import { rehypeExternalLinks } from "./src/utils/rehypeExternalLinks";
 import { SITE } from "./src/config";
 
@@ -39,6 +40,12 @@ export default defineConfig({
       wrap: false,
       transformers: [
         transformerFileName({ style: "v2", hideDot: false }),
+        // 두 테마의 주석 색이 배경과 너무 가까워 명도만 올린다
+        // (라이트 1.56:1 -> 4.28:1, 다크 3.03:1 -> 4.91:1)
+        transformerTokenColor({
+          "--shiki-light:#C2C3C5": "--shiki-light:#6B7280",
+          "--shiki-dark:#6272A4": "--shiki-dark:#8B95C9",
+        }),
         transformerNotationHighlight(),
         transformerNotationWordHighlight(),
         transformerNotationDiff({ matchAlgorithm: "v3" }),
