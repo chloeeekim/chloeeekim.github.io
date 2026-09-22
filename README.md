@@ -19,7 +19,7 @@ pnpm preview  # 빌드 결과 미리보기
 
 ## 글쓰기
 
-`src/data/blog/`에 마크다운 파일을 만든다. **파일명이 곧 URL**이다 — `python-class.md` → `/python-class/`.
+`src/data/blog/` 아래 주제 디렉터리에 마크다운 파일을 만든다(`_blog/`, `_claude/`, `_cuda/`). **파일명이 곧 URL**이다. `_cuda/python-class.md` → `/python-class/`.
 
 ```markdown
 ---
@@ -52,8 +52,16 @@ draft: false
 | `canonicalURL` | | 다른 곳에 원본이 있을 때만 |
 
 - 목차가 필요하면 본문 맨 앞에 `## Table of contents` 한 줄을 넣는다. remark-toc가 자동으로 채운다.
-- 본문 이미지는 `public/assets/images/<슬러그>/`에 넣고 `<img src="/assets/images/...">`로 참조한다. WebP를 권장한다.
-- 하위 디렉터리를 만들면 URL에 경로가 붙는다. 퍼머링크를 `/:title/` 구조로 유지하려면 평면으로 둘 것.
+- 본문 이미지는 `src/assets/images/<슬러그>/`에 넣고 마크다운 문법으로 참조한다. `public/`에 두면 Astro가 복사만 하고 최적화하지 않는다.
+
+  ```markdown
+  ![설명](../../../assets/images/<슬러그>/1.jpg)
+  ```
+
+  상대 경로이므로 글의 디렉터리 깊이에 맞춰야 한다. `src/data/blog/_cuda/foo.md`에서는 `../../../`다.
+- **원본(JPG/PNG)을 그대로 넣는다.** Astro가 WebP로 변환하고 `srcset`, `width`/`height`, `loading="lazy"`를 붙인다. 이미 손실 압축된 WebP를 넣으면 재인코딩으로 손실이 두 번 얹힌다.
+- 주제 디렉터리 이름은 **밑줄로 시작해야 한다.** `getPath`가 밑줄로 시작하는 디렉터리를 경로에서 빼기 때문에 URL이 `/:title/`로 유지된다. 밑줄이 없으면 그 이름이 URL에 붙는다.
+- 밑줄은 디렉터리에만 붙인다. 파일명이 밑줄로 시작하면 컬렉션 glob 패턴(`**/[^_]*.{md,mdx}`)에서 제외된다.
 
 ## 배포
 
@@ -68,7 +76,7 @@ draft: false
 | 경로 | 용도 |
 | --- | --- |
 | `src/data/blog/` | 글 |
-| `public/assets/images/` | 본문 이미지 |
+| `src/assets/images/` | 본문 이미지, about 아바타 |
 | `src/pages/[...slug]/` | 글 상세 라우트 |
 | `src/content.config.ts` | 프론트매터 스키마 |
 | `src/styles/` | 전역 스타일, 타이포그래피 |
