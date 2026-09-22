@@ -18,13 +18,13 @@ draft: false
 
 ## 시작하기
 
-우선 <a href="https://search.google.com/search-console" target="_blank">구글 서치 콘솔(Google Search Console)</a> 사이트에 접속합니다. 여기서 `URL 접두어` 항목에 github pages blog url을 입력하고 `계속`을 클릭합니다. 만약 도메인을 따로 구매한 경우라면, 왼쪽에 위치한 `도메인` 항목에 입력하면 됩니다.
+우선 [구글 서치 콘솔(Google Search Console)](https://search.google.com/search-console) 사이트에 접속합니다. 여기서 `URL 접두어` 항목에 github pages blog url을 입력하고 `계속`을 클릭합니다. 만약 도메인을 따로 구매한 경우라면, 왼쪽에 위치한 `도메인` 항목에 입력하면 됩니다.
 
 ![google search console - add url](../../../assets/images/jekyll-search/1.jpg)
 
 ## 소유권 확인하기
 
-다음으로 소유권 확인 과정이 필요합니다. 여기서 선택할 수 있는 방법들이 몇 가지 있는데, 사용 중인 테마에 따라서 특정 방법을 사용해야 한다던가 하는 제약이 있을 수는 있습니다. 참고로, <a href="https://chloeeekim.github.io/jekyll-google-analytics/" target="_blank">이전 포스팅</a>을 통해 Google Analytics를 설정한 상태라면 보다 편리하게 소유권을 확인할 수도 있습니다.
+다음으로 소유권 확인 과정이 필요합니다. 여기서 선택할 수 있는 방법들이 몇 가지 있는데, 사용 중인 테마에 따라서 특정 방법을 사용해야 한다던가 하는 제약이 있을 수는 있습니다. 참고로, [이전 포스팅](/jekyll-google-analytics/)을 통해 Google Analytics를 설정한 상태라면 보다 편리하게 소유권을 확인할 수도 있습니다.
 
 ![google search console - check ownership](../../../assets/images/jekyll-search/2.jpg)
 
@@ -42,7 +42,7 @@ draft: false
 
 ### Google 애널리틱스 계정 사용
 
-또 다른 방법으로, <a href="https://chloeeekim.github.io/jekyll-google-analytics/" target="_blank">Google Analytics 연결하기</a>를 마친 경우라면, 별다른 코드의 수정이나 파일 업로드 없이 소유권 확인이 가능합니다. 보다 간편한 방법이기도 하고, Google Analytics를 사용하는 경우라면 해당 방법을 추천드립니다.
+또 다른 방법으로, [Google Analytics 연결하기](/jekyll-google-analytics/)를 마친 경우라면, 별다른 코드의 수정이나 파일 업로드 없이 소유권 확인이 가능합니다. 보다 간편한 방법이기도 하고, Google Analytics를 사용하는 경우라면 해당 방법을 추천드립니다.
 
 ![check ownership - google analytics](../../../assets/images/jekyll-search/5.jpg)
 

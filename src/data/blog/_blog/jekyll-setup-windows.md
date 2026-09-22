@@ -28,7 +28,7 @@ github pages가 잘 동작하는지 알고 싶다면, repository에 `index.html`
 
 # Ruby 및 Jekyll 설치하기
 
-jekyll을 사용하기 위해서는 먼저 ruby를 설치해야 합니다. ruby를 설치하는 방법은 다양하지만, windows에서는 ruby installer를 이용하면 간단하게 설치할 수 있습니다. <a href="https://rubyinstaller.org/downloads/" target="_blank">ruby installer download</a> 페이지에 가서 ruby installer를 다운받아 주면 됩니다.
+jekyll을 사용하기 위해서는 먼저 ruby를 설치해야 합니다. ruby를 설치하는 방법은 다양하지만, windows에서는 ruby installer를 이용하면 간단하게 설치할 수 있습니다. [ruby installer download](https://rubyinstaller.org/downloads/) 페이지에 가서 ruby installer를 다운받아 주면 됩니다.
 
 ![ruby installer download](../../../assets/images/jekyll-setup-windows/2.jpg)
 
@@ -60,13 +60,13 @@ jekyll 4.3.3
 
 기존에 존재하는 테마를 사용하지 않을 수도 있지만, jekyll의 또 다른 장점 중 하나가 무료로 제공되는 다양한 테마가 굉장히 많다는 것입니다. 다음 사이트들에서 어마어마한 테마들을 구경하고 선택할 수 있습니다.
 
-- <a href="http://jekyllthemes.org" target="_blank">https://jekyllthemes.org</a>
-- <a href="https://jekyllthemes.io/free" target="_blank">https://jekyllthemes.io/free</a>
-- <a href="http://themes.jekyllrc.org" target="_blank">http://themes.jekyllrc.org</a>
+- [https://jekyllthemes.org](http://jekyllthemes.org)
+- [https://jekyllthemes.io/free](https://jekyllthemes.io/free)
+- [http://themes.jekyllrc.org](http://themes.jekyllrc.org)
 
 위 사이트에서 마음에 드는 테마를 찾아 사용하거나 혹은 github에서 `jekyll-theme` 등으로 검색하여 찾을 수도 있습니다. 우선 테마를 사용하여 설정을 마친 다음에는 원하는 대로 커스터마이징을 할 수 있기도 하고, 언제든 테마를 바꿀 수도 있으니 마음 편하게 테마를 고르시면 됩니다.
 
-저는 <a href="https://jekyllthemes.io/theme/mediumish" target="_blank">mediumish</a>라는 테마를 선택하였습니다. 꼭 같은 테마가 아니어도 상관 없으니, 원하시는 테마를 선택합니다. 테마를 골랐다면, 해당 테마의 github 페이지로 이동하여 code를 다운받아 줍니다. clone을 해도 상관없고, `.zip` 파일로 받아도 됩니다. 다운받은 파일들을 위에서 생성한 github pages repository에 옮겨줍니다.
+저는 [mediumish](https://jekyllthemes.io/theme/mediumish)라는 테마를 선택하였습니다. 꼭 같은 테마가 아니어도 상관 없으니, 원하시는 테마를 선택합니다. 테마를 골랐다면, 해당 테마의 github 페이지로 이동하여 code를 다운받아 줍니다. clone을 해도 상관없고, `.zip` 파일로 받아도 됩니다. 다운받은 파일들을 위에서 생성한 github pages repository에 옮겨줍니다.
 
 ruby command prompt에서 내 repository가 가져와진 경로로 이동하여 아래 명령어들을 순서대로 실행해줍니다.
 
@@ -86,7 +86,7 @@ bundler exec jekyll serve
 jekyll serve
 ```
 
-실행시키면 `Server address: http://127.0.0.1:4000/`와 같이 로컬 서버 주소가 표시됩니다. 참고로 `--serve` 옵션을 통해 변경사항을 자동으로 감지하도록 할 수도 있습니다. 이후에는 <a href="http://127.0.0.1:4000" target="_blank">로컬 서버</a>에 접속하여 실제로 실행시켜 볼 수 있습니다.
+실행시키면 `Server address: http://127.0.0.1:4000/`와 같이 로컬 서버 주소가 표시됩니다. 참고로 `--serve` 옵션을 통해 변경사항을 자동으로 감지하도록 할 수도 있습니다. 이후에는 [로컬 서버](http://127.0.0.1:4000)에 접속하여 실제로 실행시켜 볼 수 있습니다.
 
 # 각종 에러에 대처하기
 
@@ -116,4 +116,4 @@ wdm 설치에 실패하여 발생하는 에러입니다. windows에서 `--watch`
 gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 ```
 
-`--watch` 옵션을 사용하고 싶은 경우에는 현재 ruby의 버전을 특정 버전으로 낮추는 방법 밖에는 없습니다. 우선 설치되어 있는 ruby를 완전히 삭제하고, `C:\` 드라이브에 있는 Ruby 관련 폴더도 삭제해줍니다. 이후 <a href="https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.1.2-1/rubyinstaller-devkit-3.1.2-1-x64.exe" target="_blank">ruby 3.1.2-1 버전</a>을 다운받아 설치한 후, `bundle install`부터 다시 실행시켜 주면 해결이 가능합니다.
+`--watch` 옵션을 사용하고 싶은 경우에는 현재 ruby의 버전을 특정 버전으로 낮추는 방법 밖에는 없습니다. 우선 설치되어 있는 ruby를 완전히 삭제하고, `C:\` 드라이브에 있는 Ruby 관련 폴더도 삭제해줍니다. 이후 [ruby 3.1.2-1 버전](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.1.2-1/rubyinstaller-devkit-3.1.2-1-x64.exe)을 다운받아 설치한 후, `bundle install`부터 다시 실행시켜 주면 해결이 가능합니다.

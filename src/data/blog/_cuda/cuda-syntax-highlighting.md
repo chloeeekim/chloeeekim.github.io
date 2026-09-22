@@ -9,9 +9,8 @@ tags:
 featured: false
 draft: false
 ---
-<div style="text-align: center; color: red;">
-※ 이 글은 2013년도에 작성된 글입니다. <br>사진이나 세부적인 내용은 지금과 다를 수 있습니다.<br><br>
-</div>
+> ※ 이 글은 2013년도에 작성된 글입니다.
+> 사진이나 세부적인 내용은 지금과 다를 수 있습니다.
 
 VS에서 CUDA 코드를 작성하면 CUDA Syntax Highlighting은 물론이고 기본적인 C/C++ 문법마저도 Syntax Highlighting이 되지 않아 코드를 작성하기 무척이나 번거롭고 힘들었을 것입니다. 따라서, 이번 포스팅에서는 CUDA Syntax Highlighting 방법에 대해 소개하려 합니다. 이전 버전들과는 방법이 다르기 때문에, 다른 버전을 사용 중이라면 적용되지 않을 수도 있다는 점을 염두에 두시길 바랍니다.
 

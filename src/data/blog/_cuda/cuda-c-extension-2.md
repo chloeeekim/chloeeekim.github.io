@@ -11,9 +11,8 @@ draft: false
 ---
 
 ## Table of contents
-<div style="text-align: center; color: red;">
-※ 이 글은 2013년도에 작성된 글입니다. <br>사진이나 세부적인 내용은 지금과 다를 수 있습니다.<br><br>
-</div>
+> ※ 이 글은 2013년도에 작성된 글입니다.
+> 사진이나 세부적인 내용은 지금과 다를 수 있습니다.
 
 저번 포스팅에 이어 CUDA C extension에 관한 설명을 마무리 짓도록 하겠습니다.
 
