@@ -9,9 +9,8 @@ tags:
 featured: false
 draft: false
 ---
-<div style="text-align: center; color: red;">
-※ 이 글은 2013년도에 작성된 글입니다. <br>사진이나 세부적인 내용은 지금과 다를 수 있습니다.<br><br>
-</div>
+> ※ 이 글은 2013년도에 작성된 글입니다.
+> 사진이나 세부적인 내용은 지금과 다를 수 있습니다.
 
 CUDA 5.0을 설치하고, 리부팅을 하고 나면 NVIDIA CUDA Samples Browser v5.0 아이콘이 생겼을 것입니다.
 

@@ -9,9 +9,8 @@ tags:
 featured: false
 draft: false
 ---
-<div style="text-align: center; color: red;">
-※ 이 글은 2013년도에 작성된 글입니다. <br>사진이나 세부적인 내용은 지금과 다를 수 있습니다.<br><br>
-</div>
+> ※ 이 글은 2013년도에 작성된 글입니다.
+> 사진이나 세부적인 내용은 지금과 다를 수 있습니다.
 
 본격적인 CUDA 코딩에 앞서 CUDA syntax를 이용하여 device의 정보를 불러오는 방법에 대해 소개하려고 합니다. 여기서 말하는 device란 CUDA acceleration(CUDA 가속)을 지원하는 GPU를 뜻합니다. 아래의 코드는 CUDA syntax를 이용하여 device의 정보를 불러와 출력하는 내용입니다.
 

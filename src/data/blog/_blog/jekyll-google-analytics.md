@@ -14,7 +14,7 @@ Github Pages와 Jekyll로 생성한 블로그의 경우, 트래픽 분석 등을
 
 # GA 계정 만들기
 
-우선 GA를 적용하기 위해 GA 계정부터 생성해야 합니다. <a href="https://analytics.google.com/" _target="blank">Google Analytics</a>에 접속하여 계정부터 설정해줍니다.
+우선 GA를 적용하기 위해 GA 계정부터 생성해야 합니다. [Google Analytics](https://analytics.google.com/)에 접속하여 계정부터 설정해줍니다.
 
 첫 번째로 계정 ID를 등록합니다. 여러 개의 ID를 생성할 수도 있습니다.
 
