@@ -26,8 +26,10 @@ export const SITE = {
     grain: true, // background visual noise layer
   },
   about: {
-    // public/ 기준 경로. 비우면 모노그램으로 대체된다.
-    avatar: "/assets/images/profile.webp",
+    // src/assets/ 기준 경로. Astro 이미지 최적화를 받으려면 src/ 아래여야
+    // 하고, AboutLayout 이 import.meta.glob 으로 이 경로를 찾는다.
+    // 비우면 모노그램으로 대체된다.
+    avatar: "/src/assets/images/profile.webp",
     badges: ["⚙️ Backend Engineer", "☕ Kotlin · Spring · Vert.x", "🎮 Gamer"],
   },
   dynamicOgImage: true,
