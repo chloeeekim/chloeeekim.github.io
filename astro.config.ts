@@ -41,10 +41,10 @@ export default defineConfig({
       transformers: [
         transformerFileName({ style: "v2", hideDot: false }),
         // 두 테마의 주석 색이 배경과 너무 가까워 명도만 올린다
-        // (라이트 1.56:1 -> 4.28:1, 다크 3.03:1 -> 4.91:1)
+        // (라이트 1.56:1 -> 2.50:1, 다크 3.03:1 -> 3.90:1)
         transformerTokenColor({
-          "--shiki-light:#C2C3C5": "--shiki-light:#6B7280",
-          "--shiki-dark:#6272A4": "--shiki-dark:#8B95C9",
+          "--shiki-light:#C2C3C5": "--shiki-light:#969AA2",
+          "--shiki-dark:#6272A4": "--shiki-dark:#7684B6",
         }),
         transformerNotationHighlight(),
         transformerNotationWordHighlight(),
