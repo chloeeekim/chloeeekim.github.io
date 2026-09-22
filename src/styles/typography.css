@@ -166,10 +166,11 @@
       }
 
       /* 줄무늬. 행이 많은 표에서 눈이 줄을 놓치지 않게 한다.
-         헤더 바로 아래 첫 행부터 칠해 헤더와의 경계가 분명해진다.
+         짝수 행을 칠해 헤더 바로 아래 첫 행은 비워 둔다. 헤더 밑줄과
+         색 띠가 붙어 두 줄처럼 보이지 않는다.
          다크는 배경(#21222c)과 --muted(#44475a)의 거리가 라이트보다
          가까워서 같은 농도면 줄무늬가 묻힌다. 그래서 농도를 두 배로 준다. */
-      tbody tr:nth-child(odd) {
+      tbody tr:nth-child(even) {
         background: color-mix(in srgb, var(--muted) 16%, transparent);
 
         html[data-theme="dark"] & {
