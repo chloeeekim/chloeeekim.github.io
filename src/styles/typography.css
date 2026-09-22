@@ -108,21 +108,54 @@
     table {
       @apply w-full table-auto border-collapse;
 
+      /* 자동 레이아웃은 열 폭을 내용 길이에 비례해 나눠 첫 열만 넓어지기 쉽다.
+         헤더의 열 수를 :has() 로 세서 균등 분할 폭을 변수로 내려 준다.
+         table-fixed 와 달리 '희망 폭' 힌트여서, 줄바꿈으로 더 줄일 수 없는
+         열은 필요한 만큼 넘어갈 수 있다. 나중에 특정 표의 비율만 바꾸고
+         싶으면 이 값만 건드리면 된다.
+         :has() 미지원 브라우저나 9열 이상은 auto 로 돌아간다. */
+      thead tr:has(> th:nth-child(2):last-child) {
+        --table-col: 50%;
+      }
+      thead tr:has(> th:nth-child(3):last-child) {
+        --table-col: 33.333%;
+      }
+      thead tr:has(> th:nth-child(4):last-child) {
+        --table-col: 25%;
+      }
+      thead tr:has(> th:nth-child(5):last-child) {
+        --table-col: 20%;
+      }
+      thead tr:has(> th:nth-child(6):last-child) {
+        --table-col: 16.666%;
+      }
+      thead tr:has(> th:nth-child(7):last-child) {
+        --table-col: 14.285%;
+      }
+      thead tr:has(> th:nth-child(8):last-child) {
+        --table-col: 12.5%;
+      }
+
+      thead th {
+        width: var(--table-col, auto);
+      }
+
       th,
       td {
         @apply border border-border p-2;
-        word-wrap: break-word;
-        word-break: break-word;
+        /* break-word 는 min-content 폭을 줄이지 못해 셀이 늘어난다.
+           anywhere 는 넘칠 때만 단어 중간을 끊어 주므로 일반 문장은 그대로 둔다. */
+        overflow-wrap: anywhere;
         hyphens: auto;
-        overflow-wrap: break-word;
       }
 
       th {
         @apply py-1.5;
       }
 
+      /* 전역 code 규칙의 wrap-break-word 가 셀의 anywhere 를 덮으므로 다시 지정한다. */
       code {
-        @apply break-all sm:break-normal;
+        overflow-wrap: anywhere;
       }
     }
 
