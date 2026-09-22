@@ -47,7 +47,7 @@ int main() {
 
 CUDA는 `cudaDeviceProp`이라는 구조체 형식에 device들의 정보를 저장하게 됩니다. 이를 이용하면 device의 다양한 정보를 불러올 수 있습니다. 아래는 위 코드를 실행시킨 결과입니다.
 
-![CUDA device information](../../assets/images/cuda-syntax-device/1.jpg)
+![CUDA device information](../../../assets/images/cuda-syntax-device/1.jpg)
 
 출력된 결과를 살펴보면, GeForce GT 750M이라는 하나의 device를 사용 중이며, clock rate나 메모리 용량이 얼마인지 알 수 있습니다. `cudaDeviceProp`은 이외에도 다양한 정보를 제공합니다. 이러한 데이터를 잘 활용하면 효과적인 CUDA 코딩을 할 수 있을 것입니다.
 
