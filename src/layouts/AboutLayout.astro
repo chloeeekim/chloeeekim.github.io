@@ -1,5 +1,6 @@
 ---
 import type { MarkdownLayoutProps } from "astro";
+import { Image } from "astro:assets";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
@@ -9,6 +10,16 @@ import { SITE } from "@/config";
 type Props = MarkdownLayoutProps<{ title: string; description?: string }>;
 
 const { frontmatter } = Astro.props;
+
+// 아바타는 SITE 설정에서 경로를 받으므로 정적 import 를 쓸 수 없다.
+// glob 으로 src/assets/images 최상위를 미리 읽어 두고 경로로 찾는다.
+const avatarFiles = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/*.{webp,png,jpg,jpeg,avif}",
+  { eager: true }
+);
+const avatar = SITE.about.avatar
+  ? avatarFiles[SITE.about.avatar]?.default
+  : undefined;
 ---
 
 <Layout
@@ -29,15 +40,18 @@ const { frontmatter } = Astro.props;
           <div class="avatar-glow"></div>
           <div class="avatar-inner">
             {
-              SITE.about.avatar ? (
-                <img
+              avatar ? (
+                /* 110px 고정 크기라 layout="fixed" 를 쓴다. 1x/2x 두 벌만
+                   구워지고(원본 460x460), 전역 설정인 constrained 의
+                   반응형 srcset 은 타지 않는다. */
+                <Image
                   class="avatar-photo"
-                  src={SITE.about.avatar}
+                  src={avatar}
                   alt={SITE.author}
-                  width="110"
-                  height="110"
+                  width={110}
+                  height={110}
+                  layout="fixed"
                   loading="eager"
-                  decoding="async"
                 />
               ) : (
                 /* 사진이 없을 때는 파비콘과 같은 모노그램으로 대체한다 */
