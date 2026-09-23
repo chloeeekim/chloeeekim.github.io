@@ -1,6 +1,6 @@
 ---
 title: "[CUDA 5.5] cpp에서 CUDA 함수 사용하기"
-description: ".cpp 와 .cu 파일이 섞인 프로젝트에서 C++ 코드가 CUDA 함수를 호출하도록 구성하기."
+description: "extern \"C\" 를 붙인 __host__ 함수를 다리 삼아 .cpp 에서 .cu 의 CUDA 커널을 호출하는 방법. 선언 위치와 프로젝트 구조까지."
 pubDatetime: 2015-04-07T09:00:00+09:00
 author: "Chloe Jungah Kim"
 tags:

@@ -1,6 +1,6 @@
 ---
 title: "[CUDA 7] GPU 실행시간 측정 - cudaEvent"
-description: "cudaEvent 로 GPU 커널의 실행 시간을 측정하는 방법."
+description: "cudaEvent 로 GPU 커널의 실행 시간을 측정하는 방법. 이벤트 두 개로 시작·종료 타임스탬프를 기록하고 cudaEventElapsedTime 으로 경과 시간을 얻는다."
 pubDatetime: 2016-01-15T09:00:00+09:00
 author: "Chloe Jungah Kim"
 tags:

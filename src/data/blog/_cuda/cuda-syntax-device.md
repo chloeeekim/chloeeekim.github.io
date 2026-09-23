@@ -1,6 +1,6 @@
 ---
 title: "[CUDA 5.0] CUDA syntax를 이용하여 device 정보 불러오기"
-description: "CUDA syntax로 GPU device의 사양 정보를 조회해 출력하는 예제. (2013년 작성)"
+description: "cudaDeviceProp 구조체로 CUDA 지원 GPU 의 개수와 클럭, 메모리 용량 같은 사양을 조회해 출력하는 예제. (2013년 작성)"
 pubDatetime: 2015-04-02T09:00:00+09:00
 author: "Chloe Jungah Kim"
 tags:

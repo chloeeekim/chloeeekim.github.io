@@ -1,6 +1,6 @@
 ---
 title: "Github pages와 Jekyll 설치하기 - Windows ver."
-description: "Windows 환경에서 GitHub Pages 저장소를 만들고 Ruby와 Jekyll을 설치해 블로그를 띄우기까지의 과정."
+description: "Windows 에서 GitHub Pages 저장소를 만들고 Ruby 와 Jekyll 을 설치해 블로그를 띄우기까지. 테마 적용과 Liquid Exception 인코딩 오류 대처까지."
 pubDatetime: 2024-06-26T09:00:00+09:00
 author: "Chloe Jungah Kim"
 tags:
