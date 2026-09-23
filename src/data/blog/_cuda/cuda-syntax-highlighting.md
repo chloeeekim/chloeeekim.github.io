@@ -1,6 +1,6 @@
 ---
 title: "[CUDA 5.0] CUDA Syntax Highlighting 설정하기"
-description: "Visual Studio에서 .cu 파일의 CUDA 및 C/C++ 문법 강조가 동작하도록 설정하기. (2013년 작성)"
+description: "Visual Studio 옵션에서 .cu·.cuh 를 포함 확장명에 추가하고 C++ 편집 환경으로 지정해 CUDA 문법 강조를 켜는 방법. (2013년 작성)"
 pubDatetime: 2015-04-01T09:00:00+09:00
 author: "Chloe Jungah Kim"
 tags:
