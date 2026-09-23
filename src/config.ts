@@ -5,7 +5,7 @@ export const SITE = {
   // .env 는 gitignore 되어 CI 빌드에는 값이 없으므로 여기에 직접 둔다.
   profile: "https://github.com/chloeeekim",
   desc: "A developer's notes on architecture, tooling, and whatever else is worth writing down.",
-  title: "Chloeeekim",
+  title: "chloeeekim.dev",
   ogImage: "", // 비우면 src/pages/og.png.ts 가 동적 생성한 /og.png 사용
   googleAnalyticsId: "G-5DB4C9PFP7", // GA4 측정 ID. 비우면 스크립트를 넣지 않음
   lightAndDarkMode: true,
