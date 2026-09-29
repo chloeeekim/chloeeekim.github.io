@@ -1,7 +1,7 @@
 ---
 title: "[CUDA 5.0] CUDA C 확장 키워드 (CUDA C Extension) - 변수의 수식어"
 description: "__device__, __constant__, __shared__ 등 CUDA C 변수 수식어가 지정하는 메모리 공간. (2013년 작성)"
-pubDatetime: 2015-04-03T09:00:00+09:00
+pubDatetime: 2015-04-03T12:00:00+09:00
 author: "Chloe Jungah Kim"
 tags:
   - cuda
