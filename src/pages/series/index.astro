@@ -1,0 +1,80 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import PageHero from "@/components/PageHero.astro";
+import IconBook from "@/assets/icons/IconBook.svg";
+import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
+import { getAllSeries } from "@/utils/getSeries";
+import { formatSeriesRange } from "@/utils/formatSeriesRange";
+import { SITE } from "@/config";
+
+const posts = await getCollection("blog");
+const allSeries = getAllSeries(posts);
+
+const totalPosts = allSeries.reduce((sum, { posts }) => sum + posts.length, 0);
+---
+
+<Layout
+  title={`Series | ${SITE.title}`}
+  description={`Post series on ${SITE.title} — grouped reads, in order.`}
+>
+  <Header />
+  <Breadcrumb />
+  <main id="main-content" class="app-layout pb-12">
+    <PageHero
+      class="mb-10"
+      title="Series"
+      desc="The ones that needed more than one post."
+      badges={[
+        // series 는 단수·복수가 같다
+        `${allSeries.length} series`,
+        `${totalPosts} ${totalPosts === 1 ? "post" : "posts"}`,
+      ]}
+    />
+
+    {
+      allSeries.length === 0 ? (
+        <p class="text-foreground/60">아직 시리즈가 없습니다.</p>
+      ) : (
+        <ul class="flex flex-col gap-4">
+          {allSeries.map(({ series, posts }) => (
+            <li>
+              <a
+                href={`/series/${series.slug}/`}
+                transition:name={`series-${series.slug}`}
+                class="series-card group block rounded-2xl border border-border/20 bg-muted/5 px-5 py-5 transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 sm:px-6"
+              >
+                <div class="flex items-center justify-between gap-3">
+                  <h2 class="flex items-center gap-2 text-lg font-semibold transition-colors duration-200 group-hover:text-accent">
+                    <IconBook
+                      class="size-4 shrink-0 text-accent/70"
+                      aria-hidden="true"
+                    />
+                    {series.title}
+                  </h2>
+                  <IconArrowRight class="size-4 shrink-0 text-accent/0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-accent/70" />
+                </div>
+
+                <p class="mt-2 text-sm leading-relaxed text-foreground/60">
+                  {series.description}
+                </p>
+
+                <div class="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-firacode text-xs text-foreground/45">
+                  <span class="text-accent/80">
+                    {posts.length} {posts.length === 1 ? "post" : "posts"}
+                  </span>
+                  <span class="opacity-40">·</span>
+                  <span>{formatSeriesRange(posts)}</span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </main>
+  <Footer />
+</Layout>

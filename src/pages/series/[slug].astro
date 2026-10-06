@@ -1,0 +1,127 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import PageHero from "@/components/PageHero.astro";
+import Datetime from "@/components/Datetime.astro";
+import IconClock from "@/assets/icons/IconClock.svg";
+import { SERIES, type Series } from "@/data/series";
+import { getSeriesPosts } from "@/utils/getSeries";
+import { formatSeriesRange } from "@/utils/formatSeriesRange";
+import { getEntryPath } from "@/utils/contentEntry";
+import { getReadingTime } from "@/utils/readingTime";
+import { SITE } from "@/config";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  // 발행된 글이 하나도 없는 시리즈는 페이지를 만들지 않는다.
+  return SERIES.map(series => ({
+    series,
+    posts: getSeriesPosts(series, posts),
+  }))
+    .filter(({ posts }) => posts.length > 0)
+    .map(({ series, posts }) => ({
+      params: { slug: series.slug },
+      props: { series, posts },
+    }));
+}
+
+type Props = {
+  series: Series;
+  posts: Awaited<ReturnType<typeof getCollection<"blog">>>;
+};
+
+const { series, posts } = Astro.props;
+
+// 글 상세에서 "뒤로" 눌렀을 때 이 시리즈로 돌아오게 한다.
+const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
+---
+
+<Layout
+  title={`Series: ${series.title} | ${SITE.title}`}
+  description={series.description}
+>
+  <Header />
+  <Breadcrumb />
+  <main data-backUrl={backUrl} id="main-content" class="app-layout pb-12">
+    <PageHero
+      class="mb-10"
+      titlePrefix="Series:"
+      title={series.title}
+      transitionName={`series-${series.slug}`}
+      desc={series.description}
+      badges={[
+        `${posts.length} ${posts.length === 1 ? "post" : "posts"}`,
+        formatSeriesRange(posts),
+      ]}
+    />
+
+    <ol class="flex flex-col gap-4">
+      {
+        posts.map((post, i) => {
+          const readingTime = post.body ? getReadingTime(post.body) : null;
+          return (
+            <li>
+              <a
+                href={getEntryPath(post)}
+                class="group block rounded-2xl border border-border/20 bg-muted/5 px-5 py-5 transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 sm:px-6"
+              >
+                <div class="flex items-start gap-5">
+                  <span class="series-num" aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  <div class="min-w-0 flex-1">
+                    <h2 class="text-lg leading-snug font-semibold transition-colors duration-200 group-hover:text-accent">
+                      {post.data.title}
+                    </h2>
+
+                    <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <Datetime
+                        pubDatetime={post.data.pubDatetime}
+                        timezone={post.data.timezone}
+                      />
+                      {readingTime && (
+                        <span class="flex items-center gap-1 text-sm whitespace-nowrap text-foreground/60">
+                          <IconClock class="size-4 shrink-0" aria-hidden="true" />
+                          {readingTime}
+                        </span>
+                      )}
+                    </div>
+
+                    <p class="mt-2 text-sm leading-relaxed text-foreground/65">
+                      {post.data.description}
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* 왼쪽에 세운 큰 번호. 카드 왼쪽 가장자리를 따라 줄지어 서면서 세로선 없이도
+     순서를 읽히게 한다. 제목 첫 줄에 맞추려고 line-height 를 1 로 둔다. */
+  .series-num {
+    flex-shrink: 0;
+    font-family: var(--font-firacode, monospace);
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: color-mix(in srgb, var(--accent) 55%, transparent);
+    transition: color 0.25s ease;
+  }
+
+  .group:hover .series-num {
+    color: var(--accent);
+  }
+</style>
