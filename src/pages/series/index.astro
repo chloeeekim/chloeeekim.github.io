@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import RememberBackUrl from "@/components/RememberBackUrl.astro";
 import PageHero from "@/components/PageHero.astro";
 import IconBook from "@/assets/icons/IconBook.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
@@ -24,6 +25,7 @@ const totalPosts = allSeries.reduce((sum, { posts }) => sum + posts.length, 0);
   <Header />
   <Breadcrumb />
   <main id="main-content" class="app-layout pb-12">
+  <RememberBackUrl />
     <PageHero
       class="mb-10"
       title="Series"
