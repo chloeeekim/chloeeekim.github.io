@@ -3,7 +3,6 @@ import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import remarkToc from "remark-toc";
-import remarkCollapse from "remark-collapse";
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
@@ -12,6 +11,10 @@ import {
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import { transformerTokenColor } from "./src/utils/transformers/commentColor";
 import { rehypeExternalLinks } from "./src/utils/rehypeExternalLinks";
+import {
+  remarkTocPreserveIntro,
+  remarkTocCollapse,
+} from "./src/utils/remarkTocCollapse";
 import { SITE } from "./src/config";
 import {
   getPostLastmods,
@@ -45,7 +48,9 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
+    // remark-toc 은 "Table of contents" 제목 아래 쓴 도입부를 지운다.
+    // 앞뒤로 두 단계를 끼워 도입부를 살리고 목차만 접는다.
+    remarkPlugins: [remarkTocPreserveIntro, remarkToc, remarkTocCollapse],
     // 본문은 마크다운 링크만 쓰고, 외부 링크의 새 탭/rel 은 여기서 붙인다
     rehypePlugins: [rehypeExternalLinks],
     shikiConfig: {

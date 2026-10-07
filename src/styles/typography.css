@@ -239,7 +239,10 @@
 
     /* ===== Table of Contents (clean card, no glassmorphism) ===== */
     details {
-      @apply block w-full cursor-pointer rounded-2xl border border-border/25 bg-transparent text-foreground transition-colors duration-300 ease-in-out select-none hover:border-accent/30 [&_p]:hidden [&_ul]:my-0!;
+      /* 아래 여백은 h1 위 간격(mt-14)과 같게 둔다. 목차 카드가 끝나고 본문이
+         시작된다는 걸 본문의 다른 구획과 같은 크기로 알린다. 제목과는 가깝게
+         붙여 제목+목차가 한 덩어리로 읽히게 둔다. */
+      @apply mb-14 block w-full cursor-pointer rounded-2xl border border-border/25 bg-transparent text-foreground transition-colors duration-300 ease-in-out select-none hover:border-accent/30 [&_ul]:my-0!;
     }
 
     details[open] {
