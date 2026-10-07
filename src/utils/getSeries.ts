@@ -1,5 +1,5 @@
 import { SERIES, getSlug, type Series } from "@/data/series";
-import type { ContentEntry } from "./contentEntry";
+import { getEntryPublishedMs, type ContentEntry } from "./contentEntry";
 import postFilter from "./postFilter";
 
 export type SeriesWithPosts = {
@@ -16,9 +16,6 @@ export type SeriesContext = SeriesWithPosts & {
 /**
  * 시리즈의 글을 읽는 순서(발행 시각 오름차순)로 돌려준다.
  *
- * getSortedPosts 와 달리 modDatetime 을 보지 않는다. 나중에 오타 하나
- * 고쳤다고 시리즈 순서가 뒤바뀌면 안 되기 때문이다.
- *
  * members 에 있지만 아직 없는 글(드래프트, 예약 발행)은 조용히 건너뛴다.
  */
 export const getSeriesPosts = (
@@ -29,11 +26,7 @@ export const getSeriesPosts = (
 
   return posts
     .filter(post => members.has(getSlug(post)) && postFilter(post))
-    .sort(
-      (a, b) =>
-        new Date(a.data.pubDatetime).getTime() -
-        new Date(b.data.pubDatetime).getTime()
-    );
+    .sort((a, b) => getEntryPublishedMs(a) - getEntryPublishedMs(b));
 };
 
 /**

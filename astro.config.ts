@@ -13,6 +13,13 @@ import { transformerFileName } from "./src/utils/transformers/fileName";
 import { transformerTokenColor } from "./src/utils/transformers/commentColor";
 import { rehypeExternalLinks } from "./src/utils/rehypeExternalLinks";
 import { SITE } from "./src/config";
+import {
+  getPostLastmods,
+  getPostSlugFromUrl,
+} from "./src/utils/sitemapLastmod";
+
+// 빌드 때 한 번만 읽는다. dev/check 에서는 사이트맵을 만들지 않으므로 건드리지 않는다.
+let postLastmods: Map<string, string> | null = null;
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,6 +34,14 @@ export default defineConfig({
     }),
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),
+      // 글에는 lastmod 를 붙여 재크롤 힌트를 준다. 값은 modDatetime ?? pubDatetime
+      // 으로, 사이트의 "Updated:" 표시·목록 정렬과 같은 기준이다.
+      // 목록 페이지(/posts, /tags/..., /series/...)는 붙이지 않는다.
+      serialize(item) {
+        postLastmods ??= getPostLastmods();
+        const lastmod = postLastmods.get(getPostSlugFromUrl(item.url));
+        return lastmod ? { ...item, lastmod } : item;
+      },
     }),
   ],
   markdown: {
