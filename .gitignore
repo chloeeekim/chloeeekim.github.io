@@ -17,3 +17,6 @@ public/pagefind/
 
 # 로컬 도구 설정 (Claude Code 가 dev 서버 실행 설정을 여기 만든다)
 .claude/
+
+# JetBrains IDE
+.idea/
