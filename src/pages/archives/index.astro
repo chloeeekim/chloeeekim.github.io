@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import RememberBackUrl from "@/components/RememberBackUrl.astro";
 import { getEntryPath } from "@/utils/contentEntry";
 import { slugifyStr } from "@/utils/slugify";
 import getPostsByGroupCondition from "@/utils/getPostsByGroupCondition";
@@ -43,6 +44,7 @@ const yearGroups = Object.entries(
   <Header />
   <Breadcrumb />
   <main id="main-content" class="app-layout pb-12">
+  <RememberBackUrl />
     <!-- Hero -->
     <div class="archive-hero" data-archive-hero>
       <div class="aurora-orb aurora-orb-1"></div>

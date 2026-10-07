@@ -6,6 +6,7 @@ import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import PageHero from "@/components/PageHero.astro";
 import Datetime from "@/components/Datetime.astro";
+import RememberBackUrl from "@/components/RememberBackUrl.astro";
 import IconClock from "@/assets/icons/IconClock.svg";
 import { SERIES, type Series } from "@/data/series";
 import { getSeriesPosts } from "@/utils/getSeries";
@@ -36,8 +37,6 @@ type Props = {
 
 const { series, posts } = Astro.props;
 
-// 글 상세에서 "뒤로" 눌렀을 때 이 시리즈로 돌아오게 한다.
-const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
 ---
 
 <Layout
@@ -46,7 +45,8 @@ const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
 >
   <Header />
   <Breadcrumb />
-  <main data-backUrl={backUrl} id="main-content" class="app-layout pb-12">
+  <main id="main-content" class="app-layout pb-12">
+    <RememberBackUrl />
     <PageHero
       class="mb-10"
       titlePrefix="Series:"
