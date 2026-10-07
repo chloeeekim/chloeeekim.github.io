@@ -1,0 +1,77 @@
+---
+import { getEntryPath, type ContentEntry } from "@/utils/contentEntry";
+
+type Props = {
+  post: ContentEntry;
+  /** 시리즈 안에서의 순번 (1-based) */
+  number: number;
+  isCurrent?: boolean;
+};
+
+const { post, number, isCurrent = false } = Astro.props;
+
+const numClass =
+  "series-num mt-px inline-flex size-5 shrink-0 items-center justify-center rounded-md font-firacode text-[11px]";
+---
+
+<li>
+  {
+    isCurrent ? (
+      <div
+        aria-current="true"
+        class="series-item series-item--current flex items-start gap-3 rounded-lg px-3 py-2"
+      >
+        <span class={numClass}>{number}</span>
+        <span class="flex-1 text-sm leading-snug font-medium text-accent">
+          {post.data.title}
+        </span>
+        <span class="mt-0.5 shrink-0 font-firacode text-[10px] tracking-wider text-accent/60 uppercase">
+          now
+        </span>
+      </div>
+    ) : (
+      <a
+        href={getEntryPath(post)}
+        class="series-item group flex items-start gap-3 rounded-lg px-3 py-2 transition-colors duration-200"
+      >
+        <span class={numClass}>{number}</span>
+        <span class="flex-1 text-sm leading-snug text-foreground/70 transition-colors duration-200 group-hover:text-accent">
+          {post.data.title}
+        </span>
+      </a>
+    )
+  }
+</li>
+
+<style>
+  .series-num {
+    background: color-mix(in srgb, var(--muted) 30%, transparent);
+    color: color-mix(in srgb, var(--foreground) 55%, transparent);
+  }
+
+  .series-item:hover .series-num {
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    color: var(--accent);
+  }
+
+  .series-item:hover {
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+  }
+
+  .series-item--current {
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+  }
+
+  .series-item--current .series-num {
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+    color: var(--accent);
+  }
+
+  html[data-theme="dark"] .series-item:hover {
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+
+  html[data-theme="dark"] .series-item--current {
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+  }
+</style>

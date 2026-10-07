@@ -8,6 +8,7 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 import Card from "@/components/Card.astro";
 import PageHero from "@/components/PageHero.astro";
 import Pagination from "@/components/Pagination.astro";
+import RememberBackUrl from "@/components/RememberBackUrl.astro";
 import getUniqueTags from "@/utils/getUniqueTags";
 import getPostsByTag from "@/utils/getPostsByTag";
 import { SITE } from "@/config";
@@ -45,9 +46,6 @@ const tagDescription = page.currentPage > 1
 const prevURL = page.url.prev ? new URL(page.url.prev, SITE.website).toString() : undefined;
 const nextURL = page.url.next ? new URL(page.url.next, SITE.website).toString() : undefined;
 
-// 글 상세에서 "뒤로" 눌렀을 때 이 태그 목록으로 돌아오게 한다.
-// (Breadcrumb 이 sessionStorage 의 backUrl 을 읽는다)
-const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
 ---
 
 <Layout
@@ -59,7 +57,8 @@ const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
 >
   <Header />
   <Breadcrumb />
-  <main data-backUrl={backUrl} id="main-content" class="app-layout pb-12">
+  <main id="main-content" class="app-layout pb-12">
+    <RememberBackUrl />
     <PageHero
       class="mb-8"
       titlePrefix="Tag:"
@@ -84,13 +83,3 @@ const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
   <Footer noMarginTop={page.lastPage > 1} />
 </Layout>
 
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const mainContent: HTMLElement | null =
-      document.querySelector("#main-content");
-    const backUrl = mainContent?.dataset?.backurl;
-    if (backUrl) {
-      sessionStorage.setItem("backUrl", backUrl);
-    }
-  });
-</script>

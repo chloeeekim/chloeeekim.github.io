@@ -1,6 +1,6 @@
 ---
 title: "[CUDA 5.5] CUDA 메모리 성능 최적화"
-description: "글로벌 메모리 액세스 결합과 공유 메모리 뱅크 충돌을 피해 CUDA 메모리 성능을 끌어올리는 방법. (2014년 작성)"
+description: "글로벌 메모리 액세스 결합(coalescing)과 공유 메모리 뱅크 충돌을 피하고 고정 메모리(pinned memory)를 써서 CUDA 메모리 성능을 끌어올리는 방법. (2014년 작성)"
 pubDatetime: 2015-04-04T09:00:00+09:00
 author: "Chloe Jungah Kim"
 tags:

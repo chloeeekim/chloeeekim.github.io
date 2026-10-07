@@ -3,7 +3,6 @@ import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import remarkToc from "remark-toc";
-import remarkCollapse from "remark-collapse";
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
@@ -12,7 +11,18 @@ import {
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import { transformerTokenColor } from "./src/utils/transformers/commentColor";
 import { rehypeExternalLinks } from "./src/utils/rehypeExternalLinks";
+import {
+  remarkTocPreserveIntro,
+  remarkTocCollapse,
+} from "./src/utils/remarkTocCollapse";
 import { SITE } from "./src/config";
+import {
+  getPostLastmods,
+  getPostSlugFromUrl,
+} from "./src/utils/sitemapLastmod";
+
+// 빌드 때 한 번만 읽는다. dev/check 에서는 사이트맵을 만들지 않으므로 건드리지 않는다.
+let postLastmods: Map<string, string> | null = null;
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,10 +37,20 @@ export default defineConfig({
     }),
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),
+      // 글에는 lastmod 를 붙여 재크롤 힌트를 준다. 값은 modDatetime ?? pubDatetime
+      // 으로, 사이트의 "Updated:" 표시·목록 정렬과 같은 기준이다.
+      // 목록 페이지(/posts, /tags/..., /series/...)는 붙이지 않는다.
+      serialize(item) {
+        postLastmods ??= getPostLastmods();
+        const lastmod = postLastmods.get(getPostSlugFromUrl(item.url));
+        return lastmod ? { ...item, lastmod } : item;
+      },
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
+    // remark-toc 은 "Table of contents" 제목 아래 쓴 도입부를 지운다.
+    // 앞뒤로 두 단계를 끼워 도입부를 살리고 목차만 접는다.
+    remarkPlugins: [remarkTocPreserveIntro, remarkToc, remarkTocCollapse],
     // 본문은 마크다운 링크만 쓰고, 외부 링크의 새 탭/rel 은 여기서 붙인다
     rehypePlugins: [rehypeExternalLinks],
     shikiConfig: {

@@ -1,6 +1,6 @@
 ---
 title: "Jekyll Blog(Github Pages) 검색 엔진에 노출시키기 (Google Search Console)"
-description: "Google Search Console에 사이트맵을 등록해 Jekyll 블로그를 검색 결과에 노출시키는 방법."
+description: "Google Search Console 에 소유권을 확인하고 사이트맵을 제출해 Jekyll 블로그를 검색 결과에 노출시키기. URL 검사로 색인을 요청하는 방법까지."
 pubDatetime: 2024-07-03T09:00:00+09:00
 author: "Chloe Jungah Kim"
 tags:

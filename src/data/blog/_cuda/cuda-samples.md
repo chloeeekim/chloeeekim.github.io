@@ -1,6 +1,6 @@
 ---
 title: "[CUDA 5.0] CUDA 예제 실행하기"
-description: "설치된 CUDA 5.0의 Samples Browser로 예제 프로젝트를 빌드하고 실행해보기. (2013년 작성)"
+description: "CUDA 5.0 Samples Browser 로 N-Body 등 예제를 실행해 설치가 제대로 됐는지 확인하기. 실행되지 않을 때 볼 GPU 지원 여부와 드라이버까지. (2013년 작성)"
 pubDatetime: 2015-03-31T09:00:00+09:00
 author: "Chloe Jungah Kim"
 tags:

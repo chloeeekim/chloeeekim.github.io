@@ -1,6 +1,6 @@
 ---
 title: "[CUDA 5.0] CUDA 설치하기"
-description: "CUDA 5.0 툴킷을 내려받아 설치하는 과정 정리. (2013년 작성)"
+description: "CUDA 5.0 툴킷 설치 과정. 5.0부터 Toolkit·SDK 샘플·드라이버가 설치 파일 하나로 통합됐고, 한국 사이트가 아닌 developer zone 에서 받아야 한다. (2013년 작성)"
 pubDatetime: 2015-03-30T09:00:00+09:00
 author: "Chloe Jungah Kim"
 tags:

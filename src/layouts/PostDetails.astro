@@ -7,9 +7,12 @@ import Datetime from "@/components/Datetime.astro";
 import ShareLinks from "@/components/ShareLinks.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
+import SeriesToc from "@/components/SeriesToc.astro";
+import IconBook from "@/assets/icons/IconBook.svg";
 import { getPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
 import { getReadingTime } from "@/utils/readingTime";
+import { getSeriesOfPost } from "@/utils/getSeries";
 import { SITE } from "@/config";
 
 type Props = {
@@ -64,19 +67,30 @@ const layoutProps = {
   scrollSmooth: true,
 };
 
+/* ========== Series ========== */
+
+const seriesContext = getSeriesOfPost(post, posts);
+
 /* ========== Prev/Next Posts ========== */
 
-const allPosts = posts.map(({ data: { title }, id, filePath }) => ({
-  id,
-  title,
-  filePath,
-}));
+// 시리즈 글에는 붙이지 않는다. 하단 시리즈 목차가 앞뒤 글을 모두 보여주는데
+// 전체 발행일순 이전/다음까지 얹으면 시리즈 밖으로 새는 길만 하나 더 생긴다.
+const allPosts = seriesContext
+  ? []
+  : posts.map(({ data: { title }, id, filePath }) => ({
+      id,
+      title,
+      filePath,
+    }));
 
 const currentPostIndex = allPosts.findIndex(a => a.id === post.id);
 
-const prevPost = currentPostIndex !== 0 ? allPosts[currentPostIndex - 1] : null;
+const prevPost =
+  currentPostIndex > 0 ? allPosts[currentPostIndex - 1] : null;
 const nextPost =
-  currentPostIndex < allPosts.length - 1 ? allPosts[currentPostIndex + 1] : null;
+  currentPostIndex !== -1 && currentPostIndex < allPosts.length - 1
+    ? allPosts[currentPostIndex + 1]
+    : null;
 ---
 
 <Layout {...layoutProps}>
@@ -91,6 +105,23 @@ const nextPost =
     <header class="post-header relative mb-10 text-center">
       <div class="post-hero-bg"></div>
       <div class="relative z-10 rounded-3xl border border-border/20 bg-muted/5 px-6 py-8 backdrop-blur-md sm:px-10 sm:py-12">
+        <!-- Series eyebrow -->
+        {
+          seriesContext && (
+            <a
+              href={`/series/${seriesContext.series.slug}/`}
+              class="mb-3 inline-flex w-full items-center justify-center gap-2 text-sm text-accent/85 transition-colors duration-200 hover:text-accent"
+            >
+              <IconBook class="size-3.5 shrink-0" aria-hidden="true" />
+              <span class="font-medium">{seriesContext.series.title}</span>
+              <span class="opacity-40">·</span>
+              <span class="font-firacode text-xs opacity-75">
+                {seriesContext.index + 1}/{seriesContext.posts.length}
+              </span>
+            </a>
+          )
+        }
+
         <!-- Title -->
         <h1
           transition:name={slugifyStr(title)}
@@ -215,6 +246,9 @@ const nextPost =
       </div>
     </div>
 
+    <!-- Series table of contents (replaces prev/next for series posts) -->
+    {seriesContext && <SeriesToc context={seriesContext} />}
+
     <!-- Tags & Share row -->
     <div
       class="mt-6 mb-8 flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:justify-between"
@@ -240,7 +274,10 @@ const nextPost =
     </div>
 
     <!-- Decorative separator before prev/next -->
-    <div class="my-6 flex items-center gap-3" aria-hidden="true">
+    <div
+      class:list={["my-6 flex items-center gap-3", { hidden: seriesContext }]}
+      aria-hidden="true"
+    >
       <div
         class="h-px flex-1 bg-linear-to-r from-transparent via-border/30 to-transparent"
       >
@@ -248,7 +285,10 @@ const nextPost =
     </div>
 
     <!-- Previous/Next Post Navigation -->
-    <div data-pagefind-ignore class="grid grid-cols-2 gap-3">
+    <div
+      data-pagefind-ignore
+      class:list={["grid grid-cols-2 gap-3", { hidden: seriesContext }]}
+    >
       {
         prevPost ? (
           <a
@@ -367,8 +407,10 @@ const nextPost =
   /** Attaches links to headings in the document,
    *  allowing sharing of sections easily */
   function addHeadingLinks() {
+    // 본문 안의 제목만. 문서 전체를 훑으면 시리즈 목차처럼 본문 밖에 있는
+    // h2 에도 id 없는 `#` 앵커가 붙는다.
     const headings = Array.from(
-      document.querySelectorAll("h2, h3, h4, h5, h6")
+      document.querySelectorAll("#article :is(h2, h3, h4, h5, h6)")
     );
     for (const heading of headings) {
       heading.classList.add("group");

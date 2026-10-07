@@ -23,7 +23,6 @@ const {
 } = Astro.props;
 
 const { title, description, pubDatetime } = data;
-const modDatetime = "modDatetime" in data ? data.modDatetime : null;
 const timezone = "timezone" in data ? data.timezone : undefined;
 const tags = "tags" in data ? data.tags : [];
 const href = getEntryPath({ collection, id, filePath });
@@ -95,7 +94,8 @@ const readingTime = body ? getReadingTime(body) : null;
     
     <!-- Meta row: date + reading time -->
     <div class="relative z-20 mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 pointer-events-none">
-      <Datetime pubDatetime={pubDatetime} modDatetime={modDatetime} timezone={timezone} />
+      {/* 목록 카드에는 발행일만. 수정일은 글 상세에서만 보여준다 */}
+      <Datetime pubDatetime={pubDatetime} timezone={timezone} />
       {readingTime && (
         <span class="flex items-center gap-1 text-sm text-foreground/60 whitespace-nowrap">
           <IconClock class="size-4 shrink-0" aria-hidden="true" />

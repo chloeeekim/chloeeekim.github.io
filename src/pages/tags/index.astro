@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import RememberBackUrl from "@/components/RememberBackUrl.astro";
 import PageHero from "@/components/PageHero.astro";
 import IconHash from "@/assets/icons/IconHash.svg";
 import getUniqueTags from "@/utils/getUniqueTags";
@@ -26,6 +27,7 @@ const maxCount = Math.max(...tagsWithCount.map(t => t.count));
   <Header />
   <Breadcrumb />
   <main id="main-content" class="app-layout pb-12">
+  <RememberBackUrl />
     <PageHero
       class="mb-10"
       title="Tags"
