@@ -14,11 +14,9 @@ export async function GET() {
       link: getEntryPath(entry),
       title: entry.data.title,
       description: entry.data.description,
-      pubDate: new Date(
-        "modDatetime" in entry.data && entry.data.modDatetime
-          ? entry.data.modDatetime
-          : entry.data.pubDatetime
-      ),
+      // 목록과 같은 기준. modDatetime 을 쓰면 오래된 글을 고칠 때마다
+      // 구독자의 리더에서 새 글처럼 맨 위로 올라온다.
+      pubDate: new Date(entry.data.pubDatetime),
     })),
   });
 }
