@@ -10,6 +10,7 @@ draft: false
 ---
 
 ## Table of contents
+
 Github Pages와 Jekyll로 생성한 블로그의 경우, 트래픽 분석 등을 따로 제공하지 않기 때문에 누가 어떤 방식으로 내 블로그에 유입되었는지 알기 힘들다는 한계점이 있습니다. 이를 보완하기 위하여 Google Analytics를 통해 누가, 얼마나, 어떤 방식으로, 어느 지역에서 유입되는지를 확인할 수 있습니다. 참고로, 2024년 현재 구글 애널리틱스(Google Analytics, GA)는 GA4 버전만 생성 가능합니다. 이전 버전인 유니버셜 애널리틱스(Universal Analytics, UA)는 추후 지원이 되지 않을 수 있습니다.
 
 # GA 계정 만들기
