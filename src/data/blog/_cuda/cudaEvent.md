@@ -9,6 +9,7 @@ tags:
 featured: false
 draft: false
 ---
+
 GPU에서 실행 시간을 측정할 수 있는 방법은 StopWatchInterface를 사용하는 등 여러 가지가 있지만, NVIDIA에서 공식적으로 제공하는 Programming Guide에서 확인할 수 있는 내용인 cudaEvent를 소개하고자 합니다.
 
 사용하는 방법은 다음과 같습니다.
