@@ -1,0 +1,58 @@
+---
+/**
+ * draft: true 인 글에 붙는 표시. dev 서버에서만 나온다.
+ *
+ * dev 에서 드래프트를 보여주기 시작하니 목록에서 발행글과 구분이 안 됐다.
+ * 어디까지 나갔는지 눈으로 확인할 수 있어야 한다.
+ *
+ * 색은 accent/featured 를 쓰지 않는다. 둘 다 본문 요소에 이미 쓰고 있어서
+ * 글의 일부처럼 읽힌다. 테두리를 점선으로 둬서 "아직 확정 아님" 을 모양으로도
+ * 알린다.
+ *
+ * showDrafts 가 빌드에서 false 로 접히므로 발행본에는 마크업 자체가 없다.
+ */
+import { showDrafts } from "@/utils/draftVisibility";
+
+type Props = {
+  /** 글의 draft 값 */
+  draft?: boolean;
+  class?: string;
+};
+
+const { draft = false, class: className = "" } = Astro.props;
+---
+
+{
+  showDrafts && draft && (
+    <span
+      class:list={["draft-badge font-firacode", className]}
+      title="draft: true — dev 서버에서만 보입니다"
+    >
+      DRAFT
+    </span>
+  )
+}
+
+<style>
+  .draft-badge {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 0.25rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 0.3rem;
+    border: 1px dashed color-mix(in srgb, var(--draft) 45%, transparent);
+    background: color-mix(in srgb, var(--draft) 10%, transparent);
+    color: var(--draft);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    white-space: nowrap;
+    --draft: #d99a2b;
+  }
+
+  :global(html[data-theme="dark"]) .draft-badge {
+    --draft: #f0b429;
+  }
+</style>
