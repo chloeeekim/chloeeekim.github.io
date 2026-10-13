@@ -11,6 +11,7 @@ import {
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import { transformerTokenColor } from "./src/utils/transformers/commentColor";
 import { rehypeExternalLinks } from "./src/utils/rehypeExternalLinks";
+import { rehypeTableScroll } from "./src/utils/rehypeTableScroll";
 import {
   remarkTocPreserveIntro,
   remarkTocCollapse,
@@ -51,8 +52,9 @@ export default defineConfig({
     // remark-toc 은 "Table of contents" 제목 아래 쓴 도입부를 지운다.
     // 앞뒤로 두 단계를 끼워 도입부를 살리고 목차만 접는다.
     remarkPlugins: [remarkTocPreserveIntro, remarkToc, remarkTocCollapse],
-    // 본문은 마크다운 링크만 쓰고, 외부 링크의 새 탭/rel 은 여기서 붙인다
-    rehypePlugins: [rehypeExternalLinks],
+    // 본문은 마크다운 링크만 쓰고, 외부 링크의 새 탭/rel 은 여기서 붙인다.
+    // 표는 좁은 화면에서 옆으로 밀어 볼 수 있게 감싼다.
+    rehypePlugins: [rehypeExternalLinks, rehypeTableScroll],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "dracula" },
