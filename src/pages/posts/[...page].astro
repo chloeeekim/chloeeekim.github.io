@@ -12,10 +12,11 @@ import RememberBackUrl from "@/components/RememberBackUrl.astro";
 import "@pagefind/default-ui/css/ui.css";
 import type { ContentEntry } from "@/utils/contentEntry";
 import getSortedPosts from "@/utils/getSortedPosts";
+import { isDraftVisible } from "@/utils/draftVisibility";
 import { SITE } from "@/config";
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const posts = await getCollection("blog", isDraftVisible);
   return paginate(getSortedPosts(posts), {
     pageSize: SITE.postPerPage,
   });

@@ -8,13 +8,15 @@ import RememberBackUrl from "@/components/RememberBackUrl.astro";
 import { getEntryPath } from "@/utils/contentEntry";
 import { slugifyStr } from "@/utils/slugify";
 import getPostsByGroupCondition from "@/utils/getPostsByGroupCondition";
+import { isDraftVisible } from "@/utils/draftVisibility";
+import DraftBadge from "@/components/DraftBadge.astro";
 import { SITE } from "@/config";
 
 if (!SITE.showArchives) {
   return Astro.redirect("/404");
 }
 
-const posts = await getCollection("blog", ({ data }) => !data.draft);
+const posts = await getCollection("blog", isDraftVisible);
 
 // 테마(스페인어권)에서 넘어온 월 이름을 영어로 바꾼다.
 // 사이트의 다른 날짜 표기(Datetime.astro)도 영어라 표기를 맞춘다.
@@ -128,6 +130,7 @@ const yearGroups = Object.entries(
                                   }}
                                 >
                                   {post.data.title}
+                                  <DraftBadge draft={post.data.draft} />
                                 </span>
                                 <p class="post-desc">{post.data.description}</p>
                               </div>
