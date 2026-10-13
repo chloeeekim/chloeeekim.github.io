@@ -5,6 +5,7 @@ import { getEntryPath } from "@/utils/contentEntry";
 import { getReadingTime } from "@/utils/readingTime";
 import Datetime from "./Datetime.astro";
 import IconClock from "@/assets/icons/IconClock.svg";
+import DraftBadge from "./DraftBadge.astro";
 import { SITE } from "@/config";
 
 type Props = {
@@ -23,6 +24,7 @@ const {
 } = Astro.props;
 
 const { title, description, pubDatetime } = data;
+const draft = "draft" in data ? data.draft : false;
 const timezone = "timezone" in data ? data.timezone : undefined;
 const tags = "tags" in data ? data.tags : [];
 const href = getEntryPath({ collection, id, filePath });
@@ -87,6 +89,7 @@ const readingTime = body ? getReadingTime(body) : null;
     >
       <Heading id={headingId} class="flex items-center gap-2">
         {title}
+        <DraftBadge {draft} />
       </Heading>
       <!-- Expand clickable area to whole card on top of everything, minus the description -->
       <span class="absolute -inset-4 sm:-inset-5 z-10" aria-hidden="true"></span>
