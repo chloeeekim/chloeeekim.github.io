@@ -5,7 +5,7 @@ pubDatetime: 2024-07-03T09:00:00+09:00
 author: "Chloe Jungah Kim"
 tags:
   - jekyll
-featured: true
+featured: false
 draft: false
 ---
 
