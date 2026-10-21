@@ -138,5 +138,6 @@ Slack에서도 같은 흐름이 보인다. 에이전트는 활성 공개 채널�
 # 참고
 
 - [How employment is changing at Anthropic](https://www.anthropic.com/research/employment-at-anthropic) (Anthropic, 2026-10-16)
+- [The AI expectations gap](https://www.anthropic.com/research/ai-expectations-gap) (Anthropic, 2026-10-16): 같은 날 나온 직원과 일반인의 AI 기대 비교 보고서. [요약 글](/ai-expectations-gap)
 - [How AI Is Transforming Work at Anthropic](https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic) (Anthropic, 2025-12-02): 엔지니어 대상 설문 기반의 이전 보고서
 - [An Evidence Review of Subsidized Job Training](https://www.anthropic.com/research/reviewing-the-evidence-on-worker-retraining-programs) (The Anthropic Institute): 보고서가 결론에서 언급한 재교육 정책 근거 검토
