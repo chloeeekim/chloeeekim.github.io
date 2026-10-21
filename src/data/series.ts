@@ -53,6 +53,13 @@ export const SERIES: Series[] = [
     ],
   },
   {
+    slug: "kotlin-mutation-testing",
+    title: "Kotlin 뮤테이션 테스트 도구 만들기",
+    description:
+      "Kotlin용 Stryker 스타일 뮤테이션 테스트 도구를 직접 만드는 기록. 소스 변형을 고른 이유와 첫 버전의 범위에서 시작해, 파싱과 뮤턴트 탐색, 테스트 실행, 리포트까지.",
+    members: ["kotlin-mutation-testing-1"],
+  },
+  {
     slug: "ai-reports",
     title: "AI·기술 보고서 읽기",
     description:
