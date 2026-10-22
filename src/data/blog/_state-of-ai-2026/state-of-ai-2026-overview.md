@@ -1,5 +1,5 @@
 ---
-title: "State of AI Report 2026 한눈에 보기: 핵심 요약과 2027년 예측"
+title: "State of AI 2026 (1) 한눈에 보기: 핵심 요약과 2027년 예측"
 description: "Air Street Capital의 연례 보고서 State of AI Report 2026(슬라이드 244장)을 주제별로 나눠 읽는 시리즈의 첫 글. 연구, 산업, 정치, 안전 네 분야의 핵심과 작년 예측 채점, 내년 예측 9개를 정리했다."
 pubDatetime: 2026-10-22T18:00:00+09:00
 author: "Chloe Jungah Kim"
@@ -30,7 +30,7 @@ draft: true
 Research와 Industry는 성격이 다른 주제가 섞여 있어서, 이 시리즈는 섹션을 그대로 따르지 않고 주제별로 다시 묶었다.
 
 1. **한눈에 보기와 2027년 예측** (이 글)
-2. 에이전트와 벤치마크
+2. [에이전트와 벤치마크](/state-of-ai-2026-agents)
 3. AI가 AI 연구를 한다
 4. 피지컬 AI: 월드 모델과 로보틱스
 5. 과학 AI: 수학에서 신약까지
