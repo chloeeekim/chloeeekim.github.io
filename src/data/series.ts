@@ -73,6 +73,14 @@ export const SERIES: Series[] = [
       "recursive-self-improvement",
     ],
   },
+  {
+    slug: "state-of-ai-2026",
+    title: "State of AI 2026 읽기",
+    description:
+      "Air Street Capital의 연례 보고서 State of AI Report 2026을 주제별로 나눠 한국어로 정리한다. 에이전트와 AI 연구 자동화, 피지컬 AI, 과학, 비즈니스, 인프라, 정치와 안전까지.",
+    // 보고서에 주제별 URL 이 없어서 `state-of-ai-2026-<주제>` 로 짓는다.
+    members: ["state-of-ai-2026-overview"],
+  },
 ];
 
 /** 글의 슬러그. id 는 `_blog/jekyll-search` 처럼 디렉토리를 포함한다. */
