@@ -33,7 +33,7 @@ Research와 Industry는 성격이 다른 주제가 섞여 있어서, 이 시리�
 2. [에이전트와 벤치마크](/state-of-ai-2026-agents)
 3. [AI가 AI 연구를 한다](/state-of-ai-2026-ai-research)
 4. [피지컬 AI: 월드 모델과 로보틱스](/state-of-ai-2026-physical-ai)
-5. 과학 AI: 수학에서 신약까지
+5. [과학 AI: 수학에서 신약까지](/state-of-ai-2026-science)
 6. AI 비즈니스와 일자리
 7. 인프라와 자본
 8. 정치와 안전
