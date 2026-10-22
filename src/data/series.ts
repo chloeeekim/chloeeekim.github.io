@@ -66,7 +66,12 @@ export const SERIES: Series[] = [
       "AI 연구소와 기관이 낸 중요한 보고서를 한국어로 요약한다. 핵심 수치와 그래프, 결론, 그리고 읽을 때 주의할 점까지.",
     // 슬러그는 원문 URL 의 마지막 경로를 그대로 쓴다. 원문과 1:1 로 대응되고,
     // 원문 제목 전체보다 짧다. URL 이 의미 없는 ID 면 원문 제목을 줄여 쓴다.
-    members: ["employment-at-anthropic", "ai-expectations-gap"],
+    // 여러 보고서를 비교하는 글은 공통 주제를 담은 쪽의 슬러그를 쓴다.
+    members: [
+      "employment-at-anthropic",
+      "ai-expectations-gap",
+      "recursive-self-improvement",
+    ],
   },
 ];
 
