@@ -87,6 +87,7 @@ export const SERIES: Series[] = [
       "state-of-ai-2026-science",
       "state-of-ai-2026-business",
       "state-of-ai-2026-infrastructure",
+      "state-of-ai-2026-politics-safety",
     ],
   },
 ];
