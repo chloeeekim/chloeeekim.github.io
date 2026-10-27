@@ -52,6 +52,16 @@ export const SERIES: Series[] = [
       "jekyll-to-astro",
     ],
   },
+  {
+    slug: "claude-code",
+    title: "Claude Code 길들이기",
+    description:
+      "Claude Code 를 실제 작업에 붙이면서 정리한 설정과 요령. 스킬을 플러그인으로 묶어 팀에 배포하기, CLAUDE.md 로 문체와 분량 규칙 고정하기, 그리고 혼자 쓰면서 찾은 소소한 팁까지.",
+    members: [
+      "claude-code-internal-plugin",
+      "claude-writing-rules",
+    ],
+  },
 ];
 
 /** 글의 슬러그. id 는 `_blog/jekyll-search` 처럼 디렉토리를 포함한다. */
