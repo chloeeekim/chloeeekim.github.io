@@ -29,8 +29,8 @@ type MdNode = {
 type Root = { type: "root"; children: MdNode[] };
 type VFile = { data: Record<string, unknown> };
 
-/** remark-toc 의 기본값과 같은 패턴 */
-const TOC_HEADING = /^(table[ -]of[ -])?contents?$|^toc$/i;
+/** remark-toc 의 기본값과 같은 패턴. rehypeDemoteHeadings 도 쓴다. */
+export const TOC_HEADING = /^(table[ -]of[ -])?contents?$|^toc$/i;
 
 const DATA_KEY = "tocIntroNodes";
 
@@ -100,6 +100,11 @@ export function remarkTocCollapse(options?: {
           ]
         : [];
 
-    tree.children.splice(index + 1, wrapped.length ? 1 : 0, ...wrapped, ...intro);
+    tree.children.splice(
+      index + 1,
+      wrapped.length ? 1 : 0,
+      ...wrapped,
+      ...intro
+    );
   };
 }
