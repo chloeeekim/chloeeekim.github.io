@@ -12,6 +12,7 @@ import { transformerFileName } from "./src/utils/transformers/fileName";
 import { transformerTokenColor } from "./src/utils/transformers/commentColor";
 import { rehypeExternalLinks } from "./src/utils/rehypeExternalLinks";
 import { rehypeTableScroll } from "./src/utils/rehypeTableScroll";
+import { rehypeDemoteHeadings } from "./src/utils/rehypeDemoteHeadings";
 import {
   remarkTocPreserveIntro,
   remarkTocCollapse,
@@ -54,7 +55,12 @@ export default defineConfig({
     remarkPlugins: [remarkTocPreserveIntro, remarkToc, remarkTocCollapse],
     // 본문은 마크다운 링크만 쓰고, 외부 링크의 새 탭/rel 은 여기서 붙인다.
     // 표는 좁은 화면에서 옆으로 밀어 볼 수 있게 감싼다.
-    rehypePlugins: [rehypeExternalLinks, rehypeTableScroll],
+    // 본문 제목은 한 단계 내린다. 글 제목이 h1 이라 `#` 섹션과 겹쳤다.
+    rehypePlugins: [
+      rehypeExternalLinks,
+      rehypeTableScroll,
+      rehypeDemoteHeadings,
+    ],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "dracula" },
