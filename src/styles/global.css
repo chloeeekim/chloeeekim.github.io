@@ -242,3 +242,32 @@ i {
   background: color-mix(in srgb, var(--accent) 15%, transparent);
   box-shadow: 0 4px 15px color-mix(in srgb, var(--accent) 15%, transparent);
 }
+
+/*
+ * 움직임을 줄여 달라고 한 사람에게는 전환과 애니메이션을 끈다.
+ *
+ * 지금까지는 컴포넌트마다 각자 @media (prefers-reduced-motion) 를 달았다.
+ * Card, Footer, Breadcrumb, BackToTopButton, Layout 에는 있고 Header,
+ * SearchModal, AboutLayout, SeriesRecommendation 에는 없다. 새 컴포넌트를
+ * 만들 때마다 기억해야 하는 규칙은 결국 빠진다.
+ *
+ * 전역으로 한 번 덮는다. 개별 가드는 그대로 둬도 충돌하지 않는다.
+ *
+ * 0 이 아니라 0.01ms 로 둔다. transitionend / animationend 를 기다리는
+ * 코드가 이벤트를 못 받고 멈추는 걸 막는다.
+ *
+ * @layer 밖에 둬야 한다. Tailwind 의 레이어 안에서는 !important 끼리
+ * 우선순위가 뒤집혀 유틸리티를 못 덮는다. html 의 scroll-smooth 가 그렇다.
+ *
+ * 뷰 트랜지션은 Astro 가 이미 같은 가드를 넣어 줘서 여기서 다루지 않는다.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
