@@ -1,5 +1,5 @@
 ---
-title: "Jekyll Blog(Github Pages)에 Google Anayltics 연결하기"
+title: "Jekyll Blog(Github Pages)에 Google Analytics 연결하기"
 description: "Jekyll 블로그(GitHub Pages)에 GA4 속성을 만들어 연결하고 유입 데이터 수집을 확인하기. 예시가 UA 버전일 때의 차이도 정리."
 pubDatetime: 2024-06-29T09:00:00+09:00
 author: "Chloe Jungah Kim"
