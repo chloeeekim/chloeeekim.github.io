@@ -8,6 +8,14 @@ import "@/styles/global.css";
 
 type Props = {
   title?: string;
+  /**
+   * 구조화 데이터(JSON-LD)의 headline.
+   *
+   * title 은 `글 제목 | 사이트 이름` 꼴이라 <title> 에는 맞지만
+   * schema.org 의 headline 에는 사이트 이름이 들어가면 안 된다.
+   * 글 제목만 따로 받는다. 안 주면 title 을 그대로 쓴다.
+   */
+  headline?: string;
   author?: string;
   profile?: string;
   description?: string;
@@ -23,6 +31,7 @@ type Props = {
 
 const {
   title = SITE.title,
+  headline = title,
   author = SITE.author,
   profile = SITE.profile,
   description = SITE.desc,
@@ -57,7 +66,7 @@ const finalStructuredData = structuredDataProp ?? (
           "@type": "WebPage",
           "@id": canonicalURL.toString(),
         },
-        headline: title,
+        headline,
         description,
         image: socialImageURL.toString(),
         url: canonicalURL.toString(),
