@@ -125,6 +125,29 @@ import "@pagefind/default-ui/css/ui.css";
 <script>
   let cleanupHelper: AbortController | null = null;
 
+  const FOCUSABLE = [
+    "a[href]",
+    "button:not([disabled])",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    '[tabindex]:not([tabindex="-1"])',
+  ].join(",");
+
+  /**
+   * 실제로 탭이 닿는 요소만 추린다.
+   *
+   * getClientRects() 는 visibility:hidden 요소에도 사각형을 돌려준다.
+   * pagefind 의 clear 버튼이 입력이 비었을 때 그런 상태라 둘 다 본다.
+   */
+  function focusableIn(root: HTMLElement) {
+    return Array.from(root.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+      el =>
+        el.getClientRects().length > 0 &&
+        getComputedStyle(el).visibility !== "hidden"
+    );
+  }
+
   function initSearchModal() {
     // Clean up previous listeners if they exist to avoid duplication on page navigation
     if (cleanupHelper) cleanupHelper.abort();
@@ -167,8 +190,68 @@ import "@pagefind/default-ui/css/ui.css";
       );
     }
 
+    /**
+     * 열려 있는 동안 모달 바깥을 inert 로 덮는다.
+     *
+     * aria-modal="true" 는 스크린 리더에게만 "뒤쪽은 없는 셈 쳐라"라고
+     * 말한다. 키보드와 마우스는 그대로 뒤로 들어갔다. 실제로 모달 안
+     * 마지막 버튼에서 Tab 을 누르면 뒤에 가려진 "Skip to content" 로
+     * 포커스가 넘어갔다. inert 는 셋 다 한 번에 막는다.
+     *
+     * 모달 자신은 body 바로 밑에 있어서 형제만 끄면 된다.
+     */
+    function setBackgroundInert(on: boolean) {
+      for (const el of Array.from(document.body.children)) {
+        if (el === modal) continue;
+        if (on) el.setAttribute("inert", "");
+        else el.removeAttribute("inert");
+      }
+    }
+
+    // 페이지 전환 중에 inert 가 남는 일이 없도록 초기화 때 한 번 턴다
+    setBackgroundInert(false);
+
+    // 닫을 때 돌려줄 자리
+    let lastFocused: HTMLElement | null = null;
+
+    /**
+     * 포커스를 모달 안으로 반드시 넣는다.
+     *
+     * 원래는 100ms 뒤 pagefind 입력란에 한 번 focus() 하는 게 전부였다.
+     * 한 번은 못 잡는 경우가 있다. 열림 전환(visibility 0.25s)이 끝나기
+     * 전에는 focus() 가 먹지 않고, 그 페이지에서 처음 열 때는 pagefind
+     * 입력란 자체가 아직 그려지지 않았다.
+     *
+     * 바깥을 inert 로 껐으니 포커스가 모달 밖에 남으면 Tab 이 갈 곳을
+     * 잃는다. 들어갈 때까지 몇 번 보고, 끝내 못 잡으면 모달 안 첫 요소
+     * (닫기 버튼)로 보낸다.
+     */
+    function focusIntoModal(tries = 20, parked: Element | null = null) {
+      if (!modal!.classList.contains("active")) return;
+
+      // 우리가 둔 자리에서 사용자가 직접 옮겼으면 더는 건드리지 않는다
+      if (parked && document.activeElement !== parked) return;
+
+      const input = modal!.querySelector<HTMLInputElement>(
+        ".pagefind-ui__search-input"
+      );
+      input?.focus();
+      if (input && document.activeElement === input) return;
+
+      // 입력란을 아직 못 잡았으면 모달 안 첫 요소(닫기 버튼)라도 잡아 둔다
+      if (!modal!.contains(document.activeElement)) {
+        focusableIn(modal!)[0]?.focus();
+      }
+
+      if (tries > 0) {
+        setTimeout(() => focusIntoModal(tries - 1, document.activeElement), 100);
+      }
+    }
+
     function openModal() {
+      lastFocused = document.activeElement as HTMLElement | null;
       modal!.classList.add("active");
+      setBackgroundInert(true);
       document.body.style.overflow = "hidden";
 
       if (!pagefindLoaded) {
@@ -176,18 +259,42 @@ import "@pagefind/default-ui/css/ui.css";
         pagefindLoaded = true;
       }
 
-      setTimeout(() => {
-        const input = modal!.querySelector<HTMLInputElement>(
-          ".pagefind-ui__search-input"
-        );
-        input?.focus();
-      }, 100);
+      focusIntoModal();
     }
 
     function closeModal() {
       modal!.classList.remove("active");
+      setBackgroundInert(false);
       document.body.style.overflow = "";
+
+      // 열기 전에 있던 자리로 돌려준다. inert 를 푼 뒤라야 포커스가 들어간다.
+      lastFocused?.focus?.();
+      lastFocused = null;
+
+      // ⌘K 로 열었으면 직전 자리가 <body> 라 focus() 가 아무 일도 안 한다.
+      // 그러면 포커스가 방금 숨긴 모달 안에 그대로 남는다. 검색 버튼으로 보낸다.
+      if (modal!.contains(document.activeElement)) {
+        const trigger = document.querySelector<HTMLElement>(
+          "[data-search-trigger]"
+        );
+        if (trigger) trigger.focus();
+        else (document.activeElement as HTMLElement).blur();
+      }
     }
+
+    // 열림 전환이 끝나는 순간이 모달이 실제로 보이기 시작한 시점이다.
+    // visibility 가 아직 hidden 이면 focus() 가 먹지 않아서, 위 재시도가
+    // 다 지나가 버린 경우(느린 기기, 백그라운드 탭)를 여기서 받아낸다.
+    modal.addEventListener(
+      "transitionend",
+      (e: TransitionEvent) => {
+        if (e.target !== modal) return;
+        if (!modal.classList.contains("active")) return;
+        if (modal.contains(document.activeElement)) return;
+        focusIntoModal();
+      },
+      { signal }
+    );
 
     // Keyboard navigation for search results
     modal!.addEventListener(
@@ -222,6 +329,20 @@ import "@pagefind/default-ui/css/ui.css";
         } else if (e.key === "Enter") {
           if (currentIndex >= 0) {
             activeElement.click();
+          }
+        } else if (e.key === "Tab") {
+          // 바깥을 inert 로 막아도 마지막 요소에서 Tab 을 누르면 브라우저
+          // 주소창으로 빠진다. 네이티브 <dialog> 처럼 안에서 돌게 한다.
+          const focusable = focusableIn(modal!);
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && activeElement === last) {
+            e.preventDefault();
+            first.focus();
           }
         }
       },
