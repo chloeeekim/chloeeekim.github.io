@@ -509,6 +509,39 @@ const isActive = (path: string) => {
     mobileMenu.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", closeMenu, { signal });
     });
+
+    /**
+     * Esc 로 닫기.
+     *
+     * 백드롭까지 깔고 화면을 덮는데 Esc 가 안 먹었다. 닫는 길은
+     * 햄버거 다시 누르기 / 백드롭 탭 / 스크롤뿐이었다. 바로 옆 검색
+     * 모달은 Esc 로 닫히니 동작이 하나만 어긋난다.
+     *
+     * 검색 모달이 열려 있으면 그쪽이 먼저다. 메뉴 안 검색 버튼으로
+     * 모달을 여는 길이 있어서 둘 다 열려 있을 수 있다. 두 Esc 핸들러 모두
+     * document 에 붙어 있어 한 번에 다 닫히는데, 모달만 닫고 메뉴는
+     * 남겨 두는 게 돌아가는 자리로 자연스럽다.
+     */
+    document.addEventListener(
+      "keydown",
+      (e: KeyboardEvent) => {
+        if (e.key !== "Escape") return;
+        if (menuBtn.getAttribute("aria-expanded") !== "true") return;
+        if (
+          document.getElementById("search-modal")?.classList.contains("active")
+        )
+          return;
+
+        e.preventDefault();
+        closeMenu();
+
+        // 포커스가 방금 숨긴 메뉴 안에 남아 있을 수 있다. 햄버거로 돌려준다.
+        if (mobileMenu.contains(document.activeElement)) {
+          (menuBtn as HTMLElement).focus();
+        }
+      },
+      { signal }
+    );
   }
 
   // Initial load
