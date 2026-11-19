@@ -9,10 +9,13 @@ import "@/styles/global.css";
 type Props = {
   title?: string;
   /**
-   * 구조화 데이터(JSON-LD)의 headline.
+   * 사이트 이름을 뺀 제목. JSON-LD 의 headline 과 공유 링크 카드에 쓴다.
    *
-   * title 은 `글 제목 | 사이트 이름` 꼴이라 <title> 에는 맞지만
-   * schema.org 의 headline 에는 사이트 이름이 들어가면 안 된다.
+   * title 은 `글 제목 | 사이트 이름` 꼴이라 브라우저 탭에는 맞지만,
+   * schema.org 의 headline 에도 og:title 에도 사이트 이름이 들어가면
+   * 안 된다. 공유 카드는 og:site_name 을 따로 보여 주기 때문에
+   * 제목에 이름을 다시 붙이면 카드에 두 번 나온다.
+   *
    * 글 제목만 따로 받는다. 안 주면 title 을 그대로 쓴다.
    */
   headline?: string;
@@ -29,9 +32,19 @@ type Props = {
   structuredData?: any;
 };
 
+/**
+ * 제목 끝의 ` | 사이트 이름` 을 벗긴다.
+ *
+ * 페이지마다 headline 을 따로 넘기게 하면 새 페이지를 만들 때마다
+ * 기억해야 하고, 그런 규칙은 결국 빠진다. title 에서 바로 얻는다.
+ */
+const SITE_TITLE_SUFFIX = ` | ${SITE.title}`;
+const stripSiteTitle = (t: string) =>
+  t.endsWith(SITE_TITLE_SUFFIX) ? t.slice(0, -SITE_TITLE_SUFFIX.length) : t;
+
 const {
   title = SITE.title,
-  headline = title,
+  headline = stripSiteTitle(title),
   author = SITE.author,
   profile = SITE.profile,
   description = SITE.desc,
@@ -148,7 +161,7 @@ const showGrain = SITE.backdropEffects.grain;
     <!-- Open Graph / Facebook -->
     <meta property="og:site_name" content={SITE.title} />
     <meta property="og:type" content={isArticle ? "article" : "website"} />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={headline} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={socialImageURL} />
@@ -176,10 +189,9 @@ const showGrain = SITE.backdropEffects.grain;
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
+    <meta property="twitter:title" content={headline} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
-    <meta property="twitter:creator" content={SITE.author} />
 
     <!-- Google JSON-LD Structured data -->
     {
