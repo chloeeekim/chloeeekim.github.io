@@ -5,6 +5,11 @@
 
 :root,
 html[data-theme="light"] {
+  /* 브라우저가 직접 그리는 것들 — 캐럿, 폼 컨트롤, 기본 스크롤바,
+     자동완성 배경 — 은 CSS 변수를 보지 않는다. 이걸 알려 줘야 한다.
+     알려 주지 않으면 다크 테마에서 그쪽만 하얀게 뜨게 된다. */
+  color-scheme: light;
+
   /* Dracula 계열 웜 아이보리. 색상(H60)은 유지하고 명도만 올려 모바일에서 덜 칙칙하게 */
   --background: #fdfdf9;
   --foreground: #232630;
@@ -17,6 +22,8 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
+  color-scheme: dark;
+
   /* Dracula 의 어두운 변형. 코드블록 배경(#282a36)과 구분되도록 한 단계 낮춘다 */
   --background: #21222c;
   --foreground: #f8f8f2;
